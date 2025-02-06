@@ -1,6 +1,6 @@
 <?php include_once "adminNavbar.php";?>
 <!-- Main Content -->
-<section class="content w-100">
+<div class="content w-100">
     <div class="row">
         <div class="col">
             <span class="text-dark fs-5">Customer > <span class="text-secondary">Add Customer</span></span>
@@ -55,7 +55,7 @@
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td>Vadiyalu</td>
+                        <td>South Indian</td>
                         <td>Available</td>
                         <td>
                             <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
@@ -64,7 +64,7 @@
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td>Specials</td>
+                        <td>North Indian</td>
                         <td>Available</td>
                         <td>
                             <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
@@ -73,7 +73,7 @@
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td>Podulu</td>
+                        <td>Drinks</td>
                         <td>Available</td>
                         <td>
                             <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
@@ -84,5 +84,6 @@
             </table>
         </div>
     </div>
-</sction>
+</div>
+
 <?php include_once "adminFooter.php";?>

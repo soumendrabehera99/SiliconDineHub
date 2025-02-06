@@ -1,6 +1,6 @@
 <?php include_once "adminNavbar.php";?>
 <!-- Main Content -->
-<section class="content w-100">
+<div class="content w-100">
     <div class="row">
         <div class="col">
             <span class="text-dark fs-5">Food Category > <span class="text-secondary">Add Category</span></span>
@@ -42,5 +42,5 @@
         </div>            
       </div>
     </div>
-</section>
+</div>
 <?php include_once "adminFooter.php";?>

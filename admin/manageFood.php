@@ -7,7 +7,7 @@
         </div>
     </div>
 
-    <div class="row mt-3">
+    <div class="row mt-3 ms-1 me-1">
         <div class="col-12 border p-4 shadow-sm rounded">
             <button class="btn btn-success mb-3">Add Categories</button>
             <div class="d-flex justify-content-between mb-2">

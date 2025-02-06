@@ -22,7 +22,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand ps-5" href="./index.html">
+        <a class="navbar-brand ps-5" href="./index.php">
           <img src="../assets/images/logo.png" alt="logo" />
         </a>
         <button
@@ -59,10 +59,9 @@
                   <img src="../assets/images/profile.jpg" alt="profile" class="profile-logo" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#!">Profile</a></li>
-                  <li><a class="dropdown-item" href="#!">Settings</a></li>
+                  <li><a class="dropdown-item" href="./adminProfile.php">My Profile</a></li>
                   <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="#!">Logout</a></li>
+                  <li><a class="dropdown-item" href="#!">Logout<i class="fa-solid fa-arrow-right-from-bracket ms-5"></i></a></li>
                 </ul>
               </li>
             </ul>
@@ -93,8 +92,8 @@
             <div><i class="fa-solid fa-layer-group me-3"></i>Food Category</div><i class="fa-solid fa-chevron-right"></i>
           </a>
           <div class="collapse ms-5" id="foodCategory">
-            <a href="#addCategory">Add Category</a>
-            <a href="#manageCategory">Manage Category</a>
+            <a href="./addFoodcategory.php">Add Category</a>
+            <a href="./manageCategory.php">Manage Category</a>
           </div>
         </div>
     
@@ -104,11 +103,16 @@
           </a>
 
           <div class="collapse ms-5" id="food">
-            <a href="#addFood">Add Food</a>
-            <a href="#manageFood">Manage Food</a>
+            <a href="./addFood.php">Add Food</a>
+            <a href="./manageFood.php">Manage Food</a>
           </div>
         </div>
   
+        <div>
+          <a href="#dashboard" class="">
+            <div><i class="fa-solid fa-bell me-3"></i> Reminder</div>
+          </a>
+        </div>
         <div>
           <a href="#dashboard" class="">
             <div><i class="fas fa-file-invoice me-3"></i> Invoice</div>
