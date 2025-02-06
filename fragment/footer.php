@@ -1,6 +1,6 @@
 <!-- footer section -->
-    <footer class="footer_section text-center text-white ">
-      <div class="container">
+    <footer class="footer_section text-center text-white bg-dark mt-4">
+      <div class="container py-3">
         <div class="row">
           <div class="col-md-4 footer-col">
             <div class="footer_contact">
@@ -87,13 +87,12 @@
 
     <!-- Bootstrap JS -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
-    <script src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
     
     <!-- JQuery -->
     <!-- <script src="../assets/jquery/jquery-3.7.1.min.js"></script> -->
 
     <!-- custom js -->
-    <script src="../assets/jquery/script.js"></script>
+    <script src="./assets/jquery/jquery-3.7.1.min.js"></script>
   </body>
 </html>
-?>
