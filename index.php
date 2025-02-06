@@ -72,7 +72,7 @@ include_once "./fragment/navbar.php";
                     <h2 class="">Foods</h2>
                 </div>
                 <div class="row g-3">
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -88,7 +88,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -104,7 +104,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -120,7 +120,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -136,7 +136,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -152,7 +152,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -168,7 +168,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -184,7 +184,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -200,7 +200,7 @@ include_once "./fragment/navbar.php";
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4">
+                    <div class="col-sm-6 col-lg-4 px-4 px-2">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
