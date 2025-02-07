@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,41 +7,12 @@
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-    <style>
-        a {
-            color: white !important;
-        }
-
-        .active {
-            color: goldenrod !important;
-        }
-
-        body {
-            font-family: "Open Sans", sans-serif;
-            background-color: #fff;
-            overflow-x: hidden;
-        }
-
-        .header-section {
-            background: linear-gradient(to  right, #0d0e10, #3a4245);
-        }
-
-        .navbar-toggler:focus,
-        .navbar-toggler:active {
-            border: none;
-            outline: none;
-            box-shadow: none;
-        }
-
-        .border-radius-45 {
-            border-radius: 0 0 0 45px;
-        }
-    </style>
+    <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
 <body>
-    <div class="header-section py-2">
-        <div class="container">
+    <div class="header_section py-2 position-sticky top-0 z-1">
+        <div class="container header-container">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#"><img src="./assets/images/logo.png" alt="" class="img-fluid"
@@ -70,6 +41,7 @@
                             </li>
                         </ul>
                         <div class="user_option d-flex gap-3 align-items-center">
+                            <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>
                             <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a>
                             <a href="#" class="btn btn-outline-warning btn-sm">Logout</a>

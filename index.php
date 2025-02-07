@@ -3,7 +3,7 @@ include_once "./fragment/navbar.php";
 ?>
     <section class="position-relative d-flex align-items-center">
         <div class="bg-box">
-            <img src="./assets/images/hero-bg.jpg" alt="" class=" img-fluid w-100">
+            <img src="./assets/images/hero-bg.jpg" alt="" class="img-fluid">
         </div>
         <!-- carausal Section  -->
         <section class="position-absolute d-flex align-items-center" style="inset: 0;">
@@ -66,13 +66,13 @@ include_once "./fragment/navbar.php";
         </section>
     </section>
         <!-- Food Section Start -->
-    <Section class="food-section bg-body" id="food">
+    <Section class="food-section bg-body my-4" id="food">
             <div class="container">
-                <div class="my-3 text-center">
-                    <h2 class="">Foods</h2>
+                <div class=" py-3 mb-1">
+                    <h2 class="fs-1 text-center">Foods</h2>
                 </div>
-                <div class="row g-3">
-                    <div class="col-sm-6 col-lg-4 px-4">
+                <div class="row g-2">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -82,13 +82,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -98,13 +98,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -114,13 +114,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -130,13 +130,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -146,13 +146,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -162,13 +162,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -178,13 +178,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -194,13 +194,13 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-lg-4 px-4 px-2">
+                    <div class="col-sm-6 col-lg-4 p-4">
                         <div class="p-0 bg-dark rounded-4 overflow-hidden">
                             <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
                                 <img src="./assets/images/f2.png" alt="" class="img-fluid">
@@ -210,9 +210,9 @@ include_once "./fragment/navbar.php";
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
-                            <div class="d-flex justify-content-between p-3">
+                            <div class="d-flex justify-content-between px-3 pb-2">
                                 <h6 class="text-white">$17</h6>
-                                <a href="#">cart</a>
+                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
                             </div>
                         </div>
                     </div>
@@ -222,5 +222,7 @@ include_once "./fragment/navbar.php";
         </Section>
     </section>
 <?php
+include_once "fragment/feedback.php";
+include_once "fragment/customerFeedback.php";
 include_once "fragment/footer.php";
 ?>

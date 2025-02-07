@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap");
+.header_section a {
+    color: white;
+}
+
+.active {
+    color: goldenrod !important;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+h1,h2{
+    font-family: 'Dancing Script', cursive;
+}
+.header_section {
+    background: linear-gradient(to right, #0d0e10, #384243);
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.border-radius-45 {
+    border-radius: 0 0 0 45px;
+}
+.star-rating i {
+  font-size: 24px;
+  cursor: pointer;
+  color: gray;
+}
+.star-rating i.active {
+  color: gold;
+}
+.footer_section {
+  background-color: #222831;
+  padding: 75px 0 40px 0;
+}
+
+.footer_section a{
+  text-decoration: none;
+}
+
+.footer_section h4 {
+  font-size: 28px;
+}
+
+.footer_section h4,
+.footer_section .footer-logo {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.footer_section p {
+  color: #dbdbdb;
+}
+
+.footer_section .footer_contact .contact_link_box a {
+  margin: 5px 0;
+  color: #ffffff;
+}
+.footer_section .footer_contact .contact_link_box a i {
+  margin-right: 5px;
+}
+
+.footer_section .footer_contact .contact_link_box a:hover {
+  color: #ffbe33;
+}
+
+.footer_section .footer-logo {
+  display: block;
+  font-weight: bold;
+  font-size: 38px;
+  line-height: 1;
+  color: #ffffff;
+}
+.footer_section .footer_social a {
+  color: #ffffff;
+  margin: 0 2.5px;
+  font-size: 22px;
+}
+
+.footer_section .footer_social a:hover {
+  color: #ffbe33;
+}
+
+.footer_section .footer-info {
+  margin-top: 25px;
+}
+
+.footer_section .footer-info p {
+  color: #ffffff;
+  margin: 0;
+}
+
+.footer_section .footer-info p a {
+  color: inherit;
+}
