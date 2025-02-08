@@ -28,7 +28,7 @@
         <div class="col-md-4">
             <div class="profile-card p-4 text-center rounded-4 text-white shadow">
                 <img id="profileImage" src="../assets/images/profile.jpg" class="profile-img mb-3 rounded-circle border border-5 border-white" alt="Admin Profile Picture">
-                <h4>John Doe</h4>
+                <h4>Asish Sahu</h4>
                 <p>Restaurant Administrator</p>
                 <div>
                     <a href="#" class="me-2 text-white"><i class="fab fa-twitter"></i></a>
@@ -60,7 +60,7 @@
                             <tbody>
                                 <tr><th>Name</th><td>Asish Sahu</td></tr>
                                 <tr><th>Restaurant</th><td>Silicon DineHub</td></tr>
-                                <tr><th>Phone</th><td>8018634475</td></tr>
+                                <tr><th>Phone</th><td>1234567890</td></tr>
                                 <tr><th>Email</th><td>admin@asish.com</td></tr>
                             </tbody>
                         </table>
@@ -71,10 +71,6 @@
                             <div class="mb-3">
                                 <label class="form-label">Full Name</label>
                                 <input type="text" class="form-control" value="Asish Sahu">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Restaurant</label>
-                                <input type="text" class="form-control" value="Silicon DineHub">
                             </div>                        
                             <div class="mb-3">
                                 <label class="form-label">Phone</label>
