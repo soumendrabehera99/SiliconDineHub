@@ -2,9 +2,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-function sendEmail($toEmail, $subject, $body, $fromEmail = 'silicondinehub@gmail.com', $fromName = 'DineHub') {
+function sendEmail($toEmail="mca.23mmci48@silicon.ac.in", $subject="Cron job", $body="cron job is to send mail automatically ", $fromEmail = 'silicondinehub@gmail.com', $fromName = 'DineHub') {
     $mail = new PHPMailer(true);
 
     try {
@@ -36,4 +36,5 @@ function sendEmail($toEmail, $subject, $body, $fromEmail = 'silicondinehub@gmail
         return "Mailer Error: {$mail->ErrorInfo}";
     }
 }
+sendEmail();
 ?>
