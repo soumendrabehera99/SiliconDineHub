@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link href="../assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/toastr/toastr.min.css" rel="stylesheet">
+    <style>
+        .toast {
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+        }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100 bg-dark">
+
+    <div class="card p-4 shadow-lg text-center" style="max-width: 400px; width: 100%;">
+        <img src="../assets/images/logo_black.png" class="img-fluid" alt="logo">
+        <h5 class="mt-2">Admin Login</h5>
+        <form id="loginForm">
+            <div class="mb-3 text-start">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+            </div>
+            <div class="mb-3 text-start">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+            </div>
+            <input type="submit" class="btn btn-warning w-100 mt-3" value="Login">
+        </form>
+        <br>
+        <button id="btn" class="btn btn-primary">Show Toastr</button>
+    </div>
+
+    <script src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
+    <script src="../assets/toastr/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                positionClass: "toast-top-right",
+                timeOut: 3000
+            };
+
+            $("#btn").click(function () {
+                toastr.success('Toastr button clicked!');
+            });
+
+        });
+    </script>
+</body>
+</html>
