@@ -1,9 +1,6 @@
 <?php include_once "adminNavbar.php";?>
 <!-- Main Content -->
 <section class="content w-100">
-    <div class="row">
-        <div><span class="text-dark fs-4">Dashboard</span></div>
-    </div>
     <div class="row mt-3">
         <div class="col-md-3">
         <div class="card l-bg-cherry position-relative">

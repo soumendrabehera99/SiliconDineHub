@@ -1,12 +1,6 @@
 <?php include_once "adminNavbar.php";?>
 <!-- Main Content -->
 <div class="content w-100">
-    <div class="row">
-        <div class="col">
-            <span class="text-dark fs-5">Customer > <span class="text-secondary">Add Customer</span></span>
-        </div>
-    </div>
-
     <div class="row mt-3 ms-1 me-1">
         <div class="col-12 border p-4 shadow-sm rounded">
             <button class="btn btn-success mb-3">Add Categories</button>

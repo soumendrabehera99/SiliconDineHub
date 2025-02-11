@@ -1,11 +1,6 @@
 <?php include_once "adminNavbar.php";?>
 <!-- Main Content -->
 <section class="content w-100">
-    <div class="row">
-        <div class="col">
-            <span class="text-dark fs-5">Food > <span class="text-secondary">Manage Food</span></span>
-        </div>
-    </div>
 
     <div class="row mt-3 ms-1 me-1">
         <div class="col-12 border p-4 shadow-sm rounded">

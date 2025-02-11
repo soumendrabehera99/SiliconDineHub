@@ -2,12 +2,6 @@
 <!-- Main Content -->
 <section class="content w-100">
     <div class="row">
-        <div class="col">
-            <span class="text-dark fs-5">Customer > <span class="text-secondary">Add Customer</span></span>
-        </div>
-    </div>
-
-    <div class="row">
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6 border p-4 shadow-sm rounded">
