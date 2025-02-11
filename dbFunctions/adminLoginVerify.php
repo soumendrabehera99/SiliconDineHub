@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "dbConnect.php";
 
 try {
@@ -28,6 +29,8 @@ try {
         $user = $result->fetch_assoc();
 
         if ($user['password'] === $password) { 
+            $_SESSION['email'] = $email;
+            $_SESSION['role'] = "admin";
             echo "success";
         } else {
             echo "Password Incorrect";
