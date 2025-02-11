@@ -7,15 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link href="../assets/bootstrap/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
+    
     <!-- fevicon -->
     <link rel="icon" href="../assets/images/fevicon_logo.png" type="image/x-icon">
 
     <!-- Custom Styles -->
     <link href="../assets/css/AdminCss/style.css" rel="stylesheet" />
+
+    <!-- <link href="../assets/fontawesome/all.css" rel="stylesheet" /> -->
     
   </head>
   <body>

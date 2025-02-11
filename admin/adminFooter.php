@@ -11,5 +11,11 @@
     <script src="../assets/js/script.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- Fontawesome -->
+    <script src="https://kit.fontawesome.com/7c45c78608.js" crossorigin="anonymous"></script>
+    <!-- Jquery -->
+    <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
+    <!-- Toastr -->
+    <script src="../assets/toastr/toastr.min.js"></script>
   </body>
 </html>
