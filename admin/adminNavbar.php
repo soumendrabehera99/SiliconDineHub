@@ -92,7 +92,7 @@
             <div><i class="fa-solid fa-layer-group me-3"></i>Food Category</div><i class="fa-solid fa-chevron-right"></i>
           </a>
           <div class="collapse ms-5" id="foodCategory">
-            <a href="./addFoodcategory.php">Add Category</a>
+            <!--Here i deleted the add category-->
             <a href="./manageCategory.php">Manage Category</a>
           </div>
         </div>

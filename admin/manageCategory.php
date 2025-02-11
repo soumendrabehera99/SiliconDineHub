@@ -3,7 +3,37 @@
 <div class="content w-100">
     <div class="row mt-3 ms-1 me-1">
         <div class="col-12 border p-4 shadow-sm rounded">
-            <button class="btn btn-success mb-3">Add Categories</button>
+            <div class="d-flex justify-content-between">
+                Category
+                <!-- Button trigger modal -->
+                <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addCategory">Add Categories</button>
+                <!-- Modal -->
+                <div class="modal fade" id="addCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">Add category</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form action="" method="post">
+                                <div class="modal-body">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label for="categoryName" class="form-label fs-5">Categories Name</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" value="Nashta"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" value="ADD" class="btn btn-submit btn-success w-50 align-items-center">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="d-flex justify-content-between mb-2">
                 <div>
                 Show 
@@ -24,7 +54,6 @@
                     <tr>
                         <th>#</th>
                         <th>Categories Name</th>
-                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -32,46 +61,9 @@
                     <tr>
                         <td>1</td>
                         <td>Sweet</td>
-                        <td>Available</td>
                         <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                                </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Hot</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>South Indian</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>North Indian</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Drinks</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                            <button aria-label="Search" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
+                            <button aria-label="Search" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -79,5 +71,52 @@
         </div>
     </div>
 </div>
-
+<!--Edit Category Modal -->
+<div class="modal fade" id="editCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="categoryName" class="form-label fs-5">Category Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" value="Nashta"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" class="d-flex justify-content-end">
+                    <input type="button" value="Close" class="btn btn-submit btn-secondary me-auto">
+                    <input type="submit" value="Edit" class="btn btn-submit btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Delete Category modal-->
+<div class="modal fade" id="deleteCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete Category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="post">
+                <div class="modal-body">
+                    <p>Are you sure you want to delete <strong id="deleteCategoryName"></strong>?</p>
+                </div>
+            </form>
+            <div class="modal-footer d-flex justify-content-end">
+                <input type="button" value="Cancel" class="btn btn-submit btn-secondary me-auto">
+                <input type="submit" value="Delete" class="btn btn-submit btn-danger">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/js/category.js"></script>
 <?php include_once "adminFooter.php";?>
