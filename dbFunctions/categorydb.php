@@ -9,20 +9,20 @@ function addCategory($category){
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows > 0){
-            echo "Present";
+            return "Present";
         }else{
             $conn = dbConnection();
             $stmt1 = $conn->prepare("INSERT INTO food_category(category) VALUES(?)");
             $stmt1->bind_param('s',$category);
             $stmt1->execute();
             if($conn->affected_rows > 0){
-                echo "success";
+                return "success";
             }else{
-                echo "error";
+                return "error";
             }
         }
     }catch(Exception $e){
-        echo $e->getMessage();
+        return $e->getMessage();
     }
 }
 
@@ -32,9 +32,9 @@ function deleteCategory($id){
     $stmt->bind_param("i",$id);
     $res= $stmt->execute();
     if($conn->affected_rows > 0){
-        echo $res."success";
+        return $res."success";
     }else{
-        echo $res."error";
+        return $res."error";
     }
 }
 
@@ -44,9 +44,9 @@ function getCategories(){
     $stmt->execute();
     $result = $stmt->get_result();
     if($result-> num_rows > 0){
-        echo json_encode($result->fetch_all(MYSQLI_ASSOC));
+        return json_encode($result->fetch_all(MYSQLI_ASSOC));
     }else{
-        echo "error";
+        return "error";
     }
 }
 
@@ -56,9 +56,9 @@ function updateCategory($id,$category){
     $stmt->bind_param("si",$category,$id);
     $stmt->execute();
     if($conn-> affected_rows > 0){
-        echo "success";
+        return "success";
     }else{
-        echo "error";
+        return "error";
     }
 }
 ?>
