@@ -11,12 +11,12 @@
 </head>
 
 <body>
-    <div class="header_section py-2 position-sticky top-0 z-1">
+    <div class="header_section py-2 position-sticky top-0">
         <div class="container header-container">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#"><img src="./assets/images/logo.png" alt="" class="img-fluid"
-                            style="height: 80px;"></a>
+                            style="height: 50px;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
