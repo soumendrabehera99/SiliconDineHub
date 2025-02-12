@@ -8,19 +8,24 @@ function addCategory($category){
         $stmt->bind_param('s',$category);
         $stmt->execute();
         $res = $stmt->get_result();
+        $data = [];
         if($res->num_rows > 0){
-            echo "Present";
+            $data["message"]="Category is already exit";
+            $data["status"]="error";
         }else{
             $conn = dbConnection();
             $stmt1 = $conn->prepare("INSERT INTO food_category(category) VALUES(?)");
             $stmt1->bind_param('s',$category);
             $stmt1->execute();
             if($conn->affected_rows > 0){
-                echo "success";
+                $data["message"]="Category is added";
+                $data["status"]="success";
             }else{
-                echo "error";
+                $data["message"]="Error adding Category";
+                $data["status"]="error";
             }
         }
+        return $data;
     }catch(Exception $e){
         echo $e->getMessage();
     }
