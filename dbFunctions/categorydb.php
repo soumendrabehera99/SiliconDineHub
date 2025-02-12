@@ -8,6 +8,7 @@ function addCategory($category){
         $stmt->bind_param('s',$category);
         $stmt->execute();
         $res = $stmt->get_result();
+        $data = [];
         if($res->num_rows > 0){
             return "Present";
         }else{
@@ -21,6 +22,7 @@ function addCategory($category){
                 return "error";
             }
         }
+        return $data;
     }catch(Exception $e){
         return $e->getMessage();
     }
