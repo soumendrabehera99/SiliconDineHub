@@ -8,11 +8,10 @@ function addCategory($category){
         $stmt->bind_param('s',$category);
         $stmt->execute();
         $res = $stmt->get_result();
-        $data = [];
         if($res->num_rows > 0){
-            return "Present";
+            return "present";
         }else{
-            $conn = dbConnection();
+            // $conn = dbConnection();
             $stmt1 = $conn->prepare("INSERT INTO food_category(category) VALUES(?)");
             $stmt1->bind_param('s',$category);
             $stmt1->execute();
@@ -22,7 +21,6 @@ function addCategory($category){
                 return "error";
             }
         }
-        return $data;
     }catch(Exception $e){
         return $e->getMessage();
     }

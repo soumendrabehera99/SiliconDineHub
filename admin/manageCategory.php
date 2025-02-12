@@ -123,6 +123,4 @@ require_once "../dbFunctions/categorydb.php";
         </div>
     </div>
 </div>
-<script src="../assets/jquery/jquery-3.7.1.min.js"></script>
-<script src="../assets/js/addCategory.js"></script>
 <?php include_once "adminFooter.php";?>
