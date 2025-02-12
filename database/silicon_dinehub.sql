@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2025 at 11:17 AM
+-- Generation Time: Feb 12, 2025 at 07:25 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -38,6 +38,9 @@ CREATE TABLE `admin_table` (
 --
 
 INSERT INTO `admin_table` (`email`, `name`, `password`) VALUES
+('admin1@gmail.com', 'Admin1', '123'),
+('admin2@gmail.com', 'Admin2', '456'),
+('admin3@gmail.com', 'Admin3', '789'),
 ('admin@gmail.com', 'admin', '1234');
 
 -- --------------------------------------------------------
@@ -53,6 +56,15 @@ CREATE TABLE `counter` (
   `status` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `counter`
+--
+
+INSERT INTO `counter` (`counterID`, `userName`, `password`, `status`) VALUES
+(1, 'counter1', '123', '1'),
+(2, 'counter2', '456', '1'),
+(3, 'counter3', '789', '0');
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +76,15 @@ CREATE TABLE `counter_category` (
   `counterID` int(11) NOT NULL,
   `foodCategoryID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `counter_category`
+--
+
+INSERT INTO `counter_category` (`counterCategoryID`, `counterID`, `foodCategoryID`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -80,6 +101,14 @@ CREATE TABLE `feedback` (
   `feedbackFor` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedbackID`, `studentID`, `feedback`, `rating`, `status`, `feedbackFor`) VALUES
+(1, 1, 'Great food quality!', '5', '1', 'Cafeteria'),
+(2, 2, 'Needs improvement in service.', '3', '1', 'Staff');
+
 -- --------------------------------------------------------
 
 --
@@ -95,6 +124,15 @@ CREATE TABLE `food` (
   `isAvailable` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `description`, `price`, `isAvailable`) VALUES
+(1, 1, 'Cappuccino', 'Hot coffee with milk foam', '100', '1'),
+(2, 2, 'Burger', 'Cheese and lettuce burger', '150', '1'),
+(3, 3, 'Chocolate Cake', 'Rich chocolate cake slice', '200', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -105,6 +143,15 @@ CREATE TABLE `food_category` (
   `foodCategoryID` int(11) NOT NULL,
   `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `food_category`
+--
+
+INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
+(1, 'Beverages'),
+(2, 'Fast Food'),
+(3, 'Desserts');
 
 -- --------------------------------------------------------
 
@@ -124,6 +171,14 @@ CREATE TABLE `order_table` (
   `status` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `order_table`
+--
+
+INSERT INTO `order_table` (`orderID`, `studentID`, `foodID`, `quantity`, `orderType`, `price`, `createdAt`, `updatedAt`, `status`) VALUES
+(1, 1, 1, '2', 'Dine-in', '200', '2025-02-12', '2025-02-12', '1'),
+(2, 2, 2, '1', 'Takeaway', '150', '2025-02-11', '2025-02-11', '1');
+
 -- --------------------------------------------------------
 
 --
@@ -135,6 +190,14 @@ CREATE TABLE `sic_email` (
   `sic` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `sic_email`
+--
+
+INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
+('1', '23mmci37', 'mca.23mmci37@silicon.ac.in'),
+('2', '23mmci48', 'mca.23mmci48@silicon.ac.in');
 
 -- --------------------------------------------------------
 
@@ -151,6 +214,14 @@ CREATE TABLE `student` (
   `password` varchar(128) NOT NULL,
   `status` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `status`) VALUES
+(1, 'mca.23mmci37@silicon.ac.in', '1', 'Anil Sahu', '2002-10-10', '1234', '1'),
+(2, 'mca.23mmci48@silicon.ac.in', '2', 'Soumendra', '2000-08-20', '5678', '1');
 
 --
 -- Indexes for dumped tables
@@ -225,43 +296,43 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `counter`
 --
 ALTER TABLE `counter`
-  MODIFY `counterID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `counterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `counter_category`
 --
 ALTER TABLE `counter_category`
-  MODIFY `counterCategoryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `counterCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedbackID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `food_category`
 --
 ALTER TABLE `food_category`
-  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
