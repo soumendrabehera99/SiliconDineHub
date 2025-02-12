@@ -7,12 +7,12 @@
             <div class="col-md-6 border p-4 shadow-sm rounded">
                 <form action="" method="post">
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        <label for="name" class="form-label">SIC</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter student's SIC">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="email" placeholder="Enter registered email">
                     </div>
                     <div class="text-end">
                         <input type="submit" value="Add" class="btn btn-primary">

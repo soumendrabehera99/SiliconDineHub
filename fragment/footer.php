@@ -1,7 +1,7 @@
 <!-- footer section -->
     <footer class="footer_section text-center text-white bg-dark mt-4">
-      <div class="container py-3">
-        <div class="row">
+      <div class="container">
+        <div class="row g-5">
           <div class="col-md-4 footer-col">
             <div class="footer_contact">
               <h4>Contact Us</h4>
@@ -57,21 +57,41 @@
             </div>
           </div>
           <div class="col-md-4 footer-col">
-            <h4>Opening Hours</h4>
-            <div class="row">
-              <div class="col-sm-5">
-                <p>Mon-Sat</p>
-                <p>Sunday</p>
-                <p>Holiday</p>
+              <h4>Opening Hours</h4>
+              <div class="row">
+                  <div class="col-12 d-flex justify-content-between flex-wrap">
+                      <div class="col-6 col-sm-5 text-center">
+                          <p>Mon-Sat</p>
+                          <p>Sunday</p>
+                          <p>Holiday</p>
+                      </div>
+                      <div class="col-6 col-sm-6 text-start">
+                          <p>10.00 AM - 10.00 PM</p>
+                          <p>02.30 PM - 07.00 PM</p>
+                          <p>02.30 PM - 07.00 PM</p>
+                      </div>
+                  </div>
               </div>
-              <div class="col-sm-6">
-                <p>10.00 Am - 10.00 Pm</p>
-                <p>02.30 Pm - 07.00 Pm</p>
-                <p>02.30 Pm - 07.00 Pm</p>
-              </div>
-            </div>
           </div>
         </div>
+        
+        <div class="row mt-1">
+          <div class="col-md-12">
+            <h5 class="my-3">Useful Links</h5>
+            <ul class="list-inline">
+              <li class="list-inline-item mx-3">
+                <a href="#contactus" class="text-decoration-none text-white">Contact Us</a>
+              </li>
+              <li class="list-inline-item mx-3">
+                <a href="./admin/adminLogin.php" class="text-decoration-none text-white">Admin</a>
+              </li>
+              <li class="list-inline-item mx-3">
+                <a href="./privacyAndPolicy.php" class="text-decoration-none text-white">Privacy Policy</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
         <div class="footer-info text-center">
           <p>
             &copy; <span id="displayYear"></span> All Rights Reserved By
