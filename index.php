@@ -2,11 +2,11 @@
 include_once "./fragment/navbar.php";
 ?>
     <section class="position-relative d-flex align-items-center">
-        <div class="bg-box">
+        <!-- <div class="bg-box">
             <img src="./assets/images/hero-bg.jpg" alt="" class="img-fluid">
-        </div>
+        </div> -->
         <!-- carausal Section  -->
-        <section class="position-absolute d-flex align-items-center" style="inset: 0;">
+        <section class="hero d-flex align-items-center">
                 <div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -14,7 +14,7 @@ include_once "./fragment/navbar.php";
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Lorem ipsum dolor sit.</h1>
+                                            <h1 class="text-white">Slider Text Zero.</h1>
                                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
                                                 facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
                                         </div>
@@ -22,12 +22,12 @@ include_once "./fragment/navbar.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item active">
+                        <div class="carousel-item">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Lorem ipsum dolor sit.</h1>
+                                            <h1 class="text-white">Slider Text One.</h1>
                                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
                                                 facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
                                         </div>
@@ -35,12 +35,12 @@ include_once "./fragment/navbar.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item active">
+                        <div class="carousel-item ">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Lorem ipsum dolor sit.</h1>
+                                            <h1 class="text-white">Slider Text Two</h1>
                                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
                                                 facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
                                         </div>
@@ -48,12 +48,12 @@ include_once "./fragment/navbar.php";
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item active">
+                        <div class="carousel-item ">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Lorem ipsum dolor sit.</h1>
+                                            <h1 class="text-white">Slider Text Three.</h1>
                                             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
                                                 facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
                                         </div>
