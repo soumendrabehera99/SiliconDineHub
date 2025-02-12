@@ -18,6 +18,9 @@ session_start();
   <!-- Custom Styles -->
   <link href="../assets/css/AdminCss/style.css" rel="stylesheet" />
 
+  <!--Toastr-->
+  <link href="../assets/toastr/toastr.min.css" rel="stylesheet">
+
   <!-- <link href="../assets/fontawesome/all.css" rel="stylesheet" /> -->
 
 </head>

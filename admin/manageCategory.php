@@ -26,7 +26,7 @@ require_once "../dbFunctions/categorydb.php";
                                             <label for="categoryName" class="form-label fs-5">Categories Name</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" value="Nashta"/>
+                                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name">
                                         </div>
                                     </div>
                                     <p id="msg" class=""></p>
@@ -63,14 +63,24 @@ require_once "../dbFunctions/categorydb.php";
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Sweet</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
+                    <?php
+                    $categories = json_decode(getCategories(), true);
+
+                    if($categories){
+                        foreach($categories as $row){
+                            ?>
+                            <tr>
+                                <td><?php echo $row['foodCategoryID'] ?></td>
+                                <td><?php echo $row['category'] ?></td>
+                                <td>
+                                    <button aria-label="Search" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
+                                    <button aria-label="Search" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -91,7 +101,7 @@ require_once "../dbFunctions/categorydb.php";
                             <label for="categoryName" class="form-label fs-5">Category Name</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" value="Nashta"/>
+                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name">
                         </div>
                     </div>
                 </div>

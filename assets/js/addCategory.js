@@ -2,10 +2,9 @@ $(document).ready(function () {
   $("#addCategory").submit(function (e) {
     e.preventDefault();
     let categoryName = $("#categoryName").val();
-    console.log(categoryName);
 
     if (categoryName === "") {
-      $("#msg").text("Please Enter a Category Name").trim();
+      toastr.warning("Please enter a category name!", "Warning");
       return;
     }
     $.ajax({
@@ -14,18 +13,12 @@ $(document).ready(function () {
       data: { category: categoryName },
       success: function (response) {
         if (response === "present") {
-          console.log(response, " already Present");
+          toastr.error(response, "Category already exists!");
         } else if (response === "success") {
-          console.log(response, "Category added successfully");
+          toastr.success(response, "Category added successfully");
+          $("#categoryName").val("");
         } else if (response === "error") {
-          console.log(response, "There is an error in add category");
-        }
-        $("#msg").text(response.message);
-        $("#msg").removeClass("error success");
-        $("#msg").addClass(response.status);
-        if (response.status === "success") {
-          $("#addCategoryModal").modal("hide");
-          location.reload();
+          toastr.error(response, "There is an error in add category");
         }
       },
     });
