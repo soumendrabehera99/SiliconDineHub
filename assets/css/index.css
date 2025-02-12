@@ -16,7 +16,9 @@ h1,h2{
     font-family: 'Dancing Script', cursive;
 }
 .header_section {
-    background: linear-gradient(to right, #0d0e10, #384243);
+    /* background: linear-gradient(to right, #0d0e10, #384243); */
+    background: rgb(13,14,16);
+    background: linear-gradient(90deg, rgba(13,14,16,1) 0%, rgba(13,14,16,1) 45%, rgba(61,69,71,1) 100%);
 }
 
 .navbar-toggler:focus,
@@ -24,6 +26,15 @@ h1,h2{
     border: none;
     outline: none;
     box-shadow: none;
+}
+
+/* hero */
+.hero{
+  background:url('../images/hero-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
 }
 
 .border-radius-45 {
