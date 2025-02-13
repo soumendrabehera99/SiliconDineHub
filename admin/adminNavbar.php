@@ -65,11 +65,11 @@ session_start();
                 <img src="../assets/images/admin_Profile_image.jpg" alt="profile" class="profile-logo" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="./changePassword.php">Change Password</a></li>
+                <li><a class="dropdown-item" href="./changeAdminPassword.php">Change Password</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#!"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</a></li>
+                <li><a class="dropdown-item" href="./adminLogout.php"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</a></li>
               </ul>
             </li>
           </ul>
