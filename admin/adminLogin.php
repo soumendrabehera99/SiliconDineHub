@@ -11,7 +11,7 @@
     <link rel="icon" href="../assets/images/fevicon_logo.png" type="image/x-icon">
     <style>
         body {
-            background-image: url('../assets/images/admin_Login_Image_01.jpeg');
+            background-image: url('../assets/images/admin_Login_Image_01.webp');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
@@ -130,10 +130,11 @@
                             console.log("Server Response:", response);
 
                             if (response.trim() === "success") {
-                                toastr.success("Login successful! Redirecting...");
-                                setTimeout(() => {
-                                    window.location.href = "./index.php";
-                                }, 3000);
+                                window.location.href = "./index.php";
+                                // toastr.success("Login successful! Redirecting...");
+                                // setTimeout(() => {
+                                //     window.location.href = "./index.php";
+                                // }, 3000);
                             } else if (response.trim() === "Email not registered") {
                                 toastr.error("Email not registered.");
                             } else if (response.trim() === "Password Incorrect") {

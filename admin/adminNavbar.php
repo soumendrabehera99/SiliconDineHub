@@ -62,14 +62,14 @@ session_start();
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../assets/images/profile.jpg" alt="profile" class="profile-logo" />
+                <img src="../assets/images/admin_Profile_image.jpg" alt="profile" class="profile-logo" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="./adminProfile.php">My Profile</a></li>
+                <li><a class="dropdown-item" href="./changePassword.php">Change Password</a></li>
                 <li>
                   <hr class="dropdown-divider" />
                 </li>
-                <li><a class="dropdown-item" href="#!">Logout<i class="fa-solid fa-arrow-right-from-bracket ms-5"></i></a></li>
+                <li><a class="dropdown-item" href="#!"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</a></li>
               </ul>
             </li>
           </ul>
@@ -91,7 +91,7 @@ session_start();
           </a>
           <div class="collapse ms-5" id="customer">
             <a href="./customerAdd.php">Add Customer</a>
-            <a href="#manageCustomer">Manage Customer</a>
+            <a href="./customerManage.php">Manage Customer</a>
           </div>
         </div>
     
