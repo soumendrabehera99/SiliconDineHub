@@ -74,10 +74,10 @@ require_once "../dbFunctions/categorydb.php";
                                 <td><?php echo $counter ?></td>
                                 <td><?php echo $category['category'] ?></td>
                                 <td>
-                                    <a href="#" class="btn btn-success btn-sm editCategoryBtn" data-bs-toggle="modal" data-bs-target="#editCategory" category-id="<?php echo $category['foodCategoryID'];?>" category-name="<?php echo $category['category']?>" >
+                                    <a href="#" class="btn btn-success btn-sm editCategoryBtn" data-bs-toggle="modal" data-bs-target="#editCategoryModal" category-id="<?php echo $category['foodCategoryID'];?>" category-name="<?php echo $category['category']?>" >
                                         <i class="fa-solid fa-edit"></i> Edit
                                     </a>
-                                    <a href="#" class="btn btn-danger btn-sm deleteCategoryBtn" data-bs-toggle="modal" data-bs-target="#deleteCategory" category-id="<?php echo $category['foodCategoryID'];?>" category-name="<?php echo $category['category']?>">
+                                    <a href="#" class="btn btn-danger btn-sm deleteCategoryBtn" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal" category-id="<?php echo $category['foodCategoryID'];?>" category-name="<?php echo $category['category']?>">
                                         <i class="fa-solid fa-trash"></i> Delete
                                     </a>
                                 </td>
@@ -121,14 +121,14 @@ require_once "../dbFunctions/categorydb.php";
     </div>
 </div>
 <!--Delete Category modal-->
-<div class="modal fade" id="deleteCategory" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="deleteCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">Delete Category</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" id="deleteForm">
+            <form method="post" id="deleteCategory">
                 <div class="modal-body">
                     <input type="hidden" id="deleteCategoryId" name="categoryId" value="">
                     <p>Are you sure you want to delete <strong id="deleteCategoryName"></strong>?</p>

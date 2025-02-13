@@ -63,9 +63,12 @@ $(document).ready(function () {
       success: function (response) {
         console.log(response);
         if (response === "success") {
-          toastr.success(response, "Category added successfully");
+          toastr.success(response, "Category deleted successfully");
+          $("#deleteCategory").trigger("reset");
+          $("#deleteCategoryModal").modal("hide");
+          setTimeout(() => location.reload(), 500);
         } else if (response === "error") {
-          toastr.error(response, "There is an error in add category");
+          toastr.error(response, "There is an error in delete category");
         }
       },
     });
