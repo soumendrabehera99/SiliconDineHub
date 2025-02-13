@@ -1,4 +1,6 @@
-<?php include_once "adminNavbar.php";?>
+<?php 
+include_once "adminNavbar.php";
+?>
 <!-- Main Content -->
 <section class="content w-100">
     <div class="row mt-3 ms-1 me-1">
