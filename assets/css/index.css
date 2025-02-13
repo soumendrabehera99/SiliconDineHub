@@ -1,44 +1,50 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap");
 .header_section a {
-    color: white;
+  color: white;
 }
 
 .active {
-    color: goldenrod !important;
+  color: goldenrod !important;
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
-    background-color: #fff;
-    overflow-x: hidden;
+  font-family: "Open Sans", sans-serif;
+  background-color: #fff;
+  overflow-x: hidden;
 }
-h1,h2{
-    font-family: 'Dancing Script', cursive;
+h1,
+h2 {
+  font-family: "Dancing Script", cursive;
 }
 .header_section {
-    /* background: linear-gradient(to right, #0d0e10, #384243); */
-    background: rgb(13,14,16);
-    background: linear-gradient(90deg, rgba(13,14,16,1) 0%, rgba(13,14,16,1) 45%, rgba(61,69,71,1) 100%);
+  /* background: linear-gradient(to right, #0d0e10, #384243); */
+  background: rgb(13, 14, 16);
+  background: linear-gradient(
+    90deg,
+    rgba(13, 14, 16, 1) 0%,
+    rgba(13, 14, 16, 1) 45%,
+    rgba(61, 69, 71, 1) 100%
+  );
 }
 
 .navbar-toggler:focus,
 .navbar-toggler:active {
-    border: none;
-    outline: none;
-    box-shadow: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 /* hero */
-.hero{
-  background:url('../images/hero-bg.jpg');
+.hero {
+  background: url("../images/hero-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  height: 500px;
+  height: 625px;
   width: 100%;
 }
 
 .border-radius-45 {
-    border-radius: 0 0 0 45px;
+  border-radius: 0 0 0 45px;
 }
 .star-rating i {
   font-size: 24px;
@@ -48,12 +54,22 @@ h1,h2{
 .star-rating i.active {
   color: gold;
 }
+.text-truncate-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  line-height: 1.5em;
+  max-height: 2rem;
+}
 .footer_section {
   background-color: #222831;
   padding: 75px 0 40px 0;
 }
 
-.footer_section a{
+.footer_section a {
   text-decoration: none;
 }
 
@@ -65,7 +81,7 @@ h1,h2{
 .footer_section .footer-logo {
   font-weight: 600;
   margin-bottom: 20px;
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
 }
 
 .footer_section p {

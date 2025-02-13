@@ -14,9 +14,8 @@ include_once "./fragment/navbar.php";
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Slider Text Zero.</h1>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
-                                                facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
+                                            <h1 class="text-white">Good Food, Good Mood!</h1>
+                                            <p>Great food makes a great day! Our cafeteria serves fresh, hygienic, and budget-friendly meals to keep you energized. Whether it’s a quick bite or a full meal, we’ve got you covered! 🍽️✨</p>
                                         </div>
                                     </div>
                                 </div>
@@ -27,9 +26,8 @@ include_once "./fragment/navbar.php";
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Slider Text One.</h1>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
-                                                facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
+                                            <h1 class="text-white">No More Waiting in Long Queues!</h1>
+                                            <p>Pre-book your meal and pick it up hassle-free! Save time and enjoy your break to the fullest. ⏳🍕</p>
                                         </div>
                                     </div>
                                 </div>
@@ -40,9 +38,8 @@ include_once "./fragment/navbar.php";
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Slider Text Two</h1>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
-                                                facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
+                                            <h1 class="text-white">Multiple Counters for Fast Service</h1>
+                                            <p>Collect your meal from your assigned counter and enjoy a smooth, stress-free dining experience. 🏃‍♂️🥗</p>
                                         </div>
                                     </div>
                                 </div>
@@ -53,9 +50,8 @@ include_once "./fragment/navbar.php";
                                 <div class="row">
                                     <div class="col-md-7 col-lg-6 p-3 text-justify">
                                         <div class="details">
-                                            <h1 class="text-white">Slider Text Three.</h1>
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas illum quisquam
-                                                facilis natus! Dolores veniam illo esse consequatur inventore at.</p>
+                                            <h1 class="text-white">Eat Smart, Spend Smarter!</h1>
+                                            <p>Track your food expenses and manage your budget with ease. Your monthly meal history, all in one place! 📊💰</p>
                                         </div>
                                     </div>
                                 </div>
