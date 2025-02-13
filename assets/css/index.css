@@ -62,7 +62,6 @@ h2 {
   text-overflow: ellipsis;
 
   line-height: 1.5em;
-  max-height: 2rem;
 }
 .footer_section {
   background-color: #222831;
@@ -128,4 +127,10 @@ h2 {
 
 .footer_section .footer-info p a {
   color: inherit;
+}
+
+@media (max-width: 768px) {
+  .text-truncate-2 {
+    -webkit-line-clamp: 3;
+  }
 }
