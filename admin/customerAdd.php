@@ -17,7 +17,7 @@ include_once "adminNavbar.php";
                     <input type="email" class="form-control" id="email" placeholder="Enter registered email">
                 </div>
                 <div class="text-end">
-                    <input type="submit" value="Add" class="btn btn-primary" name="add-student">
+                    <input type="submit" value="Add" class="btn btn-success" name="add-student">
                 </div>
             </form>
 
@@ -28,7 +28,7 @@ include_once "adminNavbar.php";
                     <input class="form-control" type="file" id="fileUpload" placeholder="Choose a file Or drag it here">
                 </div>
                 <div class="text-end">
-                    <input type="submit" value="import" class="btn btn-primary">
+                    <input type="submit" value="import" class="btn btn-success">
                 </div>
             </form>
         </div>
