@@ -87,7 +87,6 @@ require_once "../dbFunctions/categorydb.php";
                     </div>
                 </div>
                 <div class="modal-footer" class="d-flex justify-content-end">
-                    <input type="button" value="Close" class="btn btn-submit btn-secondary me-auto">
                     <input type="submit" value="Edit" class="btn btn-submit btn-success">
                 </div>
             </form>
@@ -108,7 +107,6 @@ require_once "../dbFunctions/categorydb.php";
                     <p>Are you sure you want to delete <strong id="deleteCategoryName"></strong>?</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-end">
-                    <input type="button" value="Cancel" class="btn btn-submit btn-secondary me-auto">
                     <input type="submit" value="Delete" class="btn btn-submit btn-danger">
                 </div>
             </form>
