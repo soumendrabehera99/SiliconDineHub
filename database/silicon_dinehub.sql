@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2025 at 07:25 AM
+-- Generation Time: Feb 14, 2025 at 08:01 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -73,8 +73,8 @@ INSERT INTO `counter` (`counterID`, `userName`, `password`, `status`) VALUES
 
 CREATE TABLE `counter_category` (
   `counterCategoryID` int(11) NOT NULL,
-  `counterID` int(11) NOT NULL,
-  `foodCategoryID` int(11) NOT NULL
+  `counterID` int(11) DEFAULT NULL,
+  `foodCategoryID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -83,8 +83,8 @@ CREATE TABLE `counter_category` (
 
 INSERT INTO `counter_category` (`counterCategoryID`, `counterID`, `foodCategoryID`) VALUES
 (1, 1, 1),
-(2, 2, 2),
-(3, 3, 3);
+(2, 2, NULL),
+(3, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -94,7 +94,7 @@ INSERT INTO `counter_category` (`counterCategoryID`, `counterID`, `foodCategoryI
 
 CREATE TABLE `feedback` (
   `feedbackID` int(11) NOT NULL,
-  `studentID` int(11) NOT NULL,
+  `studentID` int(11) DEFAULT NULL,
   `feedback` varchar(255) NOT NULL,
   `rating` varchar(255) NOT NULL,
   `status` varchar(5) NOT NULL,
@@ -117,7 +117,7 @@ INSERT INTO `feedback` (`feedbackID`, `studentID`, `feedback`, `rating`, `status
 
 CREATE TABLE `food` (
   `foodID` int(11) NOT NULL,
-  `foodCategoryID` int(11) NOT NULL,
+  `foodCategoryID` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
@@ -130,8 +130,7 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `description`, `price`, `isAvailable`) VALUES
 (1, 1, 'Cappuccino', 'Hot coffee with milk foam', '100', '1'),
-(2, 2, 'Burger', 'Cheese and lettuce burger', '150', '1'),
-(3, 3, 'Chocolate Cake', 'Rich chocolate cake slice', '200', '1');
+(2, NULL, 'Burger', 'Cheese and lettuce burger', '150', '1');
 
 -- --------------------------------------------------------
 
@@ -149,9 +148,7 @@ CREATE TABLE `food_category` (
 --
 
 INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
-(1, 'Beverages'),
-(2, 'Fast Food'),
-(3, 'Desserts');
+(1, 'Beverages');
 
 -- --------------------------------------------------------
 
@@ -161,8 +158,8 @@ INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
 
 CREATE TABLE `order_table` (
   `orderID` int(11) NOT NULL,
-  `studentID` int(11) NOT NULL,
-  `foodID` int(11) NOT NULL,
+  `studentID` int(11) DEFAULT NULL,
+  `foodID` int(11) DEFAULT NULL,
   `quantity` varchar(255) NOT NULL,
   `orderType` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
@@ -208,7 +205,7 @@ INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
 CREATE TABLE `student` (
   `studentID` int(11) NOT NULL,
   `sic` varchar(255) NOT NULL,
-  `seID` varchar(255) NOT NULL,
+  `seID` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `dob` date NOT NULL,
   `password` varchar(128) NOT NULL,
@@ -320,7 +317,7 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `food_category`
 --
 ALTER TABLE `food_category`
-  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `order_table`
@@ -342,33 +339,33 @@ ALTER TABLE `student`
 -- Constraints for table `counter_category`
 --
 ALTER TABLE `counter_category`
-  ADD CONSTRAINT `fk_counter_id` FOREIGN KEY (`counterID`) REFERENCES `counter` (`counterID`),
-  ADD CONSTRAINT `fk_fc_id` FOREIGN KEY (`foodCategoryID`) REFERENCES `food_category` (`foodCategoryID`);
+  ADD CONSTRAINT `fk_counter_id` FOREIGN KEY (`counterID`) REFERENCES `counter` (`counterID`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_fc_id` FOREIGN KEY (`foodCategoryID`) REFERENCES `food_category` (`foodCategoryID`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD CONSTRAINT `fk_st_id` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`);
+  ADD CONSTRAINT `fk_st_id` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `food`
 --
 ALTER TABLE `food`
-  ADD CONSTRAINT `fk_foodcategory_id` FOREIGN KEY (`foodCategoryID`) REFERENCES `food_category` (`foodCategoryID`);
+  ADD CONSTRAINT `fk_foodcategory_id` FOREIGN KEY (`foodCategoryID`) REFERENCES `food_category` (`foodCategoryID`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `order_table`
 --
 ALTER TABLE `order_table`
-  ADD CONSTRAINT `fk_food_id` FOREIGN KEY (`foodID`) REFERENCES `food` (`foodID`),
-  ADD CONSTRAINT `fk_student_id` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`);
+  ADD CONSTRAINT `fk_food_id` FOREIGN KEY (`foodID`) REFERENCES `food` (`foodID`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_student_id` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `student`
 --
 ALTER TABLE `student`
-  ADD CONSTRAINT `fk_se_id` FOREIGN KEY (`seID`) REFERENCES `sic_email` (`seID`);
+  ADD CONSTRAINT `fk_se_id` FOREIGN KEY (`seID`) REFERENCES `sic_email` (`seID`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
