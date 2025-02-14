@@ -6,9 +6,9 @@ require_once "../dbFunctions/categorydb.php";
 <!-- Main Content -->
 <div class="content w-100">
     <div class="row mt-3 ms-1 me-1">
+        <h4 class="mb-4">Category</h4>
         <div class="col-12 border p-4 shadow-sm rounded">
-            <div class="d-flex justify-content-between">
-                Category
+            <div class="d-flex justify-content-end">
                 <!-- Button trigger modal -->
                 <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Categories</button>
                 <!-- Modal -->
@@ -39,56 +39,30 @@ require_once "../dbFunctions/categorydb.php";
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-between mb-2">
-                <div>
-                Show 
-                    <select class="form-select d-inline-block w-auto">
-                        <option>10</option>
-                        <option>25</option>
-                        <option>50</option>
-                        <option>100</option>
-                    </select>
-                    entries
-                </div>
-                <div>
-                    Search: <input type="text" class="form-control d-inline-block w-auto">
+            <div class="d-flex justify-content-end mb-2">
+                <div class="d-flex align-items-center gap-1">
+                    <input type="text" class="form-control d-inline-block w-auto" id="searchCategoryInput" placeholder="Search Category">
+                    <input type="submit" value="Search" class="btn btn-success search-btn" id="categorySearchBtn">
                 </div>
             </div>
             <table class="table table-bordered table-responsive">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th>Sl NO.</th>
                         <th>Categories Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php
-                    $categories = getCategories();
-
-                    if($categories){
-                        $counter=1;
-                        foreach($categories as $category){
-                            ?>
-                            <tr>
-                                <td><?php echo $counter ?></td>
-                                <td><?php echo $category['category'] ?></td>
-                                <td>
-                                    <a href="#" class="btn btn-success btn-sm editCategoryBtn" data-bs-toggle="modal" data-bs-target="#editCategoryModal" category-id="<?php echo $category['foodCategoryID'];?>" category-name="<?php echo $category['category']?>" >
-                                        <i class="fa-solid fa-edit"></i> Edit
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-sm deleteCategoryBtn" data-bs-toggle="modal" data-bs-target="#deleteCategoryModal" category-id="<?php echo $category['foodCategoryID'];?>" category-name="<?php echo $category['category']?>">
-                                        <i class="fa-solid fa-trash"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                        <?php
-                        $counter++;
-                        }
-                    }
-                    ?>
-                </tbody>
+                <tbody id="categoryTableBody"></tbody>
             </table>
+            <div class="d-flex justify-content-center align-items-center mt-3">
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <span id="pagination-info"></span>
+                <nav>
+                    <ul class="pagination" id="pagination"></ul>
+                </nav>
+            </div>
+            </div>
         </div>
     </div>
 </div>
