@@ -13,6 +13,7 @@
     <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
     <!-- addCategory js -->
     <script src="../assets/js/manageCategory.js"></script>
+    <script src="../assets/js/addStudent.js"></script>
     <!-- Toastr -->
     <script src="../assets/toastr/toastr.min.js"></script>
     <script>

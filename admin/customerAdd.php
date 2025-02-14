@@ -6,23 +6,21 @@ include_once "adminNavbar.php";
     <div class="row mt-3 ms-1 me-1">
         <h4 class="mb-4">Add Customer</h4>
         <div class="col-md-12 border border-3 p-4 shadow-sm rounded">
-            <form action="" method="post">
+            
+            <form action="" method="post" id="addStudent">
                 <div class="mb-3">
-                    <label for="name" class="form-label">SIC</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter student's SIC">
-                    <!-- <input type="text" class="form-control" id="name" placeholder="Enter student's SIC"
-                        onfocus="this.classList.add('is-valid'); 
-                        this.style.backgroundImage = 'none';"
-                        onblur="this.classList.remove('is-valid');"> -->
+                    <label for="sic" class="form-label">SIC</label> 
+                    <input type="text" class="form-control" id="sic" placeholder="Enter student's SIC"> 
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter registered email">
                 </div>
                 <div class="text-end">
-                    <input type="submit" value="Add" class="btn btn-primary">
+                    <input type="submit" value="Add" class="btn btn-primary" name="add-student">
                 </div>
             </form>
+
             <div class="text-center">OR</div>
             <form action="" method="post">
                 <div class="mb-3">
