@@ -67,7 +67,6 @@ function updatePagination(totalPages, currentPage) {
       </a>
     </li>`;
   for (let i = 1; i <= totalPages; i++) {
-    console.log(currentPage, totalPages);
     paginationHTML += `<li class="page-item ${
       i === currentPage ? "active" : ""
     }">
