@@ -5,21 +5,14 @@
     <div class="row mt-3 ms-1 me-1">
         <div class="col-12 border p-4 shadow-sm rounded">
             <button class="btn btn-success mb-3">Add Categories</button>
-            <div class="d-flex justify-content-between mb-2">
-                <div>
-                Show 
-                    <select class="form-select d-inline-block w-auto">
-                        <option>10</option>
-                        <option>25</option>
-                        <option>50</option>
-                        <option>100</option>
-                    </select>
-                    entries
+            <div class="col-md-6">
+                    <div class="d-flex justify-content-end mb-2">
+                        <div class="d-flex align-items-center gap-1">
+                            <input type="text" class="form-control d-inline-block w-auto" id="searchCategoryInput" placeholder="Search Category">
+                            <input type="submit" value="Search" class="btn btn-success search-btn" id="categorySearchBtn">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    Search: <input type="text" class="form-control d-inline-block w-auto">
-                </div>
-            </div>
             <table class="table table-bordered table-responsive">
                 <thead class="table-light">
                     <tr>

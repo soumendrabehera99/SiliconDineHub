@@ -6,7 +6,7 @@ require_once "../dbFunctions/categorydb.php";
 <!-- Main Content -->
 <div class="content w-100">
     <div class="row mt-3 ms-1 me-1">
-        <h4 class="mb-4">Category</h4>
+        <h2 class="mb-4">Manage Category</h2>
         <div class="col-12 border p-4 shadow-sm rounded">
             <div class="row">
                 <div class="col-md-6">

@@ -2,43 +2,38 @@
 <!-- Main Content -->
 <div class="content w-100">
     <div class="row">
-        <div class="container mt-5">
+        <h2 class="mb-2">Add Food</h2>
+        <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 border p-4 shadow-sm rounded">
                     <form action="" method="post">
                         <div class="row mb-3">
-                            <div class="col-md-6">
+                            <div>
                                 <label for="foodName" class="form-label">Food Name</label>
+                                <input type="text" class="form-control" id="categoryName" placeholder="Enter Food name"/>
                             </div>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" value="Sandwich"/>
-                            </div>
-                            <div class="col-md-6">
+                            <div>
                                 <label for="foodCategory" class="form-label">Category Name</label>
-                            </div>
-                            <div class="col-md-6 mt-1">
                                 <select class="form-select" id="status">
                                     <option selected>--SELECT--</option>
                                     <option value="available">South</option>
                                     <option value="not-available">Chinese</option>
                                 </select>
                             </div>
-                            <div class="col-md-6">
-                                <label for="foodDescription" class="form-label">Description</label>
+                            <div class="mt-2">
+                                <label for="foodImage" class="form-label">Image</label>
+                                <input type="file" name="image" class="form-control-file" accept="image/*">
                             </div>
-                            <div class="col-md-6">
+                            <div>
+                                <label for="foodDescription" class="form-label">Description</label>
                                 <textarea id="foodDescription" value="Add description about food" class="form-control my-1"></textarea>
                             </div>
-                            <div class="col-md-6">
+                            <div>
                                 <label for="foodPrice" class="form-label">price</label>
-                            </div>
-                            <div class="col-md-6">
                                 <input type="text" class="form-control" id="foodPrice" placeholder="Enter Food Price"/>
                             </div>
-                            <div class="col-md-6">
+                            <div>
                                 <label for="status" class="form-label">Status</label>
-                            </div>
-                            <div class="col-md-6 mt-1">
                                 <select class="form-select" id="status">
                                     <option selected>--SELECT--</option>
                                     <option value="available">Available</option>
