@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2025 at 08:01 AM
+-- Generation Time: Feb 14, 2025 at 02:30 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -130,7 +130,9 @@ CREATE TABLE `food` (
 
 INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `description`, `price`, `isAvailable`) VALUES
 (1, 1, 'Cappuccino', 'Hot coffee with milk foam', '100', '1'),
-(2, NULL, 'Burger', 'Cheese and lettuce burger', '150', '1');
+(2, NULL, 'Burger', 'Cheese and lettuce burger', '150', '1'),
+(3, NULL, 'Blueberry Muffins', 'Blueberry muffins are sweet, moist, and bursting with blueberries.', '50', '1'),
+(4, 12, 'Fried rice', 'Fried rice is a dish of cooked rice that has been stir-fried in a wok or a frying pan and is usually mixed with other ingredients such as eggs, vegetables, seafood, or meat', '60', '1');
 
 -- --------------------------------------------------------
 
@@ -148,7 +150,10 @@ CREATE TABLE `food_category` (
 --
 
 INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
-(1, 'Beverages');
+(1, 'Beverages'),
+(12, 'Chinese'),
+(13, 'South Indian'),
+(14, 'Dairy');
 
 -- --------------------------------------------------------
 
@@ -183,7 +188,7 @@ INSERT INTO `order_table` (`orderID`, `studentID`, `foodID`, `quantity`, `orderT
 --
 
 CREATE TABLE `sic_email` (
-  `seID` varchar(255) NOT NULL,
+  `seID` int(11) NOT NULL,
   `sic` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -193,8 +198,8 @@ CREATE TABLE `sic_email` (
 --
 
 INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
-('1', '23mmci37', 'mca.23mmci37@silicon.ac.in'),
-('2', '23mmci48', 'mca.23mmci48@silicon.ac.in');
+(1, '23mmci37', 'mca.23mmci37@silicon.ac.in'),
+(2, '23mmci48', 'mca.23mmci48@silicon.ac.in');
 
 -- --------------------------------------------------------
 
@@ -205,7 +210,7 @@ INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
 CREATE TABLE `student` (
   `studentID` int(11) NOT NULL,
   `sic` varchar(255) NOT NULL,
-  `seID` varchar(255) DEFAULT NULL,
+  `seID` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `dob` date NOT NULL,
   `password` varchar(128) NOT NULL,
@@ -217,8 +222,8 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `status`) VALUES
-(1, 'mca.23mmci37@silicon.ac.in', '1', 'Anil Sahu', '2002-10-10', '1234', '1'),
-(2, 'mca.23mmci48@silicon.ac.in', '2', 'Soumendra', '2000-08-20', '5678', '1');
+(1, 'mca.23mmci37@silicon.ac.in', 1, 'Anil Sahu', '2002-10-10', '1234', '1'),
+(2, 'mca.23mmci48@silicon.ac.in', 2, 'Soumendra', '2000-08-20', '5678', '1');
 
 --
 -- Indexes for dumped tables
@@ -311,19 +316,25 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `food_category`
 --
 ALTER TABLE `food_category`
-  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
   MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sic_email`
+--
+ALTER TABLE `sic_email`
+  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `student`

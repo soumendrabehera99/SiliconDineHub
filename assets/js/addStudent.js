@@ -5,14 +5,25 @@ $(document).ready(function () {
         let sic = $("#sic").val();
         let email = $("#email").val();
 
-        if (sic === "" || sic.length !== 8) {
-            toastr.warning("SIC must be exactly 8 characters long!", "Warning");
+        if (sic === "") {
+            toastr.error("SIC should not be blank");
             return;
         }
-
+        if (sic === "" || sic.length !== 8) {
+            toastr.error("SIC must be exactly 8 characters long");
+            return;
+        }
+        if (email === "") {
+            toastr.error("email should not be blank");
+            return;
+        }
+        if (!email.includes(sic)) {
+            toastr.error("Enter registered email");
+            return;
+        }
         let emailPattern = /^[a-zA-Z0-9._%+-]+@silicon\.ac\.in$/;
         if (!emailPattern.test(email)) {
-            toastr.warning("Please enter a valid email address with domain @silicon.ac.in", "Warning");
+            toastr.error("Enter a valid email address");
             return;
         }
 
@@ -34,7 +45,7 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                toastr.error("An error occurred while submitting", "Error");
+                toastr.error("An error occurred while submitting");
             }
         });
     });

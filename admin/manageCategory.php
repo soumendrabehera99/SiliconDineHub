@@ -8,41 +8,47 @@ require_once "../dbFunctions/categorydb.php";
     <div class="row mt-3 ms-1 me-1">
         <h4 class="mb-4">Category</h4>
         <div class="col-12 border p-4 shadow-sm rounded">
-            <div class="d-flex justify-content-end">
-                <!-- Button trigger modal -->
-                <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Categories</button>
-                <!-- Modal -->
-                <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Add category</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form action="" method="post" id="addCategory">
-                                <div class="modal-body">
-                                    <div class="row mb-3">
-                                        <div class="col-md-6">
-                                            <label for="categoryName" class="form-label fs-5">Categories Name</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name">
-                                        </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-start">
+                        <!-- Button trigger modal -->
+                        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Categories</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Add category</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <p id="msg" class=""></p>
+                                    <form action="" method="post" id="addCategory">
+                                        <div class="modal-body">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <label for="categoryName" class="form-label fs-5">Categories Name</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" id="categoryName" placeholder="Enter category name">
+                                                </div>
+                                            </div>
+                                            <p id="msg" class=""></p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" value="ADD" class="btn btn-submit btn-success w-50 align-items-center">
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="modal-footer">
-                                    <input type="submit" value="ADD" class="btn btn-submit btn-success w-50 align-items-center">
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-end mb-2">
-                <div class="d-flex align-items-center gap-1">
-                    <input type="text" class="form-control d-inline-block w-auto" id="searchCategoryInput" placeholder="Search Category">
-                    <input type="submit" value="Search" class="btn btn-success search-btn" id="categorySearchBtn">
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-end mb-2">
+                        <div class="d-flex align-items-center gap-1">
+                            <input type="text" class="form-control d-inline-block w-auto" id="searchCategoryInput" placeholder="Search Category">
+                            <input type="submit" value="Search" class="btn btn-success search-btn" id="categorySearchBtn">
+                        </div>
+                    </div>
                 </div>
             </div>
             <table class="table table-bordered table-responsive">
@@ -56,12 +62,12 @@ require_once "../dbFunctions/categorydb.php";
                 <tbody id="categoryTableBody"></tbody>
             </table>
             <div class="d-flex justify-content-center align-items-center mt-3">
-            <div class="d-flex justify-content-between align-items-center mt-3">
-                <span id="pagination-info"></span>
-                <nav>
-                    <ul class="pagination" id="pagination"></ul>
-                </nav>
-            </div>
+                <div class="d-flex justify-content-between align-items-center mt-3">
+                    <span id="pagination-info"></span>
+                    <nav>
+                        <ul class="pagination" id="pagination"></ul>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>
