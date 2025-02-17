@@ -1,5 +1,4 @@
-<?php include_once "adminNavbar.php";?>
-<?php include_once "../dbFunctions/dashboarddb.php";?>
+<?php require_once "../dbFunctions/dashboarddb.php";?>
 <!-- Main Content -->
 <section class="content w-100">
     <div class="row mt-3">
@@ -55,4 +54,3 @@
     </div>
 </section>
 
-<?php include_once "adminFooter.php";?>

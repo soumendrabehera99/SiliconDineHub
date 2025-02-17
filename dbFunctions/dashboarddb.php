@@ -24,8 +24,12 @@ function totalOrder() {
         error_log("Error in totalOrder: " . $e->getMessage());
         return 0; 
     } finally {
-        $stmt->close();
-        $conn->close();
+        if (isset($stmt)) { 
+            $stmt->close();
+        }
+        if (isset($conn)) {
+            $conn->close();
+        }
     }
 }
 
@@ -52,8 +56,12 @@ function totalDineInOrder() {
         error_log("Error in totalDineInOrder: " . $e->getMessage());
         return 0; 
     } finally {
-        $stmt->close();
-        $conn->close();
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        if (isset($conn)) {
+            $conn->close();
+        }
     }
 }
 
@@ -80,8 +88,12 @@ function totalParcelOrder() {
         error_log("Error in totalParcelOrder: " . $e->getMessage());
         return 0;
     } finally {
-        $stmt->close();
-        $conn->close();
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        if (isset($conn)) {
+            $conn->close();
+        }
     }
 }
 
@@ -108,8 +120,12 @@ function totalActiveCustomer() {
         error_log("Error in totalActiveCustomer: " . $e->getMessage());
         return 0; 
     } finally {
-        $stmt->close();
-        $conn->close();
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        if (isset($conn)) {
+            $conn->close();
+        }
     }
 }
 
@@ -136,8 +152,12 @@ function revenueToday() {
         error_log("Error in Revenue Today: " . $e->getMessage());
         return 0; 
     } finally {
-        $stmt->close();
-        $conn->close();
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        if (isset($conn)) {
+            $conn->close();
+        }
     }
 }
 
