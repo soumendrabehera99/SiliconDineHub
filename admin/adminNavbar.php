@@ -11,16 +11,16 @@ include_once "./check.php";
   <title>Admin Dashboard</title>
 
   <!-- Bootstrap CSS -->
-  <link href="../assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link href="./../assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
   <!-- fevicon -->
-  <link rel="icon" href="../assets/images/fevicon_logo.png" type="image/x-icon">
+  <link rel="icon" href="./../assets/images/fevicon_logo.png" type="image/x-icon">
 
   <!-- Custom Styles -->
-  <link href="../assets/css/AdminCss/style.css" rel="stylesheet" />
+  <link href="./../assets/css/AdminCss/style.css" rel="stylesheet" />
 
   <!--Toastr-->
-  <link href="../assets/toastr/toastr.min.css" rel="stylesheet">
+  <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
 
   <!-- <link href="../assets/fontawesome/all.css" rel="stylesheet" /> -->
 
