@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2025 at 02:30 PM
+-- Generation Time: Feb 18, 2025 at 08:20 AM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -82,7 +82,7 @@ CREATE TABLE `counter_category` (
 --
 
 INSERT INTO `counter_category` (`counterCategoryID`, `counterID`, `foodCategoryID`) VALUES
-(1, 1, 1),
+(1, 1, NULL),
 (2, 2, NULL),
 (3, 3, NULL);
 
@@ -129,7 +129,7 @@ CREATE TABLE `food` (
 --
 
 INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `description`, `price`, `isAvailable`) VALUES
-(1, 1, 'Cappuccino', 'Hot coffee with milk foam', '100', '1'),
+(1, NULL, 'Cappuccino', 'Hot coffee with milk foam', '100', '1'),
 (2, NULL, 'Burger', 'Cheese and lettuce burger', '150', '1'),
 (3, NULL, 'Blueberry Muffins', 'Blueberry muffins are sweet, moist, and bursting with blueberries.', '50', '1'),
 (4, 12, 'Fried rice', 'Fried rice is a dish of cooked rice that has been stir-fried in a wok or a frying pan and is usually mixed with other ingredients such as eggs, vegetables, seafood, or meat', '60', '1');
@@ -150,10 +150,10 @@ CREATE TABLE `food_category` (
 --
 
 INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
-(1, 'Beverages'),
 (12, 'Chinese'),
 (13, 'South Indian'),
-(14, 'Dairy');
+(14, 'Dairy'),
+(18, 'veg');
 
 -- --------------------------------------------------------
 
@@ -178,8 +178,9 @@ CREATE TABLE `order_table` (
 --
 
 INSERT INTO `order_table` (`orderID`, `studentID`, `foodID`, `quantity`, `orderType`, `price`, `createdAt`, `updatedAt`, `status`) VALUES
-(1, 1, 1, '2', 'Dine-in', '200', '2025-02-12', '2025-02-12', '1'),
-(2, 2, 2, '1', 'Takeaway', '150', '2025-02-11', '2025-02-11', '1');
+(1, 1, 1, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1'),
+(2, 2, 2, '1', 'parcel', '150', '2025-02-15', '2025-02-11', '1'),
+(3, 3, 1, '2', 'parcel', '200', '2025-02-15', '2025-01-09', '1');
 
 -- --------------------------------------------------------
 
@@ -199,7 +200,8 @@ CREATE TABLE `sic_email` (
 
 INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
 (1, '23mmci37', 'mca.23mmci37@silicon.ac.in'),
-(2, '23mmci48', 'mca.23mmci48@silicon.ac.in');
+(2, '23mmci48', 'mca.23mmci48@silicon.ac.in'),
+(3, '23mmci10', 'mca.23mmci10@silicon.ac.in');
 
 -- --------------------------------------------------------
 
@@ -214,16 +216,17 @@ CREATE TABLE `student` (
   `name` varchar(255) NOT NULL,
   `dob` date NOT NULL,
   `password` varchar(128) NOT NULL,
-  `status` varchar(5) NOT NULL
+  `isActive` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `status`) VALUES
-(1, 'mca.23mmci37@silicon.ac.in', 1, 'Anil Sahu', '2002-10-10', '1234', '1'),
-(2, 'mca.23mmci48@silicon.ac.in', 2, 'Soumendra', '2000-08-20', '5678', '1');
+INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `isActive`) VALUES
+(1, '23mmci37', 1, 'Anil Sahu', '2002-10-10', '1234', '1'),
+(2, '23mmci48', 2, 'Soumendra', '2000-08-20', '5678', '1'),
+(3, '23mmci10', 3, 'Ram', '1973-02-02', '1234', '1');
 
 --
 -- Indexes for dumped tables
@@ -322,25 +325,25 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `food_category`
 --
 ALTER TABLE `food_category`
-  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sic_email`
 --
 ALTER TABLE `sic_email`
-  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

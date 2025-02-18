@@ -11,7 +11,7 @@
     <link rel="icon" href="../assets/images/fevicon_logo.png" type="image/x-icon">
     <style>
         body {
-            background-image: url('../assets/images/admin_Login_Image_01.webp');
+            background-image: url('../assets/images/admin_Login_Image.webp');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;

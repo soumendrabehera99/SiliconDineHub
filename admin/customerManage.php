@@ -1,4 +1,7 @@
-<?php include_once "adminNavbar.php"; ?>
+<?php 
+include_once "adminNavbar.php"; 
+require_once "../dbFunctions/studentdb.php";
+?>
 <!-- Main Content -->
 <section class="content w-100">
     <div class="row mt-2 ms-1 me-1">
@@ -20,111 +23,39 @@
                             <th>Sl No</th>
                             <th>SIC</th>
                             <th>Name</th>
+                            <th>DOB</th>
                             <th>Status</th>
+                            <th>Password</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>23mmci31</td>
-                            <td>Customer 1</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(11, 218, 11)"></span>Active</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>23mmci32</td>
-                            <td>Customer 2</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(243, 64, 64)"></span>Inactive</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>23mmci33</td>
-                            <td>Customer 3</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(11, 218, 11)"></span>Active</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>23mmci34</td>
-                            <td>Customer 4</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(243, 64, 64)"></span>Inactive</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>23mmci35</td>
-                            <td>Customer 5</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(11, 218, 11)"></span>Active</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>23mmci36</td>
-                            <td>Customer 6</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(243, 64, 64)"></span>Inactive</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>23mmci37</td>
-                            <td>Customer 7</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(11, 218, 11)"></span>Active</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>23mmci38</td>
-                            <td>Customer 8</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(243, 64, 64)"></span>Inactive</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>23mmci39</td>
-                            <td>Customer 9</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(11, 218, 11)"></span>Active</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>23mmci30</td>
-                            <td>Customer 10</td>
-                            <td><span class="d-inline-block rounded-circle me-2" style="height: 10px; width: 10px; background-color: rgb(243, 64, 64)"></span>Inactive</td>
-                            <td>
-                                <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#editCategory"><i class="fa-solid fa-edit"></i></button>
-                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCategory"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
+                        <?php
+                            $sl = 1;
+                            $result = getAllStudents();
+                            while($std = $result->fetch_assoc()){
+                                ?>
+                                <tr>
+                                    <td><?= $sl++?></td>
+                                    <td><?= $std['sic']?></td>
+                                    <td><?= $std['name']?></td>
+                                    <td><?= date('d M Y', strtotime($std['dob'])) ?></td>
+                                    <td>
+                                        <span 
+                                            class="d-inline-block rounded-circle me-2" 
+                                            style="height: 10px; width: 10px; background-color: <?= $std['isActive'] ? 'rgb(11, 218, 11)' : 'rgb(243, 64, 64)' ?>;">
+                                        </span>
+                                        <?= $std['isActive'] ? 'Active' : 'Block' ?>
+                                    </td>
+                                    <td><?= $std['password']?></td>
+                                    <td>
+                                        <a href="details.php?id=<?php echo $std['studentID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></a>
+                                        <a href="delete.php?id=<?php echo $std['studentID'] ?>" class="btn btn-danger btn-sm" id=""deleteStudent><i class="fa-solid fa-ban"></i></a>
+                                    </td>
+                                </tr>
+                                <?php 
+                            }
+                        ?>
                     </tbody>
 
                 </table>
