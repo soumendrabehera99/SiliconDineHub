@@ -73,7 +73,7 @@ function totalParcelOrder() {
     $conn = null;
     $stmt = null;
     try {
-        $null= dbConnection();
+        $conn = dbConnection();
 
         $stmt = $conn->prepare("SELECT COUNT(*) AS parcelCount FROM order_table WHERE orderType = 'parcel'");
 
