@@ -2,6 +2,8 @@
 include_once "dbConnect.php";
 
 function totalOrder() {
+    $conn = null;
+    $stmt = null;
     try {
         $conn = dbConnection();
 
@@ -34,6 +36,8 @@ function totalOrder() {
 }
 
 function totalDineInOrder() {
+    $conn = null;
+    $stmt = null;
     try {
         $conn = dbConnection();
 
@@ -66,8 +70,10 @@ function totalDineInOrder() {
 }
 
 function totalParcelOrder() {
+    $conn = null;
+    $stmt = null;
     try {
-        $conn = dbConnection();
+        $null= dbConnection();
 
         $stmt = $conn->prepare("SELECT COUNT(*) AS parcelCount FROM order_table WHERE orderType = 'parcel'");
 
@@ -98,6 +104,8 @@ function totalParcelOrder() {
 }
 
 function totalActiveCustomer() {
+    $conn = null;
+    $stmt = null;
     try {
         $conn = dbConnection();
 
