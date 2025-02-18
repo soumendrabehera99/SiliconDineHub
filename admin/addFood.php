@@ -6,15 +6,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 border p-4 shadow-sm rounded">
-                    <form action="" method="post">
+                    <form action="" method="post" id="addFood">
                         <div class="row mb-3">
                             <div>
                                 <label for="foodName" class="form-label">Food Name</label>
-                                <input type="text" class="form-control" id="categoryName" placeholder="Enter Food name"/>
+                                <input type="text" class="form-control" id="foodName" placeholder="Enter Food name"/>
                             </div>
                             <div>
                                 <label for="foodCategory" class="form-label">Category Name</label>
-                                <select class="form-select" id="status">
+                                <select class="form-select" id="categoryName">
                                     <option selected>--SELECT--</option>
                                     <option value="available">South</option>
                                     <option value="not-available">Chinese</option>
@@ -22,7 +22,7 @@
                             </div>
                             <div class="mt-2">
                                 <label for="foodImage" class="form-label">Image</label>
-                                <input type="file" name="image" class="form-control-file" accept="image/*">
+                                <input type="file" name="image" class="form-control-file" accept="image/*" id="foodImage">
                             </div>
                             <div>
                                 <label for="foodDescription" class="form-label">Description</label>
@@ -34,7 +34,7 @@
                             </div>
                             <div>
                                 <label for="status" class="form-label">Status</label>
-                                <select class="form-select" id="status">
+                                <select class="form-select" id="foodStatus">
                                     <option selected>--SELECT--</option>
                                     <option value="available">Available</option>
                                     <option value="not-available">Not Available</option>
