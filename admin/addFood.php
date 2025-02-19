@@ -2,12 +2,12 @@
 <!-- Main Content -->
 <div class="content w-100">
     <div class="row">
-        <h2 class="mb-2">Add Food</h2>
+        <h2 class="mb-1">Add Food</h2>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 border p-4 shadow-sm rounded">
                     <form action="" method="post" id="addFood">
-                        <div class="row mb-3">
+                        <div class="row mb-1">
                             <div>
                                 <label for="foodName" class="form-label">Food Name</label>
                                 <input type="text" class="form-control" id="foodName" placeholder="Enter Food name"/>
@@ -24,7 +24,7 @@
                             </div>
                             <div class="mt-2">
                                 <label for="foodImage" class="form-label">Image</label>
-                                <input type="file" name="image" class="form-control-file" accept="image/*" id="foodImage">
+                                <input type="file" name="image" class="form-control" accept="image/*" id="foodImage">
                                 <!-- <label id="imageError" class="error"></label> -->
                             </div>
                             <div>
@@ -48,8 +48,9 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <input type="submit" value="ADD" class="btn btn-submit btn-success w-50 align-items-center">
+                            <div class="col-12 text-end">
+                                <!-- <input type="submit" value="ADD" class="btn btn-submit btn-success w-50 align-items-center"> -->
+                                <button type="submit" value="ADD" class="btn btn-submit btn-success mt-2"><i class="fa-solid fa-plus"></i> Add Food</button>
                             </div>
                         </div>
                         <!-- <div id="formMessage"></div> -->

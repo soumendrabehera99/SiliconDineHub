@@ -12,7 +12,7 @@ require_once "../dbFunctions/categorydb.php";
                 <div class="col-md-6">
                     <div class="d-flex justify-content-start">
                         <!-- Button trigger modal -->
-                        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal">Add Categories</button>
+                        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addCategoryModal"><i class="fa-solid fa-plus"></i> Add Categories</button>
                         <!-- Modal -->
                         <div class="modal fade" id="addCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">

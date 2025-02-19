@@ -111,7 +111,7 @@ function updateCategory($id,$category){
                     return "error";
                 }
             }
-        } catch (Excption $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
 }

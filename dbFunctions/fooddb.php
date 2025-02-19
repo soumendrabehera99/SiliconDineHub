@@ -111,7 +111,7 @@ function updateCategory($foodId,$categoryId,$foodName,$description,$price,$isAva
                     return "error";
                 }
             }
-        } catch (Excption $e) {
+        } catch (Exception $e) {
             return $e->getMessage();
         }
 }
