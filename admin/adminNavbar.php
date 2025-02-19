@@ -105,38 +105,49 @@ include_once "./check.php";
             <a href="./manageCategory.php">Manage Category</a>
           </div>
         </div>
-    
+      
         <div>
           <a href="#food" class="dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
-            <div><i class="fa-solid fa-utensils me-3"></i> Food</div> <i class="fa-solid fa-chevron-right"></i>
+            <div><i class="fa-solid fa-burger me-3"></i> Food</div> <i class="fa-solid fa-chevron-right"></i>
           </a>
 
-        <div class="collapse ms-5" id="food">
-          <a href="./addFood.php">Add Food</a>
-          <a href="./manageFood.php">Manage Food</a>
+          <div class="collapse ms-5" id="food">
+            <a href="./addFood.php">Add Food</a>
+            <a href="./manageFood.php">Manage Food</a>
+          </div>
         </div>
-      </div>
+        
+        <div>
+          <a href="#counter" class="dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
+            <div><i class="fa-solid fa-utensils me-3"></i> Counter</div> <i class="fa-solid fa-chevron-right"></i>
+          </a>
 
-      <div>
-        <a href="#dashboard" class="">
-          <div><i class="fa-solid fa-bell me-3"></i> Reminder</div>
-        </a>
-      </div>
-      <div>
-        <a href="#dashboard" class="">
-          <div><i class="fas fa-file-invoice me-3"></i> Invoice</div>
-        </a>
-      </div>
-      <div>
-        <a href="#dashboard" class="">
-          <div><i class="fas fa-chart-line me-3"></i>Report</div>
-        </a>
-      </div>
-      <div>
-        <a href="#dashboard" class="">
-          <div><i class="fa-solid fa-gear me-3"></i>Setting</div>
-        </a>
-      </div>
+          <div class="collapse ms-5" id="counter"> 
+            <a href="./addCounter.php">Add Counter</a>
+            <a href="#">Add Counter Category</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="#dashboard" class="">
+            <div><i class="fa-solid fa-bell me-3"></i> Reminder</div>
+          </a>
+        </div>
+        <div>
+          <a href="#dashboard" class="">
+            <div><i class="fas fa-file-invoice me-3"></i> Invoice</div>
+          </a>
+        </div>
+        <div>
+          <a href="#dashboard" class="">
+            <div><i class="fas fa-chart-line me-3"></i>Report</div>
+          </a>
+        </div>
+        <div>
+          <a href="#dashboard" class="">
+            <div><i class="fa-solid fa-gear me-3"></i>Setting</div>
+          </a>
+        </div>
     </div>
 
     <!-- Sidebar Footer -->

@@ -46,7 +46,10 @@ require_once "../dbFunctions/categorydb.php";
                     <div class="d-flex justify-content-end mb-2">
                         <div class="d-flex align-items-center gap-1">
                             <input type="text" class="form-control d-inline-block w-auto" id="searchCategoryInput" placeholder="Search Category">
-                            <input type="submit" value="Search" class="btn btn-success search-btn" id="categorySearchBtn">
+                            <!-- <input type="submit" value="Search" class="btn btn-success search-btn" id="categorySearchBtn"> -->
+                            <button type="submit" class="btn btn-success search-btn" id="categorySearchBtn">
+                                <i class="fas fa-search"></i> Search
+                            </button>
                         </div>
                     </div>
                 </div>

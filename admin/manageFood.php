@@ -9,7 +9,10 @@
                 <div class="d-flex justify-content-end mb-2">
                     <div class="d-flex align-items-center gap-1">
                         <input type="text" class="form-control d-inline-block w-auto" id="searchFoodInput" placeholder="Search Category">
-                        <input type="submit" value="Search" class="btn btn-success search-btn" id="foodSearchBtn">
+                        <!-- <input type="submit" value="Search" class="btn btn-success search-btn" id="foodSearchBtn"> -->
+                        <button type="submit" class="btn btn-success d-flex align-items-center gap-1 search-btn" id="foodSearchBtn">
+                            <i class="fas fa-search"></i> Search
+                        </button>
                     </div>
                 </div>
             </div>
