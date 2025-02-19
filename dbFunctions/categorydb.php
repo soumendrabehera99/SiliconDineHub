@@ -46,7 +46,24 @@ function deleteCategory($id){
         return "error";
     }
 }
+function getAllCategory(){
+    $conn = dbConnection();
+    $stmt = $conn->prepare("SELECT *  FROM food_category");
+    if(!$stmt){
+        die(json_encode(['error'=>"SQL Prepare Failed".$conn->error]));
+    }
 
+    if(!$stmt->execute()){
+        die(json_encode(['error'=>"SQL Execution Failed".$stmt->error]));
+    }
+    $result = $stmt->get_result();
+
+    $categories = $result->fetch_all(MYSQLI_ASSOC);
+
+    return [
+        "categories" => $categories,
+    ];
+}
 function getCategories($search, $pageNo, $limit) {
     $conn = dbConnection();
     $searchTerm = "%". $search ."%";

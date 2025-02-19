@@ -1,4 +1,27 @@
 $(document).ready(function(){
+
+    $.ajax({
+        url: "../dbFunctions/getAllCategory.php",
+        method: "GET",
+        data: "",
+        dataType: "json",
+        success: function (response) {
+            if (response.error) {
+                toastr.error(response.error);
+                return;
+            }
+            if (!Array.isArray(response.categories) || response.categories.length === 0) {
+                toastr.error("No categories found.");
+                return;
+            }
+            let categoryData = `<option value="">--SELECT--</option>`;
+            response.categories.forEach((res) => {
+                categoryData += `<option value="${res.foodCategoryID}">${res.category}</option>`;
+            })
+            $("#categoryName").html(categoryData);
+        }
+    })
+
     $("#addFood").submit(function (e) {
         e.preventDefault();
 
@@ -9,7 +32,7 @@ $(document).ready(function(){
         let foodPrice = $("#foodPrice").val().trim();
         let foodStatus = $("#foodStatus").val().trim();
 
-        let allowedExtension = ["jpg", "jpeg", "png", "gif"];
+        let allowedExtension = ["jpg", "jpeg", "png",];
         let maxSize = 60 * 1024;
         let isValid = true;
 
@@ -52,7 +75,33 @@ $(document).ready(function(){
             isValid = false;
         }
         if(isValid){
-            toastr.success("Form validated successfully");
+            // toastr.success("Form validated successfully");
+            let formData = new FormData();
+            formData.append("foodName", foodName);
+            formData.append("categoryName", categoryName);
+            formData.append("foodImage", foodImage);
+            formData.append("foodDescription", foodDescription);
+            formData.append("foodPrice", foodPrice);
+            formData.append("foodStatus", foodStatus);
+            $.ajax({
+                url: "../dbFunctions/addFood.php",
+                method: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "json",
+                success: function (response) {
+                    if (response.trim() === "present") {
+                        toastr.error(response, "Food already exists!");
+                    } else if (response.trim() === "success") {
+                        toastr.success(response, "Food Details added successfully");
+                        $("#addFood").trigger("reset");
+                        setTimeout(() => location.reload(), 500);
+                    } else if (response.trim() === "error") {
+                        toastr.error(response, "There is an error in add category");
+                    }
+                }
+            })
         }
     })
 })
