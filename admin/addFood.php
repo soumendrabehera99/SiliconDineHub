@@ -11,34 +11,40 @@
                             <div>
                                 <label for="foodName" class="form-label">Food Name</label>
                                 <input type="text" class="form-control" id="foodName" placeholder="Enter Food name"/>
+                                <!-- <label id="nameError" class="error"></label> -->
                             </div>
                             <div>
-                                <label for="foodCategory" class="form-label">Category Name</label>
+                                <label for="categoryName" class="form-label">Category Name</label>
                                 <select class="form-select" id="categoryName">
                                     <option selected>--SELECT--</option>
-                                    <option value="available">South</option>
-                                    <option value="not-available">Chinese</option>
+                                    <option value="south">South</option>
+                                    <option value="chinese">Chinese</option>
                                 </select>
+                                <!-- <label id="categoryError" class="error"></label> -->
                             </div>
                             <div class="mt-2">
                                 <label for="foodImage" class="form-label">Image</label>
                                 <input type="file" name="image" class="form-control-file" accept="image/*" id="foodImage">
+                                <!-- <label id="imageError" class="error"></label> -->
                             </div>
                             <div>
                                 <label for="foodDescription" class="form-label">Description</label>
                                 <textarea id="foodDescription" value="Add description about food" class="form-control my-1"></textarea>
+                                <!-- <label id="descriptionError" class="error"></label> -->
                             </div>
                             <div>
                                 <label for="foodPrice" class="form-label">price</label>
                                 <input type="text" class="form-control" id="foodPrice" placeholder="Enter Food Price"/>
+                                <!-- <label id="priceError" class="error"></label> -->
                             </div>
                             <div>
-                                <label for="status" class="form-label">Status</label>
+                                <label for="foodStatus" class="form-label">Status</label>
                                 <select class="form-select" id="foodStatus">
                                     <option selected>--SELECT--</option>
                                     <option value="available">Available</option>
                                     <option value="not-available">Not Available</option>
                                 </select>
+                                <!-- <label id="statusError" class="error"></label> -->
                             </div>
                         </div>
                         <div class="row">
@@ -46,6 +52,7 @@
                                 <input type="submit" value="ADD" class="btn btn-submit btn-success w-50 align-items-center">
                             </div>
                         </div>
+                        <!-- <div id="formMessage"></div> -->
                     </form>
                 </div>
             </div>
