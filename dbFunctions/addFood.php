@@ -37,9 +37,11 @@ if(isset($_POST["foodName"], $_POST["categoryName"], $_FILES["foodImage"], $_POS
 
     if (move_uploaded_file($fileTmp, $destination)) {
         $response = addFood($categoryName, $foodName, $newFileName, $foodDescription, $foodPrice, $foodStatus);
-        echo $response;
+        echo json_encode(["status" => $response]);
     } else {
-        echo "error";
+        echo json_encode(["status" => "error", "message" => "Failed to upload image"]);
     }    
+} else {
+    echo json_encode(["status" => "error", "message" => "Missing required fields"]);
 }
 ?>

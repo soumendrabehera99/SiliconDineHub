@@ -33,7 +33,7 @@ $(document).ready(function(){
         let foodStatus = $("#foodStatus").val().trim();
 
         let allowedExtension = ["jpg", "jpeg", "png"];
-        let maxSize = 200 * 1024;
+        let maxSize = 300 * 1024;
         let isValid = true;
 
         if (foodName === "") {
@@ -101,6 +101,11 @@ $(document).ready(function(){
                     } else if (response === "error") {
                         toastr.error(response, "There is an error in add category");
                     }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", status, error);
+                    console.log("Response text:", xhr.responseText);
+                    toastr.error("Error submitting form: " + error);
                 }
             })
         }
