@@ -22,7 +22,7 @@ include_once "./check.php";
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
 
-  <!-- <link href="../assets/fontawesome/all.css" rel="stylesheet" /> -->
+  <link rel="stylesheet" href="./../assets/fontawesome/all.css" />
 
 </head>
 
@@ -31,7 +31,7 @@ include_once "./check.php";
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand ps-5" href="./index.php">
-        <img src="../assets/images/logo.png" alt="logo" />
+        <img src="./../assets/images/logo.png" alt="logo" />
       </a>
       <button
         class="navbar-toggler"
@@ -63,7 +63,7 @@ include_once "./check.php";
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="../assets/images/admin_Profile_image.jpg" alt="profile" class="profile-logo" />
+                <img src="./../assets/images/admin_Profile_image.jpg" alt="profile" class="profile-logo" />
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="./changeAdminPassword.php">Change Password</a></li>
