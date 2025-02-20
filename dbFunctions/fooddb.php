@@ -133,7 +133,7 @@ function getCategoryById($categoryID) {
     }
 }
 
-function updateCategory($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
+function updateFood($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
     try{
             $conn = dbConnection();
             $stmt = $conn->prepare("SELECT * FROM food WHERE foodID = ?, foodCategoryID = ?, name = ?, description = ?, price = ?, isAvailable = ?");
