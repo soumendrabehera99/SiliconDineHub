@@ -1,5 +1,17 @@
 <?php include_once "adminNavbar.php";
 require_once "../dbFunctions/fooddb.php";
+
+if(isset($_GET['message']))
+{
+    ?>
+    <script>
+        window.onload = function() {
+            toastr.success("Food deleted successfully");
+        };
+    </script>
+
+    <?php
+}
 ?>
 <!-- Main Content -->
 <section class="content w-100">
@@ -53,8 +65,8 @@ require_once "../dbFunctions/fooddb.php";
                                         <a href="foodDelete.php?id=<?php echo $food['foodID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent">Not Available</a>
                                     </td>
                                     <td>
-                                        <a href="foodDetails.php?id=<?php echo $food['foodID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
-                                        <a href="foodDelete.php?id=<?php echo $food['foodID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a>
+                                        <a href="../dbFunctions/foodDetails.php?id=<?php echo $food['foodID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
+                                        <a href="../dbFunctions/foodDelete.php?id=<?php echo $food['foodID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a>
                                     </td>
                                 </tr>
                                 <?php 

@@ -30,20 +30,24 @@ function addFood($categoryID, $foodName, $uploadedFiles, $foodDescription, $food
     }
 }
 
-function deleteFood($id){
+function deleteFoodById($foodID) {
     $conn = dbConnection();
-    $stmt = $conn->prepare("DELETE FROM food where foodID = ?");
-    if (!$stmt) {
-        die(json_encode(["error" => "SQL Prepare Failed: " . $conn->error]));
-    }
-    $stmt->bind_param("i",$id);
-    if (!$stmt->execute()) {
-        die(json_encode(["error" => "SQL Execution Failed: " . $stmt->error]));
-    }
-    if($conn->affected_rows > 0){
-        return "success";
-    }else{
-        return "error";
+    $stmt = null;
+    try {
+        $stmt = $conn->prepare("DELETE FROM food WHERE foodID = ?");
+        $stmt->bind_param("i", $foodID);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            return true;
+        }
+        return false;
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return false;
+    } finally {
+        $stmt->close();
+        $conn->close();
     }
 }
 
