@@ -109,6 +109,10 @@ function totalActiveCustomer() {
     try {
         $conn = dbConnection();
 
+        if (!$conn) {
+            throw new Exception("Database connection failed.");
+        }
+
         $stmt = $conn->prepare("SELECT COUNT(*) AS activeCustomer FROM student WHERE isActive = 1");
 
         if (!$stmt) {
@@ -128,12 +132,8 @@ function totalActiveCustomer() {
         error_log("Error in totalActiveCustomer: " . $e->getMessage());
         return 0; 
     } finally {
-        if (isset($stmt)) {
-            $stmt->close();
-        }
-        if (isset($conn)) {
-            $conn->close();
-        }
+        $stmt->close();
+        $conn->close();
     }
 }
 

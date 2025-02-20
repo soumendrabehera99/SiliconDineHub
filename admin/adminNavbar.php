@@ -13,6 +13,12 @@ include_once "./check.php";
   <!-- Bootstrap CSS -->
   <link href="./../assets/bootstrap/bootstrap.min.css" rel="stylesheet" />
 
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="./../assets/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="./../assets/fontawesome/css/regular.css">
+  <link rel="stylesheet" href="./../assets/fontawesome/css/solid.css">
+  <link rel="stylesheet" href="./../assets/fontawesome/css/brands.css">
+
   <!-- fevicon -->
   <link rel="icon" href="./../assets/images/fevicon_logo.png" type="image/x-icon">
 
@@ -21,8 +27,6 @@ include_once "./check.php";
 
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
-
-  <!-- <link href="../assets/fontawesome/all.css" rel="stylesheet" /> -->
 
 </head>
 

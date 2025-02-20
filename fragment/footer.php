@@ -9,13 +9,13 @@
                 <div class="row text-center">
                   <div class="col-12 my-2">
                     <a href="#" class="text-decoration-none">
-                      <i class="bi bi-geo-alt-fill"></i>
+                      <i class="fa-solid fa-location-dot"></i>
                       <span class="ms-2">Bhubaneswar, Odisha</span>
                     </a>
                   </div>
                   <div class="col-12 my-2">
                     <a href="tel:+918865712384" class="text-decoration-none">
-                      <i class="bi bi-telephone-fill"></i>
+                      <i class="fa-solid fa-phone"></i>
                       <span class="ms-2">Call +91 8865712384</span>
                     </a>
                   </div>
@@ -24,7 +24,7 @@
                       href="mailto:silicondinehub@gmail.com"
                       class="text-decoration-none"
                     >
-                      <i class="bi bi-envelope-fill" ></i>
+                      <i class="fa-solid fa-envelope"></i>
                       <span class="ms-2">silicondinehub@gmail.com</span>
                     </a>
                   </div>
@@ -43,13 +43,13 @@
                 <div class="row">
                   <div class="col-12 d-flex justify-content-center">
                     <a href="" class="mx-2">
-                      <i class="bi bi-facebook"></i>
+                      <i class="fa-brands fa-facebook"></i>
                     </a>
                     <a href="" class="mx-2">
-                      <i class="bi bi-linkedin"></i>
+                      <i class="fa-brands fa-linkedin"></i>
                     </a>
                     <a href="" class="mx-2">
-                      <i class="bi bi-instagram"></i>
+                      <i class="fa-brands fa-instagram"></i>
                     </a>
                   </div>
                 </div>
