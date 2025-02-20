@@ -87,6 +87,52 @@ function getFoods($search, $pageNo, $limit) {
     ];
 }
 
+function getAllFoods() {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT * FROM food");
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows>0){
+            return $res;
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "error: " . $e->getMessage();
+    } finally{
+        $stmt->close();
+        $conn->close();
+    }
+}
+
+function getCategoryById($categoryID) {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT category FROM food_category WHERE foodCategoryID = ?"); 
+        $stmt->bind_param("i", $categoryID); // 
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if ($res->num_rows > 0) {
+            $row = $res->fetch_assoc();
+            return $row['category'];
+        } else {
+            return "Unknown"; 
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "Error: " . $e->getMessage();
+    } finally {
+        if ($stmt) $stmt->close();
+        if ($conn) $conn->close();
+    }
+}
+
 function updateCategory($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
     try{
             $conn = dbConnection();

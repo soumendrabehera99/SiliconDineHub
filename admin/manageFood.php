@@ -1,4 +1,6 @@
-<?php include_once "adminNavbar.php";?>
+<?php include_once "adminNavbar.php";
+require_once "../dbFunctions/fooddb.php";
+?>
 <!-- Main Content -->
 <section class="content w-100">
 
@@ -19,73 +21,69 @@
             <table class="table table-bordered table-responsive">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th>SL No.</th>
                         <th>Food name</th>
                         <th>Categories Name</th>
                         <th>Price</th>
                         <th>Status</th>
+                        <th>Update Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Rasgulla</td>
-                        <td>Sweet</td>
-                        <td>Rs 10</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Rasgulla</td>
-                        <td>Sweet</td>
-                        <td>Rs 10</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Rasgulla</td>
-                        <td>Sweet</td>
-                        <td>Rs 10</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Rasgulla</td>
-                        <td>Sweet</td>
-                        <td>Rs 10</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Rasgulla</td>
-                        <td>Sweet</td>
-                        <td>Rs 10</td>
-                        <td>Available</td>
-                        <td>
-                            <button aria-label="Search" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></button>
-                            <button aria-label="Search" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    </tr>
+                        <?php
+                            $sl = 1;
+                            $result = getAllFoods();
+                            while($food = $result->fetch_assoc()){
+                                ?>
+                                <tr>
+                                    <td><?= $sl++?></td>
+                                    <td><?= $food['name']?></td>
+                                    <td><?= getCategoryById($food['foodCategoryID'])?></td>
+                                    <td><?= $food['price']?></td>
+                                    <td>
+                                        <span 
+                                            class="d-inline-block rounded-circle me-2" 
+                                            style="height: 10px; width: 10px; background-color: <?= $food['isAvailable'] ? 'rgb(11, 218, 11)' : 'rgb(243, 64, 64)' ?>;">
+                                        </span>
+                                        <?= $food['isAvailable'] ? 'Available' : 'Not Available' ?>
+                                    </td>
+                                    <td>
+                                        <a href="foodDetails.php?id=<?php echo $food['foodID'] ?>" class="btn btn-success btn-sm">Available</a>
+                                        <a href="foodDelete.php?id=<?php echo $food['foodID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent">Not Available</a>
+                                    </td>
+                                    <td>
+                                        <a href="foodDetails.php?id=<?php echo $food['foodID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
+                                        <a href="foodDelete.php?id=<?php echo $food['foodID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                                <?php 
+                            }
+                        ?>
                 </tbody>
             </table>
         </div>
     </div>
 </sction>
+
+<!--Delete Category modal-->
+<div class="modal fade" id="deleteCategoryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete Food</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" id="deleteCategory">
+                <div class="modal-body">
+                    <input type="hidden" id="deleteCategoryId" name="categoryId" value="">
+                    <p>Are you sure you want to delete ?</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                    <input type="submit" value="Delete" class="btn btn-submit btn-danger">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php include_once "adminFooter.php";?>
