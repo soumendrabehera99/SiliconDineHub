@@ -32,8 +32,8 @@ $(document).ready(function(){
         let foodPrice = $("#foodPrice").val().trim();
         let foodStatus = $("#foodStatus").val().trim();
 
-        let allowedExtension = ["jpg", "jpeg", "png",];
-        let maxSize = 60 * 1024;
+        let allowedExtension = ["jpg", "jpeg", "png"];
+        let maxSize = 200 * 1024;
         let isValid = true;
 
         if (foodName === "") {
@@ -51,11 +51,11 @@ $(document).ready(function(){
             let fileSize = foodImage.size;
             let fileExtension = foodImage.name.split(".").pop().toLowerCase();
             if(!allowedExtension.includes(fileExtension)){
-                toastr.error("Invalid File Type! Only jpg,jpeg,png & gif are allowed");
+                toastr.error("Invalid File Type! Only jpg,jpeg,png  are allowed");
                 isValid = false;
             }
             if(fileSize > maxSize){
-                toastr.error("File size exceeds 60KB limit");
+                toastr.error("File size exceeds 200KB limit");
                 isValid = false;
             }
         }
@@ -91,13 +91,14 @@ $(document).ready(function(){
                 contentType: false,
                 dataType: "json",
                 success: function (response) {
-                    if (response.trim() === "present") {
+                    if (response === "present") {
                         toastr.error(response, "Food already exists!");
-                    } else if (response.trim() === "success") {
+                    } else if (response === "success") {
                         toastr.success(response, "Food Details added successfully");
+                        $("#addFood").submit();
                         $("#addFood").trigger("reset");
                         setTimeout(() => location.reload(), 500);
-                    } else if (response.trim() === "error") {
+                    } else if (response === "error") {
                         toastr.error(response, "There is an error in add category");
                     }
                 }
