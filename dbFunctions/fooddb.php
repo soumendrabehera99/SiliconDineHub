@@ -1,10 +1,10 @@
 <?php
 require_once "dbConnect.php";
-function addFood($categoryName, $foodName, $newFileName, $foodDescription, $foodPrice, $foodStatus){
+function addFood($categoryID, $foodName, $uploadedFiles, $foodDescription, $foodPrice, $foodStatus){
     try{
         $conn = dbConnection();
     
-        $stmt = $conn->prepare("SELECT * FROM food WHERE foodName = ?");
+        $stmt = $conn->prepare("SELECT * FROM food WHERE name = ?");
         if (!$stmt) {
             die(json_encode(["error" => "SQL Prepare Failed: " . $conn->error]));
         }
@@ -17,7 +17,7 @@ function addFood($categoryName, $foodName, $newFileName, $foodDescription, $food
             return "present";
         }else{
             $stmt1 = $conn->prepare("INSERT INTO food(foodCategoryID, name, image, description, price, isAvailable) VALUES(?, ?, ?, ?, ?, ?)");
-            $stmt1->bind_param('isssss',$categoryName, $foodName, $newFileName, $foodDescription, $foodPrice, $foodStatus);
+            $stmt1->bind_param('isssss',$categoryID, $foodName, $uploadedFiles, $foodDescription, $foodPrice, $foodStatus);
             $stmt1->execute();
             if($conn->affected_rows > 0){
                 return "success";

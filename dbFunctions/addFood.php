@@ -13,35 +13,16 @@ if(isset($_POST["foodName"], $_POST["categoryID"], $_FILES["foodImage"], $_POST[
         mkdir($uploadDir, 0777, true);
     }
 
-    $uploadedFiles = [];
+    $uploadedFile = "";
 
-    // Check if multiple images are uploaded or just one
-    if(is_array($_FILES['foodImage']['name'])) {  
-        $photoCount = count($_FILES['foodImage']['name']);
-
-        for($i = 0; $i < $photoCount; $i++){
-            $fileName = basename($_FILES['foodImage']['name'][$i]);
-            $fileTempPath = $_FILES['foodImage']['tmp_name'][$i];
-            $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
-            $uniqueName = uniqid("Property_", true) . '.' . $fileExt;
-            $uploadPath = $uploadDir . $uniqueName;
-
-            if (move_uploaded_file($fileTempPath, $uploadPath)) {
-                $uploadedFiles[] = $uniqueName;
-            }
-        }
-    } else {  
-        // Single file upload case
+    if (!empty($_FILES['foodImage']['name'])) {  
         $fileName = basename($_FILES['foodImage']['name']);
         $fileTempPath = $_FILES['foodImage']['tmp_name'];
         $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
         $uniqueName = uniqid("food_", true) . '.' . $fileExt;
         $uploadPath = $uploadDir . $uniqueName;
-
         if (move_uploaded_file($fileTempPath, $uploadPath)) {
-            $uploadedFiles[] = $uniqueName;
+            $uploadedFile = $uniqueName;
         }
     }
     if (!empty($uploadedFiles)) {
