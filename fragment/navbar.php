@@ -6,6 +6,8 @@
     <title>Silicon Dine Hub</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
+     <!-- Fontawesome -->
+    <link rel="stylesheet" href="./assets/fontawesome/all.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/index.css">
     <!-- Fontawesome -->
@@ -18,7 +20,7 @@
 </head>
 
 <body>
-    <div class="header_section py-2 position-sticky top-0">
+    <div class="header_section py-2 position-sticky top-0 z-1">
         <div class="container header-container">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="container-fluid">
