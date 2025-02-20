@@ -26,7 +26,7 @@ $(document).ready(function(){
         e.preventDefault();
 
         let foodName = $("#foodName").val().trim();
-        let categoryName = $("#categoryName").val().trim();
+        let categoryID = $("#categoryName").val().trim();
         let foodImage = $("#foodImage")[0].files[0];
         let foodDescription = $("#foodDescription").val().trim();
         let foodPrice = $("#foodPrice").val().trim();
@@ -40,8 +40,8 @@ $(document).ready(function(){
             toastr.error("foodName should not be blank");
             isValid = false;
         }
-        if (categoryName === "") {
-            toastr.error("categoryName should not be blank");
+        if (categoryID === "") {
+            toastr.error("category should not be blank");
             isValid = false;
         }
         if(!foodImage){
@@ -78,7 +78,7 @@ $(document).ready(function(){
             // toastr.success("Form validated successfully");
             let formData = new FormData();
             formData.append("foodName", foodName);
-            formData.append("categoryName", categoryName);
+            formData.append("categoryID", categoryID);
             formData.append("foodImage", foodImage);
             formData.append("foodDescription", foodDescription);
             formData.append("foodPrice", foodPrice);

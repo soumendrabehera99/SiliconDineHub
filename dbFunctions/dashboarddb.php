@@ -132,8 +132,12 @@ function totalActiveCustomer() {
         error_log("Error in totalActiveCustomer: " . $e->getMessage());
         return 0; 
     } finally {
-        $stmt->close();
-        $conn->close();
+        if (isset($stmt)) {
+            $stmt->close();
+        }
+        if (isset($conn)) {
+            $conn->close();
+        }
     }
 }
 
