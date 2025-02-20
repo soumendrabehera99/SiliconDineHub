@@ -1,10 +1,10 @@
 <?php
 require_once "dbConnect.php";
-function addFood($categoryId,$foodName,$description,$price,$isAvailable){
+function addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus){
     try{
         $conn = dbConnection();
     
-        $stmt = $conn->prepare("SELECT * FROM food WHERE foodName = ?");
+        $stmt = $conn->prepare("SELECT * FROM food WHERE name = ?");
         if (!$stmt) {
             die(json_encode(["error" => "SQL Prepare Failed: " . $conn->error]));
         }
@@ -16,8 +16,8 @@ function addFood($categoryId,$foodName,$description,$price,$isAvailable){
         if($res->num_rows > 0){
             return "present";
         }else{
-            $stmt1 = $conn->prepare("INSERT INTO food(foodCategoryID, name, description, price, isAvailable) VALUES(?, ?, ?, ?, ?)");
-            $stmt1->bind_param('issss',$categoryId,$foodName,$description,$price,$isAvailable);
+            $stmt1 = $conn->prepare("INSERT INTO food(foodCategoryID, name, image, description, price, isAvailable) VALUES(?, ?, ?, ?, ?, ?)");
+            $stmt1->bind_param('isssss',$categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus);
             $stmt1->execute();
             if($conn->affected_rows > 0){
                 return "success";
@@ -30,20 +30,24 @@ function addFood($categoryId,$foodName,$description,$price,$isAvailable){
     }
 }
 
-function deleteFood($id){
+function deleteFoodById($foodID) {
     $conn = dbConnection();
-    $stmt = $conn->prepare("DELETE FROM food where foodID = ?");
-    if (!$stmt) {
-        die(json_encode(["error" => "SQL Prepare Failed: " . $conn->error]));
-    }
-    $stmt->bind_param("i",$id);
-    if (!$stmt->execute()) {
-        die(json_encode(["error" => "SQL Execution Failed: " . $stmt->error]));
-    }
-    if($conn->affected_rows > 0){
-        return "success";
-    }else{
-        return "error";
+    $stmt = null;
+    try {
+        $stmt = $conn->prepare("DELETE FROM food WHERE foodID = ?");
+        $stmt->bind_param("i", $foodID);
+        $stmt->execute();
+
+        if ($stmt->affected_rows > 0) {
+            return true;
+        }
+        return false;
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return false;
+    } finally {
+        $stmt->close();
+        $conn->close();
     }
 }
 
@@ -87,7 +91,53 @@ function getFoods($search, $pageNo, $limit) {
     ];
 }
 
-function updateCategory($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
+function getAllFoods() {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT * FROM food");
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows>0){
+            return $res;
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "error: " . $e->getMessage();
+    } finally{
+        $stmt->close();
+        $conn->close();
+    }
+}
+
+function getCategoryById($categoryID) {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT category FROM food_category WHERE foodCategoryID = ?"); 
+        $stmt->bind_param("i", $categoryID); // 
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if ($res->num_rows > 0) {
+            $row = $res->fetch_assoc();
+            return $row['category'];
+        } else {
+            return "Unknown"; 
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "Error: " . $e->getMessage();
+    } finally {
+        if ($stmt) $stmt->close();
+        if ($conn) $conn->close();
+    }
+}
+
+function updateFood($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
     try{
             $conn = dbConnection();
             $stmt = $conn->prepare("SELECT * FROM food WHERE foodID = ?, foodCategoryID = ?, name = ?, description = ?, price = ?, isAvailable = ?");

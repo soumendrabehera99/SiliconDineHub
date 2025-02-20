@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silicon Dine Hub</title>
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
      <!-- Fontawesome -->
     <link rel="stylesheet" href="./assets/fontawesome/all.css" />
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/index.css">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/regular.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/solid.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/brands.css">
+    <!-- Fevicon -->
     <link rel="icon" href="./assets/images/fevicon_logo.png" type="image/x-icon">
 </head>
 

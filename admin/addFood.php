@@ -33,8 +33,8 @@
                                 <label for="foodStatus" class="form-label">Status</label>
                                 <select class="form-select" id="foodStatus">
                                     <option selected>--SELECT--</option>
-                                    <option value="available">Available</option>
-                                    <option value="not-available">Not Available</option>
+                                    <option value="1">Available</option>
+                                    <option value="0">Not Available</option>
                                 </select>
                             </div>
                         </div>

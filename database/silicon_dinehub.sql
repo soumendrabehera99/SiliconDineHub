@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2025 at 08:20 AM
+-- Generation Time: Feb 20, 2025 at 06:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -46,28 +46,6 @@ INSERT INTO `admin_table` (`email`, `name`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `counter`
---
-
-CREATE TABLE `counter` (
-  `counterID` int(11) NOT NULL,
-  `userName` varchar(255) NOT NULL,
-  `password` varchar(128) NOT NULL,
-  `status` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `counter`
---
-
-INSERT INTO `counter` (`counterID`, `userName`, `password`, `status`) VALUES
-(1, 'counter1', '123', '1'),
-(2, 'counter2', '456', '1'),
-(3, 'counter3', '789', '0');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `counter_category`
 --
 
@@ -82,9 +60,31 @@ CREATE TABLE `counter_category` (
 --
 
 INSERT INTO `counter_category` (`counterCategoryID`, `counterID`, `foodCategoryID`) VALUES
-(1, 1, NULL),
+(1, 1, 1),
 (2, 2, NULL),
 (3, 3, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `counter_table`
+--
+
+CREATE TABLE `counter_table` (
+  `counterID` int(11) NOT NULL,
+  `userName` varchar(255) NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `status` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `counter_table`
+--
+
+INSERT INTO `counter_table` (`counterID`, `userName`, `password`, `status`) VALUES
+(1, 'counter1', '123', '1'),
+(2, 'counter2', '456', '1'),
+(3, 'counter3', '789', '0');
 
 -- --------------------------------------------------------
 
@@ -119,6 +119,7 @@ CREATE TABLE `food` (
   `foodID` int(11) NOT NULL,
   `foodCategoryID` int(11) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
   `isAvailable` varchar(5) NOT NULL
@@ -128,11 +129,11 @@ CREATE TABLE `food` (
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `description`, `price`, `isAvailable`) VALUES
-(1, NULL, 'Cappuccino', 'Hot coffee with milk foam', '100', '1'),
-(2, NULL, 'Burger', 'Cheese and lettuce burger', '150', '1'),
-(3, NULL, 'Blueberry Muffins', 'Blueberry muffins are sweet, moist, and bursting with blueberries.', '50', '1'),
-(4, 12, 'Fried rice', 'Fried rice is a dish of cooked rice that has been stir-fried in a wok or a frying pan and is usually mixed with other ingredients such as eggs, vegetables, seafood, or meat', '60', '1');
+INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `image`, `description`, `price`, `isAvailable`) VALUES
+(1, 1, 'Cappuccino', '', 'Hot coffee with milk foam', '100', '1'),
+(2, NULL, 'Burger', '', 'Cheese and lettuce burger', '150', '1'),
+(3, NULL, 'Blueberry Muffins', '', 'Blueberry muffins are sweet, moist, and bursting with blueberries.', '50', '1'),
+(4, 12, 'Fried rice', '', 'Fried rice is a dish of cooked rice that has been stir-fried in a wok or a frying pan and is usually mixed with other ingredients such as eggs, vegetables, seafood, or meat', '60', '1');
 
 -- --------------------------------------------------------
 
@@ -150,10 +151,10 @@ CREATE TABLE `food_category` (
 --
 
 INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
+(1, 'Beverages'),
 (12, 'Chinese'),
 (13, 'South Indian'),
-(14, 'Dairy'),
-(18, 'veg');
+(14, 'Dairy');
 
 -- --------------------------------------------------------
 
@@ -179,8 +180,8 @@ CREATE TABLE `order_table` (
 
 INSERT INTO `order_table` (`orderID`, `studentID`, `foodID`, `quantity`, `orderType`, `price`, `createdAt`, `updatedAt`, `status`) VALUES
 (1, 1, 1, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1'),
-(2, 2, 2, '1', 'parcel', '150', '2025-02-15', '2025-02-11', '1'),
-(3, 3, 1, '2', 'parcel', '200', '2025-02-15', '2025-01-09', '1');
+(2, 2, 2, '1', 'parcel', '150', '2025-02-11', '2025-02-11', '1'),
+(3, 1, 1, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1');
 
 -- --------------------------------------------------------
 
@@ -201,7 +202,8 @@ CREATE TABLE `sic_email` (
 INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
 (1, '23mmci37', 'mca.23mmci37@silicon.ac.in'),
 (2, '23mmci48', 'mca.23mmci48@silicon.ac.in'),
-(3, '23mmci10', 'mca.23mmci10@silicon.ac.in');
+(3, '23mmci76', 'mca.23mmci76@silicon.ac.in'),
+(4, '23mmci87', 'mca.23mmci87@silicon.ac.in');
 
 -- --------------------------------------------------------
 
@@ -224,9 +226,10 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `isActive`) VALUES
-(1, '23mmci37', 1, 'Anil Sahu', '2002-10-10', '1234', '1'),
+(1, '23mmci37', 1, 'Anil', '2002-10-10', '1234', '1'),
 (2, '23mmci48', 2, 'Soumendra', '2000-08-20', '5678', '1'),
-(3, '23mmci10', 3, 'Ram', '1973-02-02', '1234', '1');
+(3, '23mmci76', 3, 'Priti', '2001-02-17', '1866', '0'),
+(4, '23mmci87', 4, 'Himansu', '2001-06-20', '1478', '1');
 
 --
 -- Indexes for dumped tables
@@ -239,18 +242,18 @@ ALTER TABLE `admin_table`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `counter`
---
-ALTER TABLE `counter`
-  ADD PRIMARY KEY (`counterID`);
-
---
 -- Indexes for table `counter_category`
 --
 ALTER TABLE `counter_category`
   ADD PRIMARY KEY (`counterCategoryID`),
   ADD KEY `fk_counter_id` (`counterID`),
   ADD KEY `fk_fc_id` (`foodCategoryID`);
+
+--
+-- Indexes for table `counter_table`
+--
+ALTER TABLE `counter_table`
+  ADD PRIMARY KEY (`counterID`);
 
 --
 -- Indexes for table `feedback`
@@ -298,16 +301,16 @@ ALTER TABLE `student`
 --
 
 --
--- AUTO_INCREMENT for table `counter`
---
-ALTER TABLE `counter`
-  MODIFY `counterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `counter_category`
 --
 ALTER TABLE `counter_category`
   MODIFY `counterCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `counter_table`
+--
+ALTER TABLE `counter_table`
+  MODIFY `counterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `feedback`
@@ -325,7 +328,7 @@ ALTER TABLE `food`
 -- AUTO_INCREMENT for table `food_category`
 --
 ALTER TABLE `food_category`
-  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `order_table`
@@ -337,13 +340,13 @@ ALTER TABLE `order_table`
 -- AUTO_INCREMENT for table `sic_email`
 --
 ALTER TABLE `sic_email`
-  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -353,7 +356,7 @@ ALTER TABLE `student`
 -- Constraints for table `counter_category`
 --
 ALTER TABLE `counter_category`
-  ADD CONSTRAINT `fk_counter_id` FOREIGN KEY (`counterID`) REFERENCES `counter` (`counterID`) ON DELETE SET NULL,
+  ADD CONSTRAINT `fk_counter_id` FOREIGN KEY (`counterID`) REFERENCES `counter_table` (`counterID`) ON DELETE SET NULL,
   ADD CONSTRAINT `fk_fc_id` FOREIGN KEY (`foodCategoryID`) REFERENCES `food_category` (`foodCategoryID`) ON DELETE SET NULL;
 
 --
