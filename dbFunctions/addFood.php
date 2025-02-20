@@ -25,8 +25,8 @@ if(isset($_POST["foodName"], $_POST["categoryID"], $_FILES["foodImage"], $_POST[
             $uploadedFile = $uniqueName;
         }
     }
-    if (!empty($uploadedFiles)) {
-        $response = addFood($categoryID, $foodName, json_encode($uploadedFiles), $foodDescription, $foodPrice, $foodStatus);
+    if (!empty($uploadedFile)) {
+        $response = addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus);
         echo json_encode(["status" => $response]);
     } else {
         echo json_encode(["status" => "error", "message" => "Failed to upload images"]);

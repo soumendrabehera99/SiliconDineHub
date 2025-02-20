@@ -1,6 +1,6 @@
 <?php
 require_once "dbConnect.php";
-function addFood($categoryID, $foodName, $uploadedFiles, $foodDescription, $foodPrice, $foodStatus){
+function addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus){
     try{
         $conn = dbConnection();
     
@@ -17,7 +17,7 @@ function addFood($categoryID, $foodName, $uploadedFiles, $foodDescription, $food
             return "present";
         }else{
             $stmt1 = $conn->prepare("INSERT INTO food(foodCategoryID, name, image, description, price, isAvailable) VALUES(?, ?, ?, ?, ?, ?)");
-            $stmt1->bind_param('isssss',$categoryID, $foodName, $uploadedFiles, $foodDescription, $foodPrice, $foodStatus);
+            $stmt1->bind_param('isssss',$categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus);
             $stmt1->execute();
             if($conn->affected_rows > 0){
                 return "success";
