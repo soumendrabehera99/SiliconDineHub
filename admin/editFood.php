@@ -5,8 +5,8 @@
     $foodID = $_GET['foodID'];
     require_once "../dbFunctions/fooddb.php";
     require_once "../dbFunctions/categorydb.php";
-    $result = getFoodByID($foodID);
-    if(!$result){
+    $food = getFoodByID($foodID);
+    if(!$food){
         ?>
         <script>
             toastr.error("Invalid ID");
@@ -14,7 +14,6 @@
         </script>
     <?php
     }
-    $food = $result->fetch_assoc();
     $curr_categoryID = $food['foodCategoryID'];
     $curr_categoryName = $food['category'];
     $categories = getAllCategory();
