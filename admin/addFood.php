@@ -3,7 +3,7 @@
 <div class="content w-100">
     <div class="row">
         <h2 class="mb-1">Add Food</h2>
-        <div class="container">
+        <!-- <div class="col-md-12 border border-3 p-4 shadow-sm rounded"> -->
             <div class="row justify-content-center">
                 <div class="col-md-6 border p-4 shadow-sm rounded">
                     <form action="" method="post" id="addFood" enctype="multipart/form-data">
@@ -46,7 +46,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        <!-- </div> -->
     </div>
 </div>
 <?php include_once "adminFooter.php";?>
