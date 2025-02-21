@@ -1,5 +1,6 @@
-<?php include_once "adminNavbar.php";
-
+<?php 
+include_once "adminNavbar.php";
+?>
 <!-- Main Content -->
 <section class="content w-100">
 
