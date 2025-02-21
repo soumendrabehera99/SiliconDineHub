@@ -121,11 +121,9 @@ function getFoodById($id) {
     }
     $result = $stmt->get_result();
 
-    $food = $food = $result->fetch_assoc(); 
+    $food = $result->fetch_assoc(); 
 
-    return [
-        "food" => $foods,
-    ];
+    return  $food;
 }
 
 function getCategoryById($categoryID) {
