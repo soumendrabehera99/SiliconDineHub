@@ -35,10 +35,12 @@
                             <div>
                                 <label for="categoryName" class="form-label">Category Name</label>
                                 <select class="form-select" id="categoryName" required>
-                                    <!-- <option value="">--select--</option> -->
-                                    <option value="<?php echo $curr_categoryID ? 'selected' : '';?>">
+                                    <option value="">--select--</option>
+                                    <?php while($row = mysqli_fetch_assoc($categories)){?>
+                                        <option value="<?php echo $row['foodCategoryID']?>" <?php echo ($row['foodCategoryID'] == $curr_categoryID) ? 'selected' : '';?>>
                                             <?php echo $row['category']; ?>
                                         </option>
+                                    <?php } ?>
                                 </select>
                             </div>
                             <div class="mt-2">
@@ -57,7 +59,7 @@
                             <div>
                                 <label for="foodStatus" class="form-label">Status</label>
                                 <select class="form-select" id="foodStatus">
-                                    <!-- <option selected>--SELECT--</option> -->
+                                    <option selected>--SELECT--</option>
                                     <option value="<?php $food[isAvailable] === "1" ? print "selected" : "" ?>">Available</option>
                                     <option value="<?php $food[isAvailable] === "0" ? print "selected" : "" ?>">Not Available</option>
                                 </select>
