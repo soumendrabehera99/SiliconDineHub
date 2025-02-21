@@ -104,10 +104,8 @@ function getFoodById($id) {
     $conn = dbConnection();
 
     $stmt = $conn->prepare("
-    SELECT f.foodID, f.name, f.price, f.isAvailable, f.foodCategoryID, 
-           c.category 
-    FROM food f
-    LEFT JOIN food_category c ON f.foodCategoryID = c.foodCategoryID
+    SELECT f.*, c.category 
+    FROM food f LEFT JOIN food_category c ON f.foodCategoryID = c.foodCategoryID
     WHERE f.foodID = ?
 ");
 
