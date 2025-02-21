@@ -67,7 +67,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-end">
-                                <input type="submit" value="ADD" class="btn btn-submit btn-success">
+                                <input type="submit" value="Update" class="btn btn-submit btn-success">
                             </div>
                         </div>
                     </form>
