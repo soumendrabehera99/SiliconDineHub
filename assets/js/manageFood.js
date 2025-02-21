@@ -47,8 +47,12 @@ function fetchFoods(page = 1, searchQuery = "") {
                         ${res.isAvailable == 1 ? "Available" : "Not Available"}
                     </td>
                     <td>
-                        <a href="foodDetails.php?id=<?php echo $food['foodID'] ?>" class="btn btn-success btn-sm">Available</a>
-                        <a href="foodDelete.php?id=<?php echo $food['foodID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent">Not Available</a>
+                        <a href="#" class="btn btn-sm updateFoodStatusBtn ${
+                          res.isAvailable == 1 ? "btn-success" : "btn-danger"
+                        }" food-id="${res.foodID}" food-status="${
+          res.isAvailable
+        }">${res.isAvailable == 1 ? "Available" : "Not Available"}
+                          </a>
                     </td>
                     <td>
                         <a href="#" class="btn btn-success btn-sm editFoodBtn" data-bs-toggle="modal" data-bs-target="#editFoodModal" food-id="${
@@ -123,49 +127,7 @@ $(document).ready(function () {
   $("#foodSearchBtn").click(function () {
     fetchFoods(1, $("#searchFoodInput").val().trim());
   });
-});
 
-$(document).ready(function () {
-  fetchFoods();
-
-  $(document).on("click", "#pagination .page-link", function (e) {
-    e.preventDefault();
-    const newPage = parseInt($(this).attr("data-page"));
-    if (!isNaN(newPage)) {
-      foodCurrentPage = newPage;
-      fetchFoods(foodCurrentPage, $("#searchFoodInput").val());
-    }
-  });
-
-  $("#foodSearchBtn").click(function () {
-    fetchFoods(1, $("#searchFoodInput").val().trim());
-  });
-
-  $("#editCategory").submit(function (e) {
-    e.preventDefault();
-    let categoryId = $("#editCategoryId").val();
-    let categoryName = $("#editCategoryName").val();
-    $.ajax({
-      url: "../dbFunctions/updateCategory.php",
-      method: "POST",
-      data: {
-        id: categoryId,
-        category: categoryName,
-      },
-      success: function (response) {
-        if (response === "present") {
-          toastr.error(response, "Category already exists!");
-        } else if (response === "success") {
-          toastr.success(response, "Category updated successfully");
-          $("#editCategory").trigger("reset");
-          $("#editCategoryModal").modal("hide");
-          setTimeout(() => location.reload(), 500);
-        } else if (response === "error") {
-          toastr.error(response, "There is an error in update category");
-        }
-      },
-    });
-  });
   $("#deleteFood").submit(function (e) {
     e.preventDefault();
     let foodId = $("#deleteFoodId").val();
@@ -183,6 +145,27 @@ $(document).ready(function () {
           setTimeout(() => location.reload(), 500);
         } else if (response === "error") {
           toastr.error(response, "There is an error in delete food");
+        }
+      },
+    });
+  });
+  $(document).on("click", ".updateFoodStatusBtn", function () {
+    let foodId = $(this).attr("food-id");
+    let status = $(this).attr("food-status") == 1 ? 0 : 1;
+    console.log(foodId, status);
+    $.ajax({
+      url: "../dbFunctions/updateFoodStatus.php",
+      method: "POST",
+      data: {
+        id: foodId,
+        status: status,
+      },
+      success: function (response) {
+        if (response === "success") {
+          toastr.success("Status Updated Successfully");
+          setTimeout(() => location.reload(), 500);
+        } else if (response === "error") {
+          toastr.error("There is an error in Updated Status");
         }
       },
     });

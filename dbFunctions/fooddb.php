@@ -100,26 +100,32 @@ function getFoods($search, $pageNo, $limit) {
     ];
 }
 
-function getAllFoods() {
-    $conn = null;
-    $stmt = null;
-    try {
-        $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM food");
-        $stmt->execute();
-        $res = $stmt->get_result();
-        if($res->num_rows>0){
-            return $res;
-        }else{
-            return "error";
-        }
-    } catch (Exception $e) {
-        error_log($e->getMessage());
-        return "error: " . $e->getMessage();
-    } finally{
-        $stmt->close();
-        $conn->close();
+function getFoodById($id) {
+    $conn = dbConnection();
+
+    $stmt = $conn->prepare("
+    SELECT f.foodID, f.name, f.price, f.isAvailable, f.foodCategoryID, 
+           c.category 
+    FROM food f
+    LEFT JOIN food_category c ON f.foodCategoryID = c.foodCategoryID
+    WHERE f.foodID = ?
+");
+
+    if(!$stmt){
+        die(json_encode(['error'=>"SQL Prepare Failed".$conn->error]));
     }
+    
+    $stmt->bind_param("i",$id);
+    if(!$stmt->execute()){
+        die(json_encode(['error'=>"SQL Execution Failed".$stmt->error]));
+    }
+    $result = $stmt->get_result();
+
+    $food = $food = $result->fetch_assoc(); 
+
+    return [
+        "food" => $foods,
+    ];
 }
 
 function getCategoryById($categoryID) {
@@ -169,6 +175,21 @@ function updateFood($foodId,$categoryId,$foodName,$description,$price,$isAvailab
                 }else{
                     return "error";
                 }
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+}
+function updateFoodStatus($foodId,$isAvailable){
+    try{
+            $conn = dbConnection();
+            $stmt = $conn->prepare("UPDATE food set isAvailable = ? WHERE foodID = ?");
+            $stmt->bind_param("si",$isAvailable,$foodId);
+            $stmt->execute();
+            if($conn-> affected_rows > 0){
+                return "success";
+            }else{
+                return "error";
             }
         } catch (Exception $e) {
             return $e->getMessage();
