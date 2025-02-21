@@ -212,13 +212,4 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#deleteCategoryId").value = categoryId;
     }
   });
-  document.querySelectorAll(".deleteCategoryBtn").forEach((btn) =>
-    btn.addEventListener("click", function () {
-      let categoryId = this.getAttribute("category-id");
-      let categoryName = this.getAttribute("category-name");
-
-      document.querySelector("#deleteCategoryName").innerText = categoryName;
-      document.querySelector("#deleteCategoryId").value = categoryId;
-    })
-  );
 });

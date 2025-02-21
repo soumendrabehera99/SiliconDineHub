@@ -31,20 +31,21 @@ function addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodP
 }
 
 function deleteFoodById($foodID) {
-    $conn = dbConnection();
     $stmt = null;
+    $conn = null;
     try {
+        $conn = dbConnection();
         $stmt = $conn->prepare("DELETE FROM food WHERE foodID = ?");
         $stmt->bind_param("i", $foodID);
         $stmt->execute();
 
         if ($stmt->affected_rows > 0) {
-            return true;
+            return "success";
         }
-        return false;
+        return "error";
     } catch (Exception $e) {
         error_log($e->getMessage());
-        return false;
+        return "error";
     } finally {
         $stmt->close();
         $conn->close();
@@ -70,7 +71,15 @@ function getFoods($search, $pageNo, $limit) {
 
     $totalPages = ceil($countResult->fetch_assoc()['total']/$limit);
 
-    $stmt = $conn->prepare("SELECT * FROM food WHERE name LIKE ? ORDER BY foodCategoryID IS NOT NULL, name ASC LIMIT $limit OFFSET $offset");
+    $stmt = $conn->prepare("
+    SELECT f.foodID, f.name, f.price, f.isAvailable, f.foodCategoryID, 
+           c.category 
+    FROM food f
+    LEFT JOIN food_category c ON f.foodCategoryID = c.foodCategoryID
+    WHERE f.name LIKE ? 
+    ORDER BY f.foodCategoryID IS NOT NULL, f.name ASC 
+    LIMIT $limit OFFSET $offset
+");
 
     if(!$stmt){
         die(json_encode(['error'=>"SQL Prepare Failed".$conn->error]));
@@ -82,10 +91,10 @@ function getFoods($search, $pageNo, $limit) {
     }
     $result = $stmt->get_result();
 
-    $categories = $result->fetch_all(MYSQLI_ASSOC);
+    $foods = $result->fetch_all(MYSQLI_ASSOC);
 
     return [
-        "categories" => $categories,
+        "foods" => $foods,
         "currentPage" => $pageNo,
         "totalPages" => $totalPages
     ];
