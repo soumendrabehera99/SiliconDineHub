@@ -50,3 +50,4 @@
     </div>
 </div>
 <?php include_once "adminFooter.php";?>
+<script src="../assets/js/addFood.js"></script>

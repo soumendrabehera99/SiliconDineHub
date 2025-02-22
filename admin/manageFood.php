@@ -65,3 +65,4 @@ include_once "adminNavbar.php";
     </div>
 </div>
 <?php include_once "adminFooter.php";?>
+<script src="../assets/js/manageFood.js"></script>
