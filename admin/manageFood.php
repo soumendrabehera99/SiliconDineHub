@@ -7,15 +7,18 @@ include_once "adminNavbar.php";
     <div class="row mt-3 ms-1 me-1">
         <h2>Manage Food</h2>
         <div class="col-12 border p-4 shadow-sm rounded">
-            <div class="col-md-12">
-                <div class="d-flex justify-content-end mb-2">
-                    <div class="d-flex align-items-center gap-1">
-                        <input type="text" class="form-control d-inline-block w-auto" id="searchFoodInput" placeholder="Search Category">
-                        <!-- <input type="submit" value="Search" class="btn btn-success search-btn" id="foodSearchBtn"> -->
-                        <button type="submit" class="btn btn-success d-flex align-items-center gap-1 search-btn" id="foodSearchBtn">
-                            <i class="fas fa-search"></i> Search
-                        </button>
-                    </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <a class="btn btn-success text-center" href="./addFood.php"><i class="fa-solid fa-plus"></i> Add Food</a>
+                </div>
+                <div class="col-md-6 d-flex align-items-center justify-content-end mb-2 gap-1">
+                    <input type="text" class="form-control d-inline-block w-auto" id="searchFoodInput" placeholder="Search Category">
+                    <button type="submit" class="btn btn-success text-center search-btn" id="foodSearchBtn">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button type="submit" class="btn btn-success text-center allFoodBtn" id="allFoodBtn">
+                        All Foods
+                    </button>
                 </div>
             </div>
             <table class="table table-bordered table-responsive">

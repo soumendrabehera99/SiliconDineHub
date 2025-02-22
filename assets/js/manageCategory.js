@@ -3,9 +3,14 @@ const itemsPerPage = 6;
 
 function fetchCategories(page = 1, searchQuery = "") {
   $.ajax({
-    url: "../dbFunctions/getCategory.php",
+    url: "../dbFunctions/categoryAjax.php",
     method: "POST",
-    data: { category: searchQuery, page: page, limit: itemsPerPage },
+    data: {
+      category: searchQuery,
+      page: page,
+      limit: itemsPerPage,
+      operation: "categoryGet",
+    },
     dataType: "json",
     success: function (response) {
       if (response.error) {
@@ -118,6 +123,11 @@ $(document).ready(function () {
   $("#categorySearchBtn").click(function () {
     fetchCategories(1, $("#searchCategoryInput").val().trim());
   });
+  $("#allCategoryBtn").click(function () {
+    if ($("#searchCategoryInput").val().trim() !== "") {
+      location.reload();
+    }
+  });
   $("#addCategory").submit(function (e) {
     e.preventDefault();
     let categoryName = $("#categoryName").val();
@@ -127,20 +137,20 @@ $(document).ready(function () {
       return;
     }
     $.ajax({
-      url: "../dbFunctions/addCategory.php",
+      url: "../dbFunctions/categoryAjax.php",
       method: "POST",
-      data: { category: categoryName },
+      data: { category: categoryName, operation: "categoryAdd" },
       success: function (response) {
-        if (response === "present") {
-          toastr.error(response, "Category already exists!");
-        } else if (response === "success") {
-          toastr.success(response, "Category added successfully");
+        if (response.status === "present") {
+          toastr.error("Category already exists!");
+        } else if (response.status === "success") {
+          toastr.success("Category added successfully");
           $("#addCategory").trigger("reset");
           $("#addCategoryModal").modal("hide");
           setTimeout(() => location.reload(), 500);
           $("#categoryName").val("");
-        } else if (response === "error") {
-          toastr.error(response, "There is an error in add category");
+        } else if (response.status === "error") {
+          toastr.error("There is an error in add category");
         }
       },
     });
@@ -150,22 +160,23 @@ $(document).ready(function () {
     let categoryId = $("#editCategoryId").val();
     let categoryName = $("#editCategoryName").val();
     $.ajax({
-      url: "../dbFunctions/updateCategory.php",
+      url: "../dbFunctions/categoryAjax.php",
       method: "POST",
       data: {
         id: categoryId,
         category: categoryName,
+        operation: "categoryUpdate",
       },
       success: function (response) {
-        if (response === "present") {
-          toastr.error(response, "Category already exists!");
-        } else if (response === "success") {
-          toastr.success(response, "Category updated successfully");
+        if (response.status === "present") {
+          toastr.error("Category already exists!");
+        } else if (response.status === "success") {
+          toastr.success("Category updated successfully");
           $("#editCategory").trigger("reset");
           $("#editCategoryModal").modal("hide");
           setTimeout(() => location.reload(), 500);
-        } else if (response === "error") {
-          toastr.error(response, "There is an error in update category");
+        } else if (response.status === "error") {
+          toastr.error("There is an error in update category");
         }
       },
     });
@@ -174,20 +185,20 @@ $(document).ready(function () {
     e.preventDefault();
     let categoryId = $("#deleteCategoryId").val();
     $.ajax({
-      url: "../dbFunctions/deleteCategory.php",
+      url: "../dbFunctions/categoryAjax.php",
       method: "POST",
       data: {
         id: categoryId,
+        operation: "categoryDelete",
       },
       success: function (response) {
-        console.log(response);
-        if (response === "success") {
-          toastr.success(response, "Category deleted successfully");
+        if (response.status === "success") {
+          toastr.success("Category deleted successfully");
           $("#deleteCategory").trigger("reset");
           $("#deleteCategoryModal").modal("hide");
           setTimeout(() => location.reload(), 500);
-        } else if (response === "error") {
-          toastr.error(response, "There is an error in delete category");
+        } else if (response.status === "error") {
+          toastr.error("There is an error in delete category");
         }
       },
     });

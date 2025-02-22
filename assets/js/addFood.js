@@ -1,8 +1,8 @@
 $(document).ready(function () {
   $.ajax({
-    url: "../dbFunctions/getAllCategory.php",
-    method: "GET",
-    data: "",
+    url: "../dbFunctions/categoryAjax.php",
+    method: "POST",
+    data: { operation: "categoryGetAll" },
     dataType: "json",
     success: function (response) {
       if (response.error) {
@@ -85,8 +85,9 @@ $(document).ready(function () {
       formData.append("foodDescription", foodDescription);
       formData.append("foodPrice", foodPrice);
       formData.append("foodStatus", foodStatus);
+      formData.append("operation", "foodAdd");
       $.ajax({
-        url: "../dbFunctions/addFood.php",
+        url: "../dbFunctions/foodAjax.php",
         method: "POST",
         data: formData,
         processData: false,

@@ -3,9 +3,14 @@ const foodsPerPage = 6;
 
 function fetchFoods(page = 1, searchQuery = "") {
   $.ajax({
-    url: "../dbFunctions/getFoods.php",
+    url: "../dbFunctions/foodAjax.php",
     method: "POST",
-    data: { food: searchQuery, page: page, limit: foodsPerPage },
+    data: {
+      food: searchQuery,
+      page: page,
+      limit: foodsPerPage,
+      operation: "foodGet",
+    },
     dataType: "json",
     success: function (response) {
       if (response.error) {
@@ -127,15 +132,21 @@ $(document).ready(function () {
   $("#foodSearchBtn").click(function () {
     fetchFoods(1, $("#searchFoodInput").val().trim());
   });
+  $("#allFoodBtn").click(function () {
+    if ($("#searchFoodInput").val().trim() !== "") {
+      location.reload();
+    }
+  });
 
   $("#deleteFood").submit(function (e) {
     e.preventDefault();
     let foodId = $("#deleteFoodId").val();
     $.ajax({
-      url: "../dbFunctions/deleteFood.php",
+      url: "../dbFunctions/foodAjax.php",
       method: "POST",
       data: {
         id: foodId,
+        operation: "foodDelete",
       },
       success: function (response) {
         if (response === "success") {
@@ -152,18 +163,21 @@ $(document).ready(function () {
   $(document).on("click", ".updateFoodStatusBtn", function () {
     let foodId = $(this).attr("food-id");
     let status = $(this).attr("food-status") == 1 ? 0 : 1;
+    let searchTerm = $("#searchFoodInput").val().trim();
     console.log(foodId, status);
     $.ajax({
-      url: "../dbFunctions/updateFoodStatus.php",
+      url: "../dbFunctions/foodAjax.php",
       method: "POST",
       data: {
         id: foodId,
         status: status,
+        operation: "foodStatusUpdate",
       },
       success: function (response) {
         if (response === "success") {
           toastr.success("Status Updated Successfully");
-          setTimeout(() => location.reload(), 500);
+          // setTimeout(() => location.reload(), 500);
+          fetchFoods(1, searchTerm);
         } else if (response === "error") {
           toastr.error("There is an error in Updated Status");
         }

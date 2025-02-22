@@ -50,6 +50,9 @@ require_once "../dbFunctions/categorydb.php";
                             <button type="submit" class="btn btn-success search-btn" id="categorySearchBtn">
                                 <i class="fas fa-search"></i> Search
                             </button>
+                            <button type="submit" class="btn btn-success text-center allCategoryBtn" id="allCategoryBtn">
+                                All Categories
+                            </button>
                         </div>
                     </div>
                 </div>
