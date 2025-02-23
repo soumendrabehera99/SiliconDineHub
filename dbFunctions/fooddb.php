@@ -72,14 +72,13 @@ function getFoods($search, $pageNo, $limit) {
     $totalPages = ceil($countResult->fetch_assoc()['total']/$limit);
 
     $stmt = $conn->prepare("
-    SELECT f.foodID, f.name, f.price, f.isAvailable, f.foodCategoryID, 
-           c.category 
+    SELECT f.*, c.category 
     FROM food f
     LEFT JOIN food_category c ON f.foodCategoryID = c.foodCategoryID
     WHERE f.name LIKE ? 
     ORDER BY f.foodCategoryID IS NOT NULL, f.name ASC 
     LIMIT $limit OFFSET $offset
-");
+    ");
 
     if(!$stmt){
         die(json_encode(['error'=>"SQL Prepare Failed".$conn->error]));

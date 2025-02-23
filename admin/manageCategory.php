@@ -59,13 +59,14 @@ require_once "../dbFunctions/categorydb.php";
             </div>
             <table class="table table-bordered table-responsive">
                 <thead class="table-light">
-                    <tr>
+                <thead class="table-light text-center">
+                    <tr class="align-text-top">
                         <th>Sl NO.</th>
                         <th>Categories Name</th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="categoryTableBody"></tbody>
+                <tbody id="categoryTableBody" class="text-center"></tbody>
             </table>
             <div class="d-flex justify-content-center align-items-center mt-3">
                 <div class="d-flex justify-content-between align-items-center mt-3">
@@ -126,3 +127,4 @@ require_once "../dbFunctions/categorydb.php";
     </div>
 </div>
 <?php include_once "adminFooter.php";?>
+<script src="../assets/js/categoryManage.js"></script>

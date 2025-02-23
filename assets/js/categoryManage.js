@@ -18,6 +18,7 @@ function fetchCategories(page = 1, searchQuery = "") {
         $("#categoryTableBody").html(
           `<tr><td colspan="3" class="text-center text-danger">${response.error}</td></tr>`
         );
+        $("#pagination").html("");
         return;
       }
 
@@ -26,8 +27,9 @@ function fetchCategories(page = 1, searchQuery = "") {
         response.categories.length === 0
       ) {
         $("#categoryTableBody").html(
-          `<tr><td colspan="3" class="text-center text-danger">No categories found</td></tr>`
+          `<tr><td colspan="3" class="text-center text-danger fw-bold">No categories found</td></tr>`
         );
+        $("#pagination").html("");
         return;
       }
 
@@ -50,6 +52,7 @@ function fetchCategories(page = 1, searchQuery = "") {
       });
 
       $("#categoryTableBody").html(tbody);
+      console.log(response.totalPages, response.currentPage);
       updatePagination(response.totalPages, response.currentPage);
     },
     error: function (xhr, status, error) {
@@ -73,7 +76,7 @@ function updatePagination(totalPages, currentPage) {
     </li>`;
   for (let i = 1; i <= totalPages; i++) {
     paginationHTML += `<li class="page-item ${
-      i === currentPage ? "active" : ""
+      i === currentPage ? "active z-0" : ""
     }">
         <a class="page-link" href="#" data-page="${i}">${i}</a>
       </li>`;
@@ -97,7 +100,7 @@ $(document).ready(function () {
   $(document).on("click", "#pagination .page-link", function (e) {
     e.preventDefault();
     const newPage = parseInt($(this).attr("data-page"));
-    if (!isNaN(newPage)) {
+    if (!isNaN(newPage) && newPage !== currentPage) {
       currentPage = newPage;
       fetchCategories(currentPage, $("#searchCategoryInput").val());
     }
@@ -106,23 +109,7 @@ $(document).ready(function () {
   $("#categorySearchBtn").click(function () {
     fetchCategories(1, $("#searchCategoryInput").val().trim());
   });
-});
 
-$(document).ready(function () {
-  fetchCategories();
-
-  $(document).on("click", "#pagination .page-link", function (e) {
-    e.preventDefault();
-    const newPage = parseInt($(this).attr("data-page"));
-    if (!isNaN(newPage)) {
-      currentPage = newPage;
-      fetchCategories(currentPage, $("#searchCategoryInput").val());
-    }
-  });
-
-  $("#categorySearchBtn").click(function () {
-    fetchCategories(1, $("#searchCategoryInput").val().trim());
-  });
   $("#allCategoryBtn").click(function () {
     if ($("#searchCategoryInput").val().trim() !== "") {
       location.reload();

@@ -24,6 +24,7 @@ include_once "./check.php";
 
   <!-- Custom Styles -->
   <link href="./../assets/css/AdminCss/style.css" rel="stylesheet" />
+  <link href="./../assets/css/AdminCss/foodManage.css" rel="stylesheet" />
 
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">

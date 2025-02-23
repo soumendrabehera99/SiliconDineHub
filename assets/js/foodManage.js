@@ -15,49 +15,50 @@ function fetchFoods(page = 1, searchQuery = "") {
     success: function (response) {
       if (response.error) {
         toastr.error(response.error);
-        $("#categoryTableBody").html(
-          `<tr><td colspan="3" class="text-center text-danger">${response.error}</td></tr>`
+        $("#foodTableBody").html(
+          `<tr><td colspan="7" class="text-center text-danger">${response.error}</td></tr>`
         );
+        $("#foodPagination").html("");
         return;
       }
 
       if (!Array.isArray(response.foods) || response.foods.length === 0) {
-        $("#categoryTableBody").html(
-          `<tr><td colspan="3" class="text-center text-danger">No foods found</td></tr>`
+        $("#foodTableBody").html(
+          `<tr><td colspan="7" class="text-center text-danger fw-bold">No foods found</td></tr>`
         );
+        $("#foodPagination").html("");
         return;
       }
 
       let tbody = "";
-      let counter = (page - 1) * itemsPerPage + 1;
+      let counter = (page - 1) * foodsPerPage + 1;
       response.foods.forEach((res) => {
         tbody += `<tr>
                     <td>${counter}</td>
+                    <td>
+                      <div class="position-relative d-flex align-items-center justify-content-center fm-imageDiv">
+                        <a class="position-absolute d-none btn-outline-warning btn btn-sm fm-uploadBtn">update</a>
+                        <img src="http://localhost:8888/SiliconDineHub/uploads/${
+                          res.image
+                        }" alt="NA" class="fm-image">
+                      </div>
+                    </td>
                     <td>${res.name}</td>
-                    <td>${
+                    <td>
+                    ${
                       res.foodCategoryID == null
                         ? "Uncategorized"
                         : res.category
-                    }</td>
+                    }
+                    </td>
                     <td>${res.price}</td>
                     <td>
-                        <span 
-                            class="d-inline-block rounded-circle me-2" 
-                            style="height: 10px; width: 10px; background-color: ${
-                              res.isAvailable == 1
-                                ? "rgb(11, 218, 11)"
-                                : "rgb(243, 64, 64)"
-                            }">
-                        </span>
-                        ${res.isAvailable == 1 ? "Available" : "Not Available"}
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm updateFoodStatusBtn ${
+                        <button  class="btn btn-sm updateFoodStatusBtn ${
                           res.isAvailable == 1 ? "btn-success" : "btn-danger"
                         }" food-id="${res.foodID}" food-status="${
           res.isAvailable
         }">${res.isAvailable == 1 ? "Available" : "Not Available"}
-                          </a>
+                          </button>
                     </td>
                     <td>
                         <a href="./editFood.php?foodID=${
@@ -65,9 +66,9 @@ function fetchFoods(page = 1, searchQuery = "") {
                         }" class="btn btn-success btn-sm editFoodBtn">
                             <i class="fa-solid fa-edit"></i> Edit
                         </a>
-                        <a href="#" class="btn btn-danger btn-sm deleteFoodBtn" data-bs-toggle="modal" data-bs-target="#deleteFoodModal" food-id="${
+                        <a class="btn btn-danger btn-sm deleteFoodBtn" data-bs-toggle="modal" data-bs-target="#deleteFoodModal" food-id="${
                           res.foodID
-                        }" food-name="${res.name}">
+                        }" food-name="${res.name}" food-image="${res.image}">
                             <i class="fa-solid fa-trash"></i> Delete
                         </a>
                     </td>
@@ -99,7 +100,7 @@ function updatePagination(totalPages, currentPage) {
     </li>`;
   for (let i = 1; i <= totalPages; i++) {
     paginationHTML += `<li class="page-item ${
-      i === currentPage ? "active" : ""
+      i === currentPage ? "active z-0" : ""
     }">
         <a class="page-link" href="#" data-page="${i}">${i}</a>
       </li>`;
@@ -141,11 +142,14 @@ $(document).ready(function () {
   $("#deleteFood").submit(function (e) {
     e.preventDefault();
     let foodId = $("#deleteFoodId").val();
+    let foodImageName = $("#foodImageName").val();
+    // console.log(foodImageName);
     $.ajax({
       url: "../dbFunctions/foodAjax.php",
       method: "POST",
       data: {
         id: foodId,
+        imageName: foodImageName,
         operation: "foodDelete",
       },
       success: function (response) {
@@ -156,6 +160,8 @@ $(document).ready(function () {
           setTimeout(() => location.reload(), 500);
         } else if (response === "error") {
           toastr.error(response, "There is an error in delete food");
+        } else if (response === "file_error") {
+          toastr.error("file Doesnot exit");
         }
       },
     });
@@ -192,8 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
       let btn = event.target.closest(".deleteFoodBtn");
       let foodId = btn.getAttribute("food-id");
       let foodName = btn.getAttribute("food-name");
+      let foodImage = btn.getAttribute("food-image");
       document.querySelector("#deleteFoodName").innerText = foodName;
       document.querySelector("#deleteFoodId").value = foodId;
+      document.querySelector("#foodImageName").value = foodImage;
+      console.log(foodImage);
     }
   });
 });

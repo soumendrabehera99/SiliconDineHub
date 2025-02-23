@@ -7,7 +7,7 @@ include_once "adminNavbar.php";
     <div class="row mt-3 ms-1 me-1">
         <h2>Manage Food</h2>
         <div class="col-12 border p-4 shadow-sm rounded">
-            <div class="row">
+            <div class="row mb-2">
                 <div class="col-md-6">
                     <a class="btn btn-success text-center" href="./addFood.php"><i class="fa-solid fa-plus"></i> Add Food</a>
                 </div>
@@ -22,18 +22,21 @@ include_once "adminNavbar.php";
                 </div>
             </div>
             <table class="table table-bordered table-responsive">
-                <thead class="table-light">
-                    <tr>
+                <thead class="table-light text-center">
+                    <tr class="align-text-top">
                         <th>SL No.</th>
+                        <th>Image</th>
                         <th>Food name</th>
                         <th>Categories Name</th>
                         <th>Price</th>
-                        <th>Status</th>
-                        <th>Update Status</th>
+                        <th>
+                            Status<br>
+                            <p class="mb-0 fw-light ">click on status to update</p>
+                        </th>
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody id="foodTableBody"></tbody>
+                <tbody id="foodTableBody" class="text-center"></tbody>
             </table>
             <div class="d-flex justify-content-center align-items-center mt-3">
                 <div class="d-flex justify-content-between align-items-center mt-3">
@@ -57,7 +60,8 @@ include_once "adminNavbar.php";
             </div>
             <form method="post" id="deleteFood">
                 <div class="modal-body">
-                    <input type="hidden" id="deleteFoodId" name="FoodId" value="">
+                    <input type="hidden" id="deleteFoodId" name="FoodId">
+                    <input type="hidden" id="foodImageName" name="foodImageName">
                     <p>Are you sure you want to delete <strong id="deleteFoodName"></strong> ?</p>
                 </div>
                 <div class="modal-footer d-flex justify-content-end">
@@ -68,4 +72,4 @@ include_once "adminNavbar.php";
     </div>
 </div>
 <?php include_once "adminFooter.php";?>
-<script src="../assets/js/manageFood.js"></script>
+<script src="../assets/js/foodManage.js"></script>

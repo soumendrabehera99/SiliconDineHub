@@ -41,8 +41,21 @@ if($_POST['operation']){
         echo json_encode($response);
     }else if($_POST['operation']== "foodDelete" && isset($_POST['id'])){
         $id = $_POST['id'];
-        $response = deleteFoodById($id);
-        echo $response;
+        $imageName = $_POST['imageName'];
+        $uploadDir = __DIR__ . "/../uploads/";
+        $filePath = $uploadDir . $imageName;
+        if($imageName == ""){
+            $response = deleteFoodById($id);
+            echo $response;
+        }else{
+            if (file_exists($filePath)) {
+                unlink($filePath);
+                if(!file_exists($filePath)){
+                    $response = deleteFoodById($id);
+                    echo $response;
+                }
+            }
+        }
     }else if($_POST['operation']== "foodStatusUpdate" && isset($_POST['id'])){
         $id = $_POST['id'];
         $status = $_POST['status'];

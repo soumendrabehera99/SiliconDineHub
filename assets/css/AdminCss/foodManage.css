@@ -1,0 +1,7 @@
+.fm-image {
+  width: 40px;
+  height: 40px;
+}
+.fm-imageDiv:hover .fm-uploadBtn {
+  display: block !important;
+}
