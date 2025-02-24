@@ -52,8 +52,10 @@ include_once "./check.php";
         aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <div class="d-flex justify-content-center align-items-center ms-auto">
+
           <div class="me-3 position-relative">
             <a href="#" class="text-decoration-none">
               <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: white"></i>
@@ -61,6 +63,7 @@ include_once "./check.php";
                 id="notification" style="background-color: rgb(11, 218, 11)">5</span>
             </a>
           </div>
+          
           <div class="me-3 position-relative">
             <a href="#" class="text-decoration-none">
               <i class="fa-solid fa-bell" style="font-size: 1.5rem; color: white"></i>
@@ -68,102 +71,94 @@ include_once "./check.php";
                 id="notification" style="background-color: rgb(243, 64, 64)">3</span>
             </a>
           </div>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="./../assets/images/admin_Profile_image.jpg" alt="profile" class="profile-logo" />
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="./changeAdminPassword.php">Change Password</a></li>
-                <li>
-                  <hr class="dropdown-divider" />
-                </li>
-                <li><a class="dropdown-item" href="./adminLogout.php"><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>Logout</a></li>
-              </ul>
-            </li>
-          </ul>
         </div>
       </div>
+
     </div>
   </nav>
 
     <!-- Sidebar -->
-    <aside class="sidebar bg-dark">
+  <aside class="sidebar bg-dark text-white d-flex flex-column justify-content-between position-fixed top-0 start-0 min-vh-100">
+    <div>
       <div>
-        <a href="./index.php" class="mt-3">
+        <a href="./index.php" class="mt-3 text-white text-decoration-none d-flex align-items-center justify-content-between">
           <div><i class="fas fa-tachometer-alt me-3"></i>Dashboard</div>
         </a>
-    
-        <div>
-          <a href="#customer" class="dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
-            <div><i class="fa-solid fa-user me-3"></i> Customer</div> <i class="fa-solid fa-chevron-right"></i>
-          </a>
-          <div class="collapse ms-5" id="customer">
-            <a href="./customerAdd.php">Add Customer</a>
-            <a href="./customerManage.php">Manage Customer</a>
-          </div>
+      </div>
+  
+      <div>
+        <a href="#customer" class="dropdown-toggle text-white text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="collapse" aria-expanded="false">
+          <div><i class="fa-solid fa-user me-3"></i> Customer</div> <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <div class="collapse ms-5" id="customer">
+          <a href="./customerAdd.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Customer</a>
+          <a href="./customerManage.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Manage Customer</a>
         </div>
-    
-        <div>
-          <a href="#foodCategory" class="dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
-            <div><i class="fa-solid fa-layer-group me-3"></i>Food Category</div><i class="fa-solid fa-chevron-right"></i>
-          </a>
-          <div class="collapse ms-5" id="foodCategory">
-            <!--Here i deleted the add category-->
-            <a href="./manageCategory.php">Manage Category</a>
-          </div>
+      </div>
+  
+      <div>
+        <a href="#foodCategory" class="dropdown-toggle text-white text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="collapse" aria-expanded="false">
+          <div><i class="fa-solid fa-layer-group me-3"></i>Food Category</div><i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <div class="collapse ms-5" id="foodCategory">
+          <a href="./manageCategory.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Manage Category</a>
         </div>
+      </div>
+    
+      <div>
+        <a href="#food" class="dropdown-toggle text-white text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="collapse" aria-expanded="false">
+          <div><i class="fa-solid fa-burger me-3"></i> Food</div> <i class="fa-solid fa-chevron-right"></i>
+        </a>
+
+        <div class="collapse ms-5" id="food">
+          <a href="./addFood.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Food</a>
+          <a href="./manageFood.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Manage Food</a>
+        </div>
+      </div>
       
-        <div>
-          <a href="#food" class="dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
-            <div><i class="fa-solid fa-burger me-3"></i> Food</div> <i class="fa-solid fa-chevron-right"></i>
-          </a>
+      <div>
+        <a href="#counter" class="dropdown-toggle text-white text-decoration-none d-flex align-items-center justify-content-between" data-bs-toggle="collapse" aria-expanded="false">
+          <div><i class="fa-solid fa-utensils me-3"></i> Counter</div> <i class="fa-solid fa-chevron-right"></i>
+        </a>
 
-          <div class="collapse ms-5" id="food">
-            <a href="./addFood.php">Add Food</a>
-            <a href="./manageFood.php">Manage Food</a>
-          </div>
+        <div class="collapse ms-5" id="counter"> 
+          <a href="./addCounter.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter</a>
+          <a href="#" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter Category</a>
         </div>
-        
-        <div>
-          <a href="#counter" class="dropdown-toggle" data-bs-toggle="collapse" aria-expanded="false">
-            <div><i class="fa-solid fa-utensils me-3"></i> Counter</div> <i class="fa-solid fa-chevron-right"></i>
-          </a>
+      </div>
 
-          <div class="collapse ms-5" id="counter"> 
-            <a href="./addCounter.php">Add Counter</a>
-            <a href="#">Add Counter Category</a>
-          </div>
-        </div>
-
-        <div>
-          <a href="#dashboard" class="">
-            <div><i class="fa-solid fa-bell me-3"></i> Reminder</div>
-          </a>
-        </div>
-        <div>
-          <a href="#dashboard" class="">
-            <div><i class="fas fa-file-invoice me-3"></i> Invoice</div>
-          </a>
-        </div>
-        <div>
-          <a href="#dashboard" class="">
-            <div><i class="fas fa-chart-line me-3"></i>Report</div>
-          </a>
-        </div>
-        <div>
-          <a href="#dashboard" class="">
-            <div><i class="fa-solid fa-gear me-3"></i>Setting</div>
-          </a>
-        </div>
+      <div>
+        <a href="#dashboard" class=" text-white text-decoration-none d-flex align-items-center justify-content-between">
+          <div><i class="fa-solid fa-bell me-3"></i> Reminder</div>
+        </a>
+      </div>
+      <div>
+        <a href="#dashboard" class=" text-white text-decoration-none d-flex align-items-center justify-content-between">
+          <div><i class="fas fa-file-invoice me-3"></i> Invoice</div>
+        </a>
+      </div>
+      <div>
+        <a href="#dashboard" class=" text-white text-decoration-none d-flex align-items-center justify-content-between">
+          <div><i class="fas fa-chart-line me-3"></i>Report</div>
+        </a>
+      </div>
+      <div>
+        <a href="#dashboard" class=" text-white text-decoration-none d-flex align-items-center justify-content-between">
+          <div><i class="fa-solid fa-gear me-3"></i>Setting</div>
+        </a>
+      </div>
+      <div>
+        <a href="./changeAdminPassword.php" class=" text-white text-decoration-none d-flex align-items-center justify-content-between">
+          <div><i class="fa-solid fa-gear me-3"></i>Change Password</div>
+        </a>
+      </div>
     </div>
 
     <!-- Sidebar Footer -->
-    <div class="sidebar-footer text-start">
-      <div class="sidebar-footer-content ms-2">
-        <p class="my-0">Logged in as:</p>
-        <p class="my-1">Silicon DineHub</p>
-      </div>
+    <div class="sidebar-footer">
+        <a href="./adminLogout.php" class="text-decoration-none d-flex align-items-center justify-content-between w-100" style="color: #adb5bd;">
+            <h5 class="my-0">Logout</h5>
+            <div><i class="fa-solid fa-arrow-right-from-bracket mx-2"></i></div>
+        </a>
     </div>
   </aside>
