@@ -4,8 +4,8 @@ include_once "adminNavbar.php";
 <!-- Main Content -->
 <section class="content w-100">
     <div class="row mt-3 ms-1 me-1">
-        <h4 class="mb-4">Add Customer</h4>
-        <div class="col-md-12 border border-3 p-4 shadow-sm rounded">
+        <h2 class="mb-4">Add Customer</h2>
+        <div class="col-md-6 mx-auto border border-3 p-4 shadow-sm rounded">
             
             <form action="" method="post" id="addStudent">
                 <div class="mb-3">
