@@ -42,42 +42,28 @@ include_once "./check.php";
       <a class="navbar-brand ps-5" href="./index.php">
         <img src="./../assets/images/logo.png" alt="logo" />
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      
+      <div class="d-flex justify-content-center align-items-center ms-auto">
+        <div class="me-3 position-relative">
+          <a href="#" class="text-decoration-none">
+            <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: white"></i>
+            <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
+              id="notification" style="background-color: rgb(11, 218, 11)">5</span>
+          </a>
+        </div>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="d-flex justify-content-center align-items-center ms-auto">
-
-          <div class="me-3 position-relative">
-            <a href="#" class="text-decoration-none">
-              <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: white"></i>
-              <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
-                id="notification" style="background-color: rgb(11, 218, 11)">5</span>
-            </a>
-          </div>
-          
-          <div class="me-3 position-relative">
-            <a href="#" class="text-decoration-none">
-              <i class="fa-solid fa-bell" style="font-size: 1.5rem; color: white"></i>
-              <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
-                id="notification" style="background-color: rgb(243, 64, 64)">3</span>
-            </a>
-          </div>
+        <div class="me-3 position-relative">
+          <a href="#" class="text-decoration-none">
+            <i class="fa-solid fa-bell" style="font-size: 1.5rem; color: white"></i>
+            <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
+              id="notification" style="background-color: rgb(243, 64, 64)">3</span>
+          </a>
         </div>
       </div>
-
     </div>
   </nav>
 
-    <!-- Sidebar -->
+  <!-- Sidebar -->
   <aside class="sidebar bg-dark text-white d-flex flex-column justify-content-between position-fixed top-0 start-0 min-vh-100">
     <div>
       <div>
