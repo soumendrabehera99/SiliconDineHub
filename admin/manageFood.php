@@ -25,13 +25,15 @@ include_once "adminNavbar.php";
                 <thead class="table-light text-center">
                     <tr class="align-text-top">
                         <th>SL No.</th>
-                        <th>Image</th>
+                        <th>Image
+                        <p class="mb-0 fw-light ">Hover on image to update</p>
+                        </th>
                         <th>Food name</th>
                         <th>Categories Name</th>
                         <th>Price</th>
                         <th>
-                            Status<br>
-                            <p class="mb-0 fw-light ">click on status to update</p>
+                            Status
+                            <p class="mb-0 fw-light ">Click on status to update</p>
                         </th>
                         <th>Action</th>
                     </tr>
@@ -50,7 +52,7 @@ include_once "adminNavbar.php";
     </div>
 </sction>
 
-<!--Delete Category modal-->
+<!--Delete Food modal-->
 <div class="modal fade" id="deleteFoodModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -58,7 +60,7 @@ include_once "adminNavbar.php";
                 <h5 class="modal-title" id="staticBackdropLabel">Delete Food</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form method="post" id="deleteFood">
+            <form method="post" id="deleteFoodForm">
                 <div class="modal-body">
                     <input type="hidden" id="deleteFoodId" name="FoodId">
                     <input type="hidden" id="foodImageName" name="foodImageName">
@@ -66,6 +68,27 @@ include_once "adminNavbar.php";
                 </div>
                 <div class="modal-footer d-flex justify-content-end">
                     <input type="submit" value="Delete" class="btn btn-submit btn-danger">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--Update Food Status modal-->
+<div class="modal fade" id="updateStatusFoodModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Food Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" id="updateFoodStatusForm">
+                <div class="modal-body">
+                    <input type="hidden" id="updateFoodIdInput" name="FoodId">
+                    <input type="hidden" id="updateFoodStatusInput" name="FoodStatus">
+                    <p>Are you sure you want to update Status of <strong id="updateFoodName"></strong> to <strong id="updateFoodStaus"></strong>?</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                    <input type="submit" value="Update" class="btn btn-submit btn-success">
                 </div>
             </form>
         </div>

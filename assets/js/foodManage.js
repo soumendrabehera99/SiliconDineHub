@@ -55,10 +55,15 @@ function fetchFoods(page = 1, searchQuery = "") {
                     <td>
                         <button  class="btn btn-sm updateFoodStatusBtn ${
                           res.isAvailable == 1 ? "btn-success" : "btn-danger"
-                        }" food-id="${res.foodID}" food-status="${
-          res.isAvailable
-        }">${res.isAvailable == 1 ? "Available" : "Not Available"}
-                          </button>
+                        }" data-bs-toggle="modal" data-bs-target="#updateStatusFoodModal"
+                        food-id="${res.foodID}" 
+                        food-status="${res.isAvailable}" 
+                        food-name="${res.name}"
+                        >
+                          ${
+                            res.isAvailable == 1 ? "Available" : "Not Available"
+                          }
+                        </button>
                     </td>
                     <td>
                         <a href="./editFood.php?foodID=${
@@ -139,7 +144,7 @@ $(document).ready(function () {
     }
   });
 
-  $("#deleteFood").submit(function (e) {
+  $("#deleteFoodForm").submit(function (e) {
     e.preventDefault();
     let foodId = $("#deleteFoodId").val();
     let foodImageName = $("#foodImageName").val();
@@ -166,32 +171,33 @@ $(document).ready(function () {
       },
     });
   });
-  $(document).on("click", ".updateFoodStatusBtn", function () {
-    let foodId = $(this).attr("food-id");
-    let status = $(this).attr("food-status") == 1 ? 0 : 1;
+  //Update Food Status Modal Submit
+  $("#updateFoodStatusForm").submit(function (e) {
+    e.preventDefault();
+    let foodId = $("#updateFoodIdInput").val();
+    let foodStatus = $("#updateFoodStatusInput").val();
     let searchTerm = $("#searchFoodInput").val().trim();
-    console.log(foodId, status);
     $.ajax({
       url: "../dbFunctions/foodAjax.php",
       method: "POST",
       data: {
         id: foodId,
-        status: status,
+        status: foodStatus,
         operation: "foodStatusUpdate",
       },
       success: function (response) {
         if (response === "success") {
           toastr.success("Status Updated Successfully");
-          // setTimeout(() => location.reload(), 500);
+          $("#updateStatusFoodModal").modal("toggle");
           fetchFoods(1, searchTerm);
         } else if (response === "error") {
-          toastr.error("There is an error in Updated Status");
+          toastr.warning("Already Updated");
         }
       },
     });
   });
 });
-
+//Delete Food Button
 document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("click", function (event) {
     if (event.target.closest(".deleteFoodBtn")) {
@@ -202,7 +208,20 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#deleteFoodName").innerText = foodName;
       document.querySelector("#deleteFoodId").value = foodId;
       document.querySelector("#foodImageName").value = foodImage;
-      console.log(foodImage);
+    }
+  });
+  // Update Food Status
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".updateFoodStatusBtn")) {
+      let btn = event.target.closest(".updateFoodStatusBtn");
+      let foodId = btn.getAttribute("food-id");
+      let foodStatus = btn.getAttribute("food-status") == 1 ? 0 : 1;
+      let foodName = btn.getAttribute("food-name");
+      document.querySelector("#updateFoodName").innerText = foodName;
+      document.querySelector("#updateFoodIdInput").value = foodId;
+      document.querySelector("#updateFoodStatusInput").value = foodStatus;
+      document.querySelector("#updateFoodStaus").innerText =
+        foodStatus == 1 ? "Available" : "Not Available";
     }
   });
 });
