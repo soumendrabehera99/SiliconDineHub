@@ -1,5 +1,5 @@
 <!-- Footer -->
-    <footer class="d-flex">
+    <footer class="d-flex position-fixed text-center bg-white bottom-0">
       <div class="mx-auto">&copy; <span class="currentYear"></span> Silicon DineHub All Rights Reserved.</div>
     </footer>
 
