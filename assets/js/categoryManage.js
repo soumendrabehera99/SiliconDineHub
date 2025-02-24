@@ -52,7 +52,6 @@ function fetchCategories(page = 1, searchQuery = "") {
       });
 
       $("#categoryTableBody").html(tbody);
-      console.log(response.totalPages, response.currentPage);
       updatePagination(response.totalPages, response.currentPage);
     },
     error: function (xhr, status, error) {
@@ -111,9 +110,7 @@ $(document).ready(function () {
   });
 
   $("#allCategoryBtn").click(function () {
-    if ($("#searchCategoryInput").val().trim() !== "") {
-      location.reload();
-    }
+    location.reload();
   });
   $("#addCategory").submit(function (e) {
     e.preventDefault();

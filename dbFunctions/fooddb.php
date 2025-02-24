@@ -166,4 +166,19 @@ function updateFoodStatus($foodId,$isAvailable){
             return $e->getMessage();
         }
 }
+function upadateFoodImage($foodId,$imageName){
+    try{
+        $conn = dbConnection();
+        $stmt = $conn->prepare("UPDATE food set image = ? WHERE foodID = ?");
+        $stmt->bind_param("si",$imageName,$foodId);
+        $stmt->execute();
+        if($conn-> affected_rows > 0){
+            return "success";
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
 ?>

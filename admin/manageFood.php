@@ -94,5 +94,28 @@ include_once "adminNavbar.php";
         </div>
     </div>
 </div>
+<!-- Update Image Modal -->
+<div class="modal fade" id="updateFoodImageModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Food Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" id="updateFoodImageForm">
+                <div class="modal-body">
+                    <input type="hidden" id="updateFoodImageIdInput" name="FoodId">
+                    <input type="hidden" id="previousFoodImageName" name="previousFoodImageName">
+                    <img src="../assets/images/hero-bg.jpg" alt="" style="width:200px; height:200px" id="previousImage">
+                    <input type="file" id="updatedImage">
+                    <!-- <p>Are you sure you want to update Status of <strong id="updateFoodImageName"></strong>?</p> -->
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                    <input type="submit" value="Update" class="btn btn-submit btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php include_once "adminFooter.php";?>
 <script src="../assets/js/foodManage.js"></script>

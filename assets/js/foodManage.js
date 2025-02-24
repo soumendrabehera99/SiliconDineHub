@@ -37,7 +37,13 @@ function fetchFoods(page = 1, searchQuery = "") {
                     <td>${counter}</td>
                     <td>
                       <div class="position-relative d-flex align-items-center justify-content-center fm-imageDiv">
-                        <a class="position-absolute d-none btn-outline-warning btn btn-sm fm-uploadBtn">update</a>
+                        <a class="position-absolute d-none btn-outline-warning btn btn-sm fm-uploadBtn"
+                        data-bs-toggle="modal" data-bs-target="#updateFoodImageModal"
+                        food-id="${res.foodID}"
+                        food-image="${res.image}"
+                        >
+                        update
+                        </a>
                         <img src="http://localhost:8888/SiliconDineHub/uploads/${
                           res.image
                         }" alt="NA" class="fm-image">
@@ -139,9 +145,7 @@ $(document).ready(function () {
     fetchFoods(1, $("#searchFoodInput").val().trim());
   });
   $("#allFoodBtn").click(function () {
-    if ($("#searchFoodInput").val().trim() !== "") {
-      location.reload();
-    }
+    location.reload();
   });
 
   $("#deleteFoodForm").submit(function (e) {
@@ -196,6 +200,62 @@ $(document).ready(function () {
       },
     });
   });
+  //Update Food Image Modal Submit
+  $("#updateFoodImageForm").submit(function (e) {
+    e.preventDefault();
+    let foodId = $("#updateFoodImageIdInput").val();
+    let previosImageName = $("#previousFoodImageName").val();
+    let newFoodImage = $("#updatedImage")[0].files[0];
+    let searchTerm = $("#searchFoodInput").val().trim();
+
+    let allowedExtension = ["jpg", "jpeg", "png"];
+    let maxSize = 300 * 1024;
+    let isValid = true;
+
+    if (!newFoodImage) {
+      toastr.error("Please Upload an Image");
+      isValid = false;
+      return;
+    } else {
+      let fileSize = newFoodImage.size;
+      let fileExtension = newFoodImage.name.split(".").pop().toLowerCase();
+      if (!allowedExtension.includes(fileExtension)) {
+        toastr.error("Invalid File Type! Only jpg,jpeg,png  are allowed");
+        isValid = false;
+        return;
+      }
+      if (fileSize > maxSize) {
+        toastr.error("File size exceeds 200KB limit");
+        isValid = false;
+        return;
+      }
+    }
+    if (isValid) {
+      var formData = new FormData();
+      formData.append("id", foodId);
+      formData.append("previosImageName", previosImageName);
+      formData.append("newFoodImage", newFoodImage);
+      formData.append("operation", "foodImageUpdate");
+      $.ajax({
+        url: "../dbFunctions/foodAjax.php",
+        method: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          if (response === "success") {
+            toastr.success("Image Updated Successfully");
+            $("#updateFoodImageModal").modal("toggle");
+            fetchFoods(1, searchTerm);
+          } else if (response === "error") {
+            toastr.warning("Already Updated");
+          } else {
+            console.log(response);
+          }
+        },
+      });
+    }
+  });
 });
 //Delete Food Button
 document.addEventListener("DOMContentLoaded", function () {
@@ -222,6 +282,19 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#updateFoodStatusInput").value = foodStatus;
       document.querySelector("#updateFoodStaus").innerText =
         foodStatus == 1 ? "Available" : "Not Available";
+    }
+  });
+  // Update Food Image
+  document.addEventListener("click", function (event) {
+    if (event.target.closest(".fm-uploadBtn")) {
+      let btn = event.target.closest(".fm-uploadBtn");
+      let foodId = btn.getAttribute("food-id");
+      let foodImageName = btn.getAttribute("food-image");
+      document.querySelector("#updateFoodImageIdInput").value = foodId;
+      document.querySelector("#previousFoodImageName").value = foodImageName;
+      document.querySelector(
+        "#previousImage"
+      ).src = `http://localhost:8888/SiliconDineHub/uploads/${foodImageName}`;
     }
   });
 });

@@ -61,6 +61,38 @@ if($_POST['operation']){
         $status = $_POST['status'];
         $response = updateFoodStatus($id,$status);
         echo $response;
+    }else if($_POST['operation']== "foodImageUpdate" && isset($_POST['id'])){
+
+        $id = $_POST['id'];
+        $previosImageName = $_POST['previosImageName'];
+        
+        $uploadDir = __DIR__ . "/../uploads/";
+
+        $filePath = $uploadDir . $previosImageName;
+        
+        if (file_exists($filePath)) {
+            unlink($filePath);
+            if(!file_exists($filePath)){
+                $uploadedFile = "";
+        
+                if (!empty($_FILES['newFoodImage']['name'])) {  
+                    $fileName = basename($_FILES['newFoodImage']['name']);
+                    $fileTempPath = $_FILES['newFoodImage']['tmp_name'];
+                    $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+                    $uniqueName = uniqid("food_", true) . '.' . $fileExt;
+                    $uploadPath = $uploadDir . $uniqueName;
+                    if (move_uploaded_file($fileTempPath, $uploadPath)) {
+                        $uploadedFile = $uniqueName;
+                    }
+                }
+                if (!empty($uploadedFile)) {
+                    $response = upadateFoodImage($id, $uploadedFile);
+                    echo $response;
+                } else {
+                    echo $response;
+                }
+            }
+        }
     }
 }
 ?>
