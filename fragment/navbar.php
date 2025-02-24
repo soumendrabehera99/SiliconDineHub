@@ -11,10 +11,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/index.css">
     <!-- Fontawesome -->
-    <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
+    <!-- <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
     <link rel="stylesheet" href="./assets/fontawesome/css/regular.css">
     <link rel="stylesheet" href="./assets/fontawesome/css/solid.css">
-    <link rel="stylesheet" href="./assets/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="./assets/fontawesome/css/brands.css"> -->
     <!-- Fevicon -->
     <link rel="icon" href="./assets/images/fevicon_logo.png" type="image/x-icon">
 </head>
