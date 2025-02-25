@@ -106,8 +106,14 @@ include_once "adminNavbar.php";
                 <div class="modal-body">
                     <input type="hidden" id="updateFoodImageIdInput" name="FoodId">
                     <input type="hidden" id="previousFoodImageName" name="previousFoodImageName">
-                    <img src="../assets/images/hero-bg.jpg" alt="" style="width:200px; height:200px" id="previousImage">
-                    <input type="file" id="updatedImage">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="../assets/images/hero-bg.jpg" alt="" style="width:200px; height:200px" id="previousImage">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center">
+                            <input type="file" id="updatedImage" accept="image/jpeg, image/png, image/jpg">
+                        </div>
+                    </div>
                     <!-- <p>Are you sure you want to update Status of <strong id="updateFoodImageName"></strong>?</p> -->
                 </div>
                 <div class="modal-footer d-flex justify-content-end">

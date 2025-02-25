@@ -112,3 +112,17 @@ $(document).ready(function () {
     }
   });
 });
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("foodImage").addEventListener("change", function (e) {
+    let file = document.getElementById("foodImage").files[0];
+    let reader = new FileReader(file);
+
+    if (file) {
+      document.getElementById("img-preview-div").createElement("img");
+      document.getElementById("img-preview").src =
+        window.URL.createObjectURL(file);
+    } else {
+      document.getElementById("img-preview").src = "";
+    }
+  });
+});
