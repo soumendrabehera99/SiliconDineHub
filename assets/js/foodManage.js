@@ -297,4 +297,20 @@ document.addEventListener("DOMContentLoaded", function () {
       ).src = `../uploads/${foodImageName}`;
     }
   });
+
+  document
+    .getElementById("updatedImage")
+    .addEventListener("change", function (e) {
+      let file = document.getElementById("updatedImage").files[0];
+      let previewImg = document.getElementById("previousImage");
+      let reader = new FileReader();
+
+      if (file) {
+        reader.onload = function () {
+          previewImg.src = "";
+          previewImg.src = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
 });

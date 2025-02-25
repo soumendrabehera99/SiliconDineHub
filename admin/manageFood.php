@@ -107,8 +107,8 @@ include_once "adminNavbar.php";
                     <input type="hidden" id="updateFoodImageIdInput" name="FoodId">
                     <input type="hidden" id="previousFoodImageName" name="previousFoodImageName">
                     <div class="row">
-                        <div class="col-md-6">
-                            <img src="../assets/images/hero-bg.jpg" alt="" style="width:200px; height:200px" id="previousImage">
+                        <div class="col-md-6" id="updateImageDiv">
+                            <img src="../assets/images/hero-bg.jpg" alt="" style="width:200px; height:200px" id="previousImage" class="object-fit-cover">
                         </div>
                         <div class="col-md-6 d-flex align-items-center">
                             <input type="file" id="updatedImage" accept="image/jpeg, image/png, image/jpg">

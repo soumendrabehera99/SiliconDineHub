@@ -115,14 +115,19 @@ $(document).ready(function () {
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("foodImage").addEventListener("change", function (e) {
     let file = document.getElementById("foodImage").files[0];
-    let reader = new FileReader(file);
+    let previewDiv = document.getElementById("img-preview-div");
+    previewDiv.innerHTML = "";
+    let reader = new FileReader();
 
     if (file) {
-      document.getElementById("img-preview-div").createElement("img");
-      document.getElementById("img-preview").src =
-        window.URL.createObjectURL(file);
-    } else {
-      document.getElementById("img-preview").src = "";
+      reader.onload = function () {
+        let img = document.createElement("img");
+        img.src = reader.result;
+        img.style.width = "100%";
+        img.style.objectFit = "cover";
+        previewDiv.appendChild(img);
+      };
+      reader.readAsDataURL(file);
     }
   });
 });

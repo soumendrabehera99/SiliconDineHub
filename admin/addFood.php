@@ -38,12 +38,12 @@
                             <label for="foodImage" class="form-label">Image</label>
                             <input type="file" name="image" class="form-control" accept="image/jpg, image/jpeg,  image/png" id="foodImage">
                         </div>
-                        <div class="d-flex justify-content-center align-items-center" id="img-preview-div">
-                            <img src="" alt="" class="object-fit-cover" style="width: 280px; height:280px;" id="img-preview">
+                        <div class="d-flex justify-content-center align-items-center border mx-auto" id="img-preview-div" style="width: 280px; height:280px;">
+                            <i class="fa-solid fa-images fs-1"></i>
                         </div>
                     </div>
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-3"> 
                     <div class="text-end">
                         <input type="submit" value="ADD" class="btn px-4 btn-submit btn-success">
                     </div>
