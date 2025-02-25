@@ -110,7 +110,7 @@ include_once "adminNavbar.php";
                         <div class="col-md-6" id="updateImageDiv">
                             <img src="../assets/images/hero-bg.jpg" alt="" style="width:200px; height:200px" id="previousImage" class="object-fit-cover">
                         </div>
-                        <div class="col-md-6 d-flex align-items-center">
+                        <div class="col-md-6 d-flex align-items-center overflow-hidden">
                             <input type="file" id="updatedImage" accept="image/jpeg, image/png, image/jpg">
                         </div>
                     </div>

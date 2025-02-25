@@ -291,6 +291,7 @@ document.addEventListener("DOMContentLoaded", function () {
       let foodId = btn.getAttribute("food-id");
       let foodImageName = btn.getAttribute("food-image");
       document.querySelector("#updateFoodImageIdInput").value = foodId;
+      document.querySelector("#updatedImage").value = "";
       document.querySelector("#previousFoodImageName").value = foodImageName;
       document.querySelector(
         "#previousImage"
