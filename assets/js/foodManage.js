@@ -44,7 +44,7 @@ function fetchFoods(page = 1, searchQuery = "") {
                         >
                         update
                         </a>
-                        <img src="http://localhost:8888/SiliconDineHub/uploads/${
+                        <img src="../uploads/${
                           res.image
                         }" alt="NA" class="fm-image">
                       </div>
@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#previousFoodImageName").value = foodImageName;
       document.querySelector(
         "#previousImage"
-      ).src = `http://localhost:8888/SiliconDineHub/uploads/${foodImageName}`;
+      ).src = `../uploads/${foodImageName}`;
     }
   });
 });
