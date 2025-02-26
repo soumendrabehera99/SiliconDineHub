@@ -16,12 +16,6 @@ include_once "./check.php";
   <!-- Fontawesome -->
   <link rel="stylesheet" href="./../assets/fontawesome/all.css">
   
-  <!-- Fontawesome -->
-  <!-- <link rel="stylesheet" href="./../assets/fontawesome/css/fontawesome.css">
-  <link rel="stylesheet" href="./../assets/fontawesome/css/regular.css">
-  <link rel="stylesheet" href="./../assets/fontawesome/css/solid.css">
-  <link rel="stylesheet" href="./../assets/fontawesome/css/brands.css"> -->
-
   <!-- fevicon -->
   <link rel="icon" href="./../assets/images/fevicon_logo.png" type="image/x-icon">
 
@@ -32,14 +26,34 @@ include_once "./check.php";
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="./../assets/fontawesome/all.css" />
+  <style>
+    .sidebar {
+      width: 250px;
+      transition: all 0.3s;
+    }
+    
+    .sidebar.collapsed {
+      width: 0;
+      overflow: hidden;
+    }
+    .content {
+      margin-left: 250px;
+      transition: margin-left 0.3s;
+    }
+    .content.collapsed {
+      margin-left: 0;
+    }
+  </style>
 </head>
 
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand ps-5" href="./index.php">
+      <button class="btn btn-dark" id="sidebarToggler">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <a class="navbar-brand ps-3" href="./index.php">
         <img src="./../assets/images/logo.png" alt="logo" />
       </a>
       
@@ -62,7 +76,6 @@ include_once "./check.php";
       </div>
     </div>
   </nav>
-
 
   <aside class="sidebar bg-dark text-white d-flex flex-column justify-content-between position-fixed top-0 start-0 min-vh-100">
     <div>
@@ -135,13 +148,13 @@ include_once "./check.php";
 
         <div>
             <a href="#dashboard" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                <div><i class="fa-solid fa-gear me-3"></i> Setting</div>
+                <div><i class="fa-solid fa-gear fa-spin me-3"></i> Setting</div>
             </a>
         </div>
 
         <div>
             <a href="./changeAdminPassword.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                <div><i class="fa-solid fa-gear me-3"></i> Change Password</div>
+                <div><i class="fas fa-lock me-3"></i> Change Password</div>
             </a>
         </div>
     </div>
@@ -155,9 +168,9 @@ include_once "./check.php";
     </div>
 </aside>
 
-<!-- jQuery -->
-<script src="./../assets/jquery/jquery-3.7.1.min.js"></script>
-<script>
+  <!-- jQuery -->
+  <script src="./../assets/jquery/jquery-3.7.1.min.js"></script>
+  <script>
     $(document).ready(function () {
         $(".dropdown-toggle").click(function () {
             // Close all dropdowns except the clicked one
@@ -168,5 +181,10 @@ include_once "./check.php";
             $(this).next().collapse('toggle');
             $(this).find(".toggle-icon").toggleClass("rotated");
         });
+
+        $("#sidebarToggler").click(function () {
+            $(".sidebar").toggleClass("collapsed");
+            $(".content").toggleClass("collapsed");
+        });
     });
-</script>
+  </script>

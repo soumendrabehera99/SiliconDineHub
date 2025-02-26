@@ -1,54 +1,84 @@
 <?php require_once "../dbFunctions/dashboarddb.php";?>
 <!-- Main Content -->
-<section class="content w-100">
-    <div class="row mt-3">
-        <div class="col-12 col-sm-6 col-md-3">
-            <div class="card l-bg-cherry position-relative">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large text-center position-absolute mt-3 me-2">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </div>
-                    <div class="text-right position-absolute mt-5" style="margin-left: 10rem;">
-                        <p>Dine In- <span><?= totalDineInOrder()?></span></p>
-                        <p>Parcel- <span><?= totalParcelOrder()?></span></p>
-                    </div>
-                    <h5 class="card-title mb-0">Orders</h5><br><br>
-                    <h2><?= totalOrder() ?></h2>
-                </div>
+<section class="content w-100 overflow-x-hidden">
+    <div class="row mt-0 g-3">
+        <div class="col-md-3 col-sm-6">
+          <div
+            class="p-4 rounded-1 text-white position-relative"
+            style="background: linear-gradient(to right, #4a0d37, #ff0099)"
+          >
+            <div class="row align-items-center">
+              <div class="col-6">
+                <h3 class="mb-2">Orders</h3>
+                <div class="fs-1 fw-bold mt-3">3</div>
+              </div>
+              <div class="col-6 text-end">
+                <p class="mb-1">
+                  Dine In - <span><?= totalDineInOrder()?></span>
+                </p>
+                <p class="mb-0">
+                  Parcel -
+                  <?= totalParcelOrder()?>
+                </p>
+              </div>
             </div>
+            <i
+              class="fas fa-shopping-cart position-absolute bottom-0 end-0 p-3 opacity-25 display-1 fs-sm-1"
+            ></i>
+          </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
-            <div class="card l-bg-blue-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large text-center position-absolute mt-3 me-2">
-                        <i class="fa-solid fa-indian-rupee-sign"></i>
-                    </div>
-                    <h5 class="card-title mb-0">Revenue Today</h5><br><br>
-                    <h2>&#8377; <?php echo revenueToday()?></h2>
+        <div class="col-md-3 col-sm-6">
+          <div
+            class="p-4 rounded text-white position-relative"
+            style="background: linear-gradient(to right, #0a504a, #38ef7d)"
+          >
+            <div class="row align-items-center">
+              <div class="col-12">
+                <h3 class="mb-2">Revenue Today</h3>
+                <div class="fs-1 fw-bold mt-3">
+                  &#8377;
+                  <?php echo revenueToday()?:0 ?>
                 </div>
+              </div>
             </div>
+            <i
+              class="fa-solid fa-indian-rupee-sign position-absolute bottom-0 end-0 p-3 opacity-25 display-1 fs-sm-1"
+            ></i>
+          </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
-            <div class="card l-bg-orange-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large text-center position-absolute mt-3 me-2">
-                    <i class="fa-solid fa-users"></i>
-                    </div>
-                    <h5 class="card-title mb-0">Active Customers</h5><br><br>
-                    <h2><?php echo totalActiveCustomer()?></h2>
+        <div class="col-md-3 col-sm-6">
+          <div
+            class="p-4 rounded text-white position-relative"
+            style="background: linear-gradient(to right, #373b44, #4286f4)"
+          >
+            <div class="row align-items-center">
+              <div class="col-12">
+                <h3 class="mb-2">Active Customer</h3>
+                <div class="fs-1 fw-bold mt-3">
+                  <?php echo totalActiveCustomer()?>
                 </div>
+              </div>
             </div>
+            <i
+              class="fa-solid fa-users position-absolute bottom-0 end-0 p-3 opacity-25 display-1 fs-sm-1"
+            ></i>
+          </div>
         </div>
-        <div class="col-12 col-sm-6 col-md-3">
-            <div class="card l-bg-green-dark">
-                <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large text-center position-absolute mt-3 me-2">
-                        <i class="fa-solid fa-box"></i>
-                    </div>
-                    <h5 class="card-title mb-0">Unknown</h5><br><br>
-                    <h2>00</h2>
-                </div>
+        <div class="col-md-3 col-sm-6">
+          <div
+            class="p-4 rounded text-white position-relative"
+            style="background: linear-gradient(to right, #a86008, #ffba56)"
+          >
+            <div class="row align-items-center">
+              <div class="col-6">
+                <h3 class="mb-2">Unknown</h3>
+                <div class="fs-1 fw-bold mt-3">0</div>
+              </div>
             </div>
+            <i
+              class="fa-solid fa-box position-absolute bottom-0 end-0 p-3 opacity-25 display-1 fs-sm-1"
+            ></i>
+          </div>
         </div>
     </div>
 </section>

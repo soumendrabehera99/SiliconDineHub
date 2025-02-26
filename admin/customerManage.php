@@ -4,8 +4,8 @@ require_once "../dbFunctions/studentdb.php";
 ?>
 <!-- Main Content -->
 <section class="content w-100">
-    <div class="row mt-2 ms-1 me-1">
-        <h4 class="mb-3">Manage Customer</h4>
+    <div class="row mt-3 ms-1 me-1">
+        <h2 class="mb-4">Manage Customer</h2>
 
         <div class="col-md-12 border border-2 pt-1 shadow-sm rounded">
             <div class="row text-end">

@@ -4,7 +4,7 @@ require_once "../dbFunctions/counterdb.php";
 ?>
 <!-- Main Content -->
 <section class="content w-100">
-    <div class="row mt-2 ms-1 me-1">
+    <div class="row mt-3 ms-1 me-1">
         <h2 class="mb-4">Add Counter</h2>
 
         <div class="col-md-12 border border-2 pt-1 shadow-sm rounded">
@@ -36,7 +36,7 @@ require_once "../dbFunctions/counterdb.php";
                             <th>ID</th>
                             <th>User Name</th>
                             <th>Password</th>
-                            <th>Status</th>
+                            <!-- <th>Status</th> -->
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -49,13 +49,13 @@ require_once "../dbFunctions/counterdb.php";
                                     <td><?= $counter['counterID']?></td>
                                     <td><?= $counter['userName']?></td>
                                     <td><?= $counter['password']?></td>
-                                    <td>
+                                    <!-- <td>
                                         <span 
                                             class="d-inline-block rounded-circle me-2" 
                                             style="height: 10px; width: 10px; background-color: <?= $counter['status'] ? 'rgb(11, 218, 11)' : 'rgb(243, 64, 64)' ?>;">
                                         </span>
                                         <?= $counter['status'] ? 'Active' : 'Block' ?>
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <a href="CounterEdit.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i></a>
                                         <a href="counterBlock.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-ban"></i></a>
