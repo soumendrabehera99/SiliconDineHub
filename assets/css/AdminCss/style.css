@@ -42,6 +42,13 @@ body {
   padding-left: 40px; /* Indented submenu items */
 }
 
+/* sidebar dropdown toggle */
+.toggle-icon {
+  transition: transform 0.3s ease-in-out;
+}
+.rotated {
+  transform: rotate(90deg);
+}
 
 /* Sidebar footer styles */
 .sidebar-footer {
@@ -51,12 +58,6 @@ body {
 /* Hiding the default dropdown caret */
 .dropdown-toggle::after {
   display: none;
-}
-.profile-logo {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
 }
 
 /* Main footer styles */

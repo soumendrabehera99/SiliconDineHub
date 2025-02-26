@@ -159,14 +159,14 @@ include_once "./check.php";
 <script src="./../assets/jquery/jquery-3.7.1.min.js"></script>
 <script>
     $(document).ready(function () {
-        $(document).ready(function () {
-          $(".dropdown-toggle").click(function () {
-              $(".collapse").collapse('hide'); // Close all sections
-              $(".toggle-icon").removeClass("fa-chevron-down").addClass("fa-chevron-right"); // Reset all arrows
+        $(".dropdown-toggle").click(function () {
+            // Close all dropdowns except the clicked one
+            $(".collapse").not($(this).next()).collapse('hide');
+            $(".toggle-icon").not($(this).find(".toggle-icon")).removeClass("rotated");
 
-              $(this).next().collapse('toggle'); // Toggle the clicked section
-              $(this).find(".toggle-icon").toggleClass("fa-chevron-right fa-chevron-down"); // Toggle arrow
-          });
+            // Toggle the clicked dropdown
+            $(this).next().collapse('toggle');
+            $(this).find(".toggle-icon").toggleClass("rotated");
         });
-      });
+    });
 </script>
