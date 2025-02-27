@@ -93,6 +93,18 @@ if($_POST['operation']){
                 }
             }
         }
+    }else if($_POST['operation']){
+        if($_POST['operation'] == "foodUpdate" && isset($_POST["foodName"]) && isset($_POST["categoryID"]) && isset($_POST["foodDescription"]) && isset($_POST["foodPrice"]) && isset($_POST["foodStatus"])){
+            $foodId = $_POST["foodId"];
+            $foodName = $_POST["foodName"];
+            $categoryID = $_POST["categoryID"];
+            $foodDescription = $_POST["foodDescription"];
+            $foodPrice = $_POST["foodPrice"];
+            $foodStatus = $_POST["foodStatus"];
+    
+            $response = updateFood($foodId,$categoryID, $foodName, $foodDescription, $foodPrice, $foodStatus);
+            echo json_encode(["status" => $response]);
+        }
     }
 }
 ?>
