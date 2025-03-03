@@ -32,21 +32,22 @@ $(document).ready(function () {
       method: "POST",
       data: { sic: sic, email: email },
       success: function (response) {
-        if (response === "present") {
-          toastr.error(response, "Student already exists!");
-        } else if (response === "success") {
-          toastr.success(response, "Student added successfully");
+        // console.log(response); // Debugging line to check the actual response
+        if (response.trim() === "present") {
+          toastr.error("Student already exists!");
+        } else if (response.trim() === "success") {
+          toastr.success("Student added successfully");
           $("#addStudent").trigger("reset");
           setTimeout(() => location.reload(), 500);
-        } else if (response === "error") {
-          toastr.error(response, "There was an error adding the student");
+        } else if (response.trim() === "error") {
+          toastr.error("There was an error adding the student");
         } else {
-          toastr.error("Unknown response", "Error");
+          toastr.error("Unknown response: " + response, "Error");
         }
       },
       error: function () {
         toastr.error("An error occurred while submitting");
       },
-    });
+    });    
   });
 });

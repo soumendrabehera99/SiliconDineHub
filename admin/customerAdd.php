@@ -17,7 +17,6 @@ include_once "adminNavbar.php";
                     <input type="email" class="form-control" id="email" placeholder="Enter registered email">
                 </div>
                 <div class="text-end">
-                    <!-- <input type="submit" value="Add" class="btn btn-success" name="add-student"> -->
                     <button type="submit" value="Add" class="btn btn-success" name="add-student"><i class="fa-solid fa-plus"></i> Add</button>
                 </div>
             </form>
