@@ -123,8 +123,8 @@ include_once "./check.php";
                 <i class="fa-solid fa-chevron-right toggle-icon"></i>
             </a>
             <div class="collapse ms-5" id="counter">
-                <a href="./addCounter.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter</a>
-                <a href="#" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter Category</a>
+                <a href="./counterAdd.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter</a>
+                <a href="./counterManage.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Manage Counter</a>
             </div>
         </div>
 
