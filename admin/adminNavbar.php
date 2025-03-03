@@ -172,19 +172,35 @@ include_once "./check.php";
   <script src="./../assets/jquery/jquery-3.7.1.min.js"></script>
   <script>
     $(document).ready(function () {
-        $(".dropdown-toggle").click(function () {
-            // Close all dropdowns except the clicked one
-            $(".collapse").not($(this).next()).collapse('hide');
-            $(".toggle-icon").not($(this).find(".toggle-icon")).removeClass("rotated");
+      $(".dropdown-toggle").click(function () {
+        // Close all dropdowns except the clicked one
+        $(".collapse").not($(this).next()).collapse('hide');
+        $(".toggle-icon").not($(this).find(".toggle-icon")).removeClass("rotated");
 
-            // Toggle the clicked dropdown
-            $(this).next().collapse('toggle');
-            $(this).find(".toggle-icon").toggleClass("rotated");
-        });
+        // Toggle the clicked dropdown
+        $(this).next().collapse('toggle');
+        $(this).find(".toggle-icon").toggleClass("rotated");
+      });
 
-        $("#sidebarToggler").click(function () {
-            $(".sidebar").toggleClass("collapsed");
-            $(".content").toggleClass("collapsed");
-        });
+      // Toggle sidebar
+      $("#sidebarToggler").click(function () {
+        $(".sidebar").toggleClass("collapsed");
+        $(".content").toggleClass("collapsed");
+      });
+
+      // Maintain the open state of the dropdowns based on the page
+      var currentPath = window.location.pathname;
+      if (currentPath.includes('customerAdd.php') || currentPath.includes('customerManage.php')) {
+        $('#customer').collapse('show');  // Keep the customer dropdown open
+      }
+      if (currentPath.includes('addFood.php') || currentPath.includes('manageFood.php')) {
+        $('#food').collapse('show');  // Keep the food dropdown open
+      }
+      if (currentPath.includes('counterAdd.php') || currentPath.includes('counterManage.php')) {
+        $('#counter').collapse('show');  // Keep the counter dropdown open
+      }
+      if (currentPath.includes('manageCategory.php')) {
+        $('#foodCategory').collapse('show');  // Keep the food category dropdown open
+      }
     });
-  </script>
+</script>
