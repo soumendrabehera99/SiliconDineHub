@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2025 at 06:10 AM
+-- Generation Time: Mar 03, 2025 at 03:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -203,7 +203,27 @@ INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
 (1, '23mmci37', 'mca.23mmci37@silicon.ac.in'),
 (2, '23mmci48', 'mca.23mmci48@silicon.ac.in'),
 (3, '23mmci76', 'mca.23mmci76@silicon.ac.in'),
-(4, '23mmci87', 'mca.23mmci87@silicon.ac.in');
+(4, '23mmci87', 'mca.23mmci87@silicon.ac.in'),
+(5, '23mmci01', 'mca.23mmci01@silicon.ac.in'),
+(6, '23mmci02', 'mca.23mmci02@silicon.ac.in'),
+(7, '23mmci03', 'mca.23mmci03@silicon.ac.in'),
+(8, '23mmci04', 'mca.23mmci04@silicon.ac.in'),
+(9, '23mmci05', 'mca.23mmci05@silicon.ac.in'),
+(10, '23mmci06', 'mca.23mmci06@silicon.ac.in'),
+(11, '23mmci07', 'mca.23mmci07@silicon.ac.in'),
+(12, '23mmci08', 'mca.23mmci08@silicon.ac.in'),
+(13, '23mmci09', 'mca.23mmci09@silicon.ac.in'),
+(14, '23mmci10', 'mca.23mmci10@silicon.ac.in'),
+(15, '23mmci11', 'mca.23mmci11@silicon.ac.in'),
+(16, '23mmci12', 'mca.23mmci12@silicon.ac.in'),
+(17, '23mmci13', 'mca.23mmci13@silicon.ac.in'),
+(18, '23mmci14', 'mca.23mmci14@silicon.ac.in'),
+(19, '23mmci15', 'mca.23mmci15@silicon.ac.in'),
+(20, '23mmci16', 'mca.23mmci16@silicon.ac.in'),
+(21, '23mmci17', 'mca.23mmci17@silicon.ac.in'),
+(22, '23mmci18', 'mca.23mmci18@silicon.ac.in'),
+(23, '23mmci19', 'mca.23mmci19@silicon.ac.in'),
+(24, '23mmci20', 'mca.23mmci20@silicon.ac.in');
 
 -- --------------------------------------------------------
 
@@ -229,7 +249,27 @@ INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `i
 (1, '23mmci37', 1, 'Anil', '2002-10-10', '1234', '1'),
 (2, '23mmci48', 2, 'Soumendra', '2000-08-20', '5678', '1'),
 (3, '23mmci76', 3, 'Priti', '2001-02-17', '1866', '0'),
-(4, '23mmci87', 4, 'Himansu', '2001-06-20', '1478', '1');
+(4, '23mmci87', 4, 'Himansu', '2001-06-20', '1478', '1'),
+(5, '23mmci01', 5, 'Raj', '2002-01-15', 'abcd', '1'),
+(6, '23mmci02', 6, 'Suman', '2000-11-12', '1234', '1'),
+(7, '23mmci03', 7, 'Ravi', '2003-05-30', 'qwert', '1'),
+(8, '23mmci04', 8, 'Rina', '2002-03-18', 'pass123', '1'),
+(9, '23mmci05', 9, 'Nikita', '2001-10-22', 'abcd123', '0'),
+(10, '23mmci06', 10, 'Kishore', '2001-07-08', 'hello123', '1'),
+(11, '23mmci07', 11, 'Arjun', '2002-12-25', 'mypass', '0'),
+(12, '23mmci08', 12, 'Priya', '2000-04-14', 'password', '1'),
+(13, '23mmci09', 13, 'Sanjay', '2003-09-10', '123password', '1'),
+(14, '23mmci10', 14, 'Meena', '2001-01-03', 'securepass', '0'),
+(15, '23mmci11', 15, 'Sunita', '2002-06-11', 'mypassword', '1'),
+(16, '23mmci12', 16, 'Abhinav', '2000-12-19', 'password123', '1'),
+(17, '23mmci13', 17, 'Kavita', '2003-04-05', 'admin123', '1'),
+(18, '23mmci14', 18, 'Dev', '2002-08-21', 'devpassword', '0'),
+(19, '23mmci15', 19, 'Shivani', '2001-03-28', 'shivanipass', '1'),
+(20, '23mmci16', 20, 'Vikas', '2002-02-16', 'vikas123', '1'),
+(21, '23mmci17', 21, 'Amit', '2001-11-10', 'amit123', '1'),
+(22, '23mmci18', 22, 'Sreeja', '2000-09-06', 'sreeja01', '1'),
+(23, '23mmci19', 23, 'Tanu', '2003-12-12', 'tanu123', '1'),
+(24, '23mmci20', 24, 'Manoj', '2002-04-07', 'manojpass', '0');
 
 --
 -- Indexes for dumped tables
@@ -340,13 +380,13 @@ ALTER TABLE `order_table`
 -- AUTO_INCREMENT for table `sic_email`
 --
 ALTER TABLE `sic_email`
-  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Constraints for dumped tables

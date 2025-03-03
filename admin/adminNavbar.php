@@ -93,6 +93,7 @@ include_once "./check.php";
             <div class="collapse ms-5" id="customer">
                 <a href="./customerAdd.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Customer</a>
                 <a href="./customerManage.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Manage Customer</a>
+                <a href="./customerValid.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Valid Customer</a>
             </div>
         </div>
 
@@ -190,7 +191,7 @@ include_once "./check.php";
 
       // Maintain the open state of the dropdowns based on the page
       var currentPath = window.location.pathname;
-      if (currentPath.includes('customerAdd.php') || currentPath.includes('customerManage.php')) {
+      if (currentPath.includes('customerAdd.php') || currentPath.includes('customerManage.php') || currentPath.includes('customerValid.php')) {
         $('#customer').collapse('show');  // Keep the customer dropdown open
       }
       if (currentPath.includes('addFood.php') || currentPath.includes('manageFood.php')) {

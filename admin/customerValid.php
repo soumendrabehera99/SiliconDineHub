@@ -5,10 +5,10 @@ require_once "../dbFunctions/studentdb.php";
 <!-- Main Content -->
 <section class="content w-100">
     <div class="row mt-3 ms-1 me-1">
-        <h2 class="mb-4">Manage Customer</h2>
+        <h2 class="mb-4">Valid Customers</h2>
 
         <div class="col-md-12 border border-2 pt-1 shadow-sm rounded">
-            <div class="row">
+            <div class="row text-end">
                 <div class="col-md-6 mb-3 mt-2 text-start">
                     <a class="btn btn-success text-center" href="./customerAdd.php"><i class="fa-solid fa-plus"></i> Add Records</a>
                 </div>
@@ -39,50 +39,39 @@ require_once "../dbFunctions/studentdb.php";
             </div>
 
             <div class="row ms-1">
-                Total No. records: <?php echo totalNoOfStudents();?>
+                Total No. records: <?php echo totalNoOfSicEmail();?>
             </div>
 
             <div class="d-flex justify-content-between mt-1">
-                <div style="max-height: 450px; overflow-y: auto; width: 100%;" class="mb-2">
+                <div style="max-height: 450px; overflow-y: auto; width: 100%;" class="mb-2"> 
                     <table class="table table-bordered table-responsive" id="myTable">
                         <thead class="table-light">
                             <tr>
                                 <th>Sl No</th>
                                 <th>SIC</th>
-                                <th>Name</th>
-                                <th>DOB</th>
-                                <th>Status</th>
+                                <th>Email</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
                             <?php
                                 $sl = 1;
-                                $result = getAllStudents();
+                                $result = getAllSicEmail();
                                 while($std = $result->fetch_assoc()){
                                     ?>
                                     <tr>
                                         <td><?= $sl++?></td>
                                         <td class="sic"><?= $std['sic']?></td>
-                                        <td class="name"><?= $std['name']?></td>
-                                        <td><?= date('d M Y', strtotime($std['dob'])) ?></td>
+                                        <td class="email"><?= $std['email']?></td>
                                         <td>
-                                            <span 
-                                                class="d-inline-block rounded-circle me-2" 
-                                                style="height: 10px; width: 10px; background-color: <?= $std['isActive'] ? 'rgb(11, 218, 11)' : 'rgb(243, 64, 64)' ?>;">
-                                            </span>
-                                            <?= $std['isActive'] ? 'Active' : 'Block' ?>
-                                        </td>
-                                        <td>
-                                            <a href="details.php?id=<?php echo $std['studentID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
-                                            <a href="delete.php?id=<?php echo $std['studentID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-ban"></i> Block</a>
+                                            <a href="details.php?id=<?php echo $std['seID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
+                                            <a href="delete.php?id=<?php echo $std['seID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a>
                                         </td>
                                     </tr>
                                     <?php 
                                 }
                             ?>
                         </tbody>
-
                     </table>
                 </div>
             </div>
@@ -91,21 +80,21 @@ require_once "../dbFunctions/studentdb.php";
 </section>
 
 <script>
-document.getElementById("searchInput").addEventListener("input", function() {
-    var searchQuery = this.value.toLowerCase(); 
-    var tableRows = document.querySelectorAll("#myTable tbody tr"); // Get all table rows
+    document.getElementById("searchInput").addEventListener("input", function () {
+        let searchQuery = this.value.toLowerCase(); 
+        let tableRows = document.querySelectorAll("#myTable tbody tr");
 
-    tableRows.forEach(function(row) {
-        var sic = row.querySelector(".sic").textContent.toLowerCase(); 
-        var name = row.querySelector(".name").textContent.toLowerCase();
-
-        if (sic.includes(searchQuery) || name.includes(searchQuery)) {
-            row.style.display = ""; // Show the row
-        } else {
-            row.style.display = "none"; // Hide the row
-        }
+        tableRows.forEach(row => {
+            let sic = row.querySelector(".sic").textContent.toLowerCase();
+            let email = row.querySelector(".email").textContent.toLowerCase();
+            if (sic.includes(searchQuery) || email.includes(searchQuery)) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+        });
     });
-});
 </script>
+
 
 <?php include_once "adminFooter.php"; ?>

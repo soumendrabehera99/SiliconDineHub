@@ -36,7 +36,7 @@ function addStudent($sic, $email) {
         }
     } catch (Exception $e) {
         error_log($e->getMessage());
-        return "error"; // Return detailed error message
+        return "error"; 
     } finally {
         if ($stmt !== null) {
             $stmt->close();
@@ -69,6 +69,84 @@ function getAllStudents() {
     } finally{
         $stmt->close();
         $conn->close();
+    }
+}
+
+function getAllSicEmail() {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT * FROM sic_email");
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if($res->num_rows>0){
+            return $res;
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "error: " . $e->getMessage();
+    } finally{
+        $stmt->close();
+        $conn->close();
+    }
+}
+
+function totalNoOfSicEmail() {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM sic_email");
+        $stmt->execute();
+        $res = $stmt->get_result();
+        
+        if ($res->num_rows > 0) {
+            $row = $res->fetch_assoc(); 
+            return $row['total']; 
+        } else {
+            return "0"; 
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "error: " . $e->getMessage();
+    } finally {
+        if ($stmt !== null) {
+            $stmt->close();
+        }
+        if ($conn !== null) {
+            $conn->close();
+        }
+    }
+}
+
+function totalNoOfStudents() {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM student");
+        $stmt->execute();
+        $res = $stmt->get_result();
+        
+        if ($res->num_rows > 0) {
+            $row = $res->fetch_assoc(); 
+            return $row['total']; 
+        } else {
+            return "0"; 
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "error: " . $e->getMessage();
+    } finally {
+        if ($stmt !== null) {
+            $stmt->close();
+        }
+        if ($conn !== null) {
+            $conn->close();
+        }
     }
 }
 ?>
