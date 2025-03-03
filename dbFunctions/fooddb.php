@@ -126,7 +126,7 @@ function getFoodById($id) {
 function updateFood($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
     try{
             $conn = dbConnection();
-            $stmt = $conn->prepare("SELECT * FROM food WHERE foodID = ?, foodCategoryID = ?, name = ?, description = ?, price = ?, isAvailable = ?");
+            $stmt = $conn->prepare("SELECT * FROM food WHERE foodID = ? AND foodCategoryID = ? AND name = ? AND description = ? AND price = ? AND isAvailable = ?");
             if (!$stmt) {
                 die(json_encode(["error" => "SQL Prepare Failed: " . $conn->error]));
             }

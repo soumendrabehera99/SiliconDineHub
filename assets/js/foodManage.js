@@ -75,7 +75,7 @@ function fetchFoods(page = 1, searchQuery = "") {
                         <a href="./editFood.php?foodID=${
                           res.foodID
                         }" class="btn btn-success btn-sm editFoodBtn">
-                            <i class="fa-solid fa-edit"></i> Edit
+                            <i class="fa-solid fa-edit"></i> View
                         </a>
                         <a class="btn btn-danger btn-sm deleteFoodBtn" data-bs-toggle="modal" data-bs-target="#deleteFoodModal" food-id="${
                           res.foodID
