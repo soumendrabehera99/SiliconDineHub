@@ -9,8 +9,6 @@
     <script src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- Jquery -->
     <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
-    <!-- addCategory js -->
-    <script src="../assets/js/studentAdd.js"></script>
     <!-- Toastr -->
     <script src="../assets/toastr/toastr.min.js"></script>
     <script>

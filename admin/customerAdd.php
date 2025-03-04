@@ -22,18 +22,32 @@ include_once "adminNavbar.php";
             </form>
 
             <div class="text-center">OR</div>
-            <form action="" method="post">
                 <div class="mb-3">
                     <label for="fileUpload" class="form-label">Upload Excel File(Ex. xls, xlsx etc.)</label>
-                    <input class="form-control" type="file" id="fileUpload" placeholder="Choose a file Or drag it here">
+                    <input class="form-control" type="file" id="fileUpload" placeholder="Choose a file Or drag it here" accept=".xlsx, .xls">
                 </div>
                 <div class="text-end">
-                    <input type="submit" value="import" class="btn btn-success">
+                    <button type="submit"  class="btn btn-success" name="import-student" id="importStudentBtn"><i class="fa-solid fa-file-import"></i> Import</button>
                 </div>
-            </form>
         </div>
     </div>
-
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">Validation Errors</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-danger" id="modalBody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <?php include_once "adminFooter.php";?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="../assets/js/studentAdd.js"></script>

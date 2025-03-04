@@ -5,32 +5,26 @@ $(document).ready(function () {
     let sic = $("#sic").val();
     let email = $("#email").val();
 
-    if (sic === "") {
-      toastr.error("SIC should not be blank");
+    let sicError = validateSIC(sic);
+    if (sicError) {
+      toastr.error(sicError);
       return;
     }
-    if (sic === "" || sic.length !== 8) {
-      toastr.error("SIC must be exactly 8 characters long");
-      return;
-    }
-    if (email === "") {
-      toastr.error("email should not be blank");
-      return;
-    }
-    if (!email.includes(sic)) {
-      toastr.error("Enter registered email");
-      return;
-    }
-    let emailPattern = /^[a-zA-Z0-9._%+-]+@silicon\.ac\.in$/;
-    if (!emailPattern.test(email)) {
-      toastr.error("Enter a valid email address");
+
+    let emailError = validateEmail(email, sic);
+    if (emailError) {
+      toastr.error(emailError);
       return;
     }
 
     $.ajax({
-      url: "../dbFunctions/addStudent.php",
+      url: "../dbFunctions/studentAjax.php",
       method: "POST",
-      data: { sic: sic, email: email },
+      data: {
+        sic: sic.toUpperCase(),
+        email: email.toLowerCase(),
+        operation: "studentAdd",
+      },
       success: function (response) {
         // console.log(response); // Debugging line to check the actual response
         if (response.trim() === "present") {
@@ -48,6 +42,113 @@ $(document).ready(function () {
       error: function () {
         toastr.error("An error occurred while submitting");
       },
-    });    
+    });
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("importStudentBtn")
+    .addEventListener("click", function () {
+      let file = document.getElementById("fileUpload").files[0];
+
+      if (!file) {
+        toastr.error("File not found!!");
+        return;
+      }
+
+      let reader = new FileReader();
+      reader.readAsBinaryString(file);
+
+      reader.onload = (e) => {
+        const data = e.target.result;
+
+        const binarydata = XLSX.read(data, { type: "binary" });
+
+        const sheetName = binarydata.SheetNames[0];
+
+        const sheet = binarydata.Sheets[sheetName];
+
+        const jsonData = XLSX.utils.sheet_to_json(sheet);
+        // console.log(jsonData);
+
+        let errors = validateExcelData(jsonData);
+        if (errors.length > 0) {
+          showErrorsInModal(errors);
+        } else {
+          // uploadValidData(jsonData);
+        }
+      };
+    });
+});
+
+// function for validate excel data
+function validateExcelData(data) {
+  let errors = [];
+  let seenSic = new Set();
+  data.forEach((row) => {
+    let sic = row["SIC"];
+    let errorSic = validateSIC(sic);
+    let errorEmail = validateEmail(row["Email"], sic || " ");
+    let rowNumber = row.__rowNum__;
+    // console.log(rowNumber);
+    if (errorSic || errorEmail) {
+      errors.push(
+        `Row ${rowNumber + 1} : ${errorSic || ""}  ${errorEmail || ""}`
+      );
+    } else if (seenSic.has(sic)) {
+      errors.push(`Row ${rowNumber + 1}: Duplicate SIC number ${sic} found.`);
+    } else {
+      seenSic.add(sic);
+    }
+  });
+  return errors;
+}
+
+// function for Sic Validation
+function validateSIC(sic) {
+  if (!sic) return "SIC is Missing.";
+  if (sic.length !== 8) return "SIC must be exactly 8 characters long";
+
+  let sicPattern = /^[0-9]{2}[a-z]{4}[0-9]{2}$/i; // Example: 23mmci48
+  if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23mmci48)";
+
+  return null; // No errors
+}
+
+// function for Email Validation
+function validateEmail(email, sic) {
+  sic = sic.toLowerCase();
+  email = email.toLowerCase();
+  let emailPattern =
+    /^[a-zA-Z0-9._%+-]{2,}\.\d{2}[a-zA-Z]{4}\d{2}@silicon\.ac\.in$/;
+  if (!email) return "Email is Missing";
+  if (!email.includes(sic)) return "Email does not match SIC No";
+  if (!emailPattern.test(email)) return "Enter a valid email address";
+  return null;
+}
+
+function showErrorsInModal(errors) {
+  let formattedErrorArray = errors.map((err) => `<p>${err}</p>`);
+  document.getElementById("modalBody").innerHTML = formattedErrorArray.join("");
+  $("#errorModal").modal("show");
+}
+
+// function uploadValidData(data) {
+//   $.ajax({
+//     url: "../dbFunctions/studentAjax.php",
+//     method: "POST",
+//     contentType: "application/json",
+//     data: JSON.stringify(validData),
+//     success: function (response) {
+//       if (response.trim() === "success") {
+//         toastr.success("Students uploaded successfully!");
+//       } else {
+//         toastr.error("Database error: " + response);
+//       }
+//     },
+//     error: function () {
+//       toastr.error("An error occurred while uploading data.");
+//     },
+//   });
+// }
