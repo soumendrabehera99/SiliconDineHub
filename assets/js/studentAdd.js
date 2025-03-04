@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (errors.length > 0) {
           showErrorsInModal(errors);
         } else {
-          // uploadValidData(jsonData);
+          uploadValidData(jsonData);
         }
       };
     });
@@ -129,26 +129,41 @@ function validateEmail(email, sic) {
 }
 
 function showErrorsInModal(errors) {
+  $("#errorModalLabel").text("Validation Errors");
   let formattedErrorArray = errors.map((err) => `<p>${err}</p>`);
   document.getElementById("modalBody").innerHTML = formattedErrorArray.join("");
   $("#errorModal").modal("show");
 }
 
-// function uploadValidData(data) {
-//   $.ajax({
-//     url: "../dbFunctions/studentAjax.php",
-//     method: "POST",
-//     contentType: "application/json",
-//     data: JSON.stringify(validData),
-//     success: function (response) {
-//       if (response.trim() === "success") {
-//         toastr.success("Students uploaded successfully!");
-//       } else {
-//         toastr.error("Database error: " + response);
-//       }
-//     },
-//     error: function () {
-//       toastr.error("An error occurred while uploading data.");
-//     },
-//   });
-// }
+function uploadValidData(data) {
+  $.ajax({
+    url: "../dbFunctions/studentAjax.php",
+    method: "POST",
+    data: { jsonData: JSON.stringify(data), operation: "addAllData" },
+    success: function (response) {
+      let res = JSON.parse(response);
+
+      // console.log(res);
+
+      if (res.status === "error" && res.existingSICs) {
+        $("#errorModalLabel").text("Existing Sics");
+        let formatedExistingSics = res.existingSICs.map(
+          (err) => `<li>${err}</li>`
+        );
+        let ul = document.createElement("ul");
+        ul.innerHTML = formatedExistingSics.join("");
+        document.getElementById("modalBody").innerHTML = "";
+        document.getElementById("modalBody").appendChild(ul);
+        $("#errorModal").modal("show");
+        toastr.warning(res.message);
+      } else if (res.status === "success") {
+        toastr.success("All students added successfully!");
+      } else {
+        toastr.error(res.message);
+      }
+    },
+    error: function () {
+      toastr.error("An error occurred while uploading data.");
+    },
+  });
+}
