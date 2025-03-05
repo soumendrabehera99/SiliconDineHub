@@ -1,4 +1,4 @@
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -21,7 +21,7 @@ body {
 }
 .content {
   margin-left: 250px;
-  margin-top: 60px; 
+  margin-top: 60px;
   padding: 20px;
 }
 
@@ -34,7 +34,7 @@ body {
   padding: 10px 20px;
 }
 .sidebar a:hover {
-  background-color: #495057;
+  background-color: #937b49;
 }
 .sidebar .dropdown-menu {
   background-color: #343a40; /* Same as sidebar */

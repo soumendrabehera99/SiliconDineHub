@@ -31,25 +31,25 @@ if(isset($_POST['operation'])){
         }else{
             echo json_encode(["status" => "error", "message" => "No student data received"]);
         }
+    }else if ($_POST['operation']=="deleteSicEmail") {
+        // Read raw POST data and decode JSON
+        // $input = json_decode(file_get_contents("php://input"), true);
+    
+        // Check if the required message is received
+        if ($_POST['id']) {
+            $id = $_POST['id']; // Get ID from JSON request
+    
+            if (deleteValidCustomerById($id)) { // Call function to delete
+                echo json_encode(["success" => true, "message" => "Record deleted successfully."]);
+            } else {
+                echo json_encode(["success" => false, "message" => "Failed to delete record."]);
+            }
+        } else {
+            echo json_encode(["success" => false, "message" => "Invalid request."]);
+        }
     }
 }
-// if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     // Read raw POST data and decode JSON
-//     $input = json_decode(file_get_contents("php://input"), true);
 
-//     // Check if the required message is received
-//     if (isset($input['message']) && $input['message'] === "deleteSicEmail") {
-//         $id = $input['id']; // Get ID from JSON request
-
-//         if (deleteValidCustomerById($id)) { // Call function to delete
-//             echo json_encode(["success" => true, "message" => "Record deleted successfully."]);
-//         } else {
-//             echo json_encode(["success" => false, "message" => "Failed to delete record."]);
-//         }
-//     } else {
-//         echo json_encode(["success" => false, "message" => "Invalid request."]);
-//     }
-// }
 
 ?>
 

@@ -43,6 +43,9 @@ include_once "./check.php";
     .content.collapsed {
       margin-left: 0;
     }
+    .active{
+      background-color: #ffbe33;
+    }
   </style>
 </head>
 

@@ -26,6 +26,19 @@ $(document).ready(function () {
     document
       .querySelector('a[href="#customer"] .toggle-icon')
       .classList.add("rotated");
+    if (currentPath.includes("customerAdd.php")) {
+      document
+        .querySelector('a[href="./customerAdd.php"]')
+        .classList.add("active");
+    } else if (currentPath.includes("customerManage.php")) {
+      document
+        .querySelector('a[href="./customerManage.php"]')
+        .classList.add("active");
+    } else if (currentPath.includes("customerValid.php")) {
+      document
+        .querySelector('a[href="./customerValid.php"]')
+        .classList.add("active");
+    }
   }
   if (
     currentPath.includes("addFood.php") ||
@@ -35,6 +48,13 @@ $(document).ready(function () {
     document
       .querySelector('a[href="#food"] .toggle-icon')
       .classList.add("rotated");
+    if (currentPath.includes("addFood.php")) {
+      document.querySelector('a[href="./addFood.php"]').classList.add("active");
+    } else if (currentPath.includes("manageFood.php")) {
+      document
+        .querySelector('a[href="./manageFood.php"]')
+        .classList.add("active");
+    }
   }
   if (
     currentPath.includes("counterAdd.php") ||
@@ -44,11 +64,25 @@ $(document).ready(function () {
     document
       .querySelector('a[href="#counter"] .toggle-icon')
       .classList.add("rotated");
+    if (currentPath.includes("counterAdd.php")) {
+      document
+        .querySelector('a[href="./counterAdd.php"]')
+        .classList.add("active");
+    } else if (currentPath.includes("counterManage.php")) {
+      document
+        .querySelector('a[href="./counterManage.php"]')
+        .classList.add("active");
+    }
   }
   if (currentPath.includes("manageCategory.php")) {
     $("#foodCategory").collapse("show"); // Keep the food category dropdown open
     document
       .querySelector('a[href="#foodCategory"] .toggle-icon')
       .classList.add("rotated");
+    if (currentPath.includes("manageCategory.php")) {
+      document
+        .querySelector('a[href="./manageCategory.php"]')
+        .classList.add("active");
+    }
   }
 });
