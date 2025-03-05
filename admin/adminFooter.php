@@ -13,6 +13,7 @@
     <script src="../assets/toastr/toastr.min.js"></script>
     <!-- sweetalert -->
     <script src="../assets/sweetalert/sweetalert2.all.min.js"></script>
+    <script src="../assets/js/adminNavbar.js"></script>
     <script>
       toastr.options = {
         "closeButton": true,
