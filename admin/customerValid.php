@@ -64,8 +64,11 @@ require_once "../dbFunctions/studentdb.php";
                                         <td class="sic"><?= $std['sic']?></td>
                                         <td class="email"><?= $std['email']?></td>
                                         <td>
-                                            <a href="details.php?id=<?php echo $std['seID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
-                                            <a href="delete.php?id=<?php echo $std['seID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a>
+                                            <a href="updateSicEmail.php?id=<?php echo $std['seID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
+                                            <!-- <a href="delete.php?id=<?php echo $std['seID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a> -->
+                                            <a class="btn btn-danger btn-sm delete-btn" data-id="<?= $std['seID'] ?>" name="customerValidDeleteBtn">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </a>
                                         </td>
                                     </tr>
                                     <?php 
@@ -80,6 +83,7 @@ require_once "../dbFunctions/studentdb.php";
 </section>
 
 <script>
+    // Search bar
     document.getElementById("searchInput").addEventListener("input", function () {
         let searchQuery = this.value.toLowerCase(); 
         let tableRows = document.querySelectorAll("#myTable tbody tr");
@@ -94,7 +98,53 @@ require_once "../dbFunctions/studentdb.php";
             }
         });
     });
-</script>
 
+    // Delete the records using sweetalert
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".delete-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                let recordId = this.getAttribute("data-id"); // Get the record ID
+
+                Swal.fire({
+                    title: "Are you sure want to delete?",
+                    text: "This action cannot be undone!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#d33",
+                    cancelButtonColor: "#3085d6",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch("../dbFunctions/studentAjax.php", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" }, // JSON data
+                            body: JSON.stringify({ id: recordId, message: "deleteSicEmail" }) // Sending data as JSON
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: data.message,
+                                    icon: "success",
+                                    timer: 2000, 
+                                    showConfirmButton: false
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            } else {
+                                Swal.fire("Error!", data.message, "error");
+                            }
+                        })
+                        .catch(error => {
+                            Swal.fire("Error!", "Something went wrong.", "error");
+                        });
+                    }
+                });
+            });
+        });
+    });
+
+</script>
 
 <?php include_once "adminFooter.php"; ?>

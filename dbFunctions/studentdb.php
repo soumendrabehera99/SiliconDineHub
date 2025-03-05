@@ -150,6 +150,80 @@ function totalNoOfStudents() {
     }
 }
 
+function deleteValidCustomerById($id) {
+    $conn = null;
+    $stmt = null;
+
+    try {
+        $conn = dbConnection(); 
+        if (!is_numeric($id) || $id <= 0) {
+            throw new Exception("Invalid ID provided.");
+        }
+        $stmt = $conn->prepare("DELETE FROM sic_email WHERE seID = ?");
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $conn->error);
+        }
+        $stmt->bind_param("i", $id);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error executing delete query: " . $stmt->error);
+        }
+        if ($stmt->affected_rows > 0) {
+            return true; // Successfully deleted
+        } else {
+            return false; // No rows deleted (invalid ID)
+        }
+
+    } catch (Exception $e) {
+        error_log("Delete Error: " . $e->getMessage());
+        return false; 
+    } finally {
+        if ($stmt !== null) {
+            $stmt->close();
+        }
+        if ($conn !== null) {
+            $conn->close();
+        }
+    }
+}
+
+function blockStudentById($id) {
+    $conn = null;
+    $stmt = null;
+
+    try {
+        $conn = dbConnection(); 
+
+        $stmt = $conn->prepare("UPDATE student SET isActive = 0 WHERE seID = ?");
+        if (!$stmt) {
+            throw new Exception("Failed to prepare statement: " . $conn->error);
+        }
+
+        $stmt->bind_param("i", $id);
+
+        if (!$stmt->execute()) {
+            throw new Exception("Error executing update query: " . $stmt->error);
+        }
+
+        if ($stmt->affected_rows > 0) {
+            return ["success" => true, "message" => "Student blocked successfully."];
+        } else {
+            return ["success" => false, "message" => "No record found with the given ID."];
+        }
+
+    } catch (Exception $e) {
+        error_log("Block Student Error: " . $e->getMessage());
+        return ["success" => false, "message" => "Error: " . $e->getMessage()];
+    } finally {
+        if ($stmt !== null) {
+            $stmt->close();
+        }
+        if ($conn !== null) {
+            $conn->close();
+        }
+    }
+}
+
 function getExistingSics($sicList){
     $conn = null;
     $stmt = null;

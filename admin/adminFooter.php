@@ -11,6 +11,8 @@
     <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
     <!-- Toastr -->
     <script src="../assets/toastr/toastr.min.js"></script>
+    <!-- sweetalert -->
+    <script src="../assets/sweetalert/sweetalert2.all.min.js"></script>
     <script>
       toastr.options = {
         "closeButton": true,
