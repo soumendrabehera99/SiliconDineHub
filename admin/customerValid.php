@@ -66,7 +66,7 @@ require_once "../dbFunctions/studentdb.php";
                                         <td>
                                             <a href="updateSicEmail.php?id=<?php echo $std['seID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
                                             <!-- <a href="delete.php?id=<?php echo $std['seID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a> -->
-                                            <a class="btn btn-danger btn-sm delete-btn" data-id="<?= $std['seID'] ?>" name="customerValidDeleteBtn">
+                                            <a class="btn btn-danger btn-sm delete-btn" data-id="<?= $std['seID'] ?>" data-sic="<?= $std['sic']?>" name="customerValidDeleteBtn">
                                                 <i class="fa-solid fa-trash"></i> Delete
                                             </a>
                                         </td>
@@ -104,9 +104,10 @@ require_once "../dbFunctions/studentdb.php";
         document.querySelectorAll(".delete-btn").forEach(button => {
             button.addEventListener("click", function () {
                 let recordId = this.getAttribute("data-id"); // Get the record ID
+                let sic = this.getAttribute("data-sic"); // Get the record ID
 
                 Swal.fire({
-                    title: "Are you sure want to delete?",
+                    title: `Are you sure want to delete ${sic}?`,
                     text: "This action cannot be undone!",
                     icon: "warning",
                     showCancelButton: true,

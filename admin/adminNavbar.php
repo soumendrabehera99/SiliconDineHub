@@ -43,6 +43,11 @@ include_once "./check.php";
     .content.collapsed {
       margin-left: 0;
     }
+    .active {
+    background-color: #0d6efd; /* Bootstrap primary color */
+    color: white !important;
+    font-weight: bold;
+    }
   </style>
 </head>
 
@@ -193,15 +198,19 @@ include_once "./check.php";
       var currentPath = window.location.pathname;
       if (currentPath.includes('customerAdd.php') || currentPath.includes('customerManage.php') || currentPath.includes('customerValid.php')) {
         $('#customer').collapse('show');  // Keep the customer dropdown open
+        document.querySelector('a[href="#customer"] .toggle-icon').classList.add("rotated");
       }
       if (currentPath.includes('addFood.php') || currentPath.includes('manageFood.php')) {
         $('#food').collapse('show');  // Keep the food dropdown open
+        document.querySelector('a[href="#food"] .toggle-icon').classList.add("rotated");
       }
       if (currentPath.includes('counterAdd.php') || currentPath.includes('counterManage.php')) {
         $('#counter').collapse('show');  // Keep the counter dropdown open
+        document.querySelector('a[href="#counter"] .toggle-icon').classList.add("rotated");
       }
       if (currentPath.includes('manageCategory.php')) {
         $('#foodCategory').collapse('show');  // Keep the food category dropdown open
+        document.querySelector('a[href="#foodCategory"] .toggle-icon').classList.add("rotated");
       }
     });
 </script>
