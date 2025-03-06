@@ -50,6 +50,11 @@ if(isset($_POST['operation'])){
             
             $response = updateSicEmail($id,$sic,$email);
             echo $response;
+    }else if($_POST['operation']== "studentStatusUpdate" && isset($_POST['id'])){
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+        $response = updateStudentStatus($id,$status);
+        echo $response;
     }
 }
 

@@ -44,14 +44,16 @@ require_once "../dbFunctions/studentdb.php";
 
             <div class="d-flex justify-content-between mt-1">
                 <div style="max-height: 450px; overflow-y: auto; width: 100%;" class="mb-2">
-                    <table class="table table-bordered table-responsive" id="myTable">
+                    <table class="table table-bordered table-responsive text-center" id="myTable">
                         <thead class="table-light">
-                            <tr>
+                            <tr class="align-text-top">
                                 <th>Sl No</th>
                                 <th>SIC</th>
                                 <th>Name</th>
                                 <th>DOB</th>
-                                <th>Status</th>
+                                <th>Status
+                                <p class="mb-0 fw-light">Click on status to update</p>
+                                </th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -67,15 +69,10 @@ require_once "../dbFunctions/studentdb.php";
                                         <td class="name"><?= $std['name']?></td>
                                         <td><?= date('d M Y', strtotime($std['dob'])) ?></td>
                                         <td>
-                                            <span 
-                                                class="d-inline-block rounded-circle me-2" 
-                                                style="height: 10px; width: 10px; background-color: <?= $std['isActive'] ? 'rgb(11, 218, 11)' : 'rgb(243, 64, 64)' ?>;">
-                                            </span>
-                                            <?= $std['isActive'] ? 'Active' : 'Block' ?>
+                                            <a data-id="<?php echo $std['studentID'] ?>" data-sic="<?= $std['sic']?>" data-status="<?= $std['isActive']?>"  data-name="<?= $std['name']?>" class="btn btn-sm statusUpdateBtn <?= $std['isActive'] ? 'btn-success' : 'btn-danger' ?> " data-bs-target="#updateStatusStudentModal" data-bs-toggle="modal"> <?= $std['isActive'] ? '<i class="fa-solid fa-circle-check"></i> Active' : '<i class="fa-solid fa-ban"></i> Block' ?></a>
                                         </td>
                                         <td>
                                             <a href="details.php?id=<?php echo $std['studentID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
-                                            <a href="delete.php?id=<?php echo $std['studentID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-ban"></i> Block</a>
                                         </td>
                                     </tr>
                                     <?php 
@@ -89,23 +86,26 @@ require_once "../dbFunctions/studentdb.php";
         </div>
     </div>
 </section>
-
-<script>
-document.getElementById("searchInput").addEventListener("input", function() {
-    var searchQuery = this.value.toLowerCase(); 
-    var tableRows = document.querySelectorAll("#myTable tbody tr"); // Get all table rows
-
-    tableRows.forEach(function(row) {
-        var sic = row.querySelector(".sic").textContent.toLowerCase(); 
-        var name = row.querySelector(".name").textContent.toLowerCase();
-
-        if (sic.includes(searchQuery) || name.includes(searchQuery)) {
-            row.style.display = ""; // Show the row
-        } else {
-            row.style.display = "none"; // Hide the row
-        }
-    });
-});
-</script>
+<div class="modal fade" id="updateStatusStudentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Update Student Status</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" id="updateStudentStatusForm">
+                <div class="modal-body">
+                    <input type="hidden" id="updateStudentIdInput" name="studentId">
+                    <input type="hidden" id="updateStudentStatusInput" name="studentStatus">
+                    <p>Are you sure you want to <strong id="updateStudentStatus"></strong> the Student with name <strong id="updateStudentName"></strong> and sic <strong id="updateStudentSic"></strong> ?</p>
+                </div>
+                <div class="modal-footer d-flex justify-content-end">
+                    <input type="submit" value="Update" class="btn btn-submit btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php include_once "adminFooter.php"; ?>
+<script src="../assets/js/customerManage.js"></script>

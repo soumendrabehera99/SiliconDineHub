@@ -327,4 +327,19 @@ function getStudentByEmail($email,$password) {
 
     return  $student;
 }
+function updateStudentStatus($studentId,$isActive){
+    try{
+            $conn = dbConnection();
+            $stmt = $conn->prepare("UPDATE student SET isActive = ? WHERE studentID = ?");
+            $stmt->bind_param("si",$isActive,$studentId);
+            $stmt->execute();
+            if($conn-> affected_rows > 0){
+                return "success";
+            }else{
+                return "error";
+            }
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+}
 ?>
