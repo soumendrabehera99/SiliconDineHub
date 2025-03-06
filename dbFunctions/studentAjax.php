@@ -1,7 +1,7 @@
 <?php
 require_once "studentdb.php";
 if(isset($_POST['operation'])){
-    if (isset($_POST['sic']) && isset($_POST['email']) && $_POST['operation']== "studentAdd") {
+    if ($_POST['operation']== "studentAdd" && isset($_POST['sic']) && isset($_POST['email'])) {
         $sic = $_POST['sic'];
         $email = $_POST['email'];
 
@@ -32,14 +32,10 @@ if(isset($_POST['operation'])){
             echo json_encode(["status" => "error", "message" => "No student data received"]);
         }
     }else if ($_POST['operation']=="deleteSicEmail") {
-        // Read raw POST data and decode JSON
-        // $input = json_decode(file_get_contents("php://input"), true);
-    
-        // Check if the required message is received
         if ($_POST['id']) {
-            $id = $_POST['id']; // Get ID from JSON request
+            $id = $_POST['id'];
     
-            if (deleteValidCustomerById($id)) { // Call function to delete
+            if (deleteValidCustomerById($id)) {
                 echo json_encode(["success" => true, "message" => "Record deleted successfully."]);
             } else {
                 echo json_encode(["success" => false, "message" => "Failed to delete record."]);
@@ -47,6 +43,13 @@ if(isset($_POST['operation'])){
         } else {
             echo json_encode(["success" => false, "message" => "Invalid request."]);
         }
+    }else if ($_POST['operation']=="sicEmailUpdate" && isset($_POST['sic']) && isset($_POST['email']) && isset($_POST['id']) ) {
+            $id = $_POST['id'];
+            $sic = $_POST['sic'];
+            $email = $_POST['email'];
+            
+            $response = updateSicEmail($id,$sic,$email);
+            echo $response;
     }
 }
 

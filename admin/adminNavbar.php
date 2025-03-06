@@ -25,28 +25,6 @@ include_once "./check.php";
 
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
-
-  <style>
-    .sidebar {
-      width: 250px;
-      transition: all 0.3s;
-    }
-    
-    .sidebar.collapsed {
-      width: 0;
-      overflow: hidden;
-    }
-    .content {
-      margin-left: 250px;
-      transition: margin-left 0.3s;
-    }
-    .content.collapsed {
-      margin-left: 0;
-    }
-    .active{
-      background-color: #ffbe33;
-    }
-  </style>
 </head>
 
 <body>
