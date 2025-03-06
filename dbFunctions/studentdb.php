@@ -262,4 +262,25 @@ function getExistingSics($sicList){
         }
     }
 }
+
+function getStudentByEmail($email,$password) {
+    $conn = dbConnection();
+
+    $stmt = $conn->prepare("
+    SELECT s.* FROM student s JOIN sic_email se ON s.sic = se.sic WHERE se.email = ? AND s.password = ?");
+
+    if(!$stmt){
+        die(json_encode(['error'=>"SQL Prepare Failed".$conn->error]));
+    }
+    
+    $stmt->bind_param("ss",$email,$password);
+    if(!$stmt->execute()){
+        die(json_encode(['error'=>"SQL Execution Failed".$stmt->error]));
+    }
+    $result = $stmt->get_result();
+
+    $student = $result->fetch_assoc(); 
+
+    return  $student;
+}
 ?>

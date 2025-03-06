@@ -1,0 +1,32 @@
+$("#studentSignin").submit(function (e) {
+    e.preventDefault();
+    let email = $("#email").val();
+    let password = $("#password").val();
+
+    if (email === "") {
+      toastr.warning("Please enter your email!", "Warning");
+      return;
+    }
+    if (password === "") {
+        toastr.warning("Please enter your password!", "Warning");
+        return;
+      }
+    $.ajax({
+      url: "../dbFunctions/categoryAjax.php",
+      method: "POST",
+      data: { category: categoryName, operation: "categoryAdd" },
+      success: function (response) {
+        if (response.status === "present") {
+          toastr.error("Category already exists!");
+        } else if (response.status === "success") {
+          toastr.success("Category added successfully");
+          $("#addCategory").trigger("reset");
+          $("#addCategoryModal").modal("hide");
+          setTimeout(() => location.reload(), 500);
+          $("#categoryName").val("");
+        } else if (response.status === "error") {
+          toastr.error("There is an error in add category");
+        }
+      },
+    });
+  });
