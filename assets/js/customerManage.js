@@ -3,6 +3,8 @@ $(document).ready(function () {
     e.preventDefault();
     let studentId = $("#updateStudentIdInput").val();
     let studentStatus = $("#updateStudentStatusInput").val();
+    localStorage.setItem("searchTerm", $("#searchInput").val());
+    console.log(localStorage.getItem("searchTerm"));
     $.ajax({
       url: "../dbFunctions/studentAjax.php",
       method: "POST",
@@ -57,4 +59,12 @@ document.addEventListener("DOMContentLoaded", function () {
         studentStatus == 1 ? "Active" : "Block";
     });
   });
+  onDomReload();
 });
+function onDomReload() {
+  $("#searchInput").val(localStorage.getItem("searchTerm"));
+  localStorage.removeItem("searchTerm");
+  localStorage.clear();
+  let event = new CustomEvent("input");
+  document.getElementById("searchInput").dispatchEvent(event);
+}
