@@ -262,4 +262,48 @@ function getExistingSics($sicList){
         }
     }
 }
+function updateSicEmail($id, $sic, $email) { 
+    $conn = null;
+    $stmt = null;
+    $stmt1 = null;
+    try {
+        $conn = dbConnection();
+        if ($conn === null) {
+            throw new Exception("Database connection failed.");
+        }
+        
+        $stmt = $conn->prepare("SELECT COUNT(*) AS count FROM sic_email WHERE sic = ? AND email = ?");
+        if (!$stmt) {
+            throw new Exception("Failed to prepare SELECT statement.");
+        }
+        $stmt->bind_param('ss', $sic, $email);
+        $stmt->execute();
+        $stmt->bind_result($count);
+        $stmt->fetch();
+        $stmt->close(); 
+        if ($count > 0) {
+            return "present";
+        }
+
+        $stmt1 = $conn->prepare("UPDATE sic_email set sic = ?, email = ? WHERE seID = ?");
+        if (!$stmt1) {
+            throw new Exception("Failed to prepare INSERT statement.");
+        }
+        $stmt1->bind_param('ssi', $sic, $email, $id);
+        $stmt1->execute();
+        
+        return ($conn->affected_rows > 0) ? "success" : "error";
+        
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "error"; 
+    } finally {
+        if ($stmt1 !== null) {
+            $stmt1->close();
+        }
+        if ($conn !== null) {
+            $conn->close();
+        }
+    }
+}
 ?>

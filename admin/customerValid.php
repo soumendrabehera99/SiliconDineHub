@@ -64,7 +64,7 @@ require_once "../dbFunctions/studentdb.php";
                                         <td class="sic"><?= $std['sic']?></td>
                                         <td class="email"><?= $std['email']?></td>
                                         <td>
-                                            <a href="updateSicEmail.php?id=<?php echo $std['seID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit"></i> Edit</a>
+                                            <a  class="btn btn-success btn-sm edit-btn" data-id="<?= $std['seID'] ?>" data-sic="<?= $std['sic']?>" data-email="<?= $std['email']?>" data-bs-toggle="modal" data-bs-target="#editSicEmailModal"><i class="fa-solid fa-edit"></i> Edit</a>
                                             <!-- <a href="delete.php?id=<?php echo $std['seID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-trash"></i> Delete</a> -->
                                             <a class="btn btn-danger btn-sm delete-btn" data-id="<?= $std['seID'] ?>" data-sic="<?= $std['sic']?>" name="customerValidDeleteBtn">
                                                 <i class="fa-solid fa-trash"></i> Delete
@@ -81,5 +81,33 @@ require_once "../dbFunctions/studentdb.php";
         </div>
     </div>
 </section>
+<div class="modal fade" id="editSicEmailModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit category</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" id="editStudentSicEmail">
+                <div class="modal-body">
+                    <div class="row mb-3">
+                        <div>
+                            <label for="editStudentSic" class="form-label">Student SIC :</label>
+                            <input type="text" class="form-control" id="editStudentSic" placeholder="Enter category name" value="">
+                        </div>
+                        <div>
+                            <input type="hidden" id="editSeId" name="editSeId" value="">
+                            <label for="editStudetEmail" class="form-label">Student Email :</label>
+                            <input type="text" class="form-control" id="editStudetEmail" placeholder="Enter category name" value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer" class="d-flex justify-content-end">
+                    <input type="submit" value="Update" class="btn btn-submit btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <?php include_once "adminFooter.php"; ?>
 <script src="../assets/js/customerValid.js"></script>
