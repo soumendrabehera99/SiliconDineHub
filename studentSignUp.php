@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Step Registration with Circular Progress</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="./assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
     <style>
         .step { display: none; }  /* Hide all steps by default */
         .step.active { display: block; }  /* Show only active step */

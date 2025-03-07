@@ -12,9 +12,9 @@ $("#studentSignin").submit(function (e) {
         return;
       }
     $.ajax({
-      url: "../dbFunctions/categoryAjax.php",
+      url: "../dbFunctions/authentication.php",
       method: "POST",
-      data: { category: categoryName, operation: "categoryAdd" },
+      data: { email: email, password: password, operation: "studentLogin" },
       success: function (response) {
         if (response.status === "present") {
           toastr.error("Category already exists!");
