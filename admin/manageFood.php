@@ -26,14 +26,14 @@ include_once "adminNavbar.php";
                     <tr class="align-text-top">
                         <th>SL No.</th>
                         <th>Image
-                        <p class="mb-0 fw-light ">Hover on image to update</p>
+                        <p class="mb-0 fw-light ">hover on image to update</p>
                         </th>
                         <th>Food name</th>
                         <th>Categories Name</th>
                         <th>Price</th>
                         <th>
                             Status
-                            <p class="mb-0 fw-light ">Click on status to update</p>
+                            <p class="mb-0 fw-light ">click on status to update</p>
                         </th>
                         <th>Action</th>
                     </tr>

@@ -50,14 +50,37 @@ document.addEventListener("DOMContentLoaded", function () {
       let studentId = this.getAttribute("data-id");
       let studentSic = this.getAttribute("data-sic");
       let studentStatus = this.getAttribute("data-status") == 1 ? 0 : 1;
-      let dataName = this.getAttribute("data-name");
-      document.querySelector("#updateStudentName").innerText = dataName;
+      let studentName = this.getAttribute("data-name");
+      document.querySelector("#updateStudentName").innerText = studentName;
       document.querySelector("#updateStudentIdInput").value = studentId;
       document.querySelector("#updateStudentSic").innerText = studentSic;
       document.querySelector("#updateStudentStatusInput").value = studentStatus;
       document.querySelector("#updateStudentStatus").innerText =
         studentStatus == 1 ? "Active" : "Block";
     });
+  });
+  document.querySelectorAll(".viewBtn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      let studentId = this.getAttribute("data-id");
+      let studentSic = this.getAttribute("data-sic");
+      // let studentStatus = this.getAttribute("data-status") == 1 ? 0 : 1;
+      let studentEmail = this.getAttribute("data-email");
+      let studentName = this.getAttribute("data-name");
+      let studentDob = this.getAttribute("data-date");
+      document.querySelector("#viewStudentIdInput").value = studentId;
+      document.querySelector("#viewStudentName").value = studentName;
+      document.querySelector("#viewStudentEmail").value = studentEmail;
+      document.querySelector("#viewStudentSic").value = studentSic;
+      document.querySelector("#viewStudentDob").value = studentDob;
+    });
+  });
+  document.querySelector("#editBtn").addEventListener("click", function () {
+    document.querySelector("#editBtn").setAttribute("disabled", true);
+    document.querySelector("#updateBtn").removeAttribute("disabled");
+    document.querySelector("#viewStudentName").removeAttribute("disabled");
+    // document.querySelector("#viewStudentEmail").removeAttribute("disabled");
+    // document.querySelector("#viewStudentSic").removeAttribute("disabled");
+    document.querySelector("#viewStudentDob").removeAttribute("disabled");
   });
   onDomReload();
 });

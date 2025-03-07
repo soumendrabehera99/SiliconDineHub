@@ -55,7 +55,7 @@ function getAllStudents() {
     $stmt = null;
     try {
         $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM student");
+        $stmt = $conn->prepare("SELECT s.seID, s.name, s.sic, s.dob,s.isActive, s.studentID, se.email FROM student s LEFT JOIN sic_email se ON s.seID = se.seID ORDER BY s.sic");
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows>0){
@@ -77,7 +77,7 @@ function getAllSicEmail() {
     $stmt = null;
     try {
         $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM sic_email");
+        $stmt = $conn->prepare("SELECT * FROM sic_email ORDER BY sic");
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows>0){
