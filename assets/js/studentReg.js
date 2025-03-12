@@ -11,14 +11,8 @@ $(document).ready(function () {
             }
         });
 
-        // Calculate progress bar width (green until the last completed step)
         let progressWidth = ((currentStep - 1) / (totalSteps - 1)) * 100;
         $(".progress-line").css("width", progressWidth + "%");
-
-        // // Calculate correct progress line width (stops at the center of active step)
-        // let stepWidth = $(".step").outerWidth();
-        // let progressWidth = ((currentStep - 1) / 2) * 100 + (stepWidth / $(".progress-bar").width()) * 50;
-        // $(".progress-line").css("width", progressWidth + "%");
     }
 
     $("#next-btn").click(function () {

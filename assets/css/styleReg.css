@@ -3,21 +3,24 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f8f9fa;
-    /* height: 100vh;*/
+    background-color: #1d1d1d;
+    color: white;
 }
 
-/* Container */
 .container {
     width: 50%;
-    background: white;
+    /* background: white; */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* Progress Bar */
+.glassmorphism {
+    background: rgba(198, 193, 193, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
 .progress-bar {
     display: flex;
     justify-content: space-between;
@@ -28,7 +31,6 @@ body {
     padding: 10px 0;
 }
 
-/* Progress Line (Background - Light Gray) */
 .progress-bar::before {
     content: "";
     position: absolute;
@@ -41,20 +43,17 @@ body {
     z-index: 0;
 }
 
-/* Progress Line (Green - Stops at Active Step) */
 .progress-line {
     position: absolute;
     top: 50%;
     left: 0;
     width: 0%;
     height: 4px;
-    background-color: green;
-    /* z-index: -1; */
+    background-color: orangered;
     transform: translateY(-50%);
     transition: width 0.3s ease-in-out;
 }
 
-/* Steps */
 .step {
     width: 40px;
     height: 40px;
@@ -72,12 +71,10 @@ body {
     align-items: center;
 }
 
-/* Active Step */
 .step.active {
-    background-color: green;
+    background-color: rgb(251, 119, 5);
 }
 
-/* Form Steps */
 .form-step {
     display: none;
 }
@@ -86,7 +83,9 @@ body {
     display: block;
 }
 
-/* Input Fields */
+label {
+    font-size: 18px;
+}
 input {
     width: 30%;
     padding: 10px;
@@ -95,10 +94,9 @@ input {
     border-radius: 5px;
 }
 
-/* Buttons */
 button {
     padding: 10px 15px;
-    background-color: green;
+    background-color: rgb(247, 119, 7);
     color: white;
     border: none;
     border-radius: 5px;
@@ -107,5 +105,5 @@ button {
 }
 
 button:hover {
-    background-color: darkgreen;
+    background-color: rgb(250, 150, 49);
 }
