@@ -3,6 +3,10 @@
   color: white;
 }
 
+.header_section a:hover {
+  color: rgb(153, 133, 83);
+}
+
 .active {
   color: goldenrod !important;
 }
