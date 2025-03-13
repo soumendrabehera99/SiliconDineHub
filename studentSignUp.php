@@ -31,7 +31,7 @@
         </div>
         
         <div class="form-step" id="step-2">
-            <h2>Step 2: More Registration Details</h2>
+            <h2>Step 2: OTP Verification</h2>
             <p id="otp"></p>
             <div id="otp-section">
                 <input type="text" id="otpInput" placeholder="Enter OTP">
@@ -41,10 +41,33 @@
         </div>
         <form id="stuVerification">
             <div class="form-step" id="step-3">
-                <h2>Step 3: Finalize Registration</h2>
-                <p>Final details before completion.</p>
-                <button id="finish-btn">Submit</button>
-                <button id="prev-btn2">Previous</button>
+                <h2>Step 3: Student Registration</h2>
+                <div class="mb-3">
+                    <label>Enter Your Name</label>
+                    <input type="text" id="name">
+                </div>
+                <div class="mb-3">
+                    <label>Enter Your DOB</label>
+                    <input type="date" id="dob">
+                </div>
+                <div class="mb-3">
+                    <label>Enter Your Password</label>
+                    <input type="password" id="password">
+                </div>
+                <div class="mb-3">
+                    <label>Status</label>
+                    <select id="studentStatus">
+                        <option selected>--SELECT--</option>
+                        <option value="1">Active</option>
+                        <option value="0">Not Active</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="submit " id="finish-btn">Submit</input>
+                </div>
+                <div>
+                    <button id="prev-btn2">Previous</button>
+                </div>
             </div>
         </form>
     </div>
