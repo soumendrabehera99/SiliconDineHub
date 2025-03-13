@@ -6,6 +6,7 @@
     <title>Multi-Step Registration</title>
     <link rel="stylesheet" href="./assets/css/styleReg.css">
     <!-- <link href="./bootstrap/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="./assets/toastr/toastr.min.css" rel="stylesheet">
 </head>
 <body>
     
@@ -27,28 +28,37 @@
                 <input type="text" id="sic" placeholder="Enter SIC"><br>
                 <button id="next-btn">Next</button>
             </div> 
-            <div id="otp-section" style="display: none;">
+        </div>
+        
+        <div class="form-step" id="step-2">
+            <h2>Step 2: More Registration Details</h2>
+            <p>Further registration fields will be here.</p>
+            <div id="otp-section">
                 <input type="text" id="otp" placeholder="Enter OTP">
                 <button id="verify-btn">Verify OTP</button>
             </div>
+            <button id="prev-btn1">Previous</button>
         </div>
         <form id="stuVerification">
-            
-            <div class="form-step" id="step-2">
-                <h2>Step 2: More Registration Details</h2>
-                <p>Further registration fields will be here.</p>
-                <button id="next-step-2">Next</button>
-            </div>
-            
             <div class="form-step" id="step-3">
                 <h2>Step 3: Finalize Registration</h2>
                 <p>Final details before completion.</p>
-                <button id="finish-btn">Finish</button>
+                <button id="finish-btn">Submit</button>
+                <button id="prev-btn2">Previous</button>
             </div>
         </form>
     </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./assets/jquery/jquery-3.7.1.min.js"></script>
+<script src="./assets/toastr/toastr.min.js"></script>
+<script>
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "3000"
+      };
+</script>
 <script src="./assets/js/studentReg.js"></script>
 <!-- <script src="./bootstrap/bootstrap.bundle.min.js"></script> -->
 </body>
