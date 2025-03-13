@@ -43,7 +43,4 @@ function sendMail($toEmail = "mca.23mmci48@silicon.ac.in", $subject = "Check Int
         return "Mailer Error: " . $mail->ErrorInfo;
     }
 }
-
-// Call function
-echo sendMail();
 ?>

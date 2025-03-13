@@ -34,7 +34,7 @@
             <h2>Step 2: More Registration Details</h2>
             <p id="otp"></p>
             <div id="otp-section">
-                <input type="text" id="otp" placeholder="Enter OTP">
+                <input type="text" id="otpInput" placeholder="Enter OTP">
                 <button id="verify-btn">Verify OTP</button>
             </div>
             <button id="prev-btn1">Previous</button>
