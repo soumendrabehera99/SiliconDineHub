@@ -344,11 +344,13 @@ function updateStudentStatus($studentId,$isActive){
 }
 function getStudentBySicFromStudent($sic){
     try{
+        $sic = trim($sic);
         $conn = dbConnection();
         $stmt = $conn->prepare("SELECT * FROM student WHERE sic = ?");
         $stmt->bind_param("s",$sic);
         $stmt->execute();
-        if($conn-> affected_rows > 0){
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
             return "present";
         }else{
             return "error";
@@ -362,6 +364,8 @@ function getStudentBySicFromSicEmail($sic) {
     $stmt = null;
     
     try {
+        $sic = trim($sic);
+
         $conn = dbConnection();
 
         $stmt = $conn->prepare("SELECT seID, sic, email FROM sic_email WHERE sic = ?");
