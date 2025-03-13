@@ -18,20 +18,20 @@ $(document).ready(function () {
   function validateSIC(sic) {
     if (!sic) return "SIC is Missing.";
     if (sic.length !== 8) return "SIC must be exactly 8 characters long";
-  
+
     let sicPattern = /^[0-9]{2}[a-z]{4}[0-9]{2}$/i; // Example: 23mmci48
     if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23mmci48)";
-  
+
     return null; // No errors
   }
 
   $(document).ready(function () {
     $("#next-btn").click(function (e) {
       e.preventDefault();
-      
+
       let sic = $("#sic").val();
       let sicError = validateSIC(sic);
-      if(sicError) {
+      if (sicError) {
         toastr.error(sicError);
         return;
       }
@@ -52,7 +52,7 @@ $(document).ready(function () {
             $("#step-1").removeClass("active");
             $("#step-2").addClass("active");
             currentStep = 2;
-            updateProgressBar(); 
+            updateProgressBar();
           } else if (response.trim() === "error") {
             toastr.error("There was an error to check the sic");
           } else {
@@ -65,21 +65,21 @@ $(document).ready(function () {
       });
     });
     $("#prev-btn1").click(function (e) {
-      e.preventDefault(); 
+      e.preventDefault();
       $("#step-2").removeClass("active");
       $("#step-1").addClass("active");
       currentStep = 1;
-      updateProgressBar(); 
+      updateProgressBar();
     });
   });
 
   function validateSIC(sic) {
     if (!sic) return "SIC is Missing.";
     if (sic.length !== 8) return "SIC must be exactly 8 characters long";
-  
+
     let sicPattern = /^[0-9]{2}[a-z]{4}[0-9]{2}$/i; // Example: 23mmci48
     if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23mmci48)";
-  
+
     return null; // No errors
   }
 
@@ -92,11 +92,11 @@ $(document).ready(function () {
       updateProgressBar();
     });
     $("#prev-btn2").click(function (e) {
-      e.preventDefault(); 
+      e.preventDefault();
       $("#step-3").removeClass("active");
       $("#step-2").addClass("active");
       currentStep = 2;
-      updateProgressBar(); 
+      updateProgressBar();
     });
   });
   // $("#next-step-2").click(function () {
