@@ -4,73 +4,38 @@ use PHPMailer\PHPMailer\Exception;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-function sendEmail($toEmail="mca.23mmci48@silicon.ac.in", $subject="Cron job", $body="cron job is to send mail automatically ", $fromEmail = 'silicondinehub@gmail.com', $fromName = 'DineHub') {
-    $mail = new PHPMailer(true);
-
-    try {
-        //Server settings
-        $mail->isSMTP();                                         // Send using SMTP
-        $mail->SMTPAuth   = true;                                // Enable SMTP authentication
-        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-        $mail->Username   = 'silicondinehub@gmail.com';          // SMTP username
-        $mail->Password   = 'knnvjryfxlhrvbhy';                  // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;      // Enable TLS encryption
-        $mail->Port       = 587;                                 // TCP port to connect to
-
-        //Recipients
-        $mail->setFrom($fromEmail, $fromName);                   // Set sender email and name
-        $mail->addAddress($toEmail);                             // Add recipient email
-
-        //Content
-        $mail->isHTML(true);                                    // Set email format to HTML
-        $mail->Subject = $subject;                              // Set email subject
-        $mail->Body    = $body;                                 // Set email body
-
-        // Send email
-        if ($mail->send()) {
-            return true;
-        } else {
-            return $mail->ErrorInfo;
-        }
-    } catch (Exception $e) {
-        return "Mailer Error: {$mail->ErrorInfo}";
-    }
-}
-// sendEmail();
-
-function sendMail($toEmail = "anilsahu9786@gmail.com", $subject = "Check Internet Connection", $body = "Checking when the internet connection is off then mail is send successful or not", $fromEmail = 'silicondinehub@gmail.com', $fromName = 'DineHub') {
+function sendMail($toEmail = "mca.23mmci48@silicon.ac.in", $subject = "Check Internet Connection", $body = "Checking when the internet connection is off then mail is send successful or not", $fromEmail = 'silicondinehub@gmail.com', $fromName = 'DineHub') {
     $mail = new PHPMailer(true);
 
     try {
         // Server settings
-        $mail->isSMTP();                                         // Send using SMTP
-        $mail->SMTPAuth   = true;                                // Enable SMTP authentication
-        $mail->Host       = 'smtp.gmail.com';                    // Set the SMTP server to send through
-        $mail->Username   = 'silicondinehub@gmail.com';          // SMTP username
-        $mail->Password   = 'knnvjryfxlhrvbhy';                  // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;      // Enable TLS encryption
-        $mail->Port       = 587;                                 // TCP port to connect to
+        $mail->isSMTP();                                         
+        $mail->SMTPAuth   = true;                                
+        $mail->Host       = 'smtp.gmail.com';                    
+        $mail->Username   = 'silicondinehub@gmail.com';          
+        $mail->Password   = 'knnvjryfxlhrvbhy';                  
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;      
+        $mail->Port       = 587;                                 
         
         // Check internet connection
         if (!@fsockopen('www.google.com', 80)) {
-            echo "Internet connection is Off";
-            // throw new MailException("Internet connection is not available.");
+            return "internet error";
         }
 
         // Recipients
-        $mail->setFrom($fromEmail, $fromName);                   // Set sender email and name
-        $mail->addAddress($toEmail);                             // Add recipient email
+        $mail->setFrom($fromEmail, $fromName);                   
+        $mail->addAddress($toEmail);                             
 
         // Content
-        $mail->isHTML(true);                                    // Set email format to HTML
-        $mail->Subject = $subject;                              // Set email subject
-        $mail->Body    = $body;                                 // Set email body
+        $mail->isHTML(true);                                    
+        $mail->Subject = $subject;                              
+        $mail->Body    = $body;                                 
 
         // Send email
         if ($mail->send()) {
-            return "Email sent successfully.";
+            return "success";
         } else {
-            return "Mailer Error: " . $mail->ErrorInfo;
+            return "error";
         }
     } catch (MailException $e) {
         return "Custom Exception: " . $e->getMessage();
