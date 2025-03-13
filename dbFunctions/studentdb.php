@@ -342,4 +342,82 @@ function updateStudentStatus($studentId,$isActive){
             return $e->getMessage();
         }
 }
+function getStudentBySicFromStudent($sic){
+    try{
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT * FROM student WHERE sic = ?");
+        $stmt->bind_param("s",$sic);
+        $stmt->execute();
+        if($conn-> affected_rows > 0){
+            return "present";
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+function getStudentBySicFromSicEmail($sic) {
+    $conn = null;
+    $stmt = null;
+    
+    try {
+        $conn = dbConnection();
+
+        $stmt = $conn->prepare("SELECT seID, sic, email FROM sic_email WHERE sic = ?");
+        
+        $stmt->bind_param("s", $sic);
+        
+        $stmt->execute();
+        
+        $res = $stmt->get_result();
+        
+        if ($res->num_rows > 0) {
+            return $res->fetch_assoc();
+        } else {
+            return "error";
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "Error: " . $e->getMessage();
+    } finally {
+        if ($stmt) {
+            $stmt->close();
+        }
+        if ($conn) {
+            $conn->close();
+        }
+    }
+}
+
+function saveStudent($sic, $seID, $name, $dob, $password, $isActive) {
+    $conn = null;
+    $stmt = null;
+    
+    try {
+        $conn = dbConnection();
+
+        $stmt = $conn->prepare("INSERT INTO student (sic, seID, name, dob, password, isActive) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        $stmt->bind_param("sissss", $sic, $seID, $name, $dob, $password, $isActive);
+
+        if ($stmt->execute()) {
+            return "success";
+        } else {
+            return "error";
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return "Error: " . $e->getMessage();
+    } finally {
+        if ($stmt) {
+            $stmt->close();
+        }
+        if ($conn) {
+            $conn->close();
+        }
+    }
+}
 ?>
