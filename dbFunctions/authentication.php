@@ -31,6 +31,22 @@ if(isset($_POST['operation'])){
                 }
             }
         }
+    }else if ($_POST['operation'] == "saveStudent") {
+        $seID = trim($_POST['seID']);
+        $sic = trim($_POST['sic']);
+        $name = trim($_POST['name']);
+        $dob = trim($_POST['dob']);
+        $password = trim($_POST['password']);
+
+        if (empty($seID) || empty($sic) || empty($name) || empty($dob) || empty($password)) {
+            echo json_encode(["status" => "error", "message" => "All fields must be filled."]);
+            exit;
+        }
+
+        $response = saveStudent($sic, $seID, $name, $dob, $password);
+
+        echo json_encode(["status" => $response]);
+        exit;
     }
 }
 ?>

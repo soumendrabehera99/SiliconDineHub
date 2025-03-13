@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multi-Step Registration</title>
     <link rel="stylesheet" href="./assets/css/styleReg.css">
-    <!-- <link href="./bootstrap/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- <link href="./assets/bootstrap/bootstrap.min.css" rel="stylesheet"> -->
     <link href="./assets/toastr/toastr.min.css" rel="stylesheet">
 </head>
 <body>
@@ -42,31 +42,23 @@
         <form id="stuVerification">
             <div class="form-step" id="step-3">
                 <h2>Step 3: Student Registration</h2>
+                <input type="hidden" name="seID" id= "seIDInput">
+                <input type="hidden" name="sic" id= "sicInput">
                 <div class="mb-3">
                     <label>Enter Your Name</label>
-                    <input type="text" id="name">
+                    <input type="text" id="name" name ="name">
                 </div>
                 <div class="mb-3">
                     <label>Enter Your DOB</label>
-                    <input type="date" id="dob">
+                    <input type="date" id="dob" name ="dob">
                 </div>
                 <div class="mb-3">
                     <label>Enter Your Password</label>
-                    <input type="password" id="password">
+                    <input type="password" id="password" name ="password">
                 </div>
-                <div class="mb-3">
-                    <label>Status</label>
-                    <select id="studentStatus">
-                        <option selected>--SELECT--</option>
-                        <option value="1">Active</option>
-                        <option value="0">Not Active</option>
-                    </select>
-                </div>
-                <div>
-                    <input type="submit " id="finish-btn">Submit</input>
-                </div>
-                <div>
+                <div class="btn-div">
                     <button id="prev-btn2">Previous</button>
+                    <button type="submit " id="finish-btn">Submit</button>
                 </div>
             </div>
         </form>

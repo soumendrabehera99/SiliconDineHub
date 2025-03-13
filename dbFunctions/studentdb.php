@@ -394,23 +394,21 @@ function getStudentBySicFromSicEmail($sic) {
     }
 }
 
-function saveStudent($sic, $seID, $name, $dob, $password, $isActive) {
+function saveStudent($sic, $seID, $name, $dob, $password, $isActive = "1") {
     $conn = null;
     $stmt = null;
     
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("INSERT INTO student (sic, seID, name, dob, password, isActive) VALUES (?, ?, ?, ?, ?, ?, ?)");
-
-        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+        $stmt = $conn->prepare("INSERT INTO student (sic, seID, name, dob, password, isActive) VALUES (?, ?, ?, ?, ?, ?)");
 
         $stmt->bind_param("sissss", $sic, $seID, $name, $dob, $password, $isActive);
 
         if ($stmt->execute()) {
             return "success";
         } else {
-            return "error";
+            return "error: " . $stmt->error;
         }
     } catch (Exception $e) {
         error_log($e->getMessage());
