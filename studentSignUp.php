@@ -32,7 +32,7 @@
         
         <div class="form-step" id="step-2">
             <h2>Step 2: More Registration Details</h2>
-            <p>Further registration fields will be here.</p>
+            <p id="otp"></p>
             <div id="otp-section">
                 <input type="text" id="otp" placeholder="Enter OTP">
                 <button id="verify-btn">Verify OTP</button>
