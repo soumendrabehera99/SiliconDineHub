@@ -24,7 +24,7 @@
         <div class="container header-container">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"><img src="./assets/images/logo.png" alt="" class="img-fluid"
+                    <a class="navbar-brand" href="./index.php"><img src="./assets/images/logo.png" alt="" class="img-fluid"
                             style="height: 50px;"></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -34,7 +34,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                                <a class="nav-link active" aria-current="page" href="./index.php">HOME</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">FOODS</a>
@@ -43,10 +43,10 @@
                                 <a class="nav-link" href="#">ABOUT</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">FEEDBACK</a>
+                                <a class="nav-link" href="#feedback">FEEDBACK</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link">CONTACT US</a>
+                                <a class="nav-link" href="#footer">CONTACT US</a>
                             </li>
                         </ul>
                         <div class="user_option d-flex gap-3 align-items-center">

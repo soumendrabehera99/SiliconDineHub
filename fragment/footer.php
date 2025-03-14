@@ -1,5 +1,5 @@
 <!-- footer section -->
-    <footer class="footer_section text-center text-white bg-dark mt-4">
+    <footer class="footer_section text-center text-white bg-dark mt-4" id="footer">
       <div class="container">
         <div class="row g-5">
           <div class="col-md-3">
@@ -77,7 +77,7 @@
                 <div class="col-md-12">     
                   <ul class="list-unstyled mt-4 ms-5">
                     <li class="text-start">
-                      <a href="#contactus" class="text-decoration-none text-white">Contact Us</a>
+                      <a href="#footer" class="text-decoration-none text-white">Contact Us</a>
                     </li>
                     <li class="text-start mt-2">
                       <a href="./admin/adminLogin.php" class="text-decoration-none text-white">Admin</a>
