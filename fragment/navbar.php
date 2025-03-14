@@ -1,4 +1,4 @@
-
+<?php session_start();?>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -53,7 +53,8 @@
                             <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>
                             <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a>
-                            <a href="#" class="btn btn-outline-warning btn-sm">Logout</a>
+                            <!-- <a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a> -->
+                            <?php echo isset($_SESSION['sic']) ? '<a href="./logout.php" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
                         </div>
                     </div>
                 </div>

@@ -143,7 +143,7 @@ include_once "./check.php";
 
     <!-- Sidebar Footer -->
     <div class="sidebar-footer">
-        <a href="./adminLogout.php" class="text-decoration-none d-flex align-items-center justify-content-between w-100" style="color: #adb5bd;">
+        <a href="../logout.php" class="text-decoration-none d-flex align-items-center justify-content-between w-100" style="color: #adb5bd;">
             <h5 class="my-0">Logout</h5>
             <div><i class="fa-solid fa-arrow-right-from-bracket mx-2"></i></div>
         </a>
