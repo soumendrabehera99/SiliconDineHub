@@ -39,12 +39,10 @@ $(document).ready(function () {
         response = JSON.parse(response);
         let status = response.status;
         if (status == "present") {
-          toastr.info("You are already Registered. Please log in to continue.");
+          toastr.info("You are already Registered. Log in to continue...");
           $("#next-btn").attr("disabled", false);
         } else if (status == "success") {
-          toastr.success(
-            "SIC verified successfully! An OTP has been sent to your registered email."
-          );
+          toastr.success("SIC verified successfully!");
           $("#step-1").removeClass("active");
           $("#step-2").addClass("active");
           currentStep = 2;
@@ -58,9 +56,7 @@ $(document).ready(function () {
           );
           console.log(seID, otp);
         } else if (status == "error1") {
-          toastr.error(
-            "The SIC you entered is not registered. Please contact the admin to register your SIC"
-          );
+          toastr.error("SIC not registered. Contact admin.");
           $("#next-btn").attr("disabled", false);
         } else if (status == "error2") {
           toastr.error(
@@ -93,7 +89,7 @@ $(document).ready(function () {
     if (sic.length !== 8) return "SIC must be exactly 8 characters long";
 
     let sicPattern = /^[0-9]{2}[a-z]{4}[0-9]{2}$/i; // Example: 23mmci48
-    if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23mmci48)";
+    if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23xxxx12)";
 
     return null; // No errors
   }
@@ -102,12 +98,11 @@ $(document).ready(function () {
     e.preventDefault();
     if ($("#otpInput").val() != otp) {
       toastr.error(
-        "Incorrect OTP! Please enter the correct OTP and try again.",
-        "OTP Verification Failed"
+        "Incorrect OTP !"
       );
       return;
     }
-    toastr.success("OTP Verified! Proceed to the next step.");
+    toastr.success("OTP Verified!");
     $("#step-2").removeClass("active");
     $("#step-3").addClass("active");
     $("#sicInput").val(sic.toUpperCase());
@@ -143,9 +138,7 @@ $(document).ready(function () {
       dob === "" ||
       password === ""
     ) {
-      toastr.error(
-        "All fields are required! Please fill out the form completely."
-      );
+      toastr.error("All fields are required !");
       return;
     }
 
