@@ -50,7 +50,7 @@ $(document).ready(function () {
           seID = response.seID;
           updateProgressBar();
           $("#otp").html(
-            '<span style="color: green;">SIC verified successfully! An OTP has been sent to ' +
+            '<span style="color: green;">OTP has been sent to ' +
               response.email +
               ".</span>"
           );
@@ -156,31 +156,46 @@ $(document).ready(function () {
       type: "POST",
       data: formData,
       success: function (response) {
-        console.log(response);
-        try {
-          response = JSON.parse(response);
-        } catch (e) {
-          console.error("Invalid JSON response:", response);
-          toastr.error("Invalid server response. Check console.");
-          return;
-        }
-        let status = response.status;
-        if (status == "success") {
-          toastr.success("Registration successful!");
-          $("#stuVerification")[0].reset(); // Reset form
-        } else {
-          toastr.error("Error: " + response.message);
-        }
+          console.log(response);
+          try {
+              response = JSON.parse(response);
+          } catch (e) {
+              console.error("Invalid JSON response:", response);
+              toastr.error("Invalid server response. Check console.");
+              return;
+          }
+  
+          let status = response.status;
+          if (status == "success") {
+              Swal.fire({
+                  title: "Success!",
+                  text: "Registration successful!",
+                  icon: "success",
+                  timer: 3000,
+                  showConfirmButton: false
+              });
+  
+              $("#stuVerification")[0].reset(); // Reset form
+  
+              setTimeout(function () {
+                  window.location.href = "./studentSignIn.php"; // Redirect to index.php
+              }, 3000);
+          } else {
+              Swal.fire({
+                  title: "Error!",
+                  text: response.message,
+                  icon: "error"
+              });
+          }
       },
       error: function (jqXHR, textStatus, errorThrown) {
-        console.error(
-          "AJAX Error: ",
-          textStatus,
-          errorThrown,
-          jqXHR.responseText
-        );
-        toastr.error("Server Error: " + jqXHR.responseText);
+          console.error("AJAX Error: ", textStatus, errorThrown, jqXHR.responseText);
+          Swal.fire({
+              title: "Server Error!",
+              text: jqXHR.responseText,
+              icon: "error"
+          });
       },
-    });
+  });
   });
 });

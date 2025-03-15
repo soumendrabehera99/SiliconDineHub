@@ -1,31 +1,44 @@
 <?php include_once "./fragment/navbar.php";?>
     <style>
-        .full-div{
-            height: 89vh;
+        *{
+            overflow: hidden;
         }
-        .row {
-            height: 70vh;
+        .wrapper{
+            width:70%;
         }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            object-position: center; 
+        }
+        .form-control:focus {
+            box-shadow: none !important;
+            border-color: goldenrod !important;
+        }
+        .form-control {
+            border: 1px solid goldenrod;
+            border-radius: 16px;
+        }
+
     </style>
     <!--Toastr-->
     <link href="./assets/toastr/toastr.min.css" rel="stylesheet">
-    <link href="./assets/css/index.css" rel="stylesheet">
+    
 </head>
 <body>
 
 <div class="bg-dark">
-    <div class="container h-100 d-flex align-items-center justify-content-center text-white">
-        <div class="row rounded w-100 overflow-hidden">
-            <div class="col-md-5 d-flex align-items-center justify-content-center" style="background-color: goldenrod;">
-                <div class="">
-                    <p class="fs-1">Welcome Back!</p>
-                    <p>To keep connected with us</p>
-                </div>
+    <div class="container d-flex align-items-center justify-content-center text-white" style="height: 90vh">
+        <div class="row rounded g-0 wrapper">
+            <div class="col-md-5 d-none d-md-block d-flex align-items-center justify-content-center">
+                <img src="./assets/images/Cookie.webp" alt="A delicious cookie" class="img-fluid" style="width:100%">
+                <!-- <img src="./assets/images/roti.jpg" alt="A delicious cookie" class="img-fluid" style="width:100%"> -->
             </div>
-            <div class="col-md-7 bg-white">
-                <div class="my-5 px-5 text-dark">
-                    <p class="mb-3 text-center fs-2 fw-bold">Log In</p>
-                    <form id="studentLoginForm" method="post" action="">
+            <div class="col-md-7 bg-white d-flex align-items-center justify-content-center">
+                <div class="text-dark">
+                    <p class="mb-3 text-center fs-2 fw-bold mt-3 mt-md-0">Log In</p>
+                    <form id="studentLoginForm" method="post" action="" class="px-1 px-md-0">
                         <div class="mt-3">
                             <label class="mb-3 form-label">Enter Your SIC</label>
                             <input type="text" class="form-control" id="sic">
@@ -36,11 +49,14 @@
                             <input type="password" class="form-control" id="password">
                         </div>
                         <div class="mt-3 text-center" >
-                            <input type="submit" value="Log In" name="LogIn" class="btn btn-sm btn-warning py-2" style="border-radius: 16px; width:30%">
+                            <input type="submit" value="Log In" name="LogIn" class="btn btn-sm btn-warning py-2" style="border-radius: 16px; width:40%">
                         </div>
                     </form>
-                    <div class="mt-3">
-                        <p class="text-center">If you're a new customer <a href="#" class="text-decoration-none">Sign-Up</a></p>
+                    <div class="mt-2 text-center text-primary" style="font-size: 14px;">
+                            <a href="#" class="text-decoration-none">Forgot password</a>
+                    </div>
+                    <div class="">
+                        <p class="text-center">If you're a new customer <a href="./studentSignUp.php" class="text-decoration-none">Sign-Up</a></p>
                     </div>
                 </div>
             </div>
