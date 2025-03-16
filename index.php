@@ -62,7 +62,7 @@ include_once "./fragment/navbar.php";
         </section>
     </section>
         <!-- Food Section Start -->
-    <Section class="food-section bg-body my-4" id="food">
+    <section class="food-section bg-body my-4" id="food">
             <div class="container">
                 <div class=" py-3 mb-1">
                     <h2 class="fs-1 text-center">Foods</h2>
@@ -215,7 +215,6 @@ include_once "./fragment/navbar.php";
 
                 </div>
             </div>
-        </Section>
     </section>
 <?php
 include_once "fragment/feedback.php";

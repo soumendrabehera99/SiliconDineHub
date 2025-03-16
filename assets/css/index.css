@@ -10,12 +10,15 @@
 .active {
   color: goldenrod !important;
 }
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
 
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #fff;
-  max-width: 100%;
-  overflow-x: hidden;
 }
 h1,
 h2 {

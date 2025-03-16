@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="./assets/css/index.css">
     <!-- Fevicon -->
     <link rel="icon" href="./assets/images/fevicon_logo.png" type="image/x-icon">
+    <!-- food plp css-->
+    <link rel="stylesheet" href="./assets/css/foodPlp.css">
 </head>
 
 <body>
