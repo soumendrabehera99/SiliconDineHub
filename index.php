@@ -123,7 +123,7 @@ include_once "./fragment/navbar.php";
                             </div>
                             <div class="details text-white p-3">
                                 <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
+                                <p class="text-truncate-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
                                     eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
                             </div>
                             <div class="d-flex justify-content-between px-3 pb-2">
