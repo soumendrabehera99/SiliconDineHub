@@ -10,13 +10,10 @@
     <link rel="stylesheet" href="./assets/fontawesome/all.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/index.css">
-    <!-- Fontawesome -->
-    <!-- <link rel="stylesheet" href="./assets/fontawesome/css/fontawesome.css">
-    <link rel="stylesheet" href="./assets/fontawesome/css/regular.css">
-    <link rel="stylesheet" href="./assets/fontawesome/css/solid.css">
-    <link rel="stylesheet" href="./assets/fontawesome/css/brands.css"> -->
     <!-- Fevicon -->
     <link rel="icon" href="./assets/images/fevicon_logo.png" type="image/x-icon">
+    <!-- food plp css-->
+    <link rel="stylesheet" href="./assets/css/foodPlp.css">
 </head>
 
 <body>
@@ -25,31 +22,35 @@
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="./index.php"><img src="./assets/images/logo.png" alt="" class="img-fluid"
-                            style="height: 50px;"></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    style="height: 50px;"></a>
+                    <div class="d-flex justify-content-between ms-sm-5 align-items-center gap-2">
+                        <form action="" class="mb-0">
+                            <div class="input-group">
+                                <input type="search" name="search" id="search" class="form-control">
+                                <button type="submit" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </div>
+                        </form>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="text-white fs-1"><i class="fa-solid fa-bars"></i></span>
-                    </button>
+                        </button>
+                    </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="./index.php">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">FOODS</a>
+                                <a class="nav-link" href="./foodPlp.php">FOODS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">ABOUT</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#feedback">FEEDBACK</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#footer">CONTACT US</a>
-                            </li>
                         </ul>
-                        <div class="user_option d-flex gap-3 align-items-center">
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="user_option d-flex gap-3 align-items-center ms-auto">
                             <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>
                             <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a>
