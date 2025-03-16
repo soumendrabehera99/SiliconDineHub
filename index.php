@@ -73,6 +73,7 @@ require_once "./dbFunctions/landingPagedb.php";
                         <div class="col-sm-6 col-lg-4 p-4">
                             <div class="p-0 bg-dark border border-1 rounded-4 overflow-hidden">
                                 <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
+                                    <!-- <img src='../uploads/<?= $food['image']?>' alt="" class="img-fluid"> -->
                                     <img src="./assets/images/f2.png" alt="" class="img-fluid">
                                 </div>
                                 <div class="details text-white px-4 mt-3">

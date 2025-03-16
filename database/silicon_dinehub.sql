@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 03:40 PM
+-- Generation Time: Mar 16, 2025 at 09:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -60,7 +60,7 @@ CREATE TABLE `counter_category` (
 --
 
 INSERT INTO `counter_category` (`counterCategoryID`, `counterID`, `foodCategoryID`) VALUES
-(1, 1, 1),
+(1, 1, NULL),
 (2, 2, NULL),
 (3, 3, NULL);
 
@@ -101,14 +101,6 @@ CREATE TABLE `feedback` (
   `feedbackFor` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `feedback`
---
-
-INSERT INTO `feedback` (`feedbackID`, `studentID`, `feedback`, `rating`, `status`, `feedbackFor`) VALUES
-(1, 1, 'Great food quality!', '5', '1', 'Cafeteria'),
-(2, 2, 'Needs improvement in service.', '3', '1', 'Staff');
-
 -- --------------------------------------------------------
 
 --
@@ -130,10 +122,31 @@ CREATE TABLE `food` (
 --
 
 INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `image`, `description`, `price`, `isAvailable`) VALUES
-(1, 1, 'Cappuccino', '', 'Hot coffee with milk foam', '100', '1'),
-(2, NULL, 'Burger', '', 'Cheese and lettuce burger', '150', '1'),
-(3, NULL, 'Blueberry Muffins', '', 'Blueberry muffins are sweet, moist, and bursting with blueberries.', '50', '1'),
-(4, 12, 'Fried rice', '', 'Fried rice is a dish of cooked rice that has been stir-fried in a wok or a frying pan and is usually mixed with other ingredients such as eggs, vegetables, seafood, or meat', '60', '1');
+(1, 1, 'Cappuccino', '', 'A classic hot coffee topped with thick milk foam, offering a rich taste and smooth texture with every sip, providing a satisfying morning boost.', '100', '1'),
+(2, 1, 'Espresso', '', 'A strong and bold black coffee made from finely ground beans, delivering an intense caffeine kick and deep aroma, ideal for a quick energy boost.', '80', '1'),
+(3, 1, 'Green Tea', '', 'A healthy and refreshing tea known for its rich antioxidants and light flavor, offering a calming and soothing experience with every warm, comforting sip.', '60', '0'),
+(4, 2, 'Fried Rice', '', 'Stir-fried rice cooked with fresh vegetables, scrambled eggs, and soy sauce, creating a deliciously savory and aromatic dish that pairs well with spicy sides.', '120', '1'),
+(5, 2, 'Manchurian', '', 'Crispy fried vegetable balls tossed in a flavorful spicy sauce, blending Chinese and Indian flavors for a delightful taste, perfect for an evening snack.', '140', '1'),
+(6, 3, 'Masala Dosa', '', 'A thin crispy rice crepe filled with spiced mashed potatoes, served with coconut chutney and flavorful sambhar, making it a staple South Indian delicacy.', '110', '1'),
+(7, 3, 'Idli Sambhar', '', 'Soft, fluffy steamed rice cakes served with spicy lentil soup and coconut chutney, offering a light and healthy meal that is both nutritious and delicious.', '90', '0'),
+(8, 4, 'Paneer Butter Masala', '', 'A rich and creamy tomato-based curry made with soft paneer cubes, infused with aromatic spices and butter, making it a favorite vegetarian dish.', '180', '1'),
+(9, 4, 'Curd Rice', '', 'A refreshing South Indian dish made with rice, yogurt, and mild spices, providing a cooling and light taste that is perfect for hot summer days.', '80', '1'),
+(10, 5, 'Cheeseburger', '', 'A juicy grilled beef patty topped with melted cheese, fresh lettuce, tomato, and onions, all in a toasted bun, offering a deliciously filling fast food treat.', '150', '1'),
+(11, 5, 'French Fries', '', 'Crispy golden potato fries seasoned with salt and served hot with ketchup or a creamy dipping sauce, making them a perfect side or snack choice.', '70', '0'),
+(12, 6, 'Chocolate Cake', '', 'A moist and rich chocolate cake layered with creamy frosting, offering a delightful treat for chocolate lovers who enjoy indulgent and sweet desserts.', '200', '1'),
+(13, 6, 'Ice Cream Sundae', '', 'A scoop of vanilla ice cream topped with nuts, syrup, fresh fruits, and a drizzle of chocolate sauce, providing a refreshing and sweet delight.', '130', '1'),
+(14, 7, 'Croissant', '', 'A buttery and flaky French pastry with a crisp golden crust, best enjoyed fresh with a cup of coffee for a perfect morning or evening snack.', '90', '1'),
+(15, 7, 'Banana Bread', '', 'A moist and sweet homemade bread infused with ripe bananas, offering a deliciously soft and comforting treat that pairs well with tea or coffee.', '90', '1'),
+(16, 8, 'Caesar Salad', '', 'Crisp lettuce tossed with parmesan cheese, croutons, and a creamy dressing, creating a refreshing and crunchy dish perfect as a starter or side.', '150', '1'),
+(17, 8, 'Greek Salad', '', 'A fresh mix of feta cheese, olives, tomatoes, cucumbers, and herbs, drizzled with olive oil for extra flavor, making it a nutritious and tasty meal.', '160', '1'),
+(18, 9, 'Tomato Soup', '', 'A smooth and creamy tomato-based soup seasoned with herbs, offering a warm and comforting meal on chilly days, best served with crispy breadsticks.', '90', '1'),
+(19, 9, 'Chicken Corn Soup', '', 'A warm and delicious soup made with tender chicken, sweet corn, and aromatic spices, perfect for cold evenings or as a starter for any meal.', '110', '1'),
+(20, 10, 'Grilled Salmon', '', 'Fresh salmon fillet grilled to perfection, served with a lemon butter sauce, offering a flavorful and healthy option rich in protein and omega-3.', '300', '0'),
+(21, 10, 'Prawn Curry', '', 'A flavorful and spicy prawn dish cooked with coconut milk, tomatoes, and traditional spices, served with rice for a perfect blend of taste and aroma.', '280', '1'),
+(22, 11, 'Tacos', '', 'Soft tortillas filled with seasoned meat, fresh veggies, and salsa, providing a flavorful and satisfying meal, perfect for lunch or dinner.', '180', '1'),
+(23, 11, 'Burrito', '', 'A large stuffed wrap with rice, beans, cheese, meat, and a flavorful sauce, wrapped in a warm tortilla, creating a hearty and filling meal.', '190', '1'),
+(24, 12, 'Margherita Pizza', '', 'A classic pizza topped with tomato sauce, fresh mozzarella, and basil, baked to perfection for an authentic taste, loved by all pizza enthusiasts.', '220', '1'),
+(25, 12, 'Pasta Alfredo', '', 'Creamy fettuccine pasta tossed in a rich, cheesy white sauce, topped with herbs and freshly grated parmesan, making it a comforting Italian dish.', '200', '1');
 
 -- --------------------------------------------------------
 
@@ -152,9 +165,20 @@ CREATE TABLE `food_category` (
 
 INSERT INTO `food_category` (`foodCategoryID`, `category`) VALUES
 (1, 'Beverages'),
-(12, 'Chinese'),
-(13, 'South Indian'),
-(14, 'Dairy');
+(2, 'Chinese'),
+(3, 'South Indian'),
+(4, 'Dairy'),
+(5, 'Fast Food'),
+(6, 'Desserts'),
+(7, 'Bakery'),
+(8, 'Salads'),
+(9, 'Soups'),
+(10, 'Seafood'),
+(11, 'Mexican'),
+(12, 'Italian'),
+(13, 'Breakfast'),
+(14, 'Grilled'),
+(15, 'Vegan');
 
 -- --------------------------------------------------------
 
@@ -179,9 +203,9 @@ CREATE TABLE `order_table` (
 --
 
 INSERT INTO `order_table` (`orderID`, `studentID`, `foodID`, `quantity`, `orderType`, `price`, `createdAt`, `updatedAt`, `status`) VALUES
-(1, 1, 1, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1'),
-(2, 2, 2, '1', 'parcel', '150', '2025-02-11', '2025-02-11', '1'),
-(3, 1, 1, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1');
+(1, NULL, NULL, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1'),
+(2, 2, NULL, '1', 'parcel', '150', '2025-02-11', '2025-02-11', '1'),
+(3, NULL, NULL, '2', 'dineIn', '200', '2025-02-12', '2025-02-12', '1');
 
 -- --------------------------------------------------------
 
@@ -246,7 +270,6 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `isActive`) VALUES
-(1, '23mmci37', 1, 'Anil', '2002-10-10', '1234', '1'),
 (2, '23mmci48', 2, 'Soumendra', '2000-08-20', '5678', '1'),
 (3, '23mmci76', 3, 'Priti', '2001-02-17', '1866', '0'),
 (4, '23mmci87', 4, 'Himansu', '2001-06-20', '1478', '1'),
@@ -362,13 +385,13 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `food_category`
 --
 ALTER TABLE `food_category`
-  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `foodCategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `order_table`
