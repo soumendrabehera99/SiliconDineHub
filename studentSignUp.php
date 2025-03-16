@@ -50,7 +50,7 @@
         background-color: orangered;
         transform: translateY(-50%);
         transition: width 0.3s ease-in-out;
-        z-index: 10;
+        z-index: 0;
       }
 
       .step {

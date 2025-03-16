@@ -18,7 +18,70 @@ if(isset($_POST['operation'])){
                 $subject = "Otp Verfication";
 
                 $otp = random_int(100000,999999);
-                $body= "Your Registration OTP is:". $otp;
+                $body= '<!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>Email OTP</title>
+                            <link href="../assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+                            <style>
+                                body {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    height: 100vh;
+                                    background-color: #f8f9fa;
+                                }
+                                .otp-container {
+                                    background: white;
+                                    padding: 30px;
+                                    border-radius: 10px;
+                                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                                    text-align: center;
+                                    width: 100%;
+                                    max-width: 400px;
+                                }
+                                .otp-code {
+                                    font-size: 2.5rem;
+                                    font-weight: bold;
+                                    color: green;
+                                }
+                                .footer {
+                                    margin-top: 20px;
+                                    font-size: 0.9rem;
+                                }
+                                hr {
+                                    border: none;
+                                    height: 1px;
+                                    background-color: #ddd;
+                                    margin: 15px 0;
+                                }
+                                h3 {
+                                    color: #007bff;
+                                    font-weight: bold;
+                                }
+                                a {
+                                    text-decoration: none;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class="otp-container">
+                                <h2>Student Resgistration OTP</h2>
+                                <hr>
+                                <p>Dear User,</p>
+                                <p>Your One-Time Password (OTP) is:</p>
+                                <p class="otp-code">'.$otp.'</p>
+                                <p>Please use this OTP to complete your Registration process. Do not share this code with anyone.</p>
+                                <p>Thank you for Registration !</p>
+                                <div class="footer">
+                                    &copy; <a href="https://www.silicondinehub.com" target="_blank">www.silicondinehub.com</a>. All rights reserved.
+                                </div>
+                            </div>
+                        </body>
+                        </html>
+                        ';
 
                 $response = sendMail($toEmail,$subject,$body);
                 
