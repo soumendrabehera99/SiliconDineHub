@@ -1,10 +1,8 @@
 <?php
 include_once "./fragment/navbar.php";
+require_once "./dbFunctions/landingPagedb.php";
 ?>
     <section class="position-relative d-flex align-items-center">
-        <!-- <div class="bg-box">
-            <img src="./assets/images/hero-bg.jpg" alt="" class="img-fluid">
-        </div> -->
         <!-- carausal Section  -->
         <section class="hero d-flex align-items-center">
                 <div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
@@ -68,150 +66,40 @@ include_once "./fragment/navbar.php";
                     <h2 class="fs-1 text-center">Foods</h2>
                 </div>
                 <div class="row g-2">
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
+                <?php
+                    $result = getRandomFoods();
+                    while($food = $result->fetch_assoc()){
+                        ?>
+                        <div class="col-sm-6 col-lg-4 p-4">
+                            <div class="p-0 bg-dark border border-1 rounded-4 overflow-hidden">
+                                <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
+                                    <img src="./assets/images/f2.png" alt="" class="img-fluid">
+                                </div>
+                                <div class="details text-white px-4 mt-3">
+                                    <h4><?= $food['name']?></h4>
+                                    <p class="description mt-3" style="font-size: 14px; text-align: justify;">
+                                        <?php 
+                                            $desc = $food['description']; 
+                                            if (strlen($desc) > 80) {
+                                                echo '<span class="short-text">' . substr($desc, 0, 80) . '...</span>';
+                                                echo '<span class="full-text" style="display: none;">' . $desc . '</span>';
+                                            } else {
+                                                echo $desc;
+                                            }
+                                        ?>
+                                    <?php if (strlen($food['description']) > 80): ?>
+                                        <a href="javascript:void(0);" class="read-more text-decoration-none" style="color: #18ab42;">Read More</a>
+                                    <?php endif; ?>
+                                    </p>
+                                </div>
+                                <div class="d-flex justify-content-between px-4 pb-2">
+                                    <h4 class="text-warning">Rs. <?= $food['price']?></h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p class="text-truncate-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-lg-4 p-4">
-                        <div class="p-0 bg-dark rounded-4 overflow-hidden">
-                            <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                            </div>
-                            <div class="details text-white p-3">
-                                <h5>Pizza</h5>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores delectus rem odit
-                                    eligendi nesciunt veniam eveniet ut praesentium unde reiciendis.</p>
-                            </div>
-                            <div class="d-flex justify-content-between px-3 pb-2">
-                                <h6 class="text-white">$17</h6>
-                                <a href="#" class="text-warning"><i class="fa-solid fa-cart-shopping"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                        <?php 
+                    }
+                ?>
 
                 </div>
             </div>

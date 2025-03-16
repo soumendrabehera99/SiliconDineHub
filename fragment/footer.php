@@ -95,9 +95,6 @@
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
           <a href="">Silicon DineHub</a>
-          <script>
-            document.getElementById("displayYear").innerText = new Date().getFullYear();
-          </script>
         </p>
       </div>
     </footer>
@@ -110,6 +107,6 @@
     <script src="./assets/jquery/jquery-3.7.1.min.js"></script>
 
     <!-- custom js -->
-    <!-- <script src="./assets/jquery/jquery-3.7.1.min.js"></script> -->
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
