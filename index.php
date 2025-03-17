@@ -78,19 +78,11 @@ require_once "./dbFunctions/landingPagedb.php";
                                 </div>
                                 <div class="details text-white px-4 mt-3">
                                     <h4><?= $food['name']?></h4>
-                                    <p class="description mt-3" style="font-size: 14px; text-align: justify;">
+                                    <p class="description mt-3 text-truncate-2 text-justify" style="font-size: 14px;">
                                         <?php 
                                             $desc = $food['description']; 
-                                            if (strlen($desc) > 80) {
-                                                echo '<span class="short-text">' . substr($desc, 0, 80) . '...</span>';
-                                                echo '<span class="full-text" style="display: none;">' . $desc . '</span>';
-                                            } else {
-                                                echo $desc;
-                                            }
+                                            echo $desc;
                                         ?>
-                                    <?php if (strlen($food['description']) > 80): ?>
-                                        <a href="javascript:void(0);" class="read-more text-decoration-none" style="color: #18ab42;">Read More</a>
-                                    <?php endif; ?>
                                     </p>
                                 </div>
                                 <div class="d-flex justify-content-between px-4 pb-2">
