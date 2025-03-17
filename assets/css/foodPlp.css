@@ -1,3 +1,46 @@
-aside li {
-  text-decoration: none !important;
+#sidebar {
+  height: 90vh;
+  width: 100px;
+  position: block;
+  overflow-y: auto;
+  border-right: 1px solid #ddd;
+  background-color: #343a40;
+  scrollbar-width: none; /* For Firefox */
+  margin-left: -5px;
+}
+
+#sidebar::-webkit-scrollbar {
+  display: none; /* Hide sidebar's scrollbar For Chrome, Safari, and Edge */
+}
+
+.sidebar-link {
+  text-align: center;
+  color: white;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-decoration: none; /* Removes underline */
+}
+
+.sidebar-link:hover {
+  color: goldenrod;
+  transform: scale(1.1); /* Slightly zoom in */
+}
+
+.sidebar-link.active {
+  border-left: 4px solid goldenrod;
+  background-color: rgba(188, 136, 5, 0.173);
+  color: white;
+  transform: scale(1.1); /* Keeps zoomed-in effect */
+}
+
+.sidebar-link.active:hover {
+  color: white;
+}
+
+.sidebar-link img {
+  width: 50px;
 }

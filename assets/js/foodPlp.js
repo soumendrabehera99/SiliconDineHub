@@ -31,7 +31,14 @@ function fetchCategories(page = 1, searchQuery = "") {
 
       let category = "";
       response.categories.forEach((res) => {
-        category += `<a data-id ="${res.foodCategoryID}">${res.category}</a>`;
+        category += `<a href="#" class="sidebar-link" data-id ="${res.foodCategoryID}" id="data-item-id">
+                        <img src="./assets/images/f2.png" alt="Veg" class="img-fluid">
+                        <div style="font-size: 12px;">${res.category}</div>
+                    </a>`;
+                    // <a href="#" class="sidebar-link" data-category="veg">
+                    //     <img src="./assets/images/f2.png" alt="Veg" class="img-fluid">
+                    //     <div style="font-size: 12px;">Veg</div>
+                    // </a>
       });
       $("#category-bar").html(category);
     },
@@ -173,3 +180,24 @@ function fetchFoods(page = 1, searchQuery = "") {
 }
 
 fetchCategories();
+
+
+// Sidebar Acive links
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("category-bar").addEventListener("click", function(event) {
+      let target = event.target.closest(".sidebar-link");
+      if (!target) return; // If clicked outside of a sidebar link, do nothing
+      
+      event.preventDefault();
+
+      // Remove active class from all links
+      document.querySelectorAll(".sidebar-link").forEach(link => {
+          link.classList.remove("active");
+      });
+
+      // Add active class to the clicked link
+      setTimeout(() => {
+          target.classList.add("active");
+      }, 100);
+  });
+}); 
