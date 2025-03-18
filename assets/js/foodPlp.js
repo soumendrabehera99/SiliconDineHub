@@ -1,5 +1,17 @@
 let currentPage = 1;
-const itemsPerPage = 6;
+const itemsPerPage = 50;
+//get search parameter
+const urlParams = new URLSearchParams(window.location.search);
+let searchQuery = urlParams.get("search");
+
+fetchCategories();
+if (searchQuery) {
+  const message = "No food items listed with your search.!";
+  fetchFoods(1, searchQuery, null, message);
+} else {
+  fetchFoods();
+}
+//search query
 function fetchCategories(page = 1, searchQuery = "") {
   $.ajax({
     url: "./dbFunctions/categoryAjax.php",
@@ -9,8 +21,6 @@ function fetchCategories(page = 1, searchQuery = "") {
     },
     dataType: "json",
     success: function (response) {
-      console.log(response);
-
       if (response.error) {
         toastr.error(response.error);
         $("#category-bar").html(
@@ -35,10 +45,10 @@ function fetchCategories(page = 1, searchQuery = "") {
                         <!-- <img src="./assets/images/f2.png" alt="Veg" class="img-fluid"> -->
                         <div class="fs-md-6">${res.category}</div>
                     </a>`;
-                    // <a href="#" class="sidebar-link" data-category="veg">
-                    //     <img src="./assets/images/f2.png" alt="Veg" class="img-fluid">
-                    //     <div style="font-size: 12px;">Veg</div>
-                    // </a>
+        // <a href="#" class="sidebar-link" data-category="veg">
+        //     <img src="./assets/images/f2.png" alt="Veg" class="img-fluid">
+        //     <div style="font-size: 12px;">Veg</div>
+        // </a>
       });
       $("#category-bar").html(category);
     },
@@ -49,6 +59,7 @@ function fetchCategories(page = 1, searchQuery = "") {
   });
 }
 
+//pagination
 function updatePagination(totalPages, currentPage) {
   let paginationHTML = "";
 
@@ -81,21 +92,23 @@ function updatePagination(totalPages, currentPage) {
   $("#pagination").html(paginationHTML);
 }
 
-function fetchFoods(page = 1, searchQuery = "") {
+//food fetch
+function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
   $.ajax({
-    url: "../dbFunctions/foodAjax.php",
+    url: "./dbFunctions/foodAjax.php",
     method: "POST",
     data: {
       food: searchQuery,
       page: page,
-      limit: foodsPerPage,
-      operation: "foodGet",
+      limit: itemsPerPage,
+      categoryID: categoryID,
+      operation: "foodGetPlp",
     },
     dataType: "json",
     success: function (response) {
       if (response.error) {
         toastr.error(response.error);
-        $("#foodTableBody").html(
+        $("#fooddisplaydiv").html(
           `<tr><td colspan="7" class="text-center text-danger">${response.error}</td></tr>`
         );
         $("#foodPagination").html("");
@@ -103,73 +116,38 @@ function fetchFoods(page = 1, searchQuery = "") {
       }
 
       if (!Array.isArray(response.foods) || response.foods.length === 0) {
-        $("#foodTableBody").html(
-          `<tr><td colspan="7" class="text-center text-danger fw-bold">No foods found</td></tr>`
+        $("#fooddisplaydiv").html(
+          `<p class="text-center text-danger fw-bold">${message}</p>`
         );
         $("#foodPagination").html("");
         return;
       }
 
       let tbody = "";
-      let counter = (page - 1) * foodsPerPage + 1;
       response.foods.forEach((res) => {
-        tbody += `<tr>
-                      <td>${counter}</td>
-                      <td>
-                        <div class="position-relative d-flex align-items-center justify-content-center fm-imageDiv">
-                          <a class="position-absolute d-none btn-outline-warning btn btn-sm fm-uploadBtn"
-                          data-bs-toggle="modal" data-bs-target="#updateFoodImageModal"
-                          food-id="${res.foodID}"
-                          food-image="${res.image}"
-                          >
-                          update
-                          </a>
-                          <img src="../uploads/${
-                            res.image
-                          }" alt="NA" class="fm-image">
-                        </div>
-                      </td>
-                      <td>${res.name}</td>
-                      <td>
-                      ${
-                        res.foodCategoryID == null
-                          ? "Uncategorized"
-                          : res.category
-                      }
-                      </td>
-                      <td>${res.price}</td>
-                      <td>
-                          <button  class="btn btn-sm updateFoodStatusBtn ${
-                            res.isAvailable == 1 ? "btn-success" : "btn-danger"
-                          }" data-bs-toggle="modal" data-bs-target="#updateStatusFoodModal"
-                          food-id="${res.foodID}" 
-                          food-status="${res.isAvailable}" 
-                          food-name="${res.name}"
-                          >
-                            ${
-                              res.isAvailable == 1
-                                ? "Available"
-                                : "Not Available"
-                            }
-                          </button>
-                      </td>
-                      <td>
-                          <a href="./editFood.php?foodID=${
-                            res.foodID
-                          }" class="btn btn-success btn-sm editFoodBtn">
-                              <i class="fa-solid fa-edit"></i> View
-                          </a>
-                          <a class="btn btn-danger btn-sm deleteFoodBtn" data-bs-toggle="modal" data-bs-target="#deleteFoodModal" food-id="${
-                            res.foodID
-                          }" food-name="${res.name}" food-image="${res.image}">
-                              <i class="fa-solid fa-trash"></i> Delete
-                          </a>
-                      </td>
-                    </tr>`;
-        counter++;
+        tbody += `
+          <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+            <a href="/foodPdp?id=${res.foodID}" class="text-decoration-none">
+                <div class="card border-1 shadow-sm">
+                    <div class="text-center mt-3">
+                        <img src="./assets/images/f2.png" class="card-img-top img-fluid" alt="Ice-Cream" 
+                            style="max-width: 100px; height: auto;">
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-title text-truncate-1">${res.name}</h6>
+                        <p class="small text-muted mb-1 text-truncate-3" style="font-size: 10px; text-align: justify;">
+                            ${res.description}
+                        </p>
+                        <h4 class="mb-1"><strong>&#8377;${res.price}</strong></h4>
+                        <button class="btn btn-outline-success w-100 addBtn">ADD</button>
+                    </div>
+                </div>
+              </a>
+          </div>
+        `;
       });
 
-      //   $("#foodTableBody").html(tbody);
+      $("#fooddisplaydiv").html(tbody);
       updatePagination(response.totalPages, response.currentPage);
     },
     error: function (xhr, status, error) {
@@ -179,25 +157,46 @@ function fetchFoods(page = 1, searchQuery = "") {
   });
 }
 
-fetchCategories();
-
-
-// Sidebar Acive links
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("category-bar").addEventListener("click", function(event) {
+//side bar active link
+document.addEventListener("DOMContentLoaded", function () {
+  document
+    .getElementById("category-bar")
+    .addEventListener("click", function (event) {
       let target = event.target.closest(".sidebar-link");
       if (!target) return; // If clicked outside of a sidebar link, do nothing
-      
+
       event.preventDefault();
 
       // Remove active class from all links
-      document.querySelectorAll(".sidebar-link").forEach(link => {
-          link.classList.remove("active");
+      document.querySelectorAll(".sidebar-link").forEach((link) => {
+        link.classList.remove("active");
       });
 
       // Add active class to the clicked link
       setTimeout(() => {
-          target.classList.add("active");
+        target.classList.add("active");
       }, 100);
+    });
+});
+$(document).ready(function () {
+  $(".search-Btn").click(function () {
+    searchQuery = $("#search").val().trim();
+    const message = "No food items listed with your search.!";
+    fetchFoods(1, searchQuery, null, message);
   });
-}); 
+
+  $("#search").keypress(function (e) {
+    if (e.which === 13) {
+      searchQuery = $(this).val().trim();
+      const message = "No food items listed with your search.!";
+      fetchFoods(1, searchQuery, null, message);
+    }
+  });
+  $(document).on("click", ".sidebar-link", function () {
+    let id = $(this).data("id");
+    const message =
+      "No food items available in this category. Please check other categories!";
+    fetchFoods(1, "", id, message);
+    console.log(id);
+  });
+});

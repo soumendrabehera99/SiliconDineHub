@@ -24,12 +24,10 @@
                     <a class="navbar-brand" href="./index.php"><img src="./assets/images/logo.png" alt="" class="img-fluid"
                     style="height: 50px;"></a>
                     <div class="d-flex justify-content-between ms-sm-5 align-items-center gap-2">
-                        <form action="" class="mb-0">
-                            <div class="input-group">
-                                <input type="search" name="search" id="search" class="form-control">
-                                <button type="submit" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </div>
-                        </form>
+                        <div class="input-group">
+                            <input type="search" name="search" id="search" class="form-control">
+                            <button type="submit" class="btn btn-outline-secondary search-Btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">

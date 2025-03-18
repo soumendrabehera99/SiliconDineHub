@@ -181,4 +181,71 @@ function upadateFoodImage($foodId,$imageName){
         return $e->getMessage();
     }
 }
+
+function getAllFood($categoryID, $search, $pageNo, $limit) {
+    $conn = dbConnection();
+    $searchTerm = "%" . $search . "%";
+    $offset = ($pageNo - 1) * $limit;
+
+    $whereClause = "WHERE f.isAvailable = 1 AND f.name LIKE ?";
+    
+    $params = ["s", &$searchTerm];
+
+    if (!empty($categoryID)) {
+        $whereClause .= " AND f.foodCategoryID = ?";
+        $params[0] .= "i"; 
+        $params[] = &$categoryID;
+    }
+
+    $countQuery = "SELECT COUNT(*) AS total FROM food f $whereClause";
+    $countStmt = $conn->prepare($countQuery);
+    
+    if (!$countStmt) {
+        die(json_encode(['error' => "SQL Prepare Failed: " . $conn->error]));
+    }
+
+    $countStmt->bind_param(...$params);
+    
+    if (!$countStmt->execute()) {
+        die(json_encode(['error' => "SQL Execution Failed: " . $countStmt->error]));
+    }
+
+    $countResult = $countStmt->get_result();
+    $totalPages = ceil($countResult->fetch_assoc()['total'] / $limit);
+
+    // Query to fetch filtered food items
+    $query = "SELECT f.*, c.category 
+              FROM food f 
+              LEFT JOIN food_category c ON f.foodCategoryID = c.foodCategoryID 
+              $whereClause 
+              ORDER BY f.foodCategoryID IS NOT NULL, f.name ASC 
+              LIMIT ? OFFSET ?";
+
+    $stmt = $conn->prepare($query);
+
+    if (!$stmt) {
+        die(json_encode(['error' => "SQL Prepare Failed: " . $conn->error]));
+    }
+
+    // Add limit and offset to bind parameters
+    $params[0] .= "ii";
+    $params[] = &$limit;
+    $params[] = &$offset;
+    
+    $stmt->bind_param(...$params);
+
+    if (!$stmt->execute()) {
+        die(json_encode(['error' => "SQL Execution Failed: " . $stmt->error]));
+    }
+
+    $result = $stmt->get_result();
+    $foods = $result->fetch_all(MYSQLI_ASSOC);
+
+    return [
+        "foods" => $foods,
+        "currentPage" => $pageNo,
+        "totalPages" => $totalPages
+    ];
+}
+
 ?>

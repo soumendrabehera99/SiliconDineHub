@@ -104,6 +104,15 @@ if($_POST['operation']){
     
             $response = updateFood($foodId,$categoryID, $foodName, $foodDescription, $foodPrice, $foodStatus);
             echo json_encode(["status" => $response]);
+        }else if ($_POST['operation'] == "foodGetPlp") {
+        $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;
+        $limit = isset($_POST['limit']) ? (int)$_POST['limit'] : 5;
+        $search = isset($_POST['food']) ? $_POST['food'] : '';
+        $categoryID = isset($_POST['categoryID']) ? (int)$_POST['categoryID'] : null;
+    
+        $response = getAllFood($categoryID, $search, $page, $limit);
+    
+        echo json_encode($response);
         }
     }
 }

@@ -102,3 +102,4 @@ include_once "fragment/feedback.php";
 include_once "fragment/customerFeedback.php";
 include_once "fragment/footer.php";
 ?>
+<script src="./assets/js/index.js"></script>

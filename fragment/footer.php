@@ -108,5 +108,16 @@
 
     <!-- custom js -->
     <script src="./assets/js/script.js"></script>
+
+    <script src="./assets/toastr/toastr.min.js"></script>
+
+    <script>
+      toastr.options = {
+        "closeButton": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "timeOut": "3000"
+      };
+    </script>
   </body>
 </html>
