@@ -127,7 +127,7 @@ function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
       response.foods.forEach((res) => {
         tbody += `
           <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-            <a href="/foodPdp?id=${res.foodID}" class="text-decoration-none">
+            <a href="foodDetails.php?id=${res.foodID}" class="text-decoration-none">
                 <div class="card border-1 shadow-sm">
                     <div class="text-center mt-3">
                         <img src="./assets/images/f2.png" class="card-img-top img-fluid" alt="Ice-Cream" 

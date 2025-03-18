@@ -113,6 +113,11 @@ if($_POST['operation']){
         $response = getAllFood($categoryID, $search, $page, $limit);
     
         echo json_encode($response);
+        } else if ($_POST['operation'] == "getFoodDetails") {
+            $foodID = isset($_POST['foodID']);
+
+            $response = getFoodById($foodID);
+            echo json_encode($response);
         }
     }
 }
