@@ -20,30 +20,13 @@ $(document).ready(function () {
   $("#next-btn").click(function (e) {
     e.preventDefault();
     $("#next-btn").attr("disabled", true);
-    
     sic = $("#sic").val();
     let sicError = validateSIC(sic);
-    
     if (sicError) {
-      Swal.fire({
-        icon: "error",
-        title: "Not a Valid SIC",
-        text: sicError,
-      });
+      toastr.error(sicError);
       $("#next-btn").attr("disabled", false);
       return;
     }
-  
-    // Show SweetAlert2 Loader
-    Swal.fire({
-      title: "Processing...",
-      text: "Please wait while we verify your SIC and send OTP.",
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
-  
     $.ajax({
       url: "./dbFunctions/authentication.php",
       method: "POST",
@@ -52,17 +35,11 @@ $(document).ready(function () {
         operation: "studentSignUp",
       },
       success: function (response) {
+        // console.log(response);
         response = JSON.parse(response);
         let status = response.status;
-        
-        Swal.close(); // Close the loader when request is done
-        
         if (status == "present") {
-          Swal.fire({
-            icon: "info",
-            title: "Already Registered",
-            text: "Please Log in to continue...",
-          });
+          toastr.info("You are already Registered. Log in to continue...");
           $("#next-btn").attr("disabled", false);
         } else if (status == "success") {
           toastr.success("SIC verified successfully!");
@@ -79,47 +56,25 @@ $(document).ready(function () {
           );
           console.log(seID, otp);
         } else if (status == "error1") {
-          Swal.fire({
-            icon: "error",
-            title: "SIC Not Registered",
-            text: "Please contact the admin for Registration.",
-          });
+          toastr.error("SIC not registered. Contact admin.");
           $("#next-btn").attr("disabled", false);
         } else if (status == "error2") {
-          Swal.fire({
-            icon: "error",
-            title: "Connection Failed",
-            text: "Please check your internet connection and try again.",
-          });
+          toastr.error(
+            "Connection failed! Please check your internet and retry."
+          );
           $("#next-btn").attr("disabled", false);
         } else if (status == "error3") {
-          Swal.fire({
-            icon: "error",
-            title: "Mail Sending Error",
-            text: "There was an issue sending the OTP. Please try again later.",
-          });
+          toastr.error("Error in sending mail. Try again later.");
           $("#next-btn").attr("disabled", false);
         } else {
-          Swal.fire({
-            icon: "error",
-            title: "Unknown Error",
-            text: "Response: " + response,
-          });
+          toastr.error("Unknown response: " + response, "Error");
         }
       },
       error: function () {
-        Swal.close(); // Close loader on error
-        Swal.fire({
-          icon: "error",
-          title: "Submission Error",
-          text: "An error occurred while submitting. Please try again.",
-        });
-        $("#next-btn").attr("disabled", false);
+        toastr.error("An error occurred while submitting");
       },
     });
   });
-  
-  
   $("#prev-btn1").click(function (e) {
     e.preventDefault();
     $("#step-2").removeClass("active");
@@ -142,11 +97,9 @@ $(document).ready(function () {
   $("#verify-btn").click(function (e) {
     e.preventDefault();
     if ($("#otpInput").val() != otp) {
-      Swal.fire({
-        icon: "error",
-        title: "Incorrect OTP",
-        text: "The OTP you entered is incorrect. Please try again.",
-      });
+      toastr.error(
+        "Incorrect OTP !"
+      );
       return;
     }
     toastr.success("OTP Verified!");
@@ -156,7 +109,7 @@ $(document).ready(function () {
     $("#seIDInput").val(seID);
     currentStep = 3;
     updateProgressBar();
-  });  
+  });
   $("#prev-btn2").click(function (e) {
     e.preventDefault();
     $("#step-3").removeClass("active");
@@ -174,70 +127,18 @@ $(document).ready(function () {
     let name = $("#name").val().trim();
     let dob = $("#dob").val();
     let password = $("#password").val().trim();
-    let cpassword = $("#cpassword").val().trim();
 
     console.log(seID, sic, name, dob, password);
 
     // Validation: Check if any field is empty
-    if (!seID || !sic || !name || !dob || !password || !cpassword) {
-      Swal.fire({
-        icon: "error",
-        title: "Missing Fields",
-        text: "All fields are required. Please fill in all the details.",
-      });
-      return;
-    }
-  
-    // Validate Name (Only letters and spaces, at least 2 characters)
-    if (!name.match(/^[A-Za-z\s]{2,}$/)) {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid Name",
-        text: "Name should only contain letters and spaces, with at least 2 characters.",
-      });
-      return;
-    }
-  
-    // Validate Date of Birth (Must be a past date)
-    let today = new Date();
-    let birthDate = new Date(dob);
-    if (birthDate >= today) {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid Date of Birth",
-        text: "Date of birth must be a past date.",
-      });
-      return;
-    }
-  
-    // Validate Password Length (At least 8 characters)
-    if (password.length < 8) {
-      Swal.fire({
-        icon: "error",
-        title: "Password Too Short",
-        text: "Password must be at least 8 characters long.",
-      });
-      return;
-    }
-
-    // Validate Password (At least 1 uppercase, 1 lowercase, 1 special character, 1 digit)
-    let passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
-    if (!password.match(passwordRegex)) {
-      Swal.fire({
-        icon: "error",
-        title: "Weak Password",
-        text: "Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character (@, $, !, %, *, ?, &).",
-      });
-      return;
-    }
-  
-    // Confirm Password Match
-    if (password !== cpassword) {
-      Swal.fire({
-        icon: "error",
-        title: "Password Mismatch",
-        text: "Passwords do not match. Please try again.",
-      });
+    if (
+      seID === "" ||
+      sic === "" ||
+      name === "" ||
+      dob === "" ||
+      password === ""
+    ) {
+      toastr.error("All fields are required !");
       return;
     }
 
