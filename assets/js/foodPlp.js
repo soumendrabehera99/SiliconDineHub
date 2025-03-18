@@ -32,8 +32,8 @@ function fetchCategories(page = 1, searchQuery = "") {
       let category = "";
       response.categories.forEach((res) => {
         category += `<a href="#" class="sidebar-link" data-id ="${res.foodCategoryID}" id="data-item-id">
-                        <img src="./assets/images/f2.png" alt="Veg" class="img-fluid">
-                        <div style="font-size: 12px;">${res.category}</div>
+                        <!-- <img src="./assets/images/f2.png" alt="Veg" class="img-fluid"> -->
+                        <div class="fs-md-6">${res.category}</div>
                     </a>`;
                     // <a href="#" class="sidebar-link" data-category="veg">
                     //     <img src="./assets/images/f2.png" alt="Veg" class="img-fluid">
