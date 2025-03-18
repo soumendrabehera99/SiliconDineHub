@@ -212,6 +212,14 @@
               <input type="password" id="password" name="password" class="form-control" />
             </div>
           </div>
+          <div class="row mb-3">
+            <div class="col-md-4">
+              <label for="password" class="form-label">Confirm Password</label>
+            </div>
+            <div class="col-md-8">
+              <input type="text" id="cpassword" name="cpassword" class="form-control" />
+            </div>
+          </div>
           <div class="d-flex justify-content-between mt-5">
             <button class="btn" id="prev-btn2">Previous</button>
             <button type="submit" class="btn">Submit</button>
