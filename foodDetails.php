@@ -25,3 +25,4 @@ include_once "./fragment/navbar.php";
 <?php
 include_once "./fragment/footer.php";
 ?>
+<script src="./assets/js/foodDetails.js"></script>
