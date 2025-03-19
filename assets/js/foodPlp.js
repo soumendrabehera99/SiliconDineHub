@@ -179,19 +179,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 $(document).ready(function () {
-  $(".search-Btn").click(function () {
-    searchQuery = $("#search").val().trim();
-    const message = "No food items listed with your search.!";
-    fetchFoods(1, searchQuery, null, message);
-  });
-
-  $("#search").keypress(function (e) {
-    if (e.which === 13) {
-      searchQuery = $(this).val().trim();
-      const message = "No food items listed with your search.!";
-      fetchFoods(1, searchQuery, null, message);
-    }
-  });
   $(document).on("click", ".sidebar-link", function () {
     let id = $(this).data("id");
     const message =

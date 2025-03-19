@@ -27,17 +27,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
-$(document).ready(function () {
-  $(".search-Btn").click(function () {
-    console.log("clicked");
-    let searchQuery = $("#search").val().trim();
-    window.location.href = `./foodPlp.php?search=${searchQuery}`;
-  });
-
-  $("#search").keypress(function (e) {
-    if (e.which === 13) {
-      let searchQuery = $(this).val().trim();
-      window.location.href = `./foodPlp.php?search=${searchQuery}`;
-    }
-  });
-});
