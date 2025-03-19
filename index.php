@@ -60,40 +60,38 @@ require_once "./dbFunctions/landingPagedb.php";
         </section>
     </section>
         <!-- Food Section Start -->
-    <section class="food-section bg-body my-4" id="food">
+    <section class="food-section bg-body my-4 mx-4 mx-md-0" id="food">
             <div class="container">
                 <div class=" py-3 mb-1">
                     <h2 class="fs-1 text-center">Foods</h2>
                 </div>
-                <div class="row g-2">
+                <div class="row g-4">
                 <?php
                     $result = getRandomFoods();
                     while($food = $result->fetch_assoc()){
                         ?>
-                        <div class="col-sm-6 col-lg-4 p-4">
-                            <div class="p-0 bg-dark border border-1 rounded-4 overflow-hidden">
-                                <div class="d-flex justify-content-center bg-body-tertiary border-radius-45 p-3">
-                                    <!-- <img src='../uploads/<?= $food['image']?>' alt="" class="img-fluid"> -->
-                                    <img src="./assets/images/f2.png" alt="" class="img-fluid">
-                                </div>
-                                <div class="details text-white px-4 mt-3">
-                                    <h4><?= $food['name']?></h4>
-                                    <p class="description mt-3 text-truncate-2 text-justify" style="font-size: 14px;">
-                                        <?php 
-                                            $desc = $food['description']; 
-                                            echo $desc;
-                                        ?>
-                                    </p>
-                                </div>
-                                <div class="d-flex justify-content-between px-4 pb-2">
-                                    <h4 class="text-warning">Rs. <?= $food['price']?></h4>
+                            <div class="col-sm-6 col-md-3 mb-4">
+                                <div class="card p-3 pb-0">
+                                    <div class="position-relative">
+                                        <span class="badge-best text-white position-absolute rounded-1 top-0 start-0 m-2 px-2 py-1 bg-danger">Best Seller</span>
+                                        <img src="./assets/images/bun-and-hot-drink-delight.png" class="card-img-top img-fluid" alt="Sandwich">
+                                    </div>
+                                    <div class="card-body px-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="card-title fw-bold mb-1 text-truncate-1"><?= $food['name']?></h5>
+                                            <div class="badge bg-success text-white"><?= getCategoryNameByFoodId($food['foodCategoryID'])?></div>
+                                        </div>
+                                        <p class="card-text text-muted text-truncate-2"><?= $food['description'];?></p>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <span class="price fw-bold fs-4 me-5">Rs. <?= $food['price']?></span>
+                                            <button class="btn btn-warning text-dark px-3 w-50 mt-2">Add to cart</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <?php 
                     }
                 ?>
-
                 </div>
             </div>
     </section>

@@ -1,3 +1,28 @@
+.card {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+.card:hover {
+  transform: scale(1.03);
+}
+.badge-best {
+  top: 10px;
+  left: 10px;
+  background: #d9534f;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+.badge {
+  background-color: #0add34;
+}
+.card-img-top {
+  width: 100%;  /* Responsive Image */
+  height: 200px; /* Set height to maintain aspect ratio */
+  object-fit: cover;
+}
+
 #sidebar {
   height: 90vh;
   width: 150px;
@@ -45,13 +70,6 @@
   width: 50px;
 }
 
-.card {
-  transition: transform 0.3s ease-in-out;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
 @media (max-width: 768px) {
   #sidebar {
     font-size: 0.8rem;
