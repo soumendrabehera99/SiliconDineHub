@@ -114,8 +114,7 @@ if($_POST['operation']){
     
         echo json_encode($response);
         } else if ($_POST['operation'] == "getFoodDetails") {
-            $foodID = isset($_POST['foodID']);
-
+            $foodID = intval($_POST['foodID']);
             $response = getFoodById($foodID);
             echo json_encode($response);
         }
