@@ -71,22 +71,24 @@ require_once "./dbFunctions/landingPagedb.php";
                     while($food = $result->fetch_assoc()){
                         ?>
                             <div class="col-sm-6 col-md-3 mb-4">
-                                <div class="card p-3 pb-0">
-                                    <div class="position-relative">
-                                        <span class="badge-best text-white position-absolute rounded-1 top-0 start-0 m-2 px-2 py-1 bg-danger">Best Seller</span>
-                                        <img src="./assets/images/bun-and-hot-drink-delight.png" class="card-img-top img-fluid" alt="Sandwich">
-                                    </div>
-                                    <div class="card-body px-1">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title fw-bold mb-1 text-truncate-1"><?= $food['name']?></h5>
-                                            <div class="badge bg-success text-white"><?= getCategoryNameByFoodId($food['foodCategoryID'])?></div>
+                                <a href="./foodDetails.php?id=<?= $food['foodID']?>" class="text-decoration-none">
+                                    <div class="card p-3 pb-0">
+                                        <div class="position-relative">
+                                            <span class="badge-best text-white position-absolute rounded-1 top-0 start-0 m-2 px-2 py-1 bg-danger">Best Seller</span>
+                                            <img src="./assets/images/bun-and-hot-drink-delight.png" class="card-img-top img-fluid" alt="Sandwich">
                                         </div>
-                                        <p class="card-text text-muted text-truncate-2"><?= $food['description'];?></p>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <span class="price fw-bold fs-4 me-5">Rs. <?= $food['price']?></span>
-                                            <button class="btn btn-warning text-dark px-3 w-50 mt-2">Add to cart</button>
+                                        <div class="card-body px-1">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="card-title fw-bold mb-1 text-truncate-1 text-dark"><?= $food['name']?></h5>
+                                                <div class="badge bg-success text-white"><?= getCategoryNameByFoodId($food['foodCategoryID'])?></div>
+                                            </div>
+                                            <p class="card-text text-muted text-truncate-2"><?= $food['description'];?></p>
+                                            <div class="d-flex align-items-center justify-content-between text-dark">
+                                                <span class="price fw-bold fs-4 me-5">Rs. <?= $food['price']?></span>
+                                                <button class="btn btn-warning px-3 w-50 mt-2">Add to cart</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                </a>
                                 </div>
                             </div>
                         <?php 
