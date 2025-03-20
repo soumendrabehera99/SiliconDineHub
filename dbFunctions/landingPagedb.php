@@ -13,7 +13,7 @@ function getRandomFoods() {
                 WHERE f.isAvailable = '1' 
                 GROUP BY f.foodCategoryID 
                 ORDER BY RAND() 
-                LIMIT 8";
+                LIMIT 12";
 
         $stmt = $conn->prepare($sql);
         if (!$stmt) {

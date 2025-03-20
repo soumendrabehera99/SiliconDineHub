@@ -25,7 +25,6 @@ h2 {
   font-family: "Dancing Script", cursive;
 }
 .header_section {
-  /* background: linear-gradient(to right, #0d0e10, #384243); */
   background: rgb(13, 14, 16);
   background: linear-gradient(
     90deg,
@@ -172,5 +171,60 @@ h2 {
 @media (max-width: 768px) {
   .text-truncate-2 {
     -webkit-line-clamp: 3;
+  }
+}
+/* Food section Carousel in landing page */
+.custom-carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: -20px;
+}
+
+.carousel-control-next {
+  right: -20px;
+}
+
+.shadow-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.shadow-btn:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: #f8f9fa;
+}
+
+/* Icon Styling */
+.shadow-btn span i {
+  font-size: 20px;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+      display: none !important;
   }
 }

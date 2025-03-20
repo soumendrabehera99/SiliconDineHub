@@ -61,39 +61,67 @@ require_once "./dbFunctions/landingPagedb.php";
     </section>
         <!-- Food Section Start -->
     <section class="food-section bg-body my-4 mx-4 mx-md-0" id="food">
-            <div class="container">
+            <div class="container my-3">
                 <div class=" py-3 mb-1">
                     <h2 class="fs-1 text-center">Foods</h2>
                 </div>
-                <div class="row g-4">
-                <?php
-                    $result = getRandomFoods();
-                    while($food = $result->fetch_assoc()){
-                        ?>
-                            <div class="col-sm-6 col-md-3 mb-4">
-                                <a href="./foodDetails.php?id=<?= $food['foodID']?>" class="text-decoration-none">
-                                    <div class="card p-3 pb-0">
-                                        <div class="position-relative">
-                                            <span class="badge-best text-white position-absolute rounded-1 top-0 start-0 m-2 px-2 py-1 bg-danger">Best Seller</span>
-                                            <img src="./assets/images/bun-and-hot-drink-delight.png" class="card-img-top img-fluid" alt="Sandwich">
+                <div class="container my-3">
+                    <!-- Section Title and See All Link -->
+                    <div class="d-flex justify-content-between align-items-center mb-4 mb-md-3">
+                        <h4 class="fw-bold">Our Best Selling Foods</h4>
+                        <a href="./foodPlp.php" class="text-success fw-bold text-decoration-none">See All</a>
+                    </div>
+
+                    <!-- Bootstrap Carousel -->
+                    <div id="foodCarousel" class="carousel slide position-relative" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <?php
+                            $result = getRandomFoods();
+                            $active = "active"; // Set the first item as active
+                            $count = 0;
+                            ?>
+                            <div class="carousel-item <?= $active ?>">
+                                <div class="row g-4">
+                                    <?php
+                                    while ($food = $result->fetch_assoc()) {
+                                        if ($count > 0 && $count % 6 == 0) { // 6 items per slide
+                                            echo '</div></div><div class="carousel-item"><div class="row g-4">';
+                                        }
+                                        ?>
+                                        <div class="col-md-2">
+                                            <a href="./foodDetails.php?id=<?= $food['foodID'] ?>" class="text-decoration-none">
+                                                <div class="card p-3 pb-0 shadow-none">
+                                                    <div class="position-relative">
+                                                        <span class="badge-best text-white position-absolute rounded-1 top-0 start-0 m-2 px-2 py-1 bg-danger">Best Seller</span>
+                                                        <img src="./assets/images/bun-and-hot-drink-delight.png" class="card-img-top img-fluid" alt="Product">
+                                                    </div>
+                                                    <div class="card-body px-1">
+                                                        <h6 class="fw-bold text-dark text-truncate"><?= $food['name'] ?></h6>
+                                                        <p class="text-muted text-truncate-2 small"><?= $food['description']; ?></p>
+                                                        <div class="d-flex align-items-center justify-content-between">
+                                                            <span class="fw-bold text-dark">Rs. <?= $food['price'] ?></span>
+                                                            <a href="./foodPlp.php" class="btn btn-outline-success btn-sm">ADD</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
                                         </div>
-                                        <div class="card-body px-1">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <h5 class="card-title fw-bold mb-1 text-truncate-1 text-dark"><?= $food['name']?></h5>
-                                                <div class="badge bg-success text-white"><?= getCategoryNameByFoodId($food['foodCategoryID'])?></div>
-                                            </div>
-                                            <p class="card-text text-muted text-truncate-2"><?= $food['description'];?></p>
-                                            <div class="d-flex align-items-center justify-content-between text-dark">
-                                                <span class="price fw-bold fs-4 me-5">Rs. <?= $food['price']?></span>
-                                                <button class="btn btn-warning px-3 w-50 mt-2">Add to cart</button>
-                                            </div>
-                                        </div>
-                                </a>
+                                        <?php
+                                        $count++;
+                                    }
+                                    ?>
                                 </div>
                             </div>
-                        <?php 
-                    }
-                ?>
+                        </div>
+
+                        <!-- Custom Navigation Buttons -->
+                        <button class="carousel-control-prev custom-carousel-btn shadow-btn" type="button" data-bs-target="#foodCarousel" data-bs-slide="prev">
+                            <span><i class="fas fa-chevron-left"></i></span>
+                        </button>
+                        <button class="carousel-control-next custom-carousel-btn shadow-btn" type="button" data-bs-target="#foodCarousel" data-bs-slide="next">
+                            <span><i class="fas fa-chevron-right"></i></span>
+                        </button>
+                    </div>
                 </div>
             </div>
     </section>
