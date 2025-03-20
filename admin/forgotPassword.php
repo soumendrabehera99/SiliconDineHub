@@ -11,6 +11,12 @@
     <!-- fevicon -->
     <link rel="icon" href="../assets/images/fevicon_logo.png" type="image/x-icon">
     <style>
+        body {
+            background-image: url('../assets/images/spaceBetween.jpg');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
         .glassmorphism {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -30,6 +36,11 @@
         .logo{
             margin-top: -30px;
         }
+        @media (max-width: 576px) {
+            img {
+                width: 250px; /* Adjust size for mobile devices */
+            }
+        }
     </style>
 </head>
 <body class="bg-dark d-flex justify-content-center align-items-center vh-100 text-white">
@@ -39,7 +50,7 @@
                 <img src="../assets/images/logo.png" alt="logo" class="img-fluid">
             </div>
             <div class="col-12 col-md-5">
-                <div class="glassmorphism p-4 rounded-2">
+                <div class="glassmorphism p-4 rounded-2 mx-3 mx-md-0">
                     <h3 class="mb-3 text-center">Forgot Password</h3>
                     <p class="text-white-50 text-center">Enter your email to reset your password</p>
                     
@@ -56,7 +67,7 @@
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label class="form-label">New Password</label>
-                                    <input type="text" id="otp" class="form-control shadow-none text-white bg-transparent boder-warning">
+                                    <input type="password" id="otp" class="form-control shadow-none text-white bg-transparent boder-warning">
                                 </div>
                             </div>
                             <div class="col-6">

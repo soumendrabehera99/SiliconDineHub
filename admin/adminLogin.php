@@ -11,18 +11,14 @@
     <link rel="icon" href="../assets/images/fevicon_logo.png" type="image/x-icon">
     <style>
         body {
-            background-image: url('../assets/images/admin_Login_Image.webp');
+            background-image: url('../assets/images/spaceBetween.jpg');
             background-repeat: no-repeat;
             background-position: center center;
             background-size: cover;
-            height: 100vh;
-            width: 100%;
-            box-sizing: border-box;
-            overflow: hidden;
         }
 
         .glassmorphism {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
         }
 
@@ -44,39 +40,39 @@
         input[type="password"]::-webkit-password-toggle-button {
             display: none;
         }
+        @media (max-width: 576px) {
+            img {
+                width: 250px; /* Adjust size for mobile devices */
+            }
+        }
     </style>
 </head>
 
-<body class="vh-100 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 ms-3 mt-5">
+<body class="vh-100 bg-light overflow-hidden border-box d-flex justify-content-center align-items-center">
+    <div class="container d-flex justify-content-center align-items-center ">
+        <div class="row w-100 d-flex justify-content-center">
+            <div class="col-12 text-center">
                 <img src="../assets/images/logo.png">
             </div>
-        </div>
-        <div class="row w-100">
-            <div class="card col-md-4 p-4 mt-5 shadow-lg glassmorphism rounded border-secondary">
-                <h3 class="text-center mb-4 text-white">Admin Login</h3>
-    
+            <div class="card glassmorphism col-md-4 p-4 mt-5 shadow-lg rounded border-secondary text-white">
+                <h3 class="text-center mb-4">Admin Login</h3>
                 <form action="" method="post" id="loginForm">
                     <div class="mb-3">
-                        <label for="email" class="form-label text-white">Email ID</label>
-                        <input type="email" class="form-control shadow-none bg-transparent text-white border-white"
-                            id="email">
+                        <label for="email" class="form-label">Email ID</label>
+                        <input type="email" class="form-control shadow-none bg-transparent text-white border-white" id="email">
                     </div>
                     <div class="mb-3 password-wrapper position-relative">
-                        <label for="password" class="form-label text-white">Password</label>
-                        <input type="password" class="form-control shadow-none bg-transparent text-white border-white"
-                            id="password">
-                        <i class="fas fa-eye text-white position-absolute" id="togglePassword"></i>
-                        <div class="text-end mt-2">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control shadow-none bg-transparent text-white border-white" id="password">
+                        <i class="fas fa-eye position-absolute text-white" id="togglePassword"></i>
+                        <div class="mt-3 d-flex justify-content-between align-items-center">
+                            <a href="../index.php" class="text-decoration-none text-white">Back</a>
                             <a href="./forgotPassword.php" class="text-decoration-none text-white">Forgot Password</a>
                         </div>
                     </div>
                     <input type="submit" value="Login" class="btn btn-warning w-100">
                 </form>
             </div>
-    
         </div>
     </div>
     <script src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
