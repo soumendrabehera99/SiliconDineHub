@@ -15,7 +15,7 @@ if(isset($_POST['operation'])){
                 $sic = $response['sic'];
                 $seID = $response['seID'];
                 $toEmail = $response['email'];
-                $subject = "Otp Verfication";
+                $subject = "OTP Verfication";
 
                 $otp = random_int(100000,999999);
                 $body= '<!DOCTYPE html>

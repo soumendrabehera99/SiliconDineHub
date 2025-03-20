@@ -1,3 +1,15 @@
+// Set the Date input field 15 years back to the Current date
+const dateInput = document.getElementById("dob");
+
+const today = new Date();
+const tenYearsAgo = new Date();
+tenYearsAgo.setFullYear(today.getFullYear() - 15); // 15 years back
+
+const formattedDate = tenYearsAgo.toISOString().split("T")[0]; // Convert to YYYY-MM-DD
+
+// Set max date (prevent selecting after 15 years ago)
+dateInput.max = formattedDate;
+
 $(document).ready(function () {
   let currentStep = 1;
   let totalSteps = $(".step").length;
@@ -194,18 +206,6 @@ $(document).ready(function () {
         icon: "error",
         title: "Invalid Name",
         text: "Name should only contain letters and spaces, with at least 2 characters.",
-      });
-      return;
-    }
-  
-    // Validate Date of Birth (Must be a past date)
-    let today = new Date();
-    let birthDate = new Date(dob);
-    if (birthDate >= today) {
-      Swal.fire({
-        icon: "error",
-        title: "Invalid Date of Birth",
-        text: "Date of birth must be a past date.",
       });
       return;
     }
