@@ -7,7 +7,6 @@ function getRandomFoods() {
     try {
         $conn = dbConnection();
         
-        // Alternative query without ROW_NUMBER()
         $sql = "SELECT f.* 
                 FROM food f 
                 WHERE f.isAvailable = '1' 
@@ -56,6 +55,36 @@ function getCategoryNameByFoodId($foodId) {
         if ($res->num_rows > 0) {
             $row = $res->fetch_assoc();
             return $row['category']; // Return the category name
+        } else {
+            return false; 
+        }
+    } catch (Exception $e) {
+        error_log($e->getMessage());
+        return false;
+    } finally {
+        if ($stmt) {
+            $stmt->close();
+        }
+        if ($conn) {
+            $conn->close();
+        }
+    }
+}
+function getAllCategory() {
+    $conn = null;
+    $stmt = null;
+    try {
+        $conn = dbConnection();
+
+        $sql = "SELECT *FROM food_category";
+        $stmt = $conn->prepare($sql);
+        if (!$stmt) {
+            throw new Exception("SQL preparation failed: " . $conn->error);
+        }
+        $stmt->execute();
+        $res = $stmt->get_result();
+        if ($res->num_rows > 0) {
+            return $res; 
         } else {
             return false; 
         }

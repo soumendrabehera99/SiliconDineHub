@@ -65,8 +65,24 @@ require_once "./dbFunctions/landingPagedb.php";
                 <div class=" py-3 mb-1">
                     <h2 class="fs-1 text-center">Foods</h2>
                 </div>
-                <div class="container my-3">
-                    <!-- Section Title and See All Link -->
+                <div class="container my-1">
+                    <div class="row g-5 d-flex justify-content-start my-4 mx-2">
+                        <!-- Repeat this block for each category -->
+                        <?php 
+                            $result = getAllCategory();
+                            while($category = $result->fetch_assoc()){ ?>
+                                <a href="./foodPlp.php?id=<?= $category['foodCategoryID']?>" class="col-3 p-2 col-md-2 col-lg-1 mx-3 my-1 text-decoration-none text-dark">
+                                    <div class="d-flex flex-column align-items-center category-item">
+                                        <div class="p-3 m-2 rounded-3" style="background-color: rgba(188, 136, 5, 0.173);">
+                                            <img src="./assets/images/f2.png" alt="Category Image">
+                                        </div>    
+                                        <p class="mt-1 mb-0 text-truncate"><?= $category['category']?></p>
+                                    </div>
+                                </a>
+                            <?php
+                            }
+                        ?>
+                    </div>
                     <div class="d-flex justify-content-between align-items-center mb-4 mb-md-3">
                         <h4 class="fw-bold">Our Best Selling Foods</h4>
                         <a href="./foodPlp.php" class="text-success fw-bold text-decoration-none">See All</a>
@@ -97,6 +113,7 @@ require_once "./dbFunctions/landingPagedb.php";
                                                     </div>
                                                     <div class="card-body px-1">
                                                         <h6 class="fw-bold text-dark text-truncate"><?= $food['name'] ?></h6>
+                                                        <p class="text-success text-truncate-2"><?= getCategoryNameByFoodId($food['foodID']) ?></p>
                                                         <p class="text-muted text-truncate-2 small"><?= $food['description']; ?></p>
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <span class="fw-bold text-dark">Rs. <?= $food['price'] ?></span>
