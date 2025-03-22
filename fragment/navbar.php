@@ -43,7 +43,7 @@
                                 <a class="nav-link" href="./foodPlp.php">FOODS</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">ABOUT</a>
+                                <a class="nav-link" href="#footer">ABOUT</a>
                             </li>
                         </ul>
                     </div>
