@@ -124,25 +124,40 @@ function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
       }
 
       let tbody = "";
+      const cart = JSON.parse(localStorage.getItem("cart")) || {};
       response.foods.forEach((res) => {
         tbody += `
           <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-            <a href="foodDetails.php?id=${res.foodID}" class="text-decoration-none">
                 <div class="card border-1 shadow-sm">
+                <a href="foodDetails.php?id=${
+                  res.foodID
+                }" class="text-decoration-none">
                     <div class="text-center mt-3">
                         <img src="./assets/images/f2.png" class="card-img-top img-fluid" alt="Ice-Cream" 
                             style="max-width: 100px; height: auto;">
                     </div>
+                    </a>
                     <div class="card-body">
-                        <h6 class="card-title text-truncate-1">${res.name}</h6>
+                    <a href="foodDetails.php?id=${
+                      res.foodID
+                    }" class="text-decoration-none">
+                        <h6 class="card-title text-truncate-1 text-dark">${
+                          res.name
+                        }</h6>
                         <p class="small text-muted mb-1 text-truncate-3" style="font-size: 10px; text-align: justify;">
                             ${res.description}
                         </p>
-                        <h4 class="mb-1"><strong>&#8377;${res.price}</strong></h4>
-                        <button class="btn btn-outline-success w-100 addBtn">ADD</button>
-                    </div>
+                        <h4 class="mb-1 text-dark"><strong>&#8377;${
+                          res.price
+                        }</strong></h4>
+                        </a>
+                        ${
+                          cart[res.foodID]
+                            ? `<button class="btn btn-outline-warning w-100 goToCartBtn">Go to Cart</button>`
+                            : `<button class="btn btn-outline-success w-100 addBtn" data-id="${res.foodID}" data-price="${res.price}">ADD</button>`
+                        }
+                      </div>
                 </div>
-              </a>
           </div>
         `;
       });
@@ -186,4 +201,34 @@ $(document).ready(function () {
     fetchFoods(1, "", id, message);
     console.log(id);
   });
+
+  $(document).on("click", ".addBtn", function () {
+    console.log("Clicked Add Button");
+
+    let productId = $(this).attr("data-id");
+    let price = $(this).attr("data-price");
+
+    // console.log("Product ID:", productId);
+    // console.log("Price:", price);
+
+    addToCart(productId, 1, price);
+  });
 });
+
+function addToCart(id, quantity, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+  if (cart[id]) {
+    cart[id].quantity = quantity;
+  } else {
+    cart[id] = { price, quantity: quantity };
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  location.reload();
+  displayCart();
+}
+
+function displayCart() {
+  console.log(localStorage.getItem("cart"));
+}

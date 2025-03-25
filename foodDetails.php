@@ -25,7 +25,10 @@ include_once "./fragment/navbar.php";
                 <p class="fs-4 mt-2 text-success foodPrice"></p>
                 
                 <!-- Add to Cart Button -->
-                <button class="btn btn-success px-4 py-2 my-2 shadow-sm">
+                 <button id="decreaseBtn"><i class="fa-solid fa-minus"></i></button>
+                 <input type="text" disabled value="1" class="text-center" style="width:30px;" id="quantityInput">
+                 <button id="increaseBtn"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn btn-success px-4 py-2 my-2 shadow-sm" id="addToCart" data-id="" data-price="">
                     <i class="fas fa-shopping-cart me-2"></i> ADD TO CART
                 </button>
 
