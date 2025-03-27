@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 16, 2025 at 09:00 PM
+-- Generation Time: Mar 27, 2025 at 08:01 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -113,7 +113,8 @@ CREATE TABLE `food` (
   `name` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `price` varchar(255) NOT NULL,
+  `price` double(10,2) NOT NULL,
+  `type` varchar(255) NOT NULL,
   `isAvailable` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -121,32 +122,18 @@ CREATE TABLE `food` (
 -- Dumping data for table `food`
 --
 
-INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `image`, `description`, `price`, `isAvailable`) VALUES
-(1, 1, 'Cappuccino', '', 'A classic hot coffee topped with thick milk foam, offering a rich taste and smooth texture with every sip, providing a satisfying morning boost.', '100', '1'),
-(2, 1, 'Espresso', '', 'A strong and bold black coffee made from finely ground beans, delivering an intense caffeine kick and deep aroma, ideal for a quick energy boost.', '80', '1'),
-(3, 1, 'Green Tea', '', 'A healthy and refreshing tea known for its rich antioxidants and light flavor, offering a calming and soothing experience with every warm, comforting sip.', '60', '0'),
-(4, 2, 'Fried Rice', '', 'Stir-fried rice cooked with fresh vegetables, scrambled eggs, and soy sauce, creating a deliciously savory and aromatic dish that pairs well with spicy sides.', '120', '1'),
-(5, 2, 'Manchurian', '', 'Crispy fried vegetable balls tossed in a flavorful spicy sauce, blending Chinese and Indian flavors for a delightful taste, perfect for an evening snack.', '140', '1'),
-(6, 3, 'Masala Dosa', '', 'A thin crispy rice crepe filled with spiced mashed potatoes, served with coconut chutney and flavorful sambhar, making it a staple South Indian delicacy.', '110', '1'),
-(7, 3, 'Idli Sambhar', '', 'Soft, fluffy steamed rice cakes served with spicy lentil soup and coconut chutney, offering a light and healthy meal that is both nutritious and delicious.', '90', '0'),
-(8, 4, 'Paneer Butter Masala', '', 'A rich and creamy tomato-based curry made with soft paneer cubes, infused with aromatic spices and butter, making it a favorite vegetarian dish.', '180', '1'),
-(9, 4, 'Curd Rice', '', 'A refreshing South Indian dish made with rice, yogurt, and mild spices, providing a cooling and light taste that is perfect for hot summer days.', '80', '1'),
-(10, 5, 'Cheeseburger', '', 'A juicy grilled beef patty topped with melted cheese, fresh lettuce, tomato, and onions, all in a toasted bun, offering a deliciously filling fast food treat.', '150', '1'),
-(11, 5, 'French Fries', '', 'Crispy golden potato fries seasoned with salt and served hot with ketchup or a creamy dipping sauce, making them a perfect side or snack choice.', '70', '0'),
-(12, 6, 'Chocolate Cake', '', 'A moist and rich chocolate cake layered with creamy frosting, offering a delightful treat for chocolate lovers who enjoy indulgent and sweet desserts.', '200', '1'),
-(13, 6, 'Ice Cream Sundae', '', 'A scoop of vanilla ice cream topped with nuts, syrup, fresh fruits, and a drizzle of chocolate sauce, providing a refreshing and sweet delight.', '130', '1'),
-(14, 7, 'Croissant', '', 'A buttery and flaky French pastry with a crisp golden crust, best enjoyed fresh with a cup of coffee for a perfect morning or evening snack.', '90', '1'),
-(15, 7, 'Banana Bread', '', 'A moist and sweet homemade bread infused with ripe bananas, offering a deliciously soft and comforting treat that pairs well with tea or coffee.', '90', '1'),
-(16, 8, 'Caesar Salad', '', 'Crisp lettuce tossed with parmesan cheese, croutons, and a creamy dressing, creating a refreshing and crunchy dish perfect as a starter or side.', '150', '1'),
-(17, 8, 'Greek Salad', '', 'A fresh mix of feta cheese, olives, tomatoes, cucumbers, and herbs, drizzled with olive oil for extra flavor, making it a nutritious and tasty meal.', '160', '1'),
-(18, 9, 'Tomato Soup', '', 'A smooth and creamy tomato-based soup seasoned with herbs, offering a warm and comforting meal on chilly days, best served with crispy breadsticks.', '90', '1'),
-(19, 9, 'Chicken Corn Soup', '', 'A warm and delicious soup made with tender chicken, sweet corn, and aromatic spices, perfect for cold evenings or as a starter for any meal.', '110', '1'),
-(20, 10, 'Grilled Salmon', '', 'Fresh salmon fillet grilled to perfection, served with a lemon butter sauce, offering a flavorful and healthy option rich in protein and omega-3.', '300', '0'),
-(21, 10, 'Prawn Curry', '', 'A flavorful and spicy prawn dish cooked with coconut milk, tomatoes, and traditional spices, served with rice for a perfect blend of taste and aroma.', '280', '1'),
-(22, 11, 'Tacos', '', 'Soft tortillas filled with seasoned meat, fresh veggies, and salsa, providing a flavorful and satisfying meal, perfect for lunch or dinner.', '180', '1'),
-(23, 11, 'Burrito', '', 'A large stuffed wrap with rice, beans, cheese, meat, and a flavorful sauce, wrapped in a warm tortilla, creating a hearty and filling meal.', '190', '1'),
-(24, 12, 'Margherita Pizza', '', 'A classic pizza topped with tomato sauce, fresh mozzarella, and basil, baked to perfection for an authentic taste, loved by all pizza enthusiasts.', '220', '1'),
-(25, 12, 'Pasta Alfredo', '', 'Creamy fettuccine pasta tossed in a rich, cheesy white sauce, topped with herbs and freshly grated parmesan, making it a comforting Italian dish.', '200', '1');
+INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `image`, `description`, `price`, `type`, `isAvailable`) VALUES
+(1, 1, 'Cappuccino', 'food_67e568176b67b3.89257090.jpeg', 'A classic hot coffee topped with thick milk foam, offering a rich taste and smooth texture with every sip, providing a satisfying morning boost.', 100.00, 'VEG', '1'),
+(2, 1, 'Espresso', 'food_67e56945f26435.64229712.jpeg', 'A strong and bold black coffee made from finely ground beans, delivering an intense caffeine kick and deep aroma, ideal for a quick energy boost.', 80.00, 'VEG', '1'),
+(3, 2, 'Fried Rice', 'food_67e569b7670c61.92487798.jpeg', 'Stir-fried rice cooked with fresh vegetables, scrambled eggs, and soy sauce, creating a deliciously savory and aromatic dish that pairs well with spicy sides.', 120.00, 'VEG', '1'),
+(5, 8, 'Greek Salad', 'food_67e56cb93f2e82.15304669.jpeg', 'A fresh mix of feta cheese, olives, tomatoes, cucumbers, and herbs, drizzled with olive oil for extra flavor, making it a nutritious and tasty meal.', 160.00, 'VEG', '1'),
+(6, 7, 'Croissant', 'food_67e56cef9d5f95.49322435.jpeg', 'A buttery and flaky French pastry with a crisp golden crust, best enjoyed fresh with a cup of coffee for a perfect morning or evening snack.', 90.00, 'VEG', '1'),
+(7, 7, 'Banana Bread', 'food_67e56d2c5e73e1.26837434.jpeg', 'A moist and sweet homemade bread infused with ripe bananas, offering a deliciously soft and comforting treat that pairs well with tea or coffee.', 90.00, 'VEG', '1'),
+(8, 5, 'French Fries', 'food_67e56d5faedeb4.41376355.jpg', 'Crispy golden potato fries seasoned with salt and served hot with ketchup or a creamy dipping sauce, making them a perfect side or snack choice.', 70.00, 'VEG', '0'),
+(9, 3, 'Curd Rice', 'food_67e56db15852a3.15008181.jpeg', 'A refreshing South Indian dish made with rice, yogurt, and mild spices, providing a cooling and light taste that is perfect for hot summer days.', 80.00, 'VEG', '1'),
+(10, 11, 'Burrito', 'food_67e56ea896fb57.87500653.jpeg', 'A large stuffed wrap with rice, beans, cheese, meat, and a flavorful sauce, wrapped in a warm tortilla, creating a hearty and filling meal.', 190.00, 'VEG', '1'),
+(11, 8, 'Caesar Salad', 'food_67e56f01198a16.08127897.jpeg', 'Crisp lettuce tossed with parmesan cheese, croutons, and a creamy dressing, creating a refreshing and crunchy dish perfect as a starter or side.', 150.00, 'VEG', '1'),
+(12, 5, 'Cheeseburger', 'food_67e56f47d50850.47830031.jpeg', 'A juicy grilled beef patty topped with melted cheese, fresh lettuce, tomato, and onions, all in a toasted bun, offering a deliciously filling fast food treat.', 150.00, 'NON-VEG', '1');
 
 -- --------------------------------------------------------
 
@@ -385,7 +372,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `food_category`

@@ -7,6 +7,7 @@ $(document).ready(function () {
     let categoryID = $("#categoryName").val().trim();
     let foodDescription = $("#foodDescription").val().trim();
     let foodPrice = $("#foodPrice").val().trim();
+    let foodType = $("#foodType").val().trim();
     let foodStatus = $("#foodStatus").val().trim();
 
     let isValid = true;
@@ -30,6 +31,10 @@ $(document).ready(function () {
       toastr.error("foodPrice should be a valid +ve number");
       isValid = false;
     }
+    if (foodType === "") {
+      toastr.error("foodType should not be blank");
+      isValid = false;
+    }
     if (foodStatus === "") {
       toastr.error("foodStatus should not be blank");
       isValid = false;
@@ -42,6 +47,7 @@ $(document).ready(function () {
       formData.append("categoryID", categoryID);
       formData.append("foodDescription", foodDescription);
       formData.append("foodPrice", foodPrice);
+      formData.append("foodType", foodType);
       formData.append("foodStatus", foodStatus);
       formData.append("operation", "foodUpdate");
       $.ajax({
@@ -81,6 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector("#categoryName").removeAttribute("disabled");
       document.querySelector("#foodDescription").removeAttribute("readonly");
       document.querySelector("#foodPrice").removeAttribute("readonly");
+      document.querySelector("#foodPrice").removeAttribute("readonly");
+      document.querySelector("#foodType").removeAttribute("disabled");
       document.querySelector("#foodStatus").removeAttribute("disabled");
       document.querySelector("#updateFoodBtn").removeAttribute("disabled");
       document.querySelector("#editFoodBtn").setAttribute("disabled", true);

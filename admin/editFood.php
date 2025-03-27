@@ -53,6 +53,14 @@
                                 <input type="text" class="form-control" id="foodPrice" value="<?php echo $food['price']; ?>"/>
                             </div>
                             <div>
+                                <label for="foodType" class="form-label">Type</label>
+                                <select class="form-select" id="foodType" disabled>
+                                    <option selected>--SELECT--</option>
+                                    <option value="VEG" <?php echo $food['type'] === "VEG" ? "selected" : "" ?>>Veg</option>
+                                    <option value="NON-VEG" <?php echo $food['type'] === "NON-VEG" ? "selected" : "" ?>>Non-Veg</option>
+                                </select>
+                            </div>
+                            <div>
                                 <label for="foodStatus" class="form-label">Status</label>
                                 <select class="form-select" id="foodStatus" disabled>
                                     <option selected>--SELECT--</option>

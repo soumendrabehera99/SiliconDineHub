@@ -1,11 +1,12 @@
 <?php
 require_once "../dbFunctions/fooddb.php";
 if($_POST['operation']){
-    if($_POST['operation'] == "foodAdd" && isset($_POST["foodName"]) && isset($_POST["categoryID"]) && isset($_FILES["foodImage"]) && isset($_POST["foodDescription"]) && isset($_POST["foodPrice"]) && isset($_POST["foodStatus"])){
+    if($_POST['operation'] == "foodAdd" && isset($_POST["foodName"]) && isset($_POST["categoryID"]) && isset($_FILES["foodImage"]) && isset($_POST["foodDescription"]) && isset($_POST["foodPrice"]) && isset($_POST["foodType"]) && isset($_POST["foodStatus"])){
         $foodName = $_POST["foodName"];
         $categoryID = $_POST["categoryID"];
         $foodDescription = $_POST["foodDescription"];
         $foodPrice = $_POST["foodPrice"];
+        $foodType = $_POST["foodType"];
         $foodStatus = $_POST["foodStatus"];
 
         $uploadDir = __DIR__ . "/../uploads/";
@@ -26,7 +27,7 @@ if($_POST['operation']){
             }
         }
         if (!empty($uploadedFile)) {
-            $response = addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus);
+            $response = addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice,$foodType, $foodStatus);
             echo json_encode(["status" => $response]);
         } else {
             echo json_encode(["status" => "error", "message" => "Failed to upload images"]);
@@ -94,15 +95,16 @@ if($_POST['operation']){
             }
         }
     }else if($_POST['operation']){
-        if($_POST['operation'] == "foodUpdate" && isset($_POST["foodName"]) && isset($_POST["categoryID"]) && isset($_POST["foodDescription"]) && isset($_POST["foodPrice"]) && isset($_POST["foodStatus"])){
+        if($_POST['operation'] == "foodUpdate" && isset($_POST["foodName"]) && isset($_POST["categoryID"]) && isset($_POST["foodDescription"]) && isset($_POST["foodPrice"]) && isset($_POST["foodType"]) && isset($_POST["foodStatus"])){
             $foodId = $_POST["foodId"];
             $foodName = $_POST["foodName"];
             $categoryID = $_POST["categoryID"];
             $foodDescription = $_POST["foodDescription"];
             $foodPrice = $_POST["foodPrice"];
+            $foodType = $_POST["foodType"];
             $foodStatus = $_POST["foodStatus"];
     
-            $response = updateFood($foodId,$categoryID, $foodName, $foodDescription, $foodPrice, $foodStatus);
+            $response = updateFood($foodId,$categoryID, $foodName, $foodDescription, $foodPrice,$foodType, $foodStatus);
             echo json_encode(["status" => $response]);
         }else if ($_POST['operation'] == "foodGetPlp") {
         $page = isset($_POST['page']) ? (int)$_POST['page'] : 1;

@@ -1,6 +1,6 @@
 <?php
 require_once "dbConnect.php";
-function addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus){
+function addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodType, $foodStatus){
     try{
         $conn = dbConnection();
     
@@ -16,8 +16,8 @@ function addFood($categoryID, $foodName, $uploadedFile, $foodDescription, $foodP
         if($res->num_rows > 0){
             return "present";
         }else{
-            $stmt1 = $conn->prepare("INSERT INTO food(foodCategoryID, name, image, description, price, isAvailable) VALUES(?, ?, ?, ?, ?, ?)");
-            $stmt1->bind_param('isssss',$categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodStatus);
+            $stmt1 = $conn->prepare("INSERT INTO food(foodCategoryID, name, image, description, price, type, isAvailable) VALUES(?, ?, ?, ?, ?, ?, ?)");
+            $stmt1->bind_param('isssdss',$categoryID, $foodName, $uploadedFile, $foodDescription, $foodPrice, $foodType, $foodStatus);
             $stmt1->execute();
             if($conn->affected_rows > 0){
                 return "success";
@@ -123,14 +123,14 @@ function getFoodById($id) {
     return  $food;
 }
 
-function updateFood($foodId,$categoryId,$foodName,$description,$price,$isAvailable){
+function updateFood($foodId,$categoryId,$foodName,$description,$price,$type,$isAvailable){
     try{
             $conn = dbConnection();
-            $stmt = $conn->prepare("SELECT * FROM food WHERE foodID = ? AND foodCategoryID = ? AND name = ? AND description = ? AND price = ? AND isAvailable = ?");
+            $stmt = $conn->prepare("SELECT * FROM food WHERE foodID = ? AND foodCategoryID = ? AND name = ? AND description = ? AND price = ? AND type = ? AND isAvailable = ?");
             if (!$stmt) {
                 die(json_encode(["error" => "SQL Prepare Failed: " . $conn->error]));
             }
-            $stmt->bind_param('iissss',$foodId,$categoryId,$foodName,$description,$price,$isAvailable);
+            $stmt->bind_param('iissdss',$foodId,$categoryId,$foodName,$description,$price,$type,$isAvailable);
             if (!$stmt->execute()) {
                 die(json_encode(["error" => "SQL Execution Failed: " . $stmt->error]));
             }
@@ -138,8 +138,8 @@ function updateFood($foodId,$categoryId,$foodName,$description,$price,$isAvailab
             if($res->num_rows > 0){
                 return "present";
             }else{
-                $stmt = $conn->prepare("UPDATE food set foodCategoryID = ?, name = ?, description = ?, price = ?, isAvailable = ? WHERE foodID = ?");
-                $stmt->bind_param("issssi",$categoryId,$foodName,$description,$price,$isAvailable,$foodId);
+                $stmt = $conn->prepare("UPDATE food set foodCategoryID = ?, name = ?, description = ?, price = ?, type = ?, isAvailable = ? WHERE foodID = ?");
+                $stmt->bind_param("issdssi",$categoryId,$foodName,$description,$price,$type,$isAvailable,$foodId);
                 $stmt->execute();
                 if($conn-> affected_rows > 0){
                     return "success";

@@ -31,6 +31,7 @@ include_once "adminNavbar.php";
                         <th>Food name</th>
                         <th>Categories Name</th>
                         <th>Price</th>
+                        <th>Type</th>
                         <th>
                             Status
                             <p class="mb-0 fw-light ">click on status to update</p>

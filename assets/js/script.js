@@ -1,5 +1,5 @@
 // footer
-document.getElementById("displayYear").innerText = new Date().getFullYear();
+//document.getElementById("displayYear").innerText = new Date().getFullYear();
 
 // Food
 // Readmore/Readless toggle button

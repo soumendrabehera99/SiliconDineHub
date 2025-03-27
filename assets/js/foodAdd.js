@@ -32,6 +32,7 @@ $(document).ready(function () {
     let foodImage = $("#foodImage")[0].files[0];
     let foodDescription = $("#foodDescription").val().trim();
     let foodPrice = $("#foodPrice").val().trim();
+    let foodType = $("#foodType").val().trim();
     let foodStatus = $("#foodStatus").val().trim();
 
     let allowedExtension = ["jpg", "jpeg", "png"];
@@ -72,6 +73,10 @@ $(document).ready(function () {
       toastr.error("foodPrice should be a valid +ve number");
       isValid = false;
     }
+    if (foodType === "") {
+      toastr.error("foodType should not be blank");
+      isValid = false;
+    }
     if (foodStatus === "") {
       toastr.error("foodStatus should not be blank");
       isValid = false;
@@ -84,6 +89,7 @@ $(document).ready(function () {
       formData.append("foodImage", foodImage);
       formData.append("foodDescription", foodDescription);
       formData.append("foodPrice", foodPrice);
+      formData.append("foodType", foodType);
       formData.append("foodStatus", foodStatus);
       formData.append("operation", "foodAdd");
       $.ajax({

@@ -58,6 +58,7 @@ function fetchFoods(page = 1, searchQuery = "") {
                     }
                     </td>
                     <td>${res.price}</td>
+                    <td>${res.type}</td>
                     <td>
                         <button  class="btn btn-sm updateFoodStatusBtn ${
                           res.isAvailable == 1 ? "btn-success" : "btn-danger"
