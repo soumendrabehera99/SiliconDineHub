@@ -50,7 +50,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="user_option d-flex gap-3 align-items-center ms-auto">
                             <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>
-                            <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>
+                            <a href="./cart.php" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>
                             <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a>
                             <!-- <a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a> -->
                             <?php echo isset($_SESSION['sic']) ? '<a href="./logout.php" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>

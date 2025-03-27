@@ -33,7 +33,10 @@ h2 {
     rgba(61, 69, 71, 1) 100%
   );
 }
-
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
 .navbar-toggler:focus,
 .navbar-toggler:active {
   border: none;
