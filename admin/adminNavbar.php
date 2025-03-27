@@ -143,9 +143,29 @@ include_once "./check.php";
 
         <!-- Sidebar Footer -->
         <div class="sidebar-footer">
-            <a href="../logout.php" class="text-decoration-none d-flex align-items-center justify-content-between w-100" style="color: #adb5bd;">
+            <a href="#" id="logoutBtn" class="text-decoration-none d-flex align-items-center justify-content-between w-100" style="color: #adb5bd;">
                 <h5 class="my-0">Logout</h5>
                 <div><i class="fa-solid fa-arrow-right-from-bracket mx-2"></i></div>
             </a>
         </div>
     </aside>
+
+    <script>
+document.getElementById("logoutBtn").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent immediate redirection
+
+    Swal.fire({
+        title: "Are you sure?",
+        text: "You will be logged out!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#d33",
+        cancelButtonColor: "#3085d6",
+        confirmButtonText: "Yes, Logout!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "../logout.php"; // Redirect if confirmed
+        }
+    });
+});
+</script>

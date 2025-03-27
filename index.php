@@ -112,8 +112,16 @@ require_once "./dbFunctions/landingPagedb.php";
                                                         <img src="./assets/images/bun-and-hot-drink-delight.png" class="card-img-top img-fluid" alt="Product">
                                                     </div>
                                                     <div class="card-body px-1">
-                                                        <h6 class="fw-bold text-dark text-truncate"><?= $food['name'] ?></h6>
-                                                        <p class="text-success text-truncate-2"><?= getCategoryNameByFoodId($food['foodID']) ?></p>
+                                                        <!-- Food Name and Veg Icon in One Line -->
+                                                        <div class="d-flex justify-content-between align-items-center gap-2">
+                                                            <h6 class="fw-bold text-dark text-truncate mb-0"><?= $food['name'] ?></h6>
+                                                            <?= $food['type']=="VEG"?
+                                                            '<div style="border: 3px solid green; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;">
+                                                                <div style="background-color: green; width: 10px; height: 10px; border-radius: 50%;"></div>
+                                                            </div>':'<div style="border: 3px solid red; width: 20px; height: 20px; display: flex; justify-content: center; align-items: center;">
+                                                                <div style="background-color: red; width: 10px; height: 10px; border-radius: 50%;"></div>
+                                                            </div>' ?>
+                                                        </div>
                                                         <p class="text-muted text-truncate-2 small"><?= $food['description']; ?></p>
                                                         <div class="d-flex align-items-center justify-content-between">
                                                             <span class="fw-bold text-dark">Rs. <?= $food['price'] ?></span>
