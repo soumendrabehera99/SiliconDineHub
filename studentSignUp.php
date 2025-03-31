@@ -156,7 +156,7 @@
           </div>
         </div>
         <div class="d-flex justify-content-between mt-5">
-          <a href="./index.php"><button class="btn" id="back-btn">Back</button></a>
+          <a href="./studentSignIn.php"><button class="btn" id="back-btn">Back</button></a>
           <button class="btn" id="next-btn">Next</button>
         </div>
       </div>

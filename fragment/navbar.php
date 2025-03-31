@@ -6,8 +6,10 @@
     <title>Silicon Dine Hub</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
-     <!-- Fontawesome -->
+    <!-- Fontawesome -->
     <link rel="stylesheet" href="./assets/fontawesome/all.css" />
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="./assets/sweetalert/sweetalert2.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./assets/css/index.css">
     <!-- Fevicon -->
@@ -49,11 +51,11 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="user_option d-flex gap-3 align-items-center ms-auto">
-                            <a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>
-                            <a href="./cart.php" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>
-                            <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a>
+                            <?php echo isset($_SESSION['sic']) ? '<a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>' : ''; ?>
+                            <?php echo isset($_SESSION['sic']) ? '<a href="./cart.php" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>' : ''; ?>
+                            <!-- <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a> -->
                             <!-- <a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a> -->
-                            <?php echo isset($_SESSION['sic']) ? '<a href="./logout.php" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
+                            <?php echo isset($_SESSION['sic']) ? '<a href="./logout.php" id="logoutBtn" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
                         </div>
                     </div>
                 </div>

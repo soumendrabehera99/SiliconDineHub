@@ -66,7 +66,7 @@ require_once "./dbFunctions/landingPagedb.php";
                     <h2 class="fs-1 text-center">Foods</h2>
                 </div>
                 <div class="container my-1">
-                    <div class="row g-5 d-flex justify-content-start my-4 mx-2">
+                    <div class="row g-5 d-flex justify-content-between justify-content-start my-4 mx-2">
                         <!-- Repeat this block for each category -->
                         <?php 
                             $result = getAllCategory();

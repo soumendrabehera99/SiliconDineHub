@@ -53,7 +53,7 @@
                         </div>
                     </form>
                     <div class="mt-2 text-center text-primary" style="font-size: 14px;">
-                            <a href="#" class="text-decoration-none">Forgot password</a>
+                            <a href="forgotPasswordStudent.php" class="text-decoration-none">Forgot password</a>
                     </div>
                     <div class="">
                         <p class="text-center">If you're a new customer <a href="./studentSignUp.php" class="text-decoration-none">Sign-Up</a></p>
