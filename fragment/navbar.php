@@ -53,10 +53,28 @@
                     </div>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="user_option d-flex gap-3 align-items-center ms-auto">
-                            <?php echo isset($_SESSION['sic']) ? '<a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>' : ''; ?>
-                            <?php echo isset($_SESSION['sic']) ? '<a href="./cart.php" class="nav-link fs-5 text-center"><i class="fa-solid fa-cart-shopping"></i></a>' : ''; ?>
-                            <!-- <a href="#" class="nav-link fs-5"><i class="fa-solid fa-user"></i></a> -->
-                            <!-- <a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a> -->
+                            <!-- <?php echo isset($_SESSION['sic']) ? '<a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>' : ''; ?> -->
+                            <?php echo isset($_SESSION['sic']) ? 
+                                '<a href="./cart.php" class="nav-link fs-5 text-center position-relative">
+                                    <i class="fa-solid fa-bell"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
+                                        id="cart-notification" style="background-color: rgb(243, 64, 64); font-size: 0.75rem; padding: 3px 5px;">
+                                        2
+                                    </span>
+                                </a>' 
+                                : ''; 
+                            ?>
+                            <?php echo isset($_SESSION['sic']) ? 
+                                '<a href="./cart.php" class="nav-link fs-5 text-center position-relative">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
+                                        id="cart-notification" style="background-color: rgb(11, 218, 11); font-size: 0.75rem; padding: 3px 5px;">
+                                        4
+                                    </span>
+                                </a>' 
+                                : ''; 
+                            ?>
+
                             <?php echo isset($_SESSION['sic']) ? '<a href="./logout.php" id="logoutBtn" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
                         </div>
                     </div>
