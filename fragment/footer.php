@@ -106,19 +106,16 @@
     <!-- JQuery -->
     <script src="./assets/jquery/jquery-3.7.1.min.js"></script>
 
-    <!-- custom js -->
-    <script src="./assets/js/script.js"></script>
-
+    <!-- Toast -->
     <script src="./assets/toastr/toastr.min.js"></script>
+    
+    <!-- sweetalert -->
+    <script src="./assets/sweetalert/sweetalert2.all.min.js"></script>
+    
+    <!-- custom js -->
+    <script src="./assets/js/index.js"></script>
 
-    <script>
-      toastr.options = {
-        "closeButton": true,
-        "progressBar": true,
-        "positionClass": "toast-top-right",
-        "timeOut": "3000"
-      };
-    </script>
+    <!-- Navbar js -->
     <script src="./assets/js/navbar.js"></script>
   </body>
 </html>

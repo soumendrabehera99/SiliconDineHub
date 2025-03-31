@@ -20,10 +20,12 @@
             border: 1px solid goldenrod;
             border-radius: 16px;
         }
-
+        h1, h2{
+            font-family: "Open Sans", sans-serif;
+        }
     </style>
-    <!--Toastr-->
-    <link href="./assets/toastr/toastr.min.css" rel="stylesheet">
+    <!-- sweetalert -->
+    <link rel="stylesheet" href="./assets/sweetalert/sweetalert2.css" />
     
 </head>
 <body>
@@ -67,76 +69,148 @@
 <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="https://kit.fontawesome.com/7c45c78608.js" crossorigin="anonymous"></script>
 <script src="./assets/jquery/jquery-3.7.1.min.js"></script>
+<script src="./assets/sweetalert/sweetalert2.all.min.js"></script>
 <script src="./assets/toastr/toastr.min.js"></script>
 <script>
-    
+    // $(document).ready(function () {
+    //     $("#togglePassword").click(function () {
+    //         const passwordInput = $("#password");
+    //         if (passwordInput.attr("type") === "password") {
+    //             passwordInput.attr("type", "text");
+    //             $(this).removeClass("fa-eye").addClass("fa-eye-slash");
+    //         } else {
+    //             passwordInput.attr("type", "password");
+    //             $(this).removeClass("fa-eye-slash").addClass("fa-eye");
+    //         }
+    //     });
+
+    //     toastr.options = {
+    //         closeButton: true,
+    //         progressBar: true,
+    //         positionClass: "toast-bottom-right",
+    //         timeOut: 3000
+    //     };
+
+    //     $("#studentLoginForm").submit(function (e) {
+    //         e.preventDefault();
+
+    //         let sic = $("#sic").val().trim();
+    //         let password = $("#password").val().trim();
+    //         let isValid = true;
+
+    //         if (sic === "") {
+    //             toastr.error("SIC cannot be empty.");
+    //             isValid = false;
+    //         } else if (sic.length !== 8) {
+    //             toastr.error("SIC must be 8 characters.");
+    //             isValid = false;
+    //         } else if (sic.match(/^\d{2}[a-zA-Z]{4}\d{2}$/) === null) {
+    //             toastr.error("Enter valid sic");
+    //             isValid = false;
+    //         }
+    //         if (password === "" || password === " ") {
+    //             toastr.error("Password cannot be empty.");
+    //             isValid = false;
+    //         }
+
+    //         if (isValid) {
+    //             $.ajax({
+    //                 url: "./dbFunctions/studentLoginVerify.php",
+    //                 type: "POST",
+    //                 data: { sic: sic, password: password },
+    //                 success: function (response) {
+    //                     console.log("Server Response:", response);
+    //                     if (response.trim() === "success") {
+    //                         console.log("Student login successfully.");
+    //                         window.location.href = "./index.php";
+    //                     } else if (response.trim() === "Email not registered") {
+    //                         toastr.error("Email not registered.");
+    //                     } else if (response.trim() === "Password Incorrect") {
+    //                         toastr.error("Incorrect password.");
+    //                     } else {
+    //                         toastr.error(response);
+    //                     }
+    //                 },
+    //                 error: function (xhr, status, error) {
+    //                     console.log("AJAX Error:", error);
+    //                     toastr.error("An error occurred. Please try again.");
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
     $(document).ready(function () {
-        $("#togglePassword").click(function () {
-            const passwordInput = $("#password");
-            if (passwordInput.attr("type") === "password") {
-                passwordInput.attr("type", "text");
-                $(this).removeClass("fa-eye").addClass("fa-eye-slash");
-            } else {
-                passwordInput.attr("type", "password");
-                $(this).removeClass("fa-eye-slash").addClass("fa-eye");
-            }
-        });
-
-        toastr.options = {
-            closeButton: true,
-            progressBar: true,
-            positionClass: "toast-bottom-right",
-            timeOut: 3000
-        };
-
-        $("#studentLoginForm").submit(function (e) {
-            e.preventDefault();
-
-            let sic = $("#sic").val().trim();
-            let password = $("#password").val().trim();
-            let isValid = true;
-
-            if (sic === "") {
-                toastr.error("SIC cannot be empty.");
-                isValid = false;
-            } else if (sic.length !== 8) {
-                toastr.error("SIC must be 8 characters.");
-                isValid = false;
-            } else if (sic.match(/^\d{2}[a-zA-Z]{4}\d{2}$/) === null) {
-                toastr.error("Enter valid sic");
-                isValid = false;
-            }
-            if (password === "" || password === " ") {
-                toastr.error("Password cannot be empty.");
-                isValid = false;
-            }
-
-            if (isValid) {
-                $.ajax({
-                    url: "./dbFunctions/studentLoginVerify.php",
-                    type: "POST",
-                    data: { sic: sic, password: password },
-                    success: function (response) {
-                        console.log("Server Response:", response);
-                        if (response.trim() === "success") {
-                            console.log("Student login successfully.");
-                            window.location.href = "./index.php";
-                        } else if (response.trim() === "Email not registered") {
-                            toastr.error("Email not registered.");
-                        } else if (response.trim() === "Password Incorrect") {
-                            toastr.error("Incorrect password.");
-                        } else {
-                            toastr.error(response);
-                        }
-                    },
-                    error: function (xhr, status, error) {
-                        console.log("AJAX Error:", error);
-                        toastr.error("An error occurred. Please try again.");
-                    }
-                });
-            }
-        });
+    // Toggle Password Visibility
+    $("#togglePassword").click(function () {
+        const passwordInput = $("#password");
+        if (passwordInput.attr("type") === "password") {
+            passwordInput.attr("type", "text");
+            $(this).removeClass("fa-eye").addClass("fa-eye-slash");
+        } else {
+            passwordInput.attr("type", "password");
+            $(this).removeClass("fa-eye-slash").addClass("fa-eye");
+        }
     });
+
+    $("#studentLoginForm").submit(function (e) {
+        e.preventDefault();
+
+        let sic = $("#sic").val().trim();
+        let password = $("#password").val().trim();
+        let isValid = true;
+
+        if (sic === "") {
+            Swal.fire("Error", "SIC cannot be empty.", "error");
+            isValid = false;
+        } else if (sic.length !== 8) {
+            Swal.fire("Error", "SIC must be 8 characters.", "error");
+            isValid = false;
+        } else if (sic.match(/^\d{2}[a-zA-Z]{4}\d{2}$/) === null) {
+            Swal.fire("Error", "Enter a valid SIC.", "error");
+            isValid = false;
+        }
+
+        if (password === "" || password === " ") {
+            Swal.fire("Error", "Password cannot be empty.", "error");
+            isValid = false;
+        }
+
+        if (isValid) {
+            $.ajax({
+                url: "./dbFunctions/studentLoginVerify.php",
+                type: "POST",
+                data: { sic: sic, password: password },
+                success: function (response) {
+                    console.log("Server Response:", response);
+                    if (response.trim() === "success") {
+                        Swal.fire({
+                            title: "<span style='font-family: Poppins, sans-serif;'>Login Successful!</span>",
+                            text: "Redirecting to homepage...",
+                            icon: "success",
+                            timer: 3000,
+                            showConfirmButton: false,
+                            didClose: () => {
+                                window.location.href = "./index.php"; // Redirect after alert closes
+                            }
+                        });
+
+                    } else if (response.trim() === "Email not registered") {
+                        Swal.fire("Error", "Email not registered.", "error");
+                    } else if (response.trim() === "Password Incorrect") {
+                        Swal.fire("Error", "Incorrect password.", "error");
+                    } else {
+                        Swal.fire("Error", response, "error");
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.log("AJAX Error:", error);
+                    Swal.fire("Error", "An error occurred. Please try again.", "error");
+                }
+            });
+        }
+    });
+});
+
 </script>
 </body>
 </html>

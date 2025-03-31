@@ -7,6 +7,15 @@
 //     echo $desc;
 // }
 document.addEventListener("DOMContentLoaded", function () {
+
+  // Initialize tooltips
+  toastr.options = {
+    "closeButton": true,
+    "progressBar": true,
+    "positionClass": "toast-top-right",
+    "timeOut": "3000"
+  };
+
   document.querySelectorAll(".details").forEach(function (detail) {
     let shortText = detail.querySelector(".short-text");
     let fullText = detail.querySelector(".full-text");
@@ -26,4 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+  // footer
+  document.getElementById("displayYear").innerText = new Date().getFullYear();
+
 });
