@@ -133,8 +133,10 @@ function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
                   res.foodID
                 }" class="text-decoration-none">
                     <div class="text-center mt-3">
-                        <img src="./assets/images/f2.png" class="card-img-top img-fluid" alt="Ice-Cream" 
-                            style="max-width: 100px; height: auto;">
+                        <img src="./uploads/${
+                          res.image
+                        }" class="card-img-top img-fluid" alt="Ice-Cream" 
+                            style="width: 100px; height: 100px;">
                     </div>
                     </a>
                     <div class="card-body">
