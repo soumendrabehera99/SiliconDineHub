@@ -15,7 +15,7 @@ include_once "./fragment/navbar.php";
             <!-- Food Image -->
             <div class="col-md-5 text-center">
                 <div class="card border-0 shadow-sm rounded-4 p-3">
-                    <img src="./assets/images/f2.png" class="img-fluid rounded-3">
+                    <img class="img-fluid rounded-3" id="foodImage" alt="Food Image">
                 </div>
             </div>
 

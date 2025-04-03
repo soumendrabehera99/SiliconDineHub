@@ -14,6 +14,7 @@ $(document).ready(function () {
         console.log(response);
 
         if (response) {
+          $("#foodImage").attr("src", "./uploads/" + response.image);
           $(".foodName").text(response.name);
           $(".foodPrice").text("₹" + response.price);
           $(".foodDetails").text(response.description);
