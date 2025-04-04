@@ -83,6 +83,9 @@
                       <a href="./admin/adminLogin.php" class="text-decoration-none text-white">Admin</a>
                     </li>
                     <li class="text-start mt-2">
+                      <a href="./counterLogin.php" class="text-decoration-none text-white">Counter</a>
+                    </li>
+                    <li class="text-start mt-2">
                       <a href="./privacyAndPolicy.php" class="text-decoration-none text-white">Privacy Policy</a>
                     </li>
                   </ul>
