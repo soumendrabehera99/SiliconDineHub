@@ -105,7 +105,7 @@ include_once "./check.php";
                     <i class="fa-solid fa-chevron-right toggle-icon"></i>
                 </a>
                 <div class="collapse ms-5" id="counter">
-                    <a href="./counterAdd.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter</a>
+                    <!-- <a href="./counterAdd.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Add Counter</a> -->
                     <a href="./counterManage.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">Manage Counter</a>
                 </div>
             </div>
@@ -130,7 +130,7 @@ include_once "./check.php";
 
             <div>
                 <a href="#dashboard" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                    <div><i class="fa-solid fa-gear fa-spin me-3"></i> Setting</div>
+                    <div><i class="fa-solid fa-gear me-3"></i> Setting</div>
                 </a>
             </div>
 

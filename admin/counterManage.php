@@ -11,21 +11,10 @@ require_once "../dbFunctions/counterdb.php";
                 <div class="col-md-6">
                     <div class="d-flex justify-content-start">
                         <!-- Button trigger modal -->
-                        <button class="btn btn-success mb-3"><i class="fa-solid fa-plus"></i> Add Counter</button>
+                        <button class="btn btn-success mb-3" id="addRecordBtn"><i class="fa-solid fa-plus"></i> Add Counter</button>
                         <!-- Modal -->
                     </div>
                 </div>
-                <!-- Search bar -->
-                <!-- <div class="col-md-6">
-                    <div class="d-flex justify-content-end mb-2">
-                        <div class="d-flex align-items-center gap-1">
-                            <input type="text" class="form-control d-inline-block w-auto" id="searchCategoryInput" placeholder="Search Category">
-                            <button type="submit" class="btn btn-success search-btn" id="categorySearchBtn">
-                                <i class="fas fa-search"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div> -->
             </div>
 
             <div class="d-flex justify-content-between">
@@ -66,5 +55,8 @@ require_once "../dbFunctions/counterdb.php";
         </div>
     </div>
 </section>
+<script src="../assets/sweetalert/sweetalert2.all.min.js"></script>
+<script src="../assets/jquery/jquery-3.7.1.min.js"></script>
+<script src="../assets/js/counterAdd.js"></script>
 
 <?php include_once "adminFooter.php"; ?>

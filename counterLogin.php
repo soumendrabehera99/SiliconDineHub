@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-md-6 bg-white text-dark d-flex align-items-center justify-content-center p-4 custom-rounded">
                     <div>
-                        <img src="./assets/images/logo_black.png" alt="Logo" class="img-fluid mb-4" style="width: 370px; height: auto;">
+                        <a href="./index.php"><img src="./assets/images/logo_black.png" alt="Logo" class="img-fluid mb-4" style="width: 370px; height: auto;"></a>
                         <h2 class="text-center mb-4">Counter Staff Login</h2>
                         <form id="counterLoginForm" method="POST">
                             <div class="mb-3">
