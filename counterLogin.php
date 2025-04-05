@@ -6,7 +6,12 @@
     <title>Counter Dashboard</title>
     <link rel="stylesheet" href="./assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/sweetalert/sweetalert2.css" />
+    <!-- Fevicon -->
+    <link rel="icon" href="./assets/images/fevicon_logo.png" type="image/x-icon">
     <style>
+        body{
+            background-color: #e1e7fe
+        }
         .wrapper {
             width: 70%;
         }
@@ -31,7 +36,7 @@
         }
     </style>
 
-    <body class="bg-dark text-white d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <body class="text-white d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="container d-flex align-items-center justify-content-center" style="height: 90vh">
             <div class="row rounded g-0 wrapper">
                 <div class="col-md-6 d-none d-md-block">

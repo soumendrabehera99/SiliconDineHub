@@ -46,8 +46,15 @@ require_once "../dbFunctions/counterdb.php";
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="CounterEdit.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit me-1"></i>Edit</a>
-                                        <a href="counterBlock.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-danger btn-sm" id="deleteStudent"><i class="fa-solid fa-ban me-1"></i>Delete</a>
+                                        <!-- <a href="../dbFunctions/counterEdit.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit me-1"></i>Edit</a> -->
+                                        <a href="#" 
+                                            class="btn btn-success btn-sm edit-counter" 
+                                            data-id="<?= $counter['counterID'] ?>" 
+                                            data-username="<?= $counter['userName'] ?>" 
+                                            data-password="<?= $counter['password'] ?>" 
+                                            data-status="<?= $counter['status'] ?>">
+                                            <i class="fa-solid fa-edit me-1"></i>Edit
+                                        </a>
                                     </td>
                                 </tr>
                                 <?php 
