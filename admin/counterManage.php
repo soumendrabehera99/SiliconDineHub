@@ -19,12 +19,12 @@ require_once "../dbFunctions/counterdb.php";
 
             <div class="d-flex justify-content-between">
                 <table class="table table-bordered table-responsive" id="myTable">
-                    <thead class="table-light">
-                        <tr>
+                    <thead class="table-light text-center">
+                        <tr class="align-text-top">
                             <th>ID</th>
                             <th>User Name</th>
                             <th>Password</th>
-                            <th>Status</th>
+                            <th>Status <p class="mb-0 fw-light ">click on status to update</p></th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,12 +33,17 @@ require_once "../dbFunctions/counterdb.php";
                             $result = getAllCounters();
                             while($counter = $result->fetch_assoc()){
                                 ?>
-                                <tr>
+                                <tr class="text-center">
                                     <td><?= $counter['counterID']?></td>
                                     <td><?= $counter['userName']?></td>
                                     <td><?= $counter['password']?></td>
                                     <td>
-                                        <?= $counter['status'] ? '<button class="btn btn-success btn-sm">Active</button>' : '<button class="btn btn-danger btn-sm">Block</button>' ?>
+                                        <a href="../dbFunctions/counterToggleStatus.php?id=<?= $counter['counterID'] ?>&status=<?= $counter['status'] ?>"
+                                            class="btn btn-sm <?= $counter['status'] ? 'btn-success' : 'btn-danger' ?> toggle-status"
+                                            data-id="<?= $counter['counterID'] ?>"
+                                            data-status="<?= $counter['status'] ?>">
+                                            <?= $counter['status'] ? 'Active' : 'Block' ?>
+                                        </a>
                                     </td>
                                     <td>
                                         <a href="CounterEdit.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit me-1"></i>Edit</a>
@@ -58,5 +63,6 @@ require_once "../dbFunctions/counterdb.php";
 <script src="../assets/sweetalert/sweetalert2.all.min.js"></script>
 <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
 <script src="../assets/js/counterAdd.js"></script>
+<script src="../assets/js/counterManage.js"></script>
 
 <?php include_once "adminFooter.php"; ?>
