@@ -25,7 +25,7 @@
                 <hr>
                 <div class="d-flex justify-content-between fw-bold">
                     <p class="mb-0">Total Amount</p>
-                    <p class="mb-0">₹480</p>
+                    <p class="mb-0" id="taxTotalPrice">₹480</p>
                 </div>
             </div>
             <div class="text-end mt-3">
@@ -42,10 +42,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-4">
-                <table class="table text-start">
+                <table class="table text-start text-center">
                     <thead class="table-light">
                         <tr>
                             <th>Food Name</th>
+                            <th>Unit Price</th>
                             <th>Quantity</th>
                             <th>Price</th>
                         </tr>
@@ -53,10 +54,9 @@
                     <tbody id="checkoutItems">
                     </tbody>
                     <tfoot>
-                        <tr>
-                            <td class="fw-bold">Total Price</td>
-                            <td></td>
-                            <td class="fw-bold" id="totalAmount"></td>
+                        <tr class="fw-bold">
+                            <td >Total Price</td>
+                            <td id="totalAmount" colspan="3" class="text-end"></td>
                         </tr>
                     </tfoot>
                 </table>

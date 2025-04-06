@@ -105,6 +105,7 @@ function showCart() {
           document.getElementById("cart").innerHTML = cartItems.join("");
           $("#totalItems").text(`Price (${quantity})`);
           $("#totalPrice").text(`Total: Rs. ${price}`);
+          $("#taxTotalPrice").text(`Rs. ${price}`);
         }
       },
       error: function (xhr, status, error) {
@@ -159,6 +160,7 @@ function showCheckout() {
         let ckItem = `
           <tr>
             <td>${response.name}</td>
+            <td>${response.price}</td>
             <td>${element[1].quantity}</td>
             <td>₹${response.price * element[1].quantity}</td>
           </tr>
