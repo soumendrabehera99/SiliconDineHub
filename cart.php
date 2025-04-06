@@ -71,7 +71,7 @@
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Back</button>
-                    <button type="button" class="btn btn-success"><i class="fa-solid fa-arrow-right-from-bracket"></i> Place Order</button>
+                    <button type="button" class="btn btn-success" id="placeOrderBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Place Order</button>
                 </div>
             </div>
         </div>

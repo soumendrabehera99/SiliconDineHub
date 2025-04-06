@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "studentdb.php";
 if(isset($_POST['operation'])){
     if ($_POST['operation']== "studentAdd" && isset($_POST['sic']) && isset($_POST['email'])) {
@@ -55,6 +56,9 @@ if(isset($_POST['operation'])){
         $status = $_POST['status'];
         $response = updateStudentStatus($id,$status);
         echo $response;
+    }else if($_POST['operation']== "getStudentID"){
+        // echo $_SESSION['sic'];
+       echo json_encode(getStudentBySic($_SESSION['sic']));
     }
 }
 
