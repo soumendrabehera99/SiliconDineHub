@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="text-end mt-3">
-                <a id="checkoutBtn" class="btn btn-success w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
+                <a id="checkoutBtn" class="btn btn-warning w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
             </div>
         </div>  
     </div>
@@ -53,25 +53,25 @@
                     </thead>
                     <tbody id="checkoutItems">
                     </tbody>
-                    <tfoot>
+                    <!-- <tfoot>
                         <tr class="fw-bold">
                             <td >Total Price</td>
                             <td id="totalAmount" colspan="3" class="text-end"></td>
                         </tr>
-                    </tfoot>
+                    </tfoot> -->
                 </table>
-                <!-- <hr> -->
+                <hr>
 
-                <!-- <div class="row px-2 fw-bold">
+                <div class="row px-2 fw-bold">
                     <div class="col-6">Total Price</div>
                     <div class="col-3"></div>
-                    <div class="col-3" id="totalAmount">₹800</div>
-                </div> -->
+                    <div class="col-3 text-end" id="totalAmount">₹800</div>
+                </div>
 
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Back</button>
-                    <button type="button" class="btn btn-success">Confirm</button>
+                    <button type="button" class="btn btn-success"><i class="fa-solid fa-arrow-right-from-bracket"></i> Place Order</button>
                 </div>
             </div>
         </div>

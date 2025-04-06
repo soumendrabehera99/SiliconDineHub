@@ -126,6 +126,13 @@ document.addEventListener("DOMContentLoaded", function () {
       showCheckout();
       modal.show();
     });
+  document
+    .getElementById("checkoutBtn")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      showCheckout();
+      modal.show();
+    });
 });
 
 function showCheckout() {
