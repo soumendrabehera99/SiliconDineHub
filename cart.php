@@ -29,10 +29,53 @@
                 </div>
             </div>
             <div class="text-end mt-3">
-                <a class="btn btn-success w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
+                <a id="checkoutBtn" class="btn btn-success w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
             </div>
         </div>  
     </div>
 </section>
+<div class="modal fade" id="checkoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Check-Out Summary</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-4">
+                <table class="table text-start">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Food Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checkoutItems">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="fw-bold">Total Price</td>
+                            <td></td>
+                            <td class="fw-bold" id="totalAmount"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <!-- <hr> -->
+
+                <!-- <div class="row px-2 fw-bold">
+                    <div class="col-6">Total Price</div>
+                    <div class="col-3"></div>
+                    <div class="col-3" id="totalAmount">₹800</div>
+                </div> -->
+
+
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Back</button>
+                    <button type="button" class="btn btn-success">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <?php include_once "./fragment/footer.php";?>
 <script src="./assets/js/cart.js"></script>

@@ -114,3 +114,67 @@ function showCart() {
     });
   });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+
+  document.getElementById('checkoutBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    showCheckout();
+    modal.show();
+  });
+});
+
+function showCheckout() {
+  // let cartData = JSON.parse(localStorage.getItem('cart'));
+  console.log(cart);
+  let price = 0;
+  let quantity = 0;
+  let checkoutItems = [];
+  let completedRequests = 0;
+  let cart2 = Object.entries(JSON.parse(cart));
+
+  if (checkoutItems.length === 0) {
+    document.getElementById("checkoutItems").innerHTML =
+      `<tr><td colspan="3" class="text-center">Cart is empty</td></tr>`;
+    document.getElementById("totalAmount").textContent = "₹0";
+    return;
+  }
+
+  cartItems.forEach(([element]) => {
+    $.ajax({
+      url: "./dbFunctions/foodAjax.php",
+      method: "POST",
+      data: {
+        foodID: element[0],
+        operation: "getFoodDetails"
+      },
+      dataType: "json",
+      success: function (response) {
+        console.log(response);
+        console.log(response.price);
+
+        let ckItem = `
+          <tr>
+            <td>${response.name}</td>
+            <td>${element[1].quantity}</td>
+            <td>₹${response.price * element[1].quantity}</td>
+          </tr>
+        `;
+        checkoutItems.push(ckItem);
+        price += response.price * element[1].quantity;
+        quantity += element[1].quantity;
+        completedRequests++;
+
+        if (completedRequests === checkoutItems.length) {
+          document.getElementById("checkoutItems").innerHTML = checkoutItems.join("");
+          document.getElementById("totalAmount").textContent = `₹${price}`;
+        }
+      },
+      error: function (xhr, status, error) {
+        console.error("AJAX Error:", xhr.responseText);
+        toastr.error("Failed to fetch food details");
+      },
+    });
+  });
+}
