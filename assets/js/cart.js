@@ -1,5 +1,5 @@
 let cart = localStorage.getItem("cart");
-console.log(cart);
+// console.log(cart);
 // localStorage.clear();
 document.addEventListener("DOMContentLoaded", function () {
   showCart();
@@ -115,39 +115,41 @@ function showCart() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  const modal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+document.addEventListener("DOMContentLoaded", function () {
+  const modal = new bootstrap.Modal(document.getElementById("checkoutModal"));
 
-  document.getElementById('checkoutBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    showCheckout();
-    modal.show();
-  });
+  document
+    .getElementById("checkoutBtn")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      showCheckout();
+      modal.show();
+    });
 });
 
 function showCheckout() {
   // let cartData = JSON.parse(localStorage.getItem('cart'));
-  console.log(cart);
+  // console.log(cart);
   let price = 0;
   let quantity = 0;
   let checkoutItems = [];
   let completedRequests = 0;
   let cart2 = Object.entries(JSON.parse(cart));
 
-  if (checkoutItems.length === 0) {
-    document.getElementById("checkoutItems").innerHTML =
-      `<tr><td colspan="3" class="text-center">Cart is empty</td></tr>`;
-    document.getElementById("totalAmount").textContent = "₹0";
-    return;
-  }
+  // if (checkoutItems.length === 0) {
+  //   document.getElementById("checkoutItems").innerHTML =
+  //     `<tr><td colspan="3" class="text-center">Cart is empty</td></tr>`;
+  //   document.getElementById("totalAmount").textContent = "₹0";
+  //   return;
+  // }
 
-  cartItems.forEach(([element]) => {
+  cart2.forEach((element) => {
     $.ajax({
       url: "./dbFunctions/foodAjax.php",
       method: "POST",
       data: {
         foodID: element[0],
-        operation: "getFoodDetails"
+        operation: "getFoodDetails",
       },
       dataType: "json",
       success: function (response) {
@@ -167,7 +169,8 @@ function showCheckout() {
         completedRequests++;
 
         if (completedRequests === checkoutItems.length) {
-          document.getElementById("checkoutItems").innerHTML = checkoutItems.join("");
+          document.getElementById("checkoutItems").innerHTML =
+            checkoutItems.join("");
           document.getElementById("totalAmount").textContent = `₹${price}`;
         }
       },
