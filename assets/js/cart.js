@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .closest(".btnDiv")
         .querySelector(".quantityInput");
       const id = event.target.closest(".increaseBtn").getAttribute("data-id");
-      console.log(id);
+      // console.log(id);
       let quantity = parseInt(input.value);
 
       let cart1 = JSON.parse(cart);
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .querySelector(".quantityInput");
       let quantity = parseInt(input.value);
       const id = event.target.closest(".decreaseBtn").getAttribute("data-id");
-      console.log(id);
+      // console.log(id);
       let cart1 = JSON.parse(cart);
 
       if (cart1[id] && quantity > 1) {
