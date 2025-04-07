@@ -1,4 +1,5 @@
 let cart = localStorage.getItem("cart");
+let studentId;
 // console.log(cart);
 // localStorage.clear();
 document.addEventListener("DOMContentLoaded", function () {
@@ -105,6 +106,7 @@ function showCart() {
           document.getElementById("cart").innerHTML = cartItems.join("");
           $("#totalItems").text(`Price (${quantity})`);
           $("#totalPrice").text(`Total: Rs. ${price}`);
+          $("#taxTotalPrice").text(`Rs. ${price}`);
         }
       },
       error: function (xhr, status, error) {
@@ -124,6 +126,28 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       showCheckout();
       modal.show();
+    });
+  document
+    .getElementById("placeOrderBtn")
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      $.ajax({
+        url: "./dbFunctions/studentAjax.php",
+        method: "POST",
+        data: {
+          operation: "getStudentID",
+        },
+        success: function (response) {
+          response = JSON.parse(response);
+          console.log(response);
+          studentId = response.studentID;
+          console.log(studentId);
+        },
+        error: function (xhr, status, error) {
+          console.error("AJAX Error:", xhr.responseText);
+          toastr.error("Failed to fetch food details");
+        },
+      });
     });
 });
 
@@ -153,12 +177,13 @@ function showCheckout() {
       },
       dataType: "json",
       success: function (response) {
-        console.log(response);
-        console.log(response.price);
+        // console.log(response);
+        // console.log(response.price);
 
         let ckItem = `
           <tr>
             <td>${response.name}</td>
+            <td>${response.price}</td>
             <td>${element[1].quantity}</td>
             <td>₹${response.price * element[1].quantity}</td>
           </tr>

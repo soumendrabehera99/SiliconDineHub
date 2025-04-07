@@ -422,4 +422,22 @@ function saveStudent($sic, $seID, $name, $dob, $password, $isActive = "1") {
         }
     }
 }
+
+function getStudentBySic($sic){
+    try{
+        $sic = trim($sic);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT sic, name, studentID FROM student WHERE sic = ?");
+        $stmt->bind_param("s",$sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
 ?>

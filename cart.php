@@ -25,11 +25,11 @@
                 <hr>
                 <div class="d-flex justify-content-between fw-bold">
                     <p class="mb-0">Total Amount</p>
-                    <p class="mb-0">₹480</p>
+                    <p class="mb-0" id="taxTotalPrice">₹480</p>
                 </div>
             </div>
             <div class="text-end mt-3">
-                <a id="checkoutBtn" class="btn btn-success w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
+                <a id="checkoutBtn" class="btn btn-warning w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
             </div>
         </div>  
     </div>
@@ -42,36 +42,36 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-4">
-                <table class="table text-start">
+                <table class="table text-start text-center">
                     <thead class="table-light">
                         <tr>
                             <th>Food Name</th>
+                            <th>Unit Price</th>
                             <th>Quantity</th>
                             <th>Price</th>
                         </tr>
                     </thead>
                     <tbody id="checkoutItems">
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td class="fw-bold">Total Price</td>
-                            <td></td>
-                            <td class="fw-bold" id="totalAmount"></td>
+                    <!-- <tfoot>
+                        <tr class="fw-bold">
+                            <td >Total Price</td>
+                            <td id="totalAmount" colspan="3" class="text-end"></td>
                         </tr>
-                    </tfoot>
+                    </tfoot> -->
                 </table>
-                <!-- <hr> -->
+                <hr>
 
-                <!-- <div class="row px-2 fw-bold">
+                <div class="row px-2 fw-bold">
                     <div class="col-6">Total Price</div>
                     <div class="col-3"></div>
-                    <div class="col-3" id="totalAmount">₹800</div>
-                </div> -->
+                    <div class="col-3 text-end" id="totalAmount">₹800</div>
+                </div>
 
 
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Back</button>
-                    <button type="button" class="btn btn-success">Confirm</button>
+                    <button type="button" class="btn btn-success" id="placeOrderBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i> Place Order</button>
                 </div>
             </div>
         </div>
