@@ -440,4 +440,42 @@ function getStudentBySic($sic){
         return $e->getMessage();
     }
 }
+
+function getStudentNameByStudentID($studentID){
+    try{
+        $studentID = trim($studentID);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT name FROM student WHERE studentID = ?");
+        $stmt->bind_param("s",$studentID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['name'];
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+
+function getStudentSicByStudentID($studentID){
+    try{
+        $studentID = trim($studentID);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT sic FROM student WHERE studentID = ?");
+        $stmt->bind_param("s",$studentID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['sic'];
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
 ?>

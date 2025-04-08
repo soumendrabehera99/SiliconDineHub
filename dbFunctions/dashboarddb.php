@@ -1,13 +1,13 @@
 <?php
 include_once "dbConnect.php";
 
-function totalOrder() {
+function totalOrderOfToday() {
     $conn = null;
     $stmt = null;
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table WHERE DATE(createdAt) = CURDATE()");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare statement: " . $conn->error);
@@ -41,7 +41,7 @@ function totalDineInOrder() {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS dineInCount FROM order_table WHERE orderType = 'dineIn'");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS dineInCount FROM order_table WHERE orderType = 'Dine-In' AND DATE(createdAt) = CURDATE()");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare statement: " . $conn->error);
@@ -75,7 +75,7 @@ function totalParcelOrder() {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS parcelCount FROM order_table WHERE orderType = 'parcel'");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS parcelCount FROM order_table WHERE orderType = 'Takeaway' AND DATE(createdAt) = CURDATE()");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare statement: " . $conn->error);
