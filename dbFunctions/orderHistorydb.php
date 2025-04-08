@@ -7,7 +7,7 @@ function totalOrder() {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table WHERE status = 'delivered'");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare statement: " . $conn->error);

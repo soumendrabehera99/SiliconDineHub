@@ -78,7 +78,7 @@ $username = $_SESSION['userName'];
             font-size: 14px;
         }
         .orders {
-            height: 600px; /* Adjust the height as needed 650px perfect height*/
+            height: 650px; /* Adjust the height as needed 650px perfect height*/
             display: flex;
             flex-direction: column;
         }
@@ -147,107 +147,29 @@ $username = $_SESSION['userName'];
             <div class="card">
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead class="table-dark">
+                        <thead class="table-dark sticky-top">
                             <tr>
                                 <th>Order ID</th>
                                 <th>Name</th>
                                 <th>SIC</th>
                                 <th>Food</th>
+                                <th>Order Type</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Anil Sahu</td>
-                                <td>23mmci37</td>
-                                <td>Cheese Burger</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Ravi Kumar</td>
-                                <td>23mmci19</td>
-                                <td>Veg Roll</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Priya Sharma</td>
-                                <td>23mmci21</td>
-                                <td>Chowmein</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Aman Verma</td>
-                                <td>23mmci15</td>
-                                <td>Pizza Slice</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Neha Singh</td>
-                                <td>23mmci11</td>
-                                <td>Cold Coffee</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Rahul Yadav</td>
-                                <td>23mmci30</td>
-                                <td>Momos</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Simran Kaur</td>
-                                <td>23mmci08</td>
-                                <td>Chocolate Shake</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Vikas Sharma</td>
-                                <td>23mmci12</td>
-                                <td>French Fries</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Kavita Mehra</td>
-                                <td>23mmci26</td>
-                                <td>Ice Cream</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Manish Roy</td>
-                                <td>23mmci09</td>
-                                <td>Sandwich</td>
-                                <td>
-                                    <button class="btn btn-success btn-sm">Ready</button>
-                            </tr>
+                            <!-- AJAX will populate this -->
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <!-- Completed Orders -->
+        <!-- Pending Orders -->
         <div class="col-lg-6 col-md-12 orders">
             <div class="row d-flex align-items-center">
                 <div class="col-12 d-flex justify-content-between align-items-center mb-3">
-                    <h3 class="mb-0">Completed Orders</h3>
+                    <h3 class="mb-0">Pending Orders</h3>
                     <div class="position-relative w-50 ms-3">
                         <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
                         <input 
@@ -263,86 +185,18 @@ $username = $_SESSION['userName'];
             <div class="card">
                 <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead class="table-dark">
+                        <thead class="table-dark sticky-top">
                             <tr>
-                                <th>OrderID</th>
+                                <th>Order ID</th>
                                 <th>Name</th>
                                 <th>SIC</th>
                                 <th>Food</th>
-                                <th>Action</th>
+                                <th>Order Type</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Aarti Yadav</td>
-                                <td>23mmci32</td>
-                                <td>Cold Coffee</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Sumit Kumar</td>
-                                <td>23mmci28</td>
-                                <td>Veg Roll</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Deepika Sharma</td>
-                                <td>23mmci14</td>
-                                <td>Cheese Burger</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Aditya Jain</td>
-                                <td>23mmci07</td>
-                                <td>Pizza Slice</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Sneha Rani</td>
-                                <td>23mmci29</td>
-                                <td>Chowmein</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Mohit Sinha</td>
-                                <td>23mmci17</td>
-                                <td>Momos</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Jyoti Singh</td>
-                                <td>23mmci20</td>
-                                <td>Ice Cream</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Shivam Raj</td>
-                                <td>23mmci06</td>
-                                <td>French Fries</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>Muskan Sharma</td>
-                                <td>23mmci27</td>
-                                <td>Chocolate Shake</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>Ashutosh Verma</td>
-                                <td>23mmci10</td>
-                                <td>Sandwich</td>
-                                <td><button class="btn btn-success btn-sm">Delivered</button></td>
-                            </tr>
+                            <!-- AJAX will populate this -->
                         </tbody>
                     </table>
                 </div>
@@ -354,49 +208,7 @@ $username = $_SESSION['userName'];
 <script src="./assets/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="./assets/jquery/jquery-3.7.1.min.js"></script>
 <script src="./assets/sweetalert/sweetalert2.all.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Logout confirmation
-        $("#logoutBtn").on("click", function (e) {
-            e.preventDefault(); // prevent direct redirect
+<script src="./assets/js/counterDashboard.js"></script>
 
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You will be logged out!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#d33",
-                cancelButtonColor: "#3085d6",
-                confirmButtonText: "Yes, logout"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = "./logout.php";
-                }
-            });
-        });
-
-    });
-    // Incoming Orders Search
-    document.getElementById('searchIncoming').addEventListener('keyup', function () {
-        let value = this.value.toLowerCase();
-        let rows = document.querySelectorAll('.orders:nth-of-type(1) tbody tr');
-
-        rows.forEach(row => {
-            let orderId = row.cells[0].textContent.toLowerCase(); // Only Order ID cell
-            row.style.display = orderId.includes(value) ? '' : 'none';
-        });
-    });
-    
-    // Completed Orders Search
-    document.getElementById('searchCompleted').addEventListener('keyup', function () {
-        let value = this.value.toLowerCase();
-        let rows = document.querySelectorAll('.orders:nth-of-type(2) tbody tr');
-        
-        rows.forEach(row => {
-            let orderId = row.cells[0].textContent.toLowerCase(); // Only Order ID cell
-            row.style.display = orderId.includes(value) ? '' : 'none';
-        });
-    });
-</script>
 </body>
 </html>
