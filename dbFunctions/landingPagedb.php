@@ -9,7 +9,7 @@ function getRandomFoods() {
         
         $sql = "SELECT f.* 
                 FROM food f 
-                WHERE f.isAvailable = '1' 
+                WHERE f.isAvailable = '1' AND f.isAvailable = '1'
                 GROUP BY f.foodCategoryID 
                 ORDER BY RAND() 
                 LIMIT 12";
