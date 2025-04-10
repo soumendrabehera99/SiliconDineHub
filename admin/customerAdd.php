@@ -23,7 +23,16 @@ include_once "adminNavbar.php";
 
             <div class="text-center">OR</div>
                 <div class="mb-3">
-                    <label for="fileUpload" class="form-label">Upload Excel File(Ex. xls, xlsx etc.)</label>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <label for="fileUpload" class="form-label">Upload Excel File(Ex. xls, xlsx etc.)</label>
+                        </div>
+                        <div>
+                            <a class="text-primary text-decoration-none" target="_blank" download href="../assets/excel/name_sic_mapping.xlsx">
+                                Download Excel sheet format
+                            </a>
+                        </div>
+                    </div>
                     <input class="form-control" type="file" id="fileUpload" placeholder="Choose a file Or drag it here" accept=".xlsx, .xls">
                 </div>
                 <div class="text-end">
