@@ -28,9 +28,18 @@
                     <p class="mb-0" id="taxTotalPrice">₹480</p>
                 </div>
             </div>
-            <div class="text-end mt-3">
-                <a id="checkoutBtn" class="btn btn-warning w-25 p-2 mt-4"><i class="fa fa-shopping-cart"></i> Check Out</a>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="w-25 me-2 mt-4">
+                    <select id="orderType" class="form-select w-100 p-2">
+                        <option value="Dine-In" selected>Dine-In</option>
+                        <option value="Takeaway">Takeaway</option>
+                    </select>
+                </div>
+                <div class="w-50 ms-2 mt-4">
+                    <a id="checkoutBtn" class="btn btn-warning w-100 p-2"><i class="fa fa-shopping-cart"></i> Check Out</a>
+                </div>
             </div>
+
         </div>  
     </div>
 </section>
