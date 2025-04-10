@@ -58,7 +58,7 @@ function showCart() {
       },
       dataType: "json",
       success: function (response) {
-        // console.log(response);
+        console.log(response);
 
         let cartItem = `
               <div class="row mt-2 p-3 border border-1 rounded-1 shadow-sm">
