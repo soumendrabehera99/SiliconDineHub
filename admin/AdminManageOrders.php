@@ -10,17 +10,14 @@ require_once "../dbFunctions/orderHistorydb.php";
     <div class="container-fluid mt-4">
         <div class="row">
             <div class="col-12 mb-3 d-flex justify-content-between align-items-center">
-                <h2 class="">📋 Order History</h2>
-                <!-- <a class="btn btn-success" href="">
-                    <i class="fa-solid fa-plus me-1"></i> 
-                </a> -->
+                <h2 class="">Manage Order</h2>
             </div>
 
             <div class="col-12 bg-white border shadow-sm rounded p-3">
                 <!-- Search and Total Records -->
                 <div class="row align-items-center mb-3">
                     <div class="col-md-6 fw-semibold">
-                        Total No. of Records: <?= totalOrder(); ?>
+                        Total No. of Records: <?= totalNoPendingOrder(); ?>
                     </div>
                     <div class="col-md-6 d-flex justify-content-md-end align-items-center">
                         <label for="searchInput" class="me-2 fw-medium mb-0">Search:</label>
@@ -47,12 +44,12 @@ require_once "../dbFunctions/orderHistorydb.php";
                                 <th>Price (₹)</th>
                                 <th>Order Date</th>
                                 <th>Order Type</th>
-                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody">
                             <?php
-                                $result = getAllOrders();
+                                $result = getAllPendingOrders();
                                 $sl = 1;
                                 while($order = $result->fetch_assoc()){
                             ?>
@@ -70,9 +67,7 @@ require_once "../dbFunctions/orderHistorydb.php";
                                         </span>
                                     </td>
                                     <td>
-                                        <span class="badge bg-<?= strtolower($order['status']) === 'delivered' ? 'success' : 'danger' ?>">
-                                            <?= $order['status'] ?>
-                                        </span>
+                                        <a href="../dbFunctions/cancelOrder.php?orderID=<?= $order['orderID']?>&status=cancel" class="btn btn-sm btn-danger">Cancel</a>
                                     </td>
                                 </tr>
                             <?php } ?>
