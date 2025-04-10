@@ -194,10 +194,12 @@
                             }
                         });
 
-                    } else if (response.trim() === "Email not registered") {
+                    }else if (response.trim() === "Email not registered") {
                         Swal.fire("Error", "Email not registered.", "error");
-                    } else if (response.trim() === "Password Incorrect") {
+                    }else if (response.trim() === "Password Incorrect") {
                         Swal.fire("Error", "Incorrect password.", "error");
+                    }else if (response.trim() === "block") {
+                        Swal.fire("Access Denied", "Your account has been blocked. Please contact support for Admin.", "error");
                     } else {
                         Swal.fire("Error", response, "error");
                     }

@@ -27,12 +27,16 @@ try {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-
-        if ($user['password'] === $password) { 
+        
+        if($user['isActive']==0){
+            echo "block";
+        }
+        else if ($user['password'] === $password) { 
             $_SESSION['sic'] = $sic;
             $_SESSION['role'] = "student";
             echo "success";
-        } else {
+        } 
+        else {
             echo "Password Incorrect";
         }
     } else {

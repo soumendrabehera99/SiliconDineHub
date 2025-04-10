@@ -248,4 +248,22 @@ function getAllFood($categoryID, $search, $pageNo, $limit) {
     ];
 }
 
+function getFoodNameByFoodId($foodID){
+    try{
+        $foodID = trim($foodID);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT name FROM food WHERE foodID = ?");
+        $stmt->bind_param("s",$foodID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['name'];
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
 ?>

@@ -422,4 +422,60 @@ function saveStudent($sic, $seID, $name, $dob, $password, $isActive = "1") {
         }
     }
 }
+
+function getStudentBySic($sic){
+    try{
+        $sic = trim($sic);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT sic, name, studentID FROM student WHERE sic = ?");
+        $stmt->bind_param("s",$sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            return $result->fetch_assoc();
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+
+function getStudentNameByStudentID($studentID){
+    try{
+        $studentID = trim($studentID);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT name FROM student WHERE studentID = ?");
+        $stmt->bind_param("s",$studentID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['name'];
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+
+function getStudentSicByStudentID($studentID){
+    try{
+        $studentID = trim($studentID);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT sic FROM student WHERE studentID = ?");
+        $stmt->bind_param("s",$studentID);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['sic'];
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
 ?>
