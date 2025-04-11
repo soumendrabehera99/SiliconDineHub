@@ -6,51 +6,70 @@ document.addEventListener("DOMContentLoaded", function () {
   showCart();
 
   document.getElementById("cart").addEventListener("click", function (event) {
-    
-    if (event.target.closest(".increaseBtn") || event.target.closest(".decreaseBtn")) {
-      let priceDiv = event.target.closest(".btnDiv").closest('.outerDiv').closest(".cartItem").querySelector('.pricediv');
-        let input = event.target.closest(".btnDiv").querySelector(".quantityInput");
-        let quantity = parseInt(input.value);
-        const id = event.target.closest(".increaseBtn") ? event.target.closest(".increaseBtn").getAttribute("data-id") : event.target.closest(".decreaseBtn").getAttribute("data-id");
+    if (
+      event.target.closest(".increaseBtn") ||
+      event.target.closest(".decreaseBtn")
+    ) {
+      let priceDiv = event.target
+        .closest(".btnDiv")
+        .closest(".outerDiv")
+        .closest(".cartItem")
+        .querySelector(".pricediv");
+      let input = event.target
+        .closest(".btnDiv")
+        .querySelector(".quantityInput");
+      let quantity = parseInt(input.value);
+      const id = event.target.closest(".increaseBtn")
+        ? event.target.closest(".increaseBtn").getAttribute("data-id")
+        : event.target.closest(".decreaseBtn").getAttribute("data-id");
 
-        let cart = JSON.parse(localStorage.getItem("cart"));
-        // if (!cart) cart = {}; 
-
-        if (event.target.closest(".increaseBtn")) {
-            if (cart[id]) {
-                cart[id].quantity += 1;
-                input.value = cart[id].quantity;
-                priceDiv.innerHTML = `<b>Price :</b> ${cart[id].price * cart[id].quantity}`;
-            }
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      // if (!cart) cart = {};
+      let totalPrice = parseInt(localStorage.getItem("totalPrice"));
+      let totalQuantity = parseInt(localStorage.getItem("totalQuantity"));
+      if (event.target.closest(".increaseBtn")) {
+        if (cart[id]) {
+          cart[id].quantity += 1;
+          input.value = cart[id].quantity;
+          priceDiv.innerHTML = `<b>Price :</b> ${
+            cart[id].price * cart[id].quantity
+          }`;
+          setTotalPriceAndQuantity(
+            totalPrice + parseInt(cart[id].price),
+            totalQuantity + 1
+          );
         }
+      }
 
-        if (event.target.closest(".decreaseBtn")) {
-            if (cart[id] && quantity > 1) {
-                cart[id].quantity -= 1;
-                input.value = cart[id].quantity;
-                priceDiv.innerHTML = `<b>Price :</b> ${cart[id].price * cart[id].quantity}`;
-            }
+      if (event.target.closest(".decreaseBtn")) {
+        if (cart[id] && quantity > 1) {
+          cart[id].quantity -= 1;
+          input.value = cart[id].quantity;
+          priceDiv.innerHTML = `<b>Price :</b> ${
+            cart[id].price * cart[id].quantity
+          }`;
+          setTotalPriceAndQuantity(
+            totalPrice - cart[id].price,
+            totalQuantity - 1
+          );
         }
+      }
 
-        localStorage.setItem("cart", JSON.stringify(cart));
-    }else if(event.target.closest('.deleteBtn')){
-      let priceDiv = event.target.closest("div").closest(".cartItem").querySelector('.pricediv');
-      console.log("clicked");
-      console.log(priceDiv);
+      localStorage.setItem("cart", JSON.stringify(cart));
+    } else if (event.target.closest(".deleteBtn")) {
       let cart = JSON.parse(localStorage.getItem("cart"));
       const id = event.target.closest(".deleteBtn").getAttribute("data-id");
       console.log(id);
       console.log(cart);
-      
-      if(cart[id]){
+
+      if (cart[id]) {
         delete cart[id];
         setTimeout(location.reload(), 200);
       }
       console.log(cart);
-      localStorage.setItem('cart',JSON.stringify(cart));
+      localStorage.setItem("cart", JSON.stringify(cart));
     }
-});
-
+  });
 });
 
 function showCart() {
@@ -105,8 +124,8 @@ function showCart() {
                   </div>
                   <div class="col-1 d-flex justify-content-center align-items-center">
                       <button class="text-danger fs-5 border outline-none bg-transparent border-0 deleteBtn" data-id="${
-                            response.foodID
-                          }"><i class="fa fa-trash"></i></button>
+                        response.foodID
+                      }"><i class="fa fa-trash"></i></button>
                   </div>
               </div>
           `;
@@ -119,9 +138,7 @@ function showCart() {
 
         if (completedRequests === cart1.length) {
           document.getElementById("cart").innerHTML = cartItems.join("");
-          $("#totalItems").text(`Price (${quantity})`);
-          $("#totalPrice").text(`Total: Rs. ${price}`);
-          $("#taxTotalPrice").text(`Rs. ${price}`);
+          setTotalPriceAndQuantity(price, quantity);
         }
       },
       error: function (xhr, status, error) {
@@ -220,4 +237,11 @@ function showCheckout() {
       },
     });
   });
+}
+function setTotalPriceAndQuantity(price, quantity) {
+  $("#totalItems").text(`Price (${quantity})`);
+  $("#totalPrice").text(`Total: Rs. ${price}`);
+  $("#taxTotalPrice").text(`Rs. ${price}`);
+  localStorage.setItem("totalPrice", price);
+  localStorage.setItem("totalQuantity", quantity);
 }
