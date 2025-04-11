@@ -8,8 +8,8 @@
                 <h5 class="text-muted">PRICE DETAILS</h5>
                 <hr>
                 <div class="d-flex justify-content-between">
-                    <p class="mb-1" id="totalItems">Price (8 items)</p>
-                    <p class="mb-1" id="totalPrice">₹480</p>
+                    <p class="mb-1" id="totalItems">Price (0 items)</p>
+                    <p class="mb-1" id="totalPrice">₹0</p>
                 </div>
                 <div class="d-flex justify-content-between">
                     <p class="mb-1">Coupons for you</p>
@@ -25,7 +25,7 @@
                 <hr>
                 <div class="d-flex justify-content-between fw-bold">
                     <p class="mb-0">Total Amount</p>
-                    <p class="mb-0" id="taxTotalPrice">₹480</p>
+                    <p class="mb-0" id="taxTotalPrice">₹0</p>
                 </div>
             </div>
             <div class="d-flex justify-content-between align-items-center">

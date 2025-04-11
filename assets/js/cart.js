@@ -6,15 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
   showCart();
 
   document.getElementById("cart").addEventListener("click", function (event) {
-    let priceDiv = event.target.closest(".btnDiv").closest('.outerDiv').closest(".cartItem").querySelector('.pricediv');
     
     if (event.target.closest(".increaseBtn") || event.target.closest(".decreaseBtn")) {
+      let priceDiv = event.target.closest(".btnDiv").closest('.outerDiv').closest(".cartItem").querySelector('.pricediv');
         let input = event.target.closest(".btnDiv").querySelector(".quantityInput");
         let quantity = parseInt(input.value);
         const id = event.target.closest(".increaseBtn") ? event.target.closest(".increaseBtn").getAttribute("data-id") : event.target.closest(".decreaseBtn").getAttribute("data-id");
 
         let cart = JSON.parse(localStorage.getItem("cart"));
-        if (!cart) cart = {}; 
+        // if (!cart) cart = {}; 
 
         if (event.target.closest(".increaseBtn")) {
             if (cart[id]) {
@@ -33,6 +33,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
+    }else if(event.target.closest('.deleteBtn')){
+      let priceDiv = event.target.closest("div").closest(".cartItem").querySelector('.pricediv');
+      console.log("clicked");
+      console.log(priceDiv);
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      const id = event.target.closest(".deleteBtn").getAttribute("data-id");
+      console.log(id);
+      console.log(cart);
+      
+      if(cart[id]){
+        delete cart[id];
+        setTimeout(location.reload(), 200);
+      }
+      console.log(cart);
+      localStorage.setItem('cart',JSON.stringify(cart));
     }
 });
 
@@ -57,7 +72,7 @@ function showCart() {
       },
       dataType: "json",
       success: function (response) {
-        console.log(response);
+        // console.log(response);
 
         let cartItem = `
               <div class="row mt-2 p-3 border border-1 rounded-1 shadow-sm cartItem">
@@ -89,7 +104,9 @@ function showCart() {
                       <b>Price :</b> ${response.price * element[1].quantity}
                   </div>
                   <div class="col-1 d-flex justify-content-center align-items-center">
-                      <button class="text-danger fs-5 border outline-none bg-transparent border-0"><i class="fa fa-trash"></i></button>
+                      <button class="text-danger fs-5 border outline-none bg-transparent border-0 deleteBtn" data-id="${
+                            response.foodID
+                          }"><i class="fa fa-trash"></i></button>
                   </div>
               </div>
           `;
