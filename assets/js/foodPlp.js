@@ -146,7 +146,7 @@ function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
                         <h6 class="card-title text-truncate-1 text-dark">${
                           res.name
                         }</h6>
-                        <p class="small text-muted mb-1 text-truncate-3" style="font-size: 10px; text-align: justify;">
+                        <p class="small text-muted mb-1 text-truncate-2" style="font-size: 10px; text-align: justify;">
                             ${res.description}
                         </p>
                         <h4 class="mb-1 text-dark"><strong>&#8377;${
@@ -155,7 +155,7 @@ function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
                         </a>
                         ${
                           cart[res.foodID]
-                            ? `<button class="btn btn-outline-warning w-100 goToCartBtn">Go to Cart</button>`
+                            ? `<a href="./cart.php" class="btn btn-outline-warning w-100 goToCartBtn">Go to Cart</a>`
                             : `<button class="btn btn-outline-success w-100 addBtn" data-id="${res.foodID}" data-price="${res.price}">ADD</button>`
                         }
                       </div>

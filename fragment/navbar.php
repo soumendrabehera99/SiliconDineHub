@@ -65,12 +65,8 @@
                                 : ''; 
                             ?>
                             <?php echo isset($_SESSION['sic']) ? 
-                                '<a href="./cart.php" class="nav-link fs-5 text-center position-relative">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
-                                        id="cart-notification" style="background-color: rgb(11, 218, 11); font-size: 0.75rem; padding: 3px 5px;">
-                                        4
-                                    </span>
+                                '<a href="./cart.php" class="nav-link fs-5 text-center position-relative" id="cart-icon">
+                                    <i class="fa-solid fa-cart-shopping"></i>    
                                 </a>' 
                                 : ''; 
                             ?>
