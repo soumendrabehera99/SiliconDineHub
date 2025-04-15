@@ -177,6 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const type = document.querySelector("#orderType").value;
           const cartData = Object.entries(JSON.parse(localStorage.getItem("cart")));
           const status = "pending";
+          // const length = cart.length;
           cartData.forEach(([foodID, item]) => {
             const { quantity, price } = item;
             // console.log(foodID, item,type);
@@ -212,6 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
           toastr.success("Order placed successfully!");
           localStorage.removeItem("cart");
+          // showCart();
+          setTimeout(location.reload(), 3000);
         },
         error: function (xhr) {
           console.error("Student ID fetch error:", xhr.responseText);
