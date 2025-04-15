@@ -1,4 +1,4 @@
-<section class="feedback-form my-4">
+<section class="feedback-form my-4" style="margin-bottom: 100px !important;">
     <div class="container">
         <div class="feedback-form-heading py-3 mb-3">
             <h2 class="text-center fs-1">Feedback Form</h2>
