@@ -10,7 +10,7 @@ if (isset($_GET['orderID']) && isset($_GET['status'])) {
         $conn = dbConnection();
 
         // Update order status
-        $stmt = $conn->prepare("UPDATE order_table SET status = ? WHERE orderID = ?");
+        $stmt = $conn->prepare("UPDATE order_table SET status = ? WHERE id = ?");
         $stmt->bind_param("si", $newStatus, $orderID);
 
         if ($stmt->execute()) {

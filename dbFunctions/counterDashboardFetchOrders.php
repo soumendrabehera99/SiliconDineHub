@@ -7,12 +7,10 @@ try {
     $conn = dbConnection();
     $stmt = $conn->prepare("
         SELECT 
-            o.orderID, 
-            o.orderType,
+            o.*,
             s.name, 
             s.sic, 
-            f.name AS foodName, 
-            o.status  
+            f.name AS foodName     
         FROM order_table o
         JOIN student s ON o.studentID = s.studentID
         JOIN food f ON o.foodID = f.foodID

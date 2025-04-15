@@ -40,7 +40,7 @@ function getAllOrders() {
     $stmt = null;
     try {
         $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM order_table WHERE status IN ('delivered','cancel') ORDER BY orderID DESC");
+        $stmt = $conn->prepare("SELECT * FROM order_table ORDER BY id DESC");
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows>0){

@@ -50,7 +50,8 @@ $.ajax({
     success: function (data) {
         let incomingHTML = '';
         let readyHTML = '';
-
+        console.log(data);
+        
         if (Array.isArray(data) && data.length > 0) {
             data.forEach(function (order) {
                 let row = `
@@ -61,7 +62,7 @@ $.ajax({
                         <td>${order.foodName}</td>
                         <td>${order.orderType}</td>
                         <td>
-                            <a href="./dbFunctions/orderStatusUpdate.php?orderID=${order.orderID}&status=${order.status === 'pending' ? 'ready' : 'delivered'}">
+                            <a href="./dbFunctions/orderStatusUpdate.php?orderID=${order.id}&status=${order.status === 'pending' ? 'ready' : 'delivered'}">
                                 <button class="btn btn-sm ${order.status === 'pending' ? 'btn-warning' : 'btn-success'}">
                                 ${order.status === 'pending' ? 'Ready' : 'Delivered'}
                                 </button>

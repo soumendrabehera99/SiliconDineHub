@@ -78,7 +78,7 @@ function showCart() {
   let quantity = 0;
   let cartItems = [];
   let completedRequests = 0;
-  let cart1 = Object.entries(JSON.parse(cart));
+  let cart1 = Object.entries(JSON.parse(cart) || {});
   //   console.log(cart);
 
   cart1.forEach((element) => {
@@ -159,10 +159,11 @@ document.addEventListener("DOMContentLoaded", function () {
       showCheckout();
       modal.show();
     });
-  document
+    document
     .getElementById("placeOrderBtn")
     .addEventListener("click", function (e) {
       e.preventDefault();
+  
       $.ajax({
         url: "./dbFunctions/studentAjax.php",
         method: "POST",
@@ -171,16 +172,54 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         success: function (response) {
           response = JSON.parse(response);
-          console.log(response);
-          studentId = response.studentID;
-          console.log(studentId);
+          const studentId = response.studentID;
+          const sic = response.sic;
+          const type = document.querySelector("#orderType").value;
+          const cartData = Object.entries(JSON.parse(localStorage.getItem("cart")));
+          const status = "pending";
+          cartData.forEach(([foodID, item]) => {
+            const { quantity, price } = item;
+            // console.log(foodID, item,type);
+            
+            $.ajax({
+              url: "./dbFunctions/orderAjax.php",
+              method: "POST",
+              data: {
+                operation: "placeOrder",
+                orderID:sic,
+                studentID: studentId,
+                foodID: foodID,
+                quantity: quantity,
+                orderType: type,
+                price: price*quantity,
+                status: status
+              },
+              success: function (res) {
+                const result = JSON.parse(res);
+                // console.log(result);
+                
+                if (result.result === "success") {
+                  // console.log(`Order placed for foodID ${foodID}`);
+                } else {
+                  // console.error(`Failed to place order for foodID ${foodID}`);
+                }
+              },
+              error: function (xhr) {
+                console.error("Order error:", xhr.responseText);
+              },
+            });
+          });
+  
+          toastr.success("Order placed successfully!");
+          localStorage.removeItem("cart");
         },
-        error: function (xhr, status, error) {
-          console.error("AJAX Error:", xhr.responseText);
-          toastr.error("Failed to fetch food details");
+        error: function (xhr) {
+          console.error("Student ID fetch error:", xhr.responseText);
+          toastr.error("Failed to place order");
         },
       });
     });
+  
 });
 
 function showCheckout() {

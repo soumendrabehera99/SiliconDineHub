@@ -51,9 +51,11 @@ require_once "../dbFunctions/orderHistorydb.php";
                             </tr>
                         </thead>
                         <tbody id="tableBody">
-                            <?php
-                                $result = getAllOrders();
-                                $sl = 1;
+                        <?php
+                            $result = getAllOrders();
+                            $sl = 1;
+
+                            if (is_object($result)) { 
                                 while($order = $result->fetch_assoc()){
                             ?>
                                 <tr>
@@ -75,7 +77,13 @@ require_once "../dbFunctions/orderHistorydb.php";
                                         </span>
                                     </td>
                                 </tr>
-                            <?php } ?>
+                            <?php 
+                                } 
+                            } else {
+                                echo "<tr><td colspan='9' class='text-center text-danger'>No orders found or error occurred.</td></tr>";
+                            }
+                            ?>
+
                         </tbody>
                     </table>
                 </div>
