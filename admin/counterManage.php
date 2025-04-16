@@ -10,9 +10,7 @@ require_once "../dbFunctions/counterdb.php";
             <div class="row mt-4">
                 <div class="col-md-6">
                     <div class="d-flex justify-content-start">
-                        <!-- Button trigger modal -->
                         <button class="btn btn-success mb-3" id="addRecordBtn"><i class="fa-solid fa-plus"></i> Add Counter</button>
-                        <!-- Modal -->
                     </div>
                 </div>
             </div>
@@ -24,49 +22,60 @@ require_once "../dbFunctions/counterdb.php";
                             <th>ID</th>
                             <th>User Name</th>
                             <th>Password</th>
-                            <th>Status <p class="mb-0 fw-light ">click on status to update</p></th>
+                            <th>Status <p class="mb-0 fw-light">click on status to update</p></th>
                             <th>Action</th>
+                            <th>Assign Food Category</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                             $result = getAllCounters();
                             while($counter = $result->fetch_assoc()){
-                                ?>
-                                <tr class="text-center">
-                                    <td><?= $counter['counterID']?></td>
-                                    <td><?= $counter['userName']?></td>
-                                    <td><?= $counter['password']?></td>
-                                    <td>
-                                        <a href="../dbFunctions/counterToggleStatus.php?id=<?= $counter['counterID'] ?>&status=<?= $counter['status'] ?>"
-                                            class="btn btn-sm <?= $counter['status'] ? 'btn-success' : 'btn-danger' ?> toggle-status"
-                                            data-id="<?= $counter['counterID'] ?>"
-                                            data-status="<?= $counter['status'] ?>">
-                                            <?= $counter['status'] ? 'Active' : 'Block' ?>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <!-- <a href="../dbFunctions/counterEdit.php?id=<?php echo $counter['counterID'] ?>" class="btn btn-success btn-sm"><i class="fa-solid fa-edit me-1"></i>Edit</a> -->
-                                        <a href="#" 
-                                            class="btn btn-success btn-sm edit-counter" 
-                                            data-id="<?= $counter['counterID'] ?>" 
-                                            data-username="<?= $counter['userName'] ?>" 
-                                            data-password="<?= $counter['password'] ?>" 
-                                            data-status="<?= $counter['status'] ?>">
-                                            <i class="fa-solid fa-edit me-1"></i>Edit
-                                        </a>
-                                    </td>
-                                </tr>
-                                <?php 
-                            }
                         ?>
+                        <tr class="text-center">
+                            <td><?= $counter['counterID']?></td>
+                            <td><?= $counter['userName']?></td>
+                            <td><?= $counter['password']?></td>
+                            <td>
+                                <a href="../dbFunctions/counterToggleStatus.php?id=<?= $counter['counterID'] ?>&status=<?= $counter['status'] ?>"
+                                    class="btn btn-sm <?= $counter['status'] ? 'btn-success' : 'btn-danger' ?> toggle-status"
+                                    data-id="<?= $counter['counterID'] ?>"
+                                    data-status="<?= $counter['status'] ?>">
+                                    <?= $counter['status'] ? 'Active' : 'Block' ?>
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" 
+                                    class="btn btn-success btn-sm edit-counter" 
+                                    data-id="<?= $counter['counterID'] ?>" 
+                                    data-username="<?= $counter['userName'] ?>" 
+                                    data-password="<?= $counter['password'] ?>" 
+                                    data-status="<?= $counter['status'] ?>">
+                                    <i class="fa-solid fa-edit me-1"></i>Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" 
+                                    class="btn btn-success btn-sm assign-food-category" 
+                                    data-id="<?= $counter['counterID'] ?>" 
+                                    data-username="<?= $counter['userName'] ?>">
+                                    <i class="fa-solid fa-edit me-1"></i>Add Categories
+                                </a>
+                                <a href="#" 
+                                    class="btn btn-warning btn-sm edit-assigned-category" 
+                                    data-id="<?= $counter['counterID'] ?>">
+                                    <i class="fa-solid fa-edit me-1"></i>Edit Categories
+                                </a>
+                            </td>
+                        </tr>
+                        <?php } ?>
                     </tbody>
-
                 </table>
             </div>
         </div>
     </div>
 </section>
+
 <script src="../assets/sweetalert/sweetalert2.all.min.js"></script>
 <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
 <script src="../assets/js/counterAdd.js"></script>

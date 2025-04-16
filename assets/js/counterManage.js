@@ -114,4 +114,69 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
+    document.querySelectorAll('.assign-food-category').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const counterID = this.dataset.id;
+    
+            fetch(`../dbFunctions/getUnassignedCategories.php?counterID=${counterID}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        Swal.fire('No Categories', 'All categories are already assigned.', 'info');
+                        return;
+                    }
+    
+                    let html = '<form id="categoryForm">';
+                    data.forEach(category => {
+                        html += `
+                            <div class="form-check text-start">
+                                <input class="form-check-input" type="checkbox" name="categories" value="${category.foodCategoryID}" id="cat${category.foodCategoryID}">
+                                <label class="form-check-label" for="cat${category.foodCategoryID}">${category.category}</label>
+                            </div>
+                        `;
+                    });
+                    html += '</form>';
+    
+                    Swal.fire({
+                        title: 'Assign Food Categories',
+                        html: html,
+                        showCancelButton: true,
+                        confirmButtonText: 'Assign',
+                        preConfirm: () => {
+                            const selected = [];
+                            document.querySelectorAll('input[name="categories"]:checked').forEach(cb => {
+                                selected.push(cb.value);
+                            });
+                            if (selected.length === 0) {
+                                Swal.showValidationMessage('Please select at least one category.');
+                                return false;
+                            }
+                            return selected;
+                        }
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            fetch(`../dbFunctions/assignCategories.php`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ counterID, categories: result.value })
+                            })
+                            .then(response => response.text())
+                            .then(res => {
+                                if (res.trim() === "success") {
+                                    Swal.fire('Assigned!', 'Categories have been assigned successfully.', 'success')
+                                    .then(() => location.reload());
+                                } else {
+                                    Swal.fire('Error!', 'Something went wrong.', 'error');
+                                }
+                            })
+                            .catch(() => Swal.fire('Error!', 'Something went wrong.', 'error'));
+                        }
+                    });
+                })
+                .catch(() => Swal.fire('Error!', 'Could not fetch categories.', 'error'));
+        });
+    });   
+        
 });
