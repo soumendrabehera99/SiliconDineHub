@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2025 at 07:19 PM
+-- Generation Time: Apr 16, 2025 at 06:46 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -207,7 +207,7 @@ CREATE TABLE `order_table` (
 INSERT INTO `order_table` (`id`, `orderID`, `studentID`, `foodID`, `quantity`, `orderType`, `price`, `createdAt`, `updatedAt`, `status`) VALUES
 (1, '1', 23, 19, '5', 'Takeaway', '235.13', '2024-04-13', '2024-04-15', 'cancel'),
 (2, '10', 22, 10, '1', 'Dine-In', '232.03', '2024-08-22', '2024-08-24', 'ready'),
-(3, '100', 3, 20, '5', 'Takeaway', '71.51', '2025-04-11', '2025-04-13', 'cancel'),
+(3, '100', 3, 20, '5', 'Takeaway', '71.51', '2025-04-11', '2025-04-13', 'delivered'),
 (4, '11', 6, 20, '1', 'Takeaway', '145.9', '2024-10-06', '2024-10-08', 'pending'),
 (5, '12', 4, 3, '5', 'Dine-In', '199.41', '2024-07-11', '2024-07-11', 'ready'),
 (6, '13', 6, 23, '3', 'Takeaway', '203.21', '2024-09-02', '2024-09-02', 'pending'),
@@ -305,14 +305,14 @@ INSERT INTO `order_table` (`id`, `orderID`, `studentID`, `foodID`, `quantity`, `
 (98, '97', 23, 11, '5', 'Dine-In', '60.7', '2024-12-11', '2024-12-13', 'cancel'),
 (99, '98', 17, 2, '3', 'Dine-In', '172.21', '2024-11-23', '2024-11-25', 'ready'),
 (100, '99', 22, 21, '1', 'Takeaway', '175.5', '2025-04-16', '2025-04-17', 'pending'),
-(131, '100', 1, 19, '2', 'Dine-In', '120', '2025-04-01', '2025-04-02', 'pending'),
+(131, '100', 1, 19, '2', 'Dine-In', '120', '2025-04-01', '2025-04-02', 'ready'),
 (132, '101', 1, 10, '1', 'Takeaway', '45', '2025-04-03', '2025-04-04', 'delivered'),
-(133, '102', 1, 20, '3', 'Dine-In', '150', '2025-04-05', '2025-04-06', 'ready'),
+(133, '102', 1, 20, '3', 'Dine-In', '150', '2025-04-05', '2025-04-06', 'pending'),
 (134, '103', 1, 23, '4', 'Takeaway', '100', '2025-04-06', '2025-04-07', 'cancel'),
 (135, '104', 1, 23, '2', 'Dine-In', '130', '2025-04-08', '2025-04-08', 'delivered'),
 (136, '105', 1, 5, '5', 'Takeaway', '185', '2025-04-08', '2025-04-09', 'pending'),
-(137, '106', 1, 12, '1', 'Takeaway', '55', '2025-04-09', '2025-04-09', 'ready'),
-(138, '107', 1, 9, '2', 'Dine-In', '98', '2025-04-09', '2025-04-09', 'delivered'),
+(137, '106', 1, 12, '1', 'Takeaway', '55', '2025-04-09', '2025-04-09', 'delivered'),
+(138, '107', 1, 9, '2', 'Dine-In', '98', '2025-04-09', '2025-04-09', 'cancel'),
 (139, '108', 1, 12, '3', 'Takeaway', '105', '2025-04-07', '2025-04-08', 'cancel'),
 (140, '109', 1, 16, '1', 'Dine-In', '79', '2025-04-09', '2025-04-09', 'ready');
 
@@ -513,7 +513,7 @@ ALTER TABLE `order_table`
 -- AUTO_INCREMENT for table `sic_email`
 --
 ALTER TABLE `sic_email`
-  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `student`

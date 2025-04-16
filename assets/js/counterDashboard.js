@@ -58,7 +58,6 @@ $.ajax({
                     <tr>
                         <td>${order.orderID}</td>
                         <td>${order.name}</td>
-                        <td>${order.sic}</td>
                         <td>${order.foodName}</td>
                         <td>${order.orderType}</td>
                         <td>

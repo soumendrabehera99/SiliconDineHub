@@ -151,7 +151,7 @@ $username = $_SESSION['userName'];
                             <tr>
                                 <th>Order ID</th>
                                 <th>Name</th>
-                                <th>SIC</th>
+                                <!-- <th>SIC</th> -->
                                 <th>Food</th>
                                 <th>Order Type</th>
                                 <th>Status</th>
@@ -189,7 +189,7 @@ $username = $_SESSION['userName'];
                             <tr>
                                 <th>Order ID</th>
                                 <th>Name</th>
-                                <th>SIC</th>
+                                <!-- <th>SIC</th> -->
                                 <th>Food</th>
                                 <th>Order Type</th>
                                 <th>Status</th>
