@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    // edit button
+    // edit counter button
     document.querySelectorAll('.edit-counter').forEach(button => {
         button.addEventListener('click', function (event) {
             event.preventDefault();
@@ -114,4 +114,213 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     });
+
+
+
+    document.querySelectorAll('.assign-food-category').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const counterID = this.dataset.id;
+    
+            fetch(`../dbFunctions/counterCategoryHandler.php?counterID=${counterID}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        Swal.fire('No Categories', 'All categories are already assigned.', 'info');
+                        return;
+                    }
+    
+                    let html = '<form id="categoryForm">';
+                    data.forEach(category => {
+                        html += `
+                            <div class="form-check text-start">
+                                <input class="form-check-input" type="checkbox" name="categories" value="${category.foodCategoryID}" id="cat${category.foodCategoryID}">
+                                <label class="form-check-label" for="cat${category.foodCategoryID}">${category.category}</label>
+                            </div>
+                        `;
+                    });
+                    html += '</form>';
+    
+                    Swal.fire({
+                        title: 'Assign Food Categories',
+                        html: html,
+                        showCancelButton: true,
+                        confirmButtonText: 'Assign',
+                        preConfirm: () => {
+                            const selected = [];
+                            document.querySelectorAll('input[name="categories"]:checked').forEach(cb => {
+                                selected.push(cb.value);
+                            });
+                            if (selected.length === 0) {
+                                Swal.showValidationMessage('Please select at least one category.');
+                                return false;
+                            }
+                            return selected;
+                        }
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            fetch(`../dbFunctions/counterCategoryHandler.php`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ counterID, categories: result.value })
+                            })
+                            .then(response => response.json())
+                            .then(res => {
+                                if (res.status === "success") {
+                                    Swal.fire('Assigned!', 'Categories have been assigned successfully.', 'success')
+                                        .then(() => location.reload());
+                                } else {
+                                    Swal.fire('Error!', res.message || 'Something went wrong.', 'error');
+                                }
+                            })
+                            .catch(() => Swal.fire('Error!', 'Something went wrong while assigning.', 'error'));
+                        }
+                    });
+                })
+                .catch(() => Swal.fire('Error!', 'Could not fetch categories.', 'error'));
+        });
+    });
+
+    // document.querySelectorAll('.edit-assigned-category').forEach(button => {
+    //     button.addEventListener('click', function (event) {
+    //         event.preventDefault();
+    //         const counterID = this.dataset.id;
+    
+    //         // Fetch both assigned and all categories from server
+    //         fetch(`../dbFunctions/counterCategoryHandler.php?counterID=${counterID}&editMode=1`)
+    //             .then(response => response.json())
+    //             .then(data => {
+    //                 const allCategories = data.all;
+    //                 const assignedCategories = data.assigned;
+    
+    //                 if (allCategories.length === 0) {
+    //                     Swal.fire('No Categories', 'No categories available to assign.', 'info');
+    //                     return;
+    //                 }
+    
+    //                 let html = '<form id="editCategoryForm">';
+    //                 allCategories.forEach(category => {
+    //                     const isChecked = assignedCategories.includes(category.foodCategoryID.toString()) ? 'checked' : '';
+    //                     html += `
+    //                         <div class="form-check text-start">
+    //                             <input class="form-check-input" type="checkbox" name="categories" value="${category.foodCategoryID}" id="editCat${category.foodCategoryID}" ${isChecked}>
+    //                             <label class="form-check-label" for="editCat${category.foodCategoryID}">${category.category}</label>
+    //                         </div>
+    //                     `;
+    //                 });
+    //                 html += '</form>';
+    
+    //                 Swal.fire({
+    //                     title: 'Edit Assigned Categories',
+    //                     html: html,
+    //                     showCancelButton: true,
+    //                     confirmButtonText: 'Update',
+    //                     preConfirm: () => {
+    //                         const selected = [];
+    //                         document.querySelectorAll('input[name="categories"]:checked').forEach(cb => {
+    //                             selected.push(cb.value);
+    //                         });
+    //                         if (selected.length === 0) {
+    //                             Swal.showValidationMessage('Please select at least one category.');
+    //                             return false;
+    //                         }
+    //                         return selected;
+    //                     }
+    //                 }).then(result => {
+    //                     if (result.isConfirmed) {
+    //                         fetch(`../dbFunctions/counterCategoryHandler.php`, {
+    //                             method: 'POST',
+    //                             headers: { 'Content-Type': 'application/json' },
+    //                             body: JSON.stringify({ counterID, categories: result.value, mode: "update" })
+    //                         })
+    //                         .then(response => response.json())
+    //                         .then(res => {
+    //                             if (res.status === "success") {
+    //                                 Swal.fire('Updated!', 'Categories updated successfully.', 'success')
+    //                                     .then(() => location.reload());
+    //                             } else {
+    //                                 Swal.fire('Error!', res.message || 'Update failed.', 'error');
+    //                             }
+    //                         })
+    //                         .catch(() => Swal.fire('Error!', 'Something went wrong while updating.', 'error'));
+    //                     }
+    //                 });
+    //             })
+    //             .catch(() => Swal.fire('Error!', 'Could not fetch categories.', 'error'));
+    //     });
+    // });   
+        
+    document.querySelectorAll('.edit-assigned-category').forEach(button => {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+            const counterID = this.dataset.id;
+    
+            // Fetch both assigned and all categories from server
+            fetch(`../dbFunctions/counterCategoryHandler.php?counterID=${counterID}&editMode=1`)
+                .then(response => response.json())
+                .then(data => {
+                    const allCategories = data.all;
+                    let assignedCategories = data.assigned;
+    
+                    if (allCategories.length === 0) {
+                        Swal.fire('No Categories', 'No categories available to assign.', 'info');
+                        return;
+                    }
+    
+                    // Ensure assignedCategories are numbers for accurate comparison
+                    assignedCategories = assignedCategories.map(Number);
+    
+                    let html = '<form id="editCategoryForm">';
+                    allCategories.forEach(category => {
+                        const isChecked = assignedCategories.includes(Number(category.foodCategoryID)) ? 'checked' : '';
+                        html += `
+                            <div class="form-check text-start">
+                                <input class="form-check-input" type="checkbox" name="categories" value="${category.foodCategoryID}" id="editCat${category.foodCategoryID}" ${isChecked}>
+                                <label class="form-check-label" for="editCat${category.foodCategoryID}">${category.category}</label>
+                            </div>
+                        `;
+                    });
+                    html += '</form>';
+    
+                    Swal.fire({
+                        title: 'Edit Assigned Categories',
+                        html: html,
+                        showCancelButton: true,
+                        confirmButtonText: 'Update',
+                        preConfirm: () => {
+                            const selected = [];
+                            document.querySelectorAll('input[name="categories"]:checked').forEach(cb => {
+                                selected.push(cb.value);
+                            });
+                            if (selected.length === 0) {
+                                Swal.showValidationMessage('Please select at least one category.');
+                                return false;
+                            }
+                            return selected;
+                        }
+                    }).then(result => {
+                        if (result.isConfirmed) {
+                            fetch(`../dbFunctions/counterCategoryHandler.php`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ counterID, categories: result.value, mode: "update" })
+                            })
+                            .then(response => response.json())
+                            .then(res => {
+                                if (res.status === "success") {
+                                    Swal.fire('Updated!', 'Categories updated successfully.', 'success')
+                                        .then(() => location.reload());
+                                } else {
+                                    Swal.fire('Error!', res.message || 'Update failed.', 'error');
+                                }
+                            })
+                            .catch(() => Swal.fire('Error!', 'Something went wrong while updating.', 'error'));
+                        }
+                    });
+                })
+                .catch(() => Swal.fire('Error!', 'Could not fetch categories.', 'error'));
+        });
+    });
+    
+    
 });
