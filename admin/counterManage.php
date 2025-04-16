@@ -24,7 +24,7 @@ require_once "../dbFunctions/counterdb.php";
                             <th>Password</th>
                             <th>Status <p class="mb-0 fw-light">click on status to update</p></th>
                             <th>Action</th>
-                            <th>Assign Food Category</th>
+                            <th>Manage Categories <p class="mb-0 fw-light">click to assign or edit categories</p></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,15 +56,9 @@ require_once "../dbFunctions/counterdb.php";
                             </td>
                             <td>
                                 <a href="#" 
-                                    class="btn btn-success btn-sm assign-food-category" 
-                                    data-id="<?= $counter['counterID'] ?>" 
-                                    data-username="<?= $counter['userName'] ?>">
-                                    <i class="fa-solid fa-edit me-1"></i>Add Categories
-                                </a>
-                                <a href="#" 
-                                    class="btn btn-warning btn-sm edit-assigned-category" 
+                                    class="btn btn-warning btn-sm assign-or-edit-category" 
                                     data-id="<?= $counter['counterID'] ?>">
-                                    <i class="fa-solid fa-edit me-1"></i>Edit Categories
+                                    <i class="fa-solid fa-edit me-1"></i>Manage Categories
                                 </a>
                             </td>
                         </tr>
