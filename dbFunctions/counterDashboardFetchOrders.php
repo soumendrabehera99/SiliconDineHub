@@ -1,9 +1,12 @@
 <?php
 require_once 'dbConnect.php';
+session_start();
 
 header('Content-Type: application/json');
 
 try {
+    $counterID = $_SESSION['counterID']; 
+
     $conn = dbConnection();
     $stmt = $conn->prepare("
         SELECT 
@@ -14,9 +17,12 @@ try {
         FROM order_table o
         JOIN student s ON o.studentID = s.studentID
         JOIN food f ON o.foodID = f.foodID
-        WHERE o.status = 'pending' OR o.status = 'ready'
+        JOIN counter_category cc ON f.foodCategoryID = cc.foodCategoryID
+        WHERE cc.counterID = ? 
+          AND (o.status = 'pending' OR o.status = 'ready')
     ");
 
+    $stmt->bind_param("i", $counterID);
     $stmt->execute();
     $result = $stmt->get_result();
 
