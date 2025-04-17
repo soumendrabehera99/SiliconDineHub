@@ -20,7 +20,7 @@ include_once "./fragment/navbar.php";
                         <th>PRICE</th>
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody class="text-center"></tbody>
             </table>
         </div>
     </div>
