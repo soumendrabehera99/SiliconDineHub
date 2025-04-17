@@ -39,7 +39,6 @@ require_once "../dbFunctions/orderHistorydb.php";
                                 <th>#</th>
                                 <th>Order ID</th>
                                 <th>Name</th>
-                                <th>SIC</th>
                                 <th>Food</th>
                                 <th>Price (₹)</th>
                                 <th>Order Date</th>
@@ -57,7 +56,6 @@ require_once "../dbFunctions/orderHistorydb.php";
                                     <td><?= $sl++ ?></td>
                                     <td><?= $order['orderID']?></td>
                                     <td><?= getStudentNameByStudentID($order['studentID'])?></td>
-                                    <td><?= getStudentSicByStudentID($order['studentID'])?></td>
                                     <td><?= getFoodNameByFoodId($order['foodID'])?></td>
                                     <td><?= number_format($order['price'], 2)?></td>
                                     <td><?= date('d M Y', strtotime($order['createdAt'])) ?></td>
