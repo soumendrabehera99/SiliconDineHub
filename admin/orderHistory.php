@@ -29,7 +29,7 @@ require_once "../dbFunctions/orderHistorydb.php";
                             <input type="text" 
                                    id="searchInput" 
                                    class="form-control ps-4" 
-                                   placeholder="Search by OrderID or SIC">
+                                   placeholder="Search by OrderID">
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,6 @@ require_once "../dbFunctions/orderHistorydb.php";
                                 <th>#</th>
                                 <th>Order ID</th>
                                 <th>Name</th>
-                                <th>SIC</th>
                                 <th>Food</th>
                                 <th>Price (₹)</th>
                                 <th>Order Date</th>
@@ -62,7 +61,6 @@ require_once "../dbFunctions/orderHistorydb.php";
                                     <td><?= $sl++ ?></td>
                                     <td><?= $order['orderID']?></td>
                                     <td><?= getStudentNameByStudentID($order['studentID'])?></td>
-                                    <td><?= getStudentSicByStudentID($order['studentID'])?></td>
                                     <td><?= getFoodNameByFoodId($order['foodID'])?></td>
                                     <td><?= number_format($order['price'], 2)?></td>
                                     <td><?= date('d M Y', strtotime($order['createdAt'])) ?></td>
@@ -72,8 +70,22 @@ require_once "../dbFunctions/orderHistorydb.php";
                                         </span>
                                     </td>
                                     <td>
-                                        <span class="badge bg-<?= strtolower($order['status']) === 'delivered' ? 'success' : 'danger' ?>">
-                                            <?= $order['status'] ?>
+                                        <?php
+                                            $status = strtolower($order['status']);
+                                            $badgeClass = '';
+
+                                            if ($status === 'delivered') {
+                                                $badgeClass = 'success';
+                                            } elseif ($status === 'cancel') {
+                                                $badgeClass = 'danger';
+                                            } elseif ($status === 'ready') {
+                                                $badgeClass = 'warning';
+                                            } else {
+                                                $badgeClass = 'secondary';
+                                            }
+                                        ?>
+                                        <span class="badge bg-<?= $badgeClass ?>">
+                                            <?= ucfirst($order['status']) ?>
                                         </span>
                                     </td>
                                 </tr>
