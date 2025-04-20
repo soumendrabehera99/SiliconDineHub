@@ -65,4 +65,72 @@ function fetchOrdersByStatus($studentID, $isActive = true) {
     }
 }
 
+function getTopSellingFood($days) {
+    $conn = dbConnection();
+
+    $dateLimit = date("Y-m-d", strtotime("-$days days"));
+
+    $query = "SELECT f.name, f.image, f.price, SUM(o.quantity) as totalSold
+              FROM order_table o
+              JOIN food f ON o.foodID = f.foodID
+              WHERE o.createdAt >= ? AND o.status = 'delivered'
+              GROUP BY o.foodID
+              ORDER BY totalSold DESC
+              LIMIT 5";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $dateLimit);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    $data = [];
+    while ($row = $res->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
+function getLoyalCustomers() {
+    $conn = dbConnection();
+
+    $sql = "
+        SELECT s.name, s.dob, COUNT(o.orderID) AS orderCount
+        FROM student s
+        LEFT JOIN order_table o ON s.studentID = o.orderID
+        WHERE s.isActive = 1
+        GROUP BY s.studentID
+        ORDER BY orderCount DESC
+        LIMIT 5
+    ";
+
+    $result = $conn->query($sql);
+    $customers = [];
+
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $joinedYear = (new DateTime($row['dob']))->format("Y");
+
+            // Badge logic based on number of orders
+            $orderCount = $row['orderCount'];
+            if ($orderCount >= 6) {
+                $badge = "VIP";
+            } elseif ($orderCount >= 3) {
+                $badge = "Gold";
+            } else {
+                $badge = "New";
+            }
+
+            $customers[] = [
+                'name' => $row['name'],
+                'joined' => $joinedYear,
+                'orders' => $orderCount,
+                'badge' => $badge
+            ];
+        }
+    }
+
+    return $customers;
+}
+
 ?>

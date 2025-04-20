@@ -29,6 +29,13 @@ if ($_POST['operation'] == "placeOrder") {
     }
     $orders = fetchOrdersByStatus($studentID, false);
     echo json_encode($orders);
+}else if ($_POST['operation'] == "fetchTopSellingFood") {
+    $days = intval($_POST["days"]);
+    $result = getTopSellingFood($days);
+    echo json_encode($result);
+}else if($_POST['operation'] == "fetchLoyalCustomer"){
+    $customers = getLoyalCustomers();
+    echo json_encode($customers);
 }
 
 ?>

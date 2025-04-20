@@ -131,46 +131,7 @@
                         </div>
                         <div class="fw-bold">Rs. 55</div>
                     </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="../assets/images/f2.png" class="rounded-3 me-3 img-fluid" alt="Spaghetti" style="width: 50px; height: 40px;">
-                            <div>
-                                <div class="fw-semibold">Burger</div>
-                                <!-- <small>Medium Spicy Spaghetti Italiano</small><br> -->
-                            </div>
-                        </div>
-                        <div class="fw-bold">Rs. 55</div>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="../assets/images/f2.png" class="rounded-3 me-3 img-fluid" alt="Spaghetti" style="width: 50px; height: 40px;">
-                            <div>
-                                <div class="fw-semibold">Burger</div>
-                                <!-- <small>Medium Spicy Spaghetti Italiano</small><br> -->
-                            </div>
-                        </div>
-                        <div class="fw-bold">Rs. 55</div>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="../assets/images/f2.png" class="rounded-3 me-3 img-fluid" alt="Spaghetti" style="width: 50px; height: 40px;">
-                            <div>
-                                <div class="fw-semibold">Burger</div>
-                                <!-- <small>Medium Spicy Spaghetti Italiano</small><br> -->
-                            </div>
-                        </div>
-                        <div class="fw-bold">Rs. 55</div>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div class="d-flex align-items-center">
-                            <img src="../assets/images/f2.png" class="rounded-3 me-3 img-fluid" alt="Spaghetti" style="width: 50px; height: 40px;">
-                            <div>
-                                <div class="fw-semibold">Burger</div>
-                                <!-- <small>Medium Spicy Spaghetti Italiano</small><br> -->
-                            </div>
-                        </div>
-                        <div class="fw-bold">Rs. 55</div>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
@@ -179,8 +140,8 @@
         <div class="col-md-3"><!-- Wrapped in col-md-3 for gutter spacing -->
             <div class="p-3 pb-0 border border-1 rounded-3 bg-white shadow-sm">
                 <h5 class="fw-bold mb-3">Loyal Customers</h5>
-                <ul class="list-unstyled">
-                    <li class="d-flex justify-content-between align-items-center mb-3">
+                <ul class="list-unstyled" id="loyalCustomerList">
+                    <!-- <li class="d-flex justify-content-between align-items-center mb-3">
                         <div>
                             <div class="fw-semibold">John Doe</div>
                             <small class="text-muted">5 Orders | Member since 2022</small>
@@ -214,7 +175,7 @@
                             <small class="text-muted">6 Orders | Member since 2022</small>
                         </div>
                         <span class="badge bg-warning text-dark">Gold</span>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>
