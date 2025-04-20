@@ -76,7 +76,7 @@ function getTopSellingFood($days) {
               WHERE o.createdAt >= ? AND o.status = 'delivered'
               GROUP BY o.foodID
               ORDER BY totalSold DESC
-              LIMIT 5";
+              LIMIT 6";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $dateLimit);
@@ -101,7 +101,7 @@ function getLoyalCustomers() {
         WHERE s.isActive = 1
         GROUP BY s.studentID
         ORDER BY orderCount DESC
-        LIMIT 5
+        LIMIT 6
     ";
 
     $result = $conn->query($sql);

@@ -59,7 +59,7 @@ $(document).ready(function () {
     method: "GET",
     data: { operation: "fetchOrderData" }, // Send operation type
     dataType: "json",
-    success: function (data) {
+    success: function (data) {      
       if (data.error) {
         console.error(data.error);
         $("#loadingSpinner").html(
@@ -80,6 +80,7 @@ $(document).ready(function () {
     },
   });
 
+  // fetch loyal customer
   function fetchLoyalCustomers() {
     $.ajax({
       url: "../dbFunctions/orderAjax.php",
@@ -99,7 +100,7 @@ $(document).ready(function () {
 
         response.forEach((c) => {
           const html = `
-                <li class="d-flex justify-content-between align-items-center mb-3">
+                <li class="d-flex justify-content-between align-items-center mb-2">
                     <div>
                         <div class="fw-semibold">${c.name}</div>
                         <small class="text-muted">${
@@ -181,7 +182,7 @@ function renderChart(days) {
         {
           label: "Sales",
           data: sales,
-          borderColor: "rgba(75, 192, 192, 1)",
+          borderColor: "#ffbe33",
           fill: false,
         },
       ],
@@ -192,14 +193,14 @@ function renderChart(days) {
           type: "category",
           title: {
             display: true,
-            text: "Date",
+            text: "Date (Month/Day/Year)",
           },
         },
         y: {
           beginAtZero: true,
           title: {
             display: true,
-            text: "Sales ($)",
+            text: "Sales (Rs.)",
           },
         },
       },
