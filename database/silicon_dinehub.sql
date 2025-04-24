@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2025 at 08:59 PM
+-- Generation Time: Apr 24, 2025 at 07:10 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -155,7 +155,11 @@ INSERT INTO `food` (`foodID`, `foodCategoryID`, `name`, `image`, `description`, 
 (23, 10, 'Grilled Salmon', 'food_67ee8a1950d8f4.04811960.jpeg', 'Fresh salmon fillet marinated with garlic, lemon, and herbs, grilled to perfection for a crispy exterior and juicy interior, served with sautéed vegetables', 180.00, 'NON-VEG', '1'),
 (24, 12, 'Margherita Pizza', 'food_67ee8a7d8d10a8.10934343.jpeg', 'Classic Italian pizza with tomato sauce, fresh mozzarella & basil', 200.00, 'VEG', '0'),
 (25, 13, 'Aloo Paratha', 'food_67ee8c594c4f10.75072998.jpeg', 'Whole wheat flatbread stuffed with a deliciously spiced mashed potato filling, cooked on a griddle with butter and served with yogurt, pickles, and chutney.', 15.00, 'VEG', '1'),
-(26, 4, 'Sweet Curd', 'food_67ee8c8184e211.48761397.jpeg', 'A creamy and luscious Bengali dessert made by fermenting thickened milk with caramelized sugar, creating a naturally sweet, rich, and velvety-textured yogurt.', 20.00, 'VEG', '1');
+(26, 4, 'Sweet Curd', 'food_67ee8c8184e211.48761397.jpeg', 'A creamy and luscious Bengali dessert made by fermenting thickened milk with caramelized sugar, creating a naturally sweet, rich, and velvety-textured yogurt.', 20.00, 'VEG', '1'),
+(27, 2, 'Hakka Noodles', 'food_6809c51b521ca0.72602568.jpeg', 'A popular espresso-based coffee with steamed milk and a frothy top, offering a rich and creamy flavor.', 100.00, 'VEG', '1'),
+(28, 3, 'Lemon Rice', 'food_6809c57a12ba03.22304359.jpeg', 'Zesty South Indian rice dish flavored with lemon juice, curry leaves, and mustard seeds.', 70.00, 'VEG', '1'),
+(29, 4, 'Rasgulla', 'food_6809c5c29dda84.97121255.jpeg', 'Soft and spongy balls made from chenna and soaked in sugar syrup, a classic Bengali sweet.', 20.00, 'VEG', '1'),
+(30, 9, 'Manchow Soup', 'food_6809c62111d8e0.67990855.jpeg', 'Spicy Indo-Chinese soup loaded with vegetables and crispy noodles.', 50.00, 'VEG', '1');
 
 -- --------------------------------------------------------
 
@@ -342,7 +346,19 @@ INSERT INTO `order_table` (`id`, `orderID`, `studentID`, `foodID`, `quantity`, `
 (154, '23mmci19', 23, 3, '2', 'Dine-In', '240', '2025-04-20', '2025-04-20', 'ready'),
 (155, '23mmci19', 23, 12, '1', 'Dine-In', '150', '2025-04-20', '2025-04-20', 'delivered'),
 (156, '23mmci19', 23, 19, '1', 'Dine-In', '180', '2025-04-20', '2025-04-20', 'pending'),
-(157, '23mmci19', 23, 25, '1', 'Dine-In', '15', '2025-04-20', '2025-04-20', 'ready');
+(157, '23mmci19', 23, 25, '1', 'Dine-In', '15', '2025-04-20', '2025-04-20', 'ready'),
+(158, '23mmci02', 6, 3, '1', 'Dine-In', '120', '2025-04-21', '2025-04-24', 'pending'),
+(159, '23mmci02', 6, 19, '1', 'Dine-In', '180', '2025-04-21', '2025-04-24', 'pending'),
+(160, '23mmci02', 6, 23, '1', 'Dine-In', '180', '2025-04-22', '2025-04-24', 'pending'),
+(161, '23mmci02', 6, 7, '1', 'Takeaway', '90', '2025-04-22', '2025-04-24', 'pending'),
+(162, '23mmci02', 6, 11, '1', 'Takeaway', '150', '2025-04-22', '2025-04-24', 'pending'),
+(163, '23mmci02', 6, 18, '1', 'Takeaway', '120', '2025-04-23', '2025-04-24', 'pending'),
+(164, '23mmci02', 6, 21, '1', 'Takeaway', '120', '2025-04-24', '2025-04-24', 'pending'),
+(165, '23mmci04', 8, 11, '1', 'Dine-In', '150', '2025-04-24', '2025-04-24', 'pending'),
+(166, '23mmci04', 8, 27, '1', 'Dine-In', '100', '2025-04-24', '2025-04-24', 'pending'),
+(167, '23mmci04', 8, 29, '1', 'Dine-In', '20', '2025-04-24', '2025-04-24', 'pending'),
+(168, '23mmci04', 8, 28, '1', 'Dine-In', '70', '2025-04-24', '2025-04-24', 'pending'),
+(169, '23mmci04', 8, 30, '1', 'Dine-In', '50', '2025-04-24', '2025-04-24', 'pending');
 
 -- --------------------------------------------------------
 
@@ -525,7 +541,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `foodID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `food_category`
@@ -537,7 +553,7 @@ ALTER TABLE `food_category`
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `sic_email`
