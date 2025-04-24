@@ -14,6 +14,8 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (response) {
+        // console.log(response);
+
         const list = $("#topSellingList");
         list.empty();
 
@@ -30,9 +32,10 @@ $(document).ready(function () {
                             <img src="${imgSrc}" class="rounded-3 me-3 img-fluid" alt="${item.name}" style="width: 50px; height: 40px;">
                             <div>
                                 <div class="fw-semibold">${item.name}</div>
+                                <div class="fw-bold">Rs. ${item.price}</div>
                             </div>
                         </div>
-                        <div class="fw-bold">Rs. ${item.price}</div>
+                        <div>Qty: ${item.totalSold}</div>
                     </li>`;
           list.append(html);
         });
@@ -101,7 +104,9 @@ $(document).ready(function () {
           const html = `
                 <li class="d-flex justify-content-between align-items-center mb-3">
                     <div>
-                        <div class="fw-semibold">${c.name}</div>
+                        <div class="d-flex justify-content-between"> <span class="fw-semibold">${
+                          c.name
+                        }</span> <span>Rs. ${c.spent}</span></div>
                         <small class="text-muted">${
                           c.orders
                         } Orders | Member since ${c.joined}</small>

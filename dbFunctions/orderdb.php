@@ -95,13 +95,22 @@ function getLoyalCustomers() {
     $conn = dbConnection();
 
     $sql = "
-        SELECT s.name, s.dob, COUNT(o.orderID) AS orderCount
-        FROM student s
-        LEFT JOIN order_table o ON s.studentID = o.orderID
-        WHERE s.isActive = 1
-        GROUP BY s.studentID
-        ORDER BY orderCount DESC
-        LIMIT 5
+    SELECT 
+        s.name, 
+        s.dob,
+        COUNT(o.orderID) AS orderCount,
+        COALESCE(SUM(o.price), 0) AS totalSpent
+    FROM 
+        student s
+    INNER JOIN 
+        order_table o ON s.sic = o.orderID AND o.status IN ('delivered', 'ready')
+    WHERE 
+        s.isActive = 1
+    GROUP BY 
+        o.orderID
+    ORDER BY 
+        totalSpent DESC
+    LIMIT 5
     ";
 
     $result = $conn->query($sql);
@@ -111,11 +120,11 @@ function getLoyalCustomers() {
         while ($row = $result->fetch_assoc()) {
             $joinedYear = (new DateTime($row['dob']))->format("Y");
 
-            // Badge logic based on number of orders
-            $orderCount = $row['orderCount'];
-            if ($orderCount >= 6) {
+            $totalSpent = (float) $row['totalSpent'];
+            
+            if ($totalSpent >= 1000) {
                 $badge = "VIP";
-            } elseif ($orderCount >= 3) {
+            } elseif ($totalSpent >= 500) {
                 $badge = "Gold";
             } else {
                 $badge = "New";
@@ -124,7 +133,8 @@ function getLoyalCustomers() {
             $customers[] = [
                 'name' => $row['name'],
                 'joined' => $joinedYear,
-                'orders' => $orderCount,
+                'orders' => $row['orderCount'],
+                'spent' => $totalSpent,
                 'badge' => $badge
             ];
         }
@@ -132,5 +142,6 @@ function getLoyalCustomers() {
 
     return $customers;
 }
+
 
 ?>
