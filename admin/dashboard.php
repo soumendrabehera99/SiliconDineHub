@@ -76,7 +76,7 @@
     <div class="row g-3 mt-3 mx-0">
         <!-- Sales Logistic -->
         <div class="col-md-6">
-            <div class="p-3 border border-1 rounded-3 bg-white shadow-sm">
+            <div class="p-3 border border-1 rounded-3 bg-white shadow-sm" style="height: 400px;">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5 class="mb-0 fw-bold">Sales Logistic</h5>
                     <div class="mb-3">
@@ -109,7 +109,7 @@
 
         <!-- Today's Best Selling Food -->
         <div class="col-md-3">
-            <div class="p-3 pb-0 border border-1 rounded-3 bg-white shadow-sm">
+            <div class="p-3 pb-0 border border-1 rounded-3 bg-white shadow-sm" style="height: 400px;">
                 <div class="row">
                     <h5 class="col-6 fw-bold">Top Selling Food</h5>
                     <div class="col-6 btn-group mb-3">
@@ -138,44 +138,10 @@
 
         <!-- Loyal Customers -->
         <div class="col-md-3"><!-- Wrapped in col-md-3 for gutter spacing -->
-            <div class="p-3 pb-0 border border-1 rounded-3 bg-white shadow-sm">
+            <div class="p-3 pb-0 border border-1 rounded-3 bg-white shadow-sm" style="height: 400px;">
                 <h5 class="fw-bold mb-3">Loyal Customers</h5>
                 <ul class="list-unstyled" id="loyalCustomerList">
-                    <!-- <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <div class="fw-semibold">John Doe</div>
-                            <small class="text-muted">5 Orders | Member since 2022</small>
-                        </div>
-                        <span class="badge bg-success">VIP</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <div class="fw-semibold">Emily Smith</div>
-                            <small class="text-muted">3 Orders | Member since 2023</small>
-                        </div>
-                        <span class="badge bg-warning text-dark">Gold</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <div class="fw-semibold">Michael Brown</div>
-                            <small class="text-muted">8 Orders | Member since 2021</small>
-                        </div>
-                        <span class="badge bg-success">VIP</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <div class="fw-semibold">Sophia Lee</div>
-                            <small class="text-muted">2 Orders | Member since 2024</small>
-                        </div>
-                        <span class="badge bg-secondary">New</span>
-                    </li>
-                    <li class="d-flex justify-content-between align-items-center mb-3">
-                        <div>
-                            <div class="fw-semibold">David Wilson</div>
-                            <small class="text-muted">6 Orders | Member since 2022</small>
-                        </div>
-                        <span class="badge bg-warning text-dark">Gold</span>
-                    </li> -->
+                    <!-- Ajax call -->
                 </ul>
             </div>
         </div>

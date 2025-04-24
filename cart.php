@@ -2,8 +2,8 @@
 <section class="container mt-4 mb-5 p-4">
     <div class="row g-5">
     
-        <div class="col-md-6" id="cart"></div>
-        <!-- <div class="col-md-6" id="cart">
+        <!-- <div class="col-md-6" id="cart"></div> -->
+        <div class="col-md-6" id="cart">
             <div class="card text-center shadow-sm p-4">
                 <div class="card-body">
                     <img src="./assets/images/cartAnimation.gif" alt="Empty Cart" width="100" class="mb-3">
@@ -12,7 +12,7 @@
                     <a href="foodPlp.php" class="btn btn-dark">Start Shopping</a>
                 </div>
             </div>
-        </div> -->
+        </div>
 
 
         <div class="col-md-6 mx-auto">
