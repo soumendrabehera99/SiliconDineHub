@@ -18,21 +18,41 @@ $(document).ready(function () {
         let activeHTML = "";
         response.forEach((order) => {
           activeHTML += `
-                        <tr>
-                            <td><img src="./uploads/${order.foodImage}" alt="${
-            order.foodName
-          }" width="60"></td>
-                            <td>${order.foodName}</td>
-                            <td>${order.createdAt}</td>
-                            <td><span class="btn btn-sm btn-${
-                              order.status === "pending" ? "primary" : "warning"
-                            }">${order.status.toUpperCase()}</span></td>
-                            <td class="fw-bold"><i class="fa-solid fa-indian-rupee-sign"></i> ${
-                              order.price
-                            }</td>
-                        </tr>`;
+            <div class="row g-0 border rounded shadow-sm small-card align-items-center">
+              <div class="col-md-2 p-2 d-flex justify-content-center align-items-center">
+                <img src="./uploads/${order.foodImage}" class="img-fluid rounded" alt="${order.foodName}">
+              </div>
+              <div class="col-md-10">
+                <div class="card-body py-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <h5 class="card-title fw-bold">${order.foodName}</h5>
+                      <p class="card-text">Date: ${order.createdAt}</p>
+                      <p class="card-text fw-bold">
+                        <i class="fa-solid fa-indian-rupee-sign"></i> ${order.price}
+                      </p>
+                    </div>
+                    <div class="text-center">
+                      <p class="card-text">Counter:
+                        <span class="badge bg-success">${order.counterName.toUpperCase() ?? 'N/A'}</span>
+                      </p>
+                    </div>
+                    <div class="text-end">
+                      <p class="card-text">
+                      Status:
+                        <span class="badge bg-${order.status === "pending" ? "primary" : "success"}">
+                        ${order.status.toUpperCase()}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>`;
         });
-        $("#activeOrders tbody").html(activeHTML);
+        $("#activeOrders").html(activeHTML);
+
       },
       error: function (xhr, status, error) {
         console.error("AJAX Error: ", xhr.responseText);
@@ -52,16 +72,40 @@ $(document).ready(function () {
         let previousHTML = "";
         response.forEach((order) => {
           previousHTML += `
-                        <tr class="text-center">
-                            <td><img src="./uploads/${order.foodImage}" alt="${order.foodName}" width="60"></td>
-                            <td>${order.foodName}</td>
-                            <td>${order.createdAt}</td>
-                            <td><span class="btn btn-sm btn-success">${order.status}</span></td>
-                            <td>${order.price}</td>
-                        </tr>`;
+                      <div class="row g-0 border rounded shadow-sm small-card align-items-center">
+                        <div class="col-md-2 p-2 d-flex justify-content-center align-items-center">
+                          <img src="./uploads/${order.foodImage}" class="img-fluid rounded" alt="${order.foodName}">
+                        </div>
+                        <div class="col-md-10">
+                          <div class="card-body py-1">
+                            <div class="d-flex justify-content-between align-items-center">
+                              <div>
+                                <h5 class="card-title fw-bold">${order.foodName}</h5>
+                                <p class="card-text">Date: ${order.createdAt}</p>
+                                <p class="card-text fw-bold">
+                                  <i class="fa-solid fa-indian-rupee-sign"></i> ${order.price}
+                                </p>
+                              </div>
+                              <div class="text-center">
+                                <p class="card-text">Counter:
+                                  <span class="badge bg-success">${order.counterName}</span>
+                                </p>
+                              </div>
+                              <div class="text-end">
+                                <p class="card-text">
+                                Status:
+                                  <span class="badge bg-success">
+                                  ${order.status.toUpperCase()}
+                                  </span>
+                                </p>
+                              </div>
+                            </div> 
+                          </div>
+                        </div>
+                      </div>`;
         });
         console.log(previousHTML);
-        $("#previousOrder tbody").html(previousHTML);
+        $("#previousOrder").html(previousHTML);
       },
       error: function (xhr, status, error) {
         console.error("AJAX Error: ", xhr.responseText);

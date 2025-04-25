@@ -2,38 +2,9 @@
 include_once "./fragment/navbar.php";
 ?>
 <div class="container">
-    <!-- <div class="mt-2 p-3"><span class="text-start fs-5 fw-bold">Your Orders</span></div> -->
-    <!-- <div class="input-group p-3">
-        <input type="search" name="search" id="search" class="form-control">
-        <button type="submit" class="btn btn-outline-secondary search-Btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </div> -->
     <div class="row p-3">
-        <div class="col-6">
-            
-        </div>
-    </div>
-    <div class="p-3">
-        <div class="row">
-            <div class="col-md-8">
-                <span class="test-start fs-5 fw-bold">Active Orders</span>
-                <!-- Active orders -->
-                <div class="mt-2" id="activeOrders">
-                    <table class="table table-bordered table-responsive">
-                        <thead class="table-warning text-center">
-                            <tr>
-                                <th>FOOD IMAGE</th>
-                                <th>FOOD NAME</th>
-                                <th>DATE</th>
-                                <th>STATUS</th>
-                                <th>PRICE</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-center"></tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="col-md-4 mt-4">
-                <div class="card p-3 shadow-sm rounded">
+        <div class=" mt-4">
+            <div class="card p-3 shadow-sm rounded">
                     <h5 class="fw-bold">Order Statement</h5><br>
     
                     <!-- Main radio selection -->
@@ -79,26 +50,18 @@ include_once "./fragment/navbar.php";
     
                     <!-- Download button -->
                     <button id="downloadBtn" class="btn btn-primary mt-3" style="display:none;">Download</button>
-                </div>
             </div>
         </div>
     </div>
     <div class="p-3">
+        <div><span class="test-start fs-5 fw-bold">Active Orders</span></div>
+        <!-- Active orders -->
+        <div class="card" id="activeOrders"></div>
+    </div>
+    <div class="p-3 mb-2">
         <div><span class="test-start fs-5 fw-bold">Previous Orders</span></div>
-        <div class="mt-2" id="previousOrder">
-            <table class="table table-bordered table-responsive">
-                <thead class="table-warning text-center">
-                    <tr>
-                        <th>FOOD IMAGE</th>
-                        <th>FOOD NAME</th>
-                        <th>DATE</th>
-                        <th>STATUS</th>
-                        <th>PRICE</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+        <!-- Previous orders -->
+        <div class="card mb-3" id="previousOrder"></div>
     </div>
 </div>
 <?php

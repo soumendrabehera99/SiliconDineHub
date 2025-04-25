@@ -8,7 +8,7 @@
     }else if(isset($_SESSION['sic'])){
         session_unset();
         session_destroy();
-        header("Location: ./studentSignIn.php");
+        header("Location: ./index.php");
         exit();
     }else if(isset($_SESSION['counterID'])){
         session_unset();
