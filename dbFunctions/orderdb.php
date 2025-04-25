@@ -34,9 +34,11 @@ function fetchOrdersByStatus($studentID, $isActive = true) {
             $statusCondition = "o.status = 'delivered'";
         }
 
-        $query = "SELECT o.*, f.name AS foodName, f.image AS foodImage 
+        $query = "SELECT o.*, f.name AS foodName, f.image AS foodImage, ctr.userName AS counterName
           FROM order_table o 
           JOIN food f ON o.foodID = f.foodID 
+          LEFT JOIN counter_category cc ON f.foodCategoryID = cc.foodCategoryID
+          LEFT JOIN counter_table ctr ON cc.counterID = ctr.counterID
           WHERE o.orderID = ? AND $statusCondition
           ORDER BY o.createdAt DESC";
 
@@ -52,6 +54,7 @@ function fetchOrdersByStatus($studentID, $isActive = true) {
             $orders[] = [
                 "foodName" => $row["foodName"],
                 "foodImage" => $row["foodImage"],
+                "counterName" => $row["counterName"],
                 "createdAt" => $row["createdAt"],
                 "status" => $row["status"],
                 "price" => $row["price"]
