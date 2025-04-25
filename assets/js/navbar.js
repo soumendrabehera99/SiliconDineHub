@@ -4,7 +4,7 @@ $(document).ready(function () {
     let cart = JSON.parse(localStorage.getItem("cart")) || {};
     const length = Object.keys(cart).length;
 
-    if (length > 0) {
+    if (cart_icon && length > 0) {
       // console.log(length);
       const totalItems = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
                                          style="background-color: rgb(11, 218, 11); font-size: 0.75rem; padding: 3px 5px;">

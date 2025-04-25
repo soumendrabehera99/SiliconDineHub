@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("checkoutBtn")
     .addEventListener("click", function (e) {
       e.preventDefault();
+      cart = localStorage.getItem("cart");
       showCheckout();
       modal.show();
     });
@@ -171,9 +172,23 @@ document.addEventListener("DOMContentLoaded", function () {
           operation: "getStudentID",
         },
         success: function (response) {
-          response = JSON.parse(response);
+          try {
+            response = JSON.parse(response);
+          } catch (e) {
+            toastr.error("Invalid session. Redirecting to login...");
+            localStorage.setItem("returnToCart", "true");
+            setTimeout(() => {
+              window.location.href = "studentSignIn.php"; // Adjust path if needed
+            }, 1500);
+            return;
+          }
+
           if (!response) {
-            toastr.error("Login Required.......");
+            toastr.error("Login Required...Redirecting");
+            localStorage.setItem("returnToCart", "true");
+            setTimeout(() => {
+              window.location.href = "studentSignIn.php";
+            }, 1500);
             return;
           }
           const studentId = response.studentID;
