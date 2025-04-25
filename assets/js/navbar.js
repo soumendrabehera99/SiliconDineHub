@@ -1,19 +1,19 @@
 $(document).ready(function () {
-  (function() {
+  (function () {
     let cart_icon = document.querySelector("#cart-icon");
-    let cart = JSON.parse(localStorage.getItem("cart"))||{};
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
     const length = Object.keys(cart).length;
-  
-      if (length > 0) {
-        console.log(length);
-        const totalItems = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
+
+    if (length > 0) {
+      // console.log(length);
+      const totalItems = `<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
                                          style="background-color: rgb(11, 218, 11); font-size: 0.75rem; padding: 3px 5px;">
                                         ${length}
                                     </span>`;
-        cart_icon.insertAdjacentHTML("beforeend", totalItems);
-      }
+      cart_icon.insertAdjacentHTML("beforeend", totalItems);
+    }
   })();
-  
+
   if (!window.location.pathname.includes("foodPlp.php")) {
     $(".search-Btn").click(function () {
       let searchQuery = $("#search").val().trim();

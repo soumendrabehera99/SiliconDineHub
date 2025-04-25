@@ -5,12 +5,14 @@ function placeOrder($orderID,$studentID, $foodID, $quantity, $orderType, $price,
     try {
         $conn = dbConnection();
 
-        $createdAt = date("Y-m-d");
-        $updatedAt = date("Y-m-d");
+        date_default_timezone_set('Asia/Kolkata');
+
+        $createdAt = date("Y-m-d H:i:s");
+        // $updatedAt = date("Y-m-d H:i:s");
 
         $stmt = $conn->prepare("INSERT INTO `order_table` (orderID, studentID, foodID, quantity, orderType, price, createdAt, updatedAt, status)
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("siissdsss", $orderID, $studentID, $foodID, $quantity, $orderType, $price, $createdAt, $updatedAt, $status);
+        $stmt->bind_param("siissdsss", $orderID, $studentID, $foodID, $quantity, $orderType, $price, $createdAt, $createdAt, $status);
 
         $stmt->execute();
 
@@ -76,7 +78,7 @@ function getTopSellingFood($days) {
               WHERE o.createdAt >= ? AND o.status = 'delivered'
               GROUP BY o.foodID
               ORDER BY totalSold DESC
-              LIMIT 6";
+              LIMIT 5";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param("s", $dateLimit);

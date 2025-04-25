@@ -8,8 +8,12 @@ if (isset($_GET['id']) && isset($_GET['status'])) {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("UPDATE order_table SET status = ? WHERE id = ?");
-        $stmt->bind_param("si", $newStatus, $id);
+        date_default_timezone_set('Asia/Kolkata');
+
+        $updatedAt = date("Y-m-d H:i:s");
+
+        $stmt = $conn->prepare("UPDATE order_table SET status = ?, updatedAt = ? WHERE id = ?");
+        $stmt->bind_param("ssi", $newStatus, $updatedAt, $id);
 
         if ($stmt->execute()) {
             sleep(2);

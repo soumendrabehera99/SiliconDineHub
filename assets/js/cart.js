@@ -159,11 +159,11 @@ document.addEventListener("DOMContentLoaded", function () {
       showCheckout();
       modal.show();
     });
-    document
+  document
     .getElementById("placeOrderBtn")
     .addEventListener("click", function (e) {
       e.preventDefault();
-  
+
       $.ajax({
         url: "./dbFunctions/studentAjax.php",
         method: "POST",
@@ -172,33 +172,39 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         success: function (response) {
           response = JSON.parse(response);
+          if (!response) {
+            toastr.error("Login Required.......");
+            return;
+          }
           const studentId = response.studentID;
           const sic = response.sic;
           const type = document.querySelector("#orderType").value;
-          const cartData = Object.entries(JSON.parse(localStorage.getItem("cart")));
+          const cartData = Object.entries(
+            JSON.parse(localStorage.getItem("cart"))
+          );
           const status = "pending";
           // const length = cart.length;
           cartData.forEach(([foodID, item]) => {
             const { quantity, price } = item;
             // console.log(foodID, item,type);
-            
+
             $.ajax({
               url: "./dbFunctions/orderAjax.php",
               method: "POST",
               data: {
                 operation: "placeOrder",
-                orderID:sic,
+                orderID: sic,
                 studentID: studentId,
                 foodID: foodID,
                 quantity: quantity,
                 orderType: type,
-                price: price*quantity,
-                status: status
+                price: price * quantity,
+                status: status,
               },
               success: function (res) {
                 const result = JSON.parse(res);
                 // console.log(result);
-                
+
                 if (result.result === "success") {
                   // console.log(`Order placed for foodID ${foodID}`);
                 } else {
@@ -210,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
               },
             });
           });
-  
+
           toastr.success("Order placed successfully!");
           localStorage.removeItem("cart");
           // showCart();
@@ -222,7 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       });
     });
-  
 });
 
 function showCheckout() {
