@@ -7,7 +7,7 @@ function totalOrder() {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table WHERE status = 'delivered' OR status = 'cancel'");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table WHERE status IN ('ready', 'delivered', 'cancel') ORDER BY createdAt DESC");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare statement: " . $conn->error);
@@ -40,8 +40,7 @@ function getAllOrders() {
     $stmt = null;
     try {
         $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM order_table WHERE status NOT IN ('pending') ORDER BY id DESC");
-        // $stmt = $conn->prepare("SELECT * FROM order_table WHERE orderType NOT IN ('pending') ORDER BY id DESC");
+        $stmt = $conn->prepare("SELECT * FROM order_table WHERE status NOT IN ('pending') ORDER BY createdAt DESC");
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows>0){
@@ -64,7 +63,7 @@ function totalNoPendingOrder() {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table WHERE status = 'pending'");
+        $stmt = $conn->prepare("SELECT COUNT(*) AS totalOrder FROM order_table WHERE status IN ('pending', 'ready')");
 
         if (!$stmt) {
             throw new Exception("Failed to prepare statement: " . $conn->error);
@@ -97,7 +96,7 @@ function getAllPendingOrders() {
     $stmt = null;
     try {
         $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM order_table WHERE status IN ('pending') ORDER BY orderID");
+        $stmt = $conn->prepare("SELECT * FROM order_table WHERE status IN ('pending', 'ready') ORDER BY createdAt DESC");
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows>0){

@@ -117,14 +117,14 @@ include_once "./check.php";
             </div>
 
             <div>
-                <a href="#dashboard" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                    <div><i class="fas fa-file-invoice me-3"></i> Invoice</div>
+                <a href="./analytics.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
+                    <div><i class="fas fa-chart-line me-3"></i> Analytics</div>
                 </a>
             </div>
 
             <div>
-                <a href="#dashboard" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                    <div><i class="fas fa-chart-line me-3"></i> Report</div>
+                <a href="./report.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
+                    <div><i class="fas fa-file-invoice me-3"></i> Report</div>
                 </a>
             </div>
 

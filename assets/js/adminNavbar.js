@@ -85,4 +85,14 @@ $(document).ready(function () {
         .classList.add("active");
     }
   }
+  if (currentPath.includes("analytics.php")) {
+    document
+      .querySelector('a[href="./analytics.php"]')
+      .classList.add("active");
+  }
+  if (currentPath.includes("report.php")) {
+    document
+      .querySelector('a[href="./report.php"]')
+      .classList.add("active");
+  }
 });
