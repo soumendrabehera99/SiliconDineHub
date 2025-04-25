@@ -56,12 +56,12 @@ include_once "./fragment/navbar.php";
     <div class="p-3">
         <div><span class="test-start fs-5 fw-bold">Active Orders</span></div>
         <!-- Active orders -->
-        <div class="card" id="activeOrders"></div>
+        <div class="d-flex flex-column" id="activeOrders"></div>
     </div>
     <div class="p-3 mb-2">
         <div><span class="test-start fs-5 fw-bold">Previous Orders</span></div>
         <!-- Previous orders -->
-        <div class="card mb-3" id="previousOrder"></div>
+        <div class="mb-3 d-flex flex-column" id="previousOrder"></div>
     </div>
 </div>
 <?php
