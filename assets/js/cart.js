@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("checkoutBtn")
     .addEventListener("click", function (e) {
       e.preventDefault();
+      cart = localStorage.getItem("cart");
       showCheckout();
       modal.show();
     });

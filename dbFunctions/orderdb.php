@@ -151,5 +151,27 @@ function getLoyalCustomers() {
     return $customers;
 }
 
+function getStudentBills($fromDate, $toDate) {
+    $conn = dbConnection();
+
+    $query = "SELECT s.sic, s.name, SUM(o.price * o.quantity) AS totalAmount
+              FROM order_table o
+              JOIN student s ON o.orderID = s.sic
+              WHERE o.createdAt BETWEEN ? AND ? AND o.status IN('delivered','ready')
+              GROUP BY s.sic, s.name";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ss", $fromDate, $toDate);
+    $stmt->execute();
+
+    $res = $stmt->get_result();
+    $data = [];
+
+    while ($row = $res->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
 
 ?>
