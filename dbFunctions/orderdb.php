@@ -32,16 +32,19 @@ function fetchOrdersByStatus($studentID, $isActive = true) {
         mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         if ($isActive) {
             $statusCondition = "o.status IN ('pending', 'ready')";
+            $dateCondition = "DATE(o.createdAt) = CURDATE()";
         } else {
-            $statusCondition = "o.status = 'delivered'";
+            $statusCondition = "o.status IN ('pending', 'ready', 'delivered')";
+            $dateCondition = "DATE(o.createdAt) < CURDATE()";
         }
+
 
         $query = "SELECT o.*, f.name AS foodName, f.image AS foodImage, ctr.userName AS counterName
           FROM order_table o 
           JOIN food f ON o.foodID = f.foodID 
           LEFT JOIN counter_category cc ON f.foodCategoryID = cc.foodCategoryID
           LEFT JOIN counter_table ctr ON cc.counterID = ctr.counterID
-          WHERE o.orderID = ? AND $statusCondition
+          WHERE o.orderID = ? AND $statusCondition AND $dateCondition
           ORDER BY o.createdAt DESC";
 
         $stmt = $conn->prepare($query);
