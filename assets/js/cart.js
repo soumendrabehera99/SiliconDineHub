@@ -172,6 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
           operation: "getStudentID",
         },
         success: function (response) {
+          console.log(response);
+
           try {
             response = JSON.parse(response);
           } catch (e) {
