@@ -85,6 +85,11 @@ $(document).ready(function () {
         .classList.add("active");
     }
   }
+  if (currentPath.includes("announcement.php")) {
+    document
+      .querySelector('a[href="./announcement.php"]')
+      .classList.add("active");
+  }
   if (currentPath.includes("analytics.php")) {
     document
       .querySelector('a[href="./analytics.php"]')

@@ -25,6 +25,10 @@ include_once "./check.php";
 
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
+  
+  <!-- Summer note -->
+  <link href="./../assets/summernote/summernote-bs4.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -111,8 +115,8 @@ include_once "./check.php";
             </div>
 
             <div>
-                <a href="#dashboard" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                    <div><i class="fa-solid fa-bell me-3"></i> Reminder</div>
+                <a href="./announcement.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
+                    <div><i class="fa-solid fa-bullhorn me-3"></i> Announcement</div>
                 </a>
             </div>
 
@@ -164,7 +168,7 @@ document.getElementById("logoutBtn").addEventListener("click", function(event) {
         confirmButtonText: "Yes, Logout!"
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = "../logout.php"; // Redirect if confirmed
+            window.location.href = "./adminLogout.php"; // Redirect if confirmed
         }
     });
 });

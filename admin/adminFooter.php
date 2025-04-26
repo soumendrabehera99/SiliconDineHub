@@ -9,6 +9,9 @@
     <script src="../assets/toastr/toastr.min.js"></script>
     <!-- sweetalert -->
     <script src="../assets/sweetalert/sweetalert2.all.min.js"></script>
+    <!-- Summernote  -->
+    <script src="../assets/summernote/summernote-bs4.min.js"></script>
+     
     <script src="../assets/js/adminNavbar.js"></script>
     <script>
       toastr.options = {
