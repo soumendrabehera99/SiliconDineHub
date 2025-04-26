@@ -45,67 +45,19 @@ require_once "../dbFunctions/orderHistorydb.php";
             </div>
 
             <!-- Table -->
-            <div class="table-responsive" style="max-height: 350px; overflow-y: auto;">
-                <table class="table table-bordered table-hover text-center align-middle" id="myTable">
-                    <thead class="table-dark text-white sticky-top">
+            <h5>Student Bill Report</h5>
+            <div class="table-responsive mt-3">
+                <table class="table table-bordered table-hover text-center">
+                    <thead class="table-dark">
                         <tr>
                             <th>#</th>
-                            <th>Order ID</th>
+                            <th>SIC</th>
                             <th>Name</th>
-                            <th>Food</th>
-                            <th>Price (₹)</th>
-                            <th>Order Date</th>
-                            <th>Order Type</th>
-                            <th>Status</th>
+                            <th>Total Amount (₹)</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody">
-                    <?php
-                        $result = getAllOrders();
-                        $sl = 1;
-
-                        if (is_object($result)) { 
-                            while($order = $result->fetch_assoc()){
-                        ?>
-                            <tr>
-                                <td><?= $sl++ ?></td>
-                                <td><?= $order['orderID']?></td>
-                                <td><?= getStudentNameByStudentID($order['studentID'])?></td>
-                                <td><?= getFoodNameByFoodId($order['foodID'])?></td>
-                                <td><?= number_format($order['price'], 2)?></td>
-                                <td><?= date('d M Y', strtotime($order['createdAt'])) ?></td>
-                                <td>
-                                    <span class="badge bg-<?= strtolower($order['orderType']) === 'dine-in' ? 'success' : 'primary' ?>">
-                                        <?= $order['orderType'] ?>
-                                    </span>
-                                </td>
-                                <td>
-                                    <?php
-                                        $status = strtolower($order['status']);
-                                        $badgeClass = '';
-
-                                        if ($status === 'delivered') {
-                                            $badgeClass = 'success';
-                                        } elseif ($status === 'cancel') {
-                                            $badgeClass = 'danger';
-                                        } elseif ($status === 'ready') {
-                                            $badgeClass = 'warning';
-                                        } else {
-                                            $badgeClass = 'secondary';
-                                        }
-                                    ?>
-                                    <span class="badge bg-<?= $badgeClass ?>">
-                                        <?= ucfirst($order['status']) ?>
-                                    </span>
-                                </td>
-                            </tr>
-                        <?php 
-                            } 
-                        } else {
-                            echo "<tr><td colspan='9' class='text-center text-danger'>No orders found or error occurred.</td></tr>";
-                        }
-                        ?>
-
+                    <tbody id="studentBillTableBody">
+                        <!-- AJAX result will be injected here -->
                     </tbody>
                 </table>
             </div>
@@ -115,9 +67,9 @@ require_once "../dbFunctions/orderHistorydb.php";
 </section>
 
 <?php include_once "adminFooter.php";?>
-<script src="../assets/js/orderHistory.js"></script>
+<script src="../assets/js/billing.js"></script>
 
-<script>
+<!-- <script>
     const periodRadio = document.getElementById("periodRadio");
     const periodFields = document.getElementById("periodFields");
     const generateBtn = document.getElementById("generateBtn");
@@ -128,4 +80,4 @@ require_once "../dbFunctions/orderHistorydb.php";
             generateBtn.disabled = false;
         }
     });
-</script>
+</script> -->

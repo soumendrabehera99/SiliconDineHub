@@ -58,15 +58,12 @@ if(isset($_POST['operation'])){
         echo $response;
     }else if($_POST['operation']== "getStudentID"){
         // echo $_SESSION['sic'];
-        if (!isset($_SESSION['studentID']) || !isset($_SESSION['sic'])) {
-            echo json_encode(false); // Instead of HTML or echo error
+        if (!isset($_SESSION['sic'])) {
+            echo json_encode(false);
             exit;
         }
-        
-        echo json_encode([
-            "studentID" => $_SESSION['studentID'],
-            "sic" => $_SESSION['sic']
-        ]);
+        $result = getStudentBySic($_SESSION['sic']);
+        echo json_encode($result);
         exit;
     }
 }
