@@ -2,9 +2,14 @@
 include_once "./fragment/navbar.php";
 require_once "./dbFunctions/landingPagedb.php";
 ?>
+    <a href="#home">
+        <div class="right-buttom d-flex justify-content-center align-items-center text-dark">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </a>
     <section class="position-relative d-flex align-items-center">
         <!-- carausal Section  -->
-        <section class="hero d-flex align-items-center">
+        <section class="hero d-flex align-items-center" id="home"
                 <div id="carouselExampleAutoplaying" class="carousel slide w-100" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -156,8 +161,12 @@ require_once "./dbFunctions/landingPagedb.php";
         </div>
     </section>
 <?php
+include_once "fragment/announcementNotice.php";
 include_once "fragment/customerFeedback.php";
-include_once "fragment/feedback.php";
+if (isset($_SESSION['sic'])) {
+    include_once "fragment/feedback.php";
+}
 include_once "fragment/footer.php";
 ?>
+
 <script src="./assets/js/index.js"></script>

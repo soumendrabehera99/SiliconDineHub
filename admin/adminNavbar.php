@@ -22,7 +22,6 @@ include_once "./check.php";
   <!-- Custom Styles -->
   <link href="./../assets/css/AdminCss/style.css" rel="stylesheet" />
   <link href="./../assets/css/AdminCss/foodManage.css" rel="stylesheet" />
-
   <!--Toastr-->
   <link href="./../assets/toastr/toastr.min.css" rel="stylesheet">
   
@@ -138,11 +137,6 @@ include_once "./check.php";
                 </a>
             </div>
 
-            <div>
-                <a href="./changeAdminPassword.php" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                    <div><i class="fas fa-lock me-3"></i> Change Password</div>
-                </a>
-            </div>
         </div>
 
         <!-- Sidebar Footer -->
@@ -154,7 +148,7 @@ include_once "./check.php";
         </div>
     </aside>
 
-    <script>
+<script>
 document.getElementById("logoutBtn").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent immediate redirection
 

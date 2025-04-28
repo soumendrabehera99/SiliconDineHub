@@ -45,6 +45,20 @@ a{
 }
 
 /* hero */
+.right-buttom {
+  padding: 5px;
+  z-index: 1000;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 20px;
+  background-color: gold;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  width: 40px;
+}
 .hero {
   background: url("../images/bun-and-hot-drink-delight.png");
   /* background: url("../images/hero-bg.jpg"); */
