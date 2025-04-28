@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2025 at 07:10 AM
+-- Generation Time: Apr 28, 2025 at 08:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -42,6 +42,30 @@ INSERT INTO `admin_table` (`email`, `name`, `password`) VALUES
 ('admin2@gmail.com', 'Admin2', '456'),
 ('admin3@gmail.com', 'Admin3', '789'),
 ('admin@gmail.com', 'admin', '1234');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `announcements`
+--
+
+CREATE TABLE `announcements` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `from_date` date NOT NULL,
+  `to_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `announcements`
+--
+
+INSERT INTO `announcements` (`id`, `title`, `message`, `from_date`, `to_date`) VALUES
+(1, 'New Cafeteria Timings', 'The cafeteria will now open from 10 AM to 7 PM every day. Please plan accordingly.', '2025-04-28', '2025-05-28'),
+(2, 'New Menu Items Available', 'We are excited to introduce new items in our menu, including healthy options! Check them out in the cafeteria today!', '2025-04-28', '2025-05-05'),
+(3, 'Holiday Notice', 'The cafeteria will remain closed on May 1st due to a public holiday. Plan your meals accordingly.', '2025-04-28', '2025-05-01'),
+(4, 'Cafeteria Under Maintenance', 'The cafeteria will be under maintenance from 5 PM to 7 PM on April 30th. Sorry for the inconvenience.', '2025-04-30', '2025-04-30');
 
 -- --------------------------------------------------------
 
@@ -106,13 +130,34 @@ INSERT INTO `counter_table` (`counterID`, `userName`, `password`, `status`) VALU
 --
 
 CREATE TABLE `feedback` (
-  `feedbackID` int(11) NOT NULL,
-  `studentID` int(11) DEFAULT NULL,
-  `feedback` varchar(255) NOT NULL,
-  `rating` varchar(255) NOT NULL,
-  `status` varchar(5) NOT NULL,
-  `feedbackFor` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `studentID` int(11) NOT NULL,
+  `feedback_type` varchar(50) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `feedback_text` text NOT NULL,
+  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`id`, `studentID`, `feedback_type`, `rating`, `feedback_text`, `submitted_at`) VALUES
+(1, 1, 'food', 5, 'The food was delicious and fresh. Loved it!', '2025-04-28 18:05:21'),
+(2, 2, 'staff', 4, 'Staff was very helpful and friendly.', '2025-04-28 18:05:21'),
+(3, 3, 'cafeteria', 3, 'Cafeteria ambiance could be better.', '2025-04-28 18:05:21'),
+(4, 4, 'food', 5, 'Really enjoyed the variety of meals.', '2025-04-28 18:05:21'),
+(5, 5, 'staff', 2, 'Staff seemed a bit unorganized today.', '2025-04-28 18:05:21'),
+(6, 6, 'cafeteria', 4, 'The cafeteria is clean and spacious.', '2025-04-28 18:05:21'),
+(7, 7, 'food', 5, 'Food quality is consistently good!', '2025-04-28 18:05:21'),
+(8, 8, 'staff', 3, 'Staff response time was slow.', '2025-04-28 18:05:21'),
+(9, 9, 'cafeteria', 4, 'Love the open seating in cafeteria.', '2025-04-28 18:05:21'),
+(10, 10, 'food', 5, 'Best biryani I have ever had at college!', '2025-04-28 18:05:21'),
+(11, 11, 'staff', 2, 'Staff needs to improve coordination.', '2025-04-28 18:05:21'),
+(12, 12, 'cafeteria', 3, 'Cafeteria could use some background music.', '2025-04-28 18:05:21'),
+(13, 13, 'food', 5, 'Healthy food options are amazing.', '2025-04-28 18:05:21'),
+(14, 14, 'staff', 4, 'Staff members are polite and helpful.', '2025-04-28 18:05:21'),
+(15, 15, 'cafeteria', 3, 'Cafeteria environment is good but a bit noisy.', '2025-04-28 18:05:21');
 
 -- --------------------------------------------------------
 
@@ -358,7 +403,11 @@ INSERT INTO `order_table` (`id`, `orderID`, `studentID`, `foodID`, `quantity`, `
 (166, '23mmci04', 8, 27, '1', 'Dine-In', '100', '2025-04-24', '2025-04-24', 'pending'),
 (167, '23mmci04', 8, 29, '1', 'Dine-In', '20', '2025-04-24', '2025-04-24', 'pending'),
 (168, '23mmci04', 8, 28, '1', 'Dine-In', '70', '2025-04-24', '2025-04-24', 'pending'),
-(169, '23mmci04', 8, 30, '1', 'Dine-In', '50', '2025-04-24', '2025-04-24', 'pending');
+(169, '23mmci04', 8, 30, '1', 'Dine-In', '50', '2025-04-24', '2025-04-24', 'pending'),
+(170, '23mmci06', 10, 10, '1', 'Dine-In', '190', '2025-04-25', '2025-04-25', 'pending'),
+(171, '23mmci06', 10, 16, '1', 'Dine-In', '40', '2025-04-25', '2025-04-25', 'pending'),
+(172, '23mmci06', 10, 26, '2', 'Dine-In', '40', '2025-04-25', '2025-04-25', 'ready'),
+(173, '23mmci06', 10, 25, '1', 'Dine-In', '15', '2025-04-25', '2025-04-25', 'pending');
 
 -- --------------------------------------------------------
 
@@ -461,6 +510,12 @@ ALTER TABLE `admin_table`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indexes for table `announcements`
+--
+ALTER TABLE `announcements`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `counter_category`
 --
 ALTER TABLE `counter_category`
@@ -478,8 +533,8 @@ ALTER TABLE `counter_table`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`feedbackID`),
-  ADD KEY `fk_st_id` (`studentID`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studentID` (`studentID`);
 
 --
 -- Indexes for table `food`
@@ -520,6 +575,12 @@ ALTER TABLE `student`
 --
 
 --
+-- AUTO_INCREMENT for table `announcements`
+--
+ALTER TABLE `announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `counter_category`
 --
 ALTER TABLE `counter_category`
@@ -535,7 +596,7 @@ ALTER TABLE `counter_table`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `food`
@@ -553,7 +614,7 @@ ALTER TABLE `food_category`
 -- AUTO_INCREMENT for table `order_table`
 --
 ALTER TABLE `order_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
 
 --
 -- AUTO_INCREMENT for table `sic_email`
@@ -582,7 +643,7 @@ ALTER TABLE `counter_category`
 -- Constraints for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD CONSTRAINT `fk_st_id` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE SET NULL;
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `student` (`studentID`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `food`
