@@ -103,6 +103,33 @@ function getTopSellingFood($days) {
     return $data;
 }
 
+function getLeastSellingFood($days) {
+    $conn = dbConnection();
+
+    $dateLimit = date("Y-m-d", strtotime("-$days days"));
+
+    $query = "SELECT f.name, f.image, f.price, COALESCE(SUM(o.quantity), 0) as totalSold
+              FROM food f
+              LEFT JOIN order_table o ON o.foodID = f.foodID 
+                  AND o.createdAt >= ? 
+                  AND o.status = 'delivered'
+              GROUP BY f.foodID
+              ORDER BY totalSold ASC
+              LIMIT 5";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $dateLimit);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    $data = [];
+    while ($row = $res->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    return $data;
+}
+
 function getLoyalCustomers() {
     $conn = dbConnection();
 
