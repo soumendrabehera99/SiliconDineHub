@@ -59,6 +59,38 @@ a{
   cursor: pointer;
   width: 40px;
 }
+.right-buttom-box {
+  padding: 5px;
+  z-index: 1050;
+  position: fixed;
+  bottom: 20px;
+  right: 80px;
+  font-size: 20px;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  color: #000;
+  padding: 15px 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 350px;
+  max-width: 90%;
+  border-radius: 12px;
+}
+
+@media screen and (max-width: 576px) {
+  .right-buttom-box {
+    bottom: 80px;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .btn-close {
+    top: 6px !important;
+    right: 6px !important;
+    font-size: 16px;
+  }
+}
 .hero {
   background: url("../images/bun-and-hot-drink-delight.png");
   /* background: url("../images/hero-bg.jpg"); */

@@ -62,6 +62,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['operation'])) {
             sendResponse(true, "Announcement deleted successfully.");
         }
 
+        elseif ($operation == 'fetchLatestAnnouncement') {
+            $stmt = $conn->prepare("SELECT * FROM announcements ORDER BY id DESC LIMIT 1");
+            $stmt->execute();
+            $result = $stmt->get_result();
+        
+            if ($result && $row = $result->fetch_assoc()) {
+                echo json_encode($row);
+            } else {
+                echo json_encode(['error' => 'No announcement found']);
+            }
+        }
+        
+
         else {
             sendResponse(false, "Invalid operation.");
         }

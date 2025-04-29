@@ -6,6 +6,7 @@
     <div class="row align-items-center">
       <div class="col-md-6">
         <!-- Announcement content Ajax call it here -->
+        <div id="announcementContent" ></div>
       </div>
       
       <!-- Announcement Image Section -->

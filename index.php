@@ -7,6 +7,14 @@ require_once "./dbFunctions/landingPagedb.php";
             <i class="fa-solid fa-arrow-up"></i>
         </div>
     </a>
+    <div id="stickyBox" class="right-buttom-box d-flex">
+        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" onclick="closeStickyBox()" aria-label="Close"></button>
+        <div class="mt-3">
+            <h5 id="stickyTitle" class="fw-bold fs-5"></h5>
+            <p id="stickyMessage" class="small"></p>
+        </div>
+    </div>
+
     <section class="position-relative d-flex align-items-center">
         <!-- carausal Section  -->
         <section class="hero d-flex align-items-center" id="home"
