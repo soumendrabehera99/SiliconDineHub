@@ -34,8 +34,12 @@ function fetchOrdersByStatus($studentID, $isActive = true) {
             $statusCondition = "o.status IN ('pending', 'ready')";
             $dateCondition = "DATE(o.createdAt) = CURDATE()";
         } else {
-            $statusCondition = "o.status IN ('pending', 'ready', 'delivered')";
-            $dateCondition = "DATE(o.createdAt) < CURDATE()";
+            $statusCondition = "( 
+                (DATE(o.createdAt) = CURDATE() AND o.status = 'delivered') 
+                OR 
+                (DATE(o.createdAt) < CURDATE() AND o.status IN ('pending', 'ready', 'delivered'))
+            )";
+            $dateCondition = "1";
         }
 
 
