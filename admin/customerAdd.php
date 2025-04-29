@@ -57,5 +57,4 @@ include_once "adminNavbar.php";
 </section>
 
 <?php include_once "adminFooter.php";?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="../assets/js/studentAdd.js"></script>

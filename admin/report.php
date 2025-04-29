@@ -23,14 +23,17 @@ require_once "../dbFunctions/orderHistorydb.php";
                 </div>
             </div>
 
-            <!-- Generate button -->
+            <!-- Generate and Export buttons -->
             <div class="text-end mb-3">
                 <button class="btn btn-primary" id="generateBtn">Generate Bill</button>
+                <button class="btn btn-success ms-2" id="exportBtn" style="display:none;">Export to Excel</button>
             </div>
+
             <!-- Search and Total Records -->
             <div class="row align-items-center mb-3">
                 <div class="col-md-6 fw-semibold">
-                    Total No. of Records: <?= totalOrder(); ?>
+                    <!-- Total No. of Records: <?= totalOrder(); ?> -->
+                    <h5>Student Bill Report</h5>
                 </div>
                 <div class="col-md-6 d-flex justify-content-md-end align-items-center">
                     <label for="searchInput" class="me-2 fw-medium mb-0">Search:</label>
@@ -45,39 +48,73 @@ require_once "../dbFunctions/orderHistorydb.php";
             </div>
 
             <!-- Table -->
-            <h5>Student Bill Report</h5>
             <div class="table-responsive mt-3">
-                <table class="table table-bordered table-hover text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>#</th>
-                            <th>SIC</th>
-                            <th>Name</th>
-                            <th>Total Amount (₹)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="studentBillTableBody">
-                        <!-- AJAX result will be injected here -->
-                    </tbody>
-                </table>
+                <div class="table-body-wrapper">
+                    <table class="table table-bordered table-hover text-center mb-0">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>#</th>
+                                <th>SIC</th>
+                                <th>Name</th>
+                                <th>Total Amount (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentBillTableBody">
+                            <!-- Filled dynamically -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
+
+            
+            
         </div>
     </div>
 </section>
+<style>
+    .table-body-wrapper {
+        overflow-y: auto;
+        max-height: 400px;
+        width: 100%;
+    }
+
+    /* Ensure table fits the full width */
+    .table-body-wrapper table {
+        width: 100%;
+        margin-bottom: 0;
+        table-layout: fixed; /* Important: force equal width columns */
+    }
+
+    /* Sticky header */
+    thead th {
+        background-color: #343a40;
+        color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    .table > :not(caption) > * > * {
+        padding: 0.75rem 0.5rem;
+        vertical-align: middle;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+    .table-body-wrapper::-webkit-scrollbar {
+        width: 8px;
+    }
+    .table-body-wrapper::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 4px;
+    }
+    .table-body-wrapper::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+</style>
 
 <?php include_once "adminFooter.php";?>
 <script src="../assets/js/billing.js"></script>
 
-<!-- <script>
-    const periodRadio = document.getElementById("periodRadio");
-    const periodFields = document.getElementById("periodFields");
-    const generateBtn = document.getElementById("generateBtn");
-
-    periodRadio.addEventListener("change", function () {
-        if (periodRadio.checked) {
-            periodFields.style.display = "block";
-            generateBtn.disabled = false;
-        }
-    });
-</script> -->

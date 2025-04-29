@@ -36,6 +36,13 @@ if ($_POST['operation'] == "placeOrder") {
 }else if($_POST['operation'] == "fetchLoyalCustomer"){
     $customers = getLoyalCustomers();
     echo json_encode($customers);
+}elseif ($_POST['operation'] == "fetchBills") {
+    $fromDate = $_POST['fromDate'];
+    $toDate = $_POST['toDate'];
+    $result = getStudentBills($fromDate, $toDate);
+    echo json_encode($result);
+} else {
+    echo json_encode(['error' => 'Invalid operation or missing parameters']);
 }
 
 ?>
