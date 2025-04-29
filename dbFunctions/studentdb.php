@@ -478,4 +478,22 @@ function getStudentSicByStudentID($studentID){
         return $e->getMessage();
     }
 }
+function getStudentStudentIDBySic($sic){
+    try{
+        $sic = trim($sic);
+        $conn = dbConnection();
+        $stmt = $conn->prepare("SELECT studentID FROM student WHERE sic = ?");
+        $stmt->bind_param("s",$sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['studentID'];
+        }else{
+            return "error";
+        }
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
 ?>

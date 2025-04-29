@@ -77,7 +77,7 @@
                                 : ''; 
                             ?>
 
-                            <?php echo isset($_SESSION['sic']) ? '<a href="./logout.php" id="logoutBtn" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
+                            <?php echo isset($_SESSION['sic']) ? '<a href="./studentLogout.php" id="logoutBtn" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
                         </div>
                     </div>
                 </div>
