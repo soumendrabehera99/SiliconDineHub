@@ -27,6 +27,21 @@ include_once "./check.php";
   
   <!-- Summer note -->
   <link href="./../assets/summernote/summernote-bs4.min.css" rel="stylesheet">
+  <style>
+    #cafeteriaToggle {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-color: #ccc; 
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        outline: 2px solid #ffc107;
+    }
+
+    #cafeteriaToggle:checked {
+        background-color: #ffc107;
+    }
+  </style>
 
 </head>
 
@@ -42,21 +57,6 @@ include_once "./check.php";
             </a>
             
             <div class="d-flex justify-content-center align-items-center ms-auto">
-                <!-- <div class="me-3 position-relative">
-                    <a href="#" class="text-decoration-none">
-                        <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: white"></i>
-                        <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
-                        id="notification" style="background-color: rgb(11, 218, 11)">5</span>
-                    </a>
-                </div>
-
-                <div class="me-3 position-relative">
-                    <a href="#" class="text-decoration-none">
-                        <i class="fa-solid fa-bell" style="font-size: 1.5rem; color: white"></i>
-                        <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
-                        id="notification" style="background-color: rgb(243, 64, 64)">3</span>
-                    </a>
-                </div> -->
                 <div class="me-3 position-relative">
                     <div href="" class="text-decoration-none btn btn-warning" id="changePasswordBtn">
                         Change Password
@@ -135,7 +135,12 @@ include_once "./check.php";
                     <div><i class="fas fa-file-invoice me-3"></i> Report</div>
                 </a>
             </div>
-
+            <div class="d-flex align-items-center text-white px-3 py-2">
+                <div class="form-check form-switch m-0">
+                    <input class="form-check-input" type="checkbox" id="cafeteriaToggle">
+                    <label class="form-check-label ms-2" for="cafeteriaToggle" id="cafeteriaStatus">Cafeteria Open</label>
+                </div>
+            </div>
         </div>
 
         <!-- Sidebar Footer -->
@@ -149,9 +154,76 @@ include_once "./check.php";
 
 <script src="../assets/jquery/jquery-3.7.1.min.js"></script>
 <script>
-document.getElementById("logoutBtn").addEventListener("click", function(event) {
-    event.preventDefault(); // Prevent immediate redirection
+function updateStatusUI(isOpen) {
+    $('#cafeteriaToggle').prop('checked', isOpen == 1);
+    $('#cafeteriaStatus').text(isOpen == 1 ? 'Cafeteria Close' : 'Cafeteria Open');
+    showStatusInSweetAlert(isOpen);
+}
 
+function showStatusInSweetAlert(isOpen) {
+    // Show SweetAlert with the current status
+    Swal.fire({
+        icon: isOpen == 1 ? 'success' : 'error',
+        title: isOpen == 1 ? 'Cafeteria Open' : 'Cafeteria Closed',
+        text: isOpen == 1 ? 'Silicon DineHub is now open.' : 'Silicon DineHub is now closed.',
+        showConfirmButton: true,
+        confirmButtonText: 'OK'
+    });
+}
+
+$(document).ready(function () {
+    // Get current status
+    $.get('../dbFunctions/cafeteriaStausAjax.php', { operation: 'getStatus' }, function (data) {
+        if (data.success) {
+            updateStatusUI(data.is_open);
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error: ' + data.error
+            });
+        }
+    }, 'json');
+
+    // Handle toggle
+    $('#cafeteriaToggle').change(function () {
+        const isOpen = $(this).is(':checked') ? 1 : 0;
+        updateStatusUI(isOpen);
+
+        $.ajax({
+            url: '../dbFunctions/cafeteriaStausAjax.php',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ operation: 'update', is_open: isOpen }),
+            success: function (res) {
+                if (res.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Status Updated',
+                        text: 'The status has been successfully updated.'
+                    });
+                } else if (res.success == false) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error: ' + res.error
+                    });
+                }
+            },
+            error: function () {
+                // Failure message with SweetAlert
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Connection Error',
+                    text: 'Failed to connect to the server.'
+                });
+            }
+        });
+    });
+});
+
+document.getElementById("logoutBtn").addEventListener("click", function(event) {
+    event.preventDefault(); 
     Swal.fire({
         title: "Are you sure?",
         text: "You will be logged out!",

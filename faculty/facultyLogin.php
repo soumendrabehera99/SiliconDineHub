@@ -57,6 +57,10 @@
           <input type="text" class="form-control" placeholder="Enter your SIC" id="sic"/>
           <input type="password" class="form-control" placeholder="Enter your password" id="password" />
           <button type="submit" class="btn btn-warning w-100 mt-2">Login</button>
+          <div class="d-flex justify-content-between mt-3">
+            <a href="../index.php" class="text-decoration-none text-dark">Back</a>
+            <a href="./facultySignup.php" class="text-decoration-none text-dark">SignUp</a>
+          </div>
         </form>
       </div>
     </div>
@@ -95,13 +99,13 @@
         data: data,
         success: function (response) {
           console.log(response);
-          if(res.status == "Not present"){
+          if(response.status == "Not present"){
             toastr.error("Facult not found.");
           }
-          else if (res.status === 'success') {
+          else if (response.status === 'success') {
             toastr.success("Login Successful");
             window.location.href = '../index.php';
-          } else if(res.status === 'passwordError'){
+          } else if(response.status === 'passwordError'){
             toastr.error("Incorrect password"); 
           }
         },

@@ -45,6 +45,7 @@
                     <select id="orderType" class="form-select w-100 p-2">
                         <option value="Dine-In" selected>Dine-In</option>
                         <option value="Takeaway">Takeaway</option>
+                        <?php echo (isset($_SESSION['sic']) && $_SESSION['role'] == 'faculty') ? '<option value="Delivery">Delivery</option>' : ''; ?>
                     </select>
                 </div>
                 <div class="w-50 ms-2 mt-4">

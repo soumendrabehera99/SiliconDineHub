@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2025 at 11:19 AM
+-- Generation Time: Apr 30, 2025 at 08:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -66,6 +66,24 @@ INSERT INTO `announcements` (`id`, `title`, `message`, `from_date`, `to_date`) V
 (2, 'New Menu Items Available', 'We are excited to introduce new items in our menu, including healthy options! Check them out in the cafeteria today!', '2025-04-28', '2025-05-05'),
 (3, 'Holiday Notice', 'The cafeteria will remain closed on May 1st due to a public holiday. Plan your meals accordingly.', '2025-04-28', '2025-05-01'),
 (4, 'Cafeteria Under Maintenance', 'The cafeteria will be under maintenance from 5 PM to 7 PM on April 30th. Sorry for the inconvenience.', '2025-04-30', '2025-04-30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cafeteria_status`
+--
+
+CREATE TABLE `cafeteria_status` (
+  `id` int(11) NOT NULL,
+  `is_open` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cafeteria_status`
+--
+
+INSERT INTO `cafeteria_status` (`id`, `is_open`) VALUES
+(1, 0);
 
 -- --------------------------------------------------------
 
@@ -166,21 +184,16 @@ CREATE TABLE `feedback` (
 --
 
 INSERT INTO `feedback` (`id`, `studentID`, `feedback_type`, `rating`, `feedback_text`, `submitted_at`) VALUES
-(1, 1, 'food', 5, 'The food was delicious and fresh. Loved it!', '2025-04-28 18:05:21'),
-(2, 2, 'staff', 4, 'Staff was very helpful and friendly.', '2025-04-28 18:05:21'),
-(3, 3, 'cafeteria', 3, 'Cafeteria ambiance could be better.', '2025-04-28 18:05:21'),
-(4, 4, 'food', 5, 'Really enjoyed the variety of meals.', '2025-04-28 18:05:21'),
-(5, 5, 'staff', 2, 'Staff seemed a bit unorganized today.', '2025-04-28 18:05:21'),
-(6, 6, 'cafeteria', 4, 'The cafeteria is clean and spacious.', '2025-04-28 18:05:21'),
-(7, 7, 'food', 5, 'Food quality is consistently good!', '2025-04-28 18:05:21'),
-(8, 8, 'staff', 3, 'Staff response time was slow.', '2025-04-28 18:05:21'),
-(9, 9, 'cafeteria', 4, 'Love the open seating in cafeteria.', '2025-04-28 18:05:21'),
-(10, 10, 'food', 5, 'Best biryani I have ever had at college!', '2025-04-28 18:05:21'),
-(11, 11, 'staff', 2, 'Staff needs to improve coordination.', '2025-04-28 18:05:21'),
-(12, 12, 'cafeteria', 3, 'Cafeteria could use some background music.', '2025-04-28 18:05:21'),
-(13, 13, 'food', 5, 'Healthy food options are amazing.', '2025-04-28 18:05:21'),
-(14, 14, 'staff', 4, 'Staff members are polite and helpful.', '2025-04-28 18:05:21'),
-(15, 15, 'cafeteria', 3, 'Cafeteria environment is good but a bit noisy.', '2025-04-28 18:05:21');
+(1, 1, 'Food', 5, 'The food was absolutely delicious today. I really enjoyed the spicy biryani and the cold coffee. Everything was fresh, flavorful, and served hot. Great experience overall.', '2025-04-30 18:00:54'),
+(2, 2, 'Staff', 4, 'The staff was very polite and efficient. They handled a large crowd smoothly and made sure everyone was served on time. Their friendly attitude made the cafeteria feel welcoming.', '2025-04-30 18:00:54'),
+(3, 3, 'Cafeteria', 4, 'The cafeteria has improved a lot. The seating arrangement is now better, and it is a lot cleaner. The environment is much more comfortable for enjoying meals and hanging out.', '2025-04-30 18:00:54'),
+(4, 4, 'Food', 5, 'Every dish I tried was tasty. The pasta was creamy and the salad fresh. I loved how everything was prepared with such attention to detail and served piping hot.', '2025-04-30 18:00:54'),
+(5, 5, 'Staff', 5, 'The staff was extremely helpful today. They even helped me find a seat when it was crowded. It’s nice to see such thoughtful gestures from the cafeteria team.', '2025-04-30 18:00:54'),
+(6, 6, 'Cafeteria', 4, 'I love the new decor in the cafeteria. It’s bright, welcoming, and makes the space feel much more lively. A bit more space for seating would make it even better.', '2025-04-30 18:00:54'),
+(7, 7, 'Food', 5, 'The food was incredible! The flavors were balanced perfectly, and the presentation was top-notch. The dessert was a perfect way to end my meal. Highly recommend it to everyone!', '2025-04-30 18:00:54'),
+(8, 8, 'Staff', 4, 'The staff was attentive and patient. They took the time to explain the menu and were quick to offer assistance when needed. It made the dining experience more enjoyable.', '2025-04-30 18:00:54'),
+(9, 9, 'Cafeteria', 5, 'The cafeteria is spacious and clean. There’s always a good variety of food options, and the staff maintains a positive, friendly atmosphere. It’s a comfortable place to relax and eat.', '2025-04-30 18:00:54'),
+(10, 10, 'Food', 4, 'The meal was great, especially the biryani. It was flavorful and filling. However, the portion could have been a bit larger. Overall, I was satisfied with the food and service.', '2025-04-30 18:00:54');
 
 -- --------------------------------------------------------
 
@@ -544,6 +557,12 @@ ALTER TABLE `announcements`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `cafeteria_status`
+--
+ALTER TABLE `cafeteria_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `counter_category`
 --
 ALTER TABLE `counter_category`
@@ -631,7 +650,7 @@ ALTER TABLE `counter_table`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `food`

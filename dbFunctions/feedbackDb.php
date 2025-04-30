@@ -1,35 +1,41 @@
 <?php
-session_start();
-include_once 'dbConnect.php';
-include_once 'studentdb.php';
+require_once 'dbConnect.php';
+require_once 'studentdb.php'; // Ensure this contains getNameByStudentId($studentID)
+header('Content-Type: application/json');
+
 $conn = dbConnection(); 
+
 try {
 
-    // Only POST method allowed
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        throw new Exception("Invalid request method.");
+    // Query top 6 feedbacks with rating > 3
+    $sql = "SELECT studentID, feedback_type, rating, feedback_text 
+            FROM feedback 
+            WHERE rating > 3 
+            ORDER BY submitted_at DESC 
+            LIMIT 6";
+
+    $result = $conn->query($sql);
+
+    if (!$result) {
+        throw new Exception("Query failed: " . $conn->error);
     }
 
-    $studentID = getStudentStudentIDBySic($_SESSION['sic']);
-    $feedback_type = htmlspecialchars(trim($_POST['feedback_type']));
-    $rating = intval($_POST['rating']);
-    $feedback_text = htmlspecialchars(trim($_POST['feedback']));
-
-    // Prepare SQL
-    $stmt = $conn->prepare("INSERT INTO feedback (studentID, feedback_type, rating, feedback_text) VALUES (?, ?, ?, ?)");
-    if (!$stmt) {
-        throw new Exception("Prepare failed: " . $conn->error);
+    $feedback = [];
+    while ($row = $result->fetch_assoc()) {
+        $studentName = getStudentNameByStudentID($row['studentID']); // Call function from studentDb
+        $row['student_name'] = $studentName;
+        $feedback[] = $row;
     }
 
-    $stmt->bind_param("isis", $studentID, $feedback_type, $rating, $feedback_text);
+    echo json_encode([
+        'success' => true,
+        'data' => $feedback
+    ]);
 
-    if (!$stmt->execute()) {
-        throw new Exception("Execute failed: " . $stmt->error);
-    }
-
-    echo "success";
 } catch (Exception $e) {
-    http_response_code(400); 
-    echo $e->getMessage();
+    echo json_encode([
+        'success' => false,
+        'error' => $e->getMessage()
+    ]);
 }
-?>
+
