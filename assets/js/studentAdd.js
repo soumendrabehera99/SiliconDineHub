@@ -28,9 +28,9 @@ $(document).ready(function () {
       success: function (response) {
         // console.log(response); // Debugging line to check the actual response
         if (response.trim() === "present") {
-          toastr.error("Student already exists!");
+          toastr.error("Record already exists!");
         } else if (response.trim() === "success") {
-          toastr.success("Student added successfully");
+          toastr.success("Record added successfully");
           $("#addStudent").trigger("reset");
           setTimeout(() => location.reload(), 500);
         } else if (response.trim() === "error") {
@@ -105,27 +105,31 @@ function validateExcelData(data) {
   return errors;
 }
 
-// function for Sic Validation
 function validateSIC(sic) {
   if (!sic) return "SIC is Missing.";
   if (sic.length !== 8) return "SIC must be exactly 8 characters long";
 
-  let sicPattern = /^[0-9]{2}[a-z]{4}[0-9]{2}$/i; // Example: 23mmci48
-  if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23mmci48)";
+  // Accepts patterns like: 23mmci48 or FCS22210
+  let sicPattern = /^([0-9]{2}[a-zA-Z]{4}[0-9]{2}|FCS[0-9]{5})$/i;
+  if (!sicPattern.test(sic)) return "SIC format is invalid (e.g., 23mmci48 or FCS22210)";
 
   return null; // No errors
 }
 
-// function for Email Validation
+
 function validateEmail(email, sic) {
-  sic = sic.toLowerCase();
-  email = email.toLowerCase();
-  let emailPattern =
-    /^[a-zA-Z0-9._%+-]{2,}\.\d{2}[a-zA-Z]{4}\d{2}@silicon\.ac\.in$/;
   if (!email) return "Email is Missing";
-  if (!email.includes(sic)) return "Email does not match SIC No";
-  if (!emailPattern.test(email)) return "Enter a valid email address";
-  return null;
+
+  email = email.toLowerCase();
+  sic = sic.toLowerCase();
+
+  // Allow any email that ends with @silicon.ac.in
+  let emailPattern = /^[a-zA-Z0-9._%+-]+@silicon\.ac\.in$/;
+
+  if (!emailPattern.test(email)) return "Enter a valid email address (must end with @silicon.ac.in)";
+  // if (!email.includes(sic)) return "Email does not match SIC No";
+
+  return null; // No errors
 }
 
 function showErrorsInModal(errors) {
@@ -157,7 +161,7 @@ function uploadValidData(data) {
         $("#errorModal").modal("show");
         toastr.warning(res.message);
       } else if (res.status === "success") {
-        toastr.success("All students added successfully!");
+        toastr.success("All records added successfully!");
       } else {
         toastr.error(res.message);
       }

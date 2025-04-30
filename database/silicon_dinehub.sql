@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2025 at 08:06 PM
+-- Generation Time: Apr 30, 2025 at 11:19 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin_table` (
 --
 
 INSERT INTO `admin_table` (`email`, `name`, `password`) VALUES
-('admin1@gmail.com', 'Admin1', '123'),
+('admin1@gmail.com', 'Admin1', '1234'),
 ('admin2@gmail.com', 'Admin2', '456'),
 ('admin3@gmail.com', 'Admin3', '789'),
 ('admin@gmail.com', 'admin', '1234');
@@ -122,6 +122,29 @@ INSERT INTO `counter_table` (`counterID`, `userName`, `password`, `status`) VALU
 (3, 'Soumendra', '2000', '1'),
 (4, 'Priti Samarpta', '2001', '1'),
 (5, 'Anil', '2002', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faculty`
+--
+
+CREATE TABLE `faculty` (
+  `facultyID` int(11) NOT NULL,
+  `sic` varchar(255) NOT NULL,
+  `seID` int(11) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `dob` date NOT NULL,
+  `password` varchar(128) NOT NULL,
+  `isActive` varchar(5) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`facultyID`, `sic`, `seID`, `name`, `dob`, `password`, `isActive`) VALUES
+(1, 'FCS22210', 28, 'Surajit Das', '1993-01-01', '1234', '1');
 
 -- --------------------------------------------------------
 
@@ -450,7 +473,12 @@ INSERT INTO `sic_email` (`seID`, `sic`, `email`) VALUES
 (22, '23mmci18', 'mca.23mmci18@silicon.ac.in'),
 (23, '23mmci19', 'mca.23mmci19@silicon.ac.in'),
 (24, '23mmci20', 'mca.23mmci20@silicon.ac.in'),
-(26, '23MMCI44', 'mca.23mmci44@silicon.ac.in');
+(26, '23MMCI44', 'mca.23mmci44@silicon.ac.in'),
+(27, '23MMCD02', 'mca.23mmcd02@silicon.ac.in'),
+(28, 'FCS22210', 'surajit.das@silicon.ac.in'),
+(29, 'FCS22202', 'das@silicon.ac.in'),
+(30, '23MMCD03', 'mca.23mmcd03@silicon.ac.in'),
+(31, '23MMCD04', 'mca.23mmci04@silicon.ac.in');
 
 -- --------------------------------------------------------
 
@@ -475,7 +503,7 @@ CREATE TABLE `student` (
 INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `isActive`) VALUES
 (1, '23mmci37', 1, 'Anil Sahu', '2002-10-10', '1234', '1'),
 (2, '23mmci48', 2, 'Soumendra', '2000-08-20', '12345', '1'),
-(3, '23mmci76', 3, 'Priti', '2001-02-17', '2000', '0'),
+(3, '23mmci76', 3, 'Priti', '2001-02-17', '2000', '1'),
 (4, '23mmci87', 4, 'Himansu', '2001-06-20', '1478', '1'),
 (5, '23mmci01', 5, 'Raj', '2002-01-15', '1234', '1'),
 (6, '23mmci02', 6, 'Suman', '2000-11-12', '1234', '1'),
@@ -528,6 +556,13 @@ ALTER TABLE `counter_category`
 --
 ALTER TABLE `counter_table`
   ADD PRIMARY KEY (`counterID`);
+
+--
+-- Indexes for table `faculty`
+--
+ALTER TABLE `faculty`
+  ADD PRIMARY KEY (`facultyID`),
+  ADD KEY `seID` (`seID`);
 
 --
 -- Indexes for table `feedback`
@@ -620,7 +655,7 @@ ALTER TABLE `order_table`
 -- AUTO_INCREMENT for table `sic_email`
 --
 ALTER TABLE `sic_email`
-  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `seID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `student`
@@ -638,6 +673,12 @@ ALTER TABLE `student`
 ALTER TABLE `counter_category`
   ADD CONSTRAINT `fk_counter_id` FOREIGN KEY (`counterID`) REFERENCES `counter_table` (`counterID`) ON DELETE SET NULL,
   ADD CONSTRAINT `fk_fc_id` FOREIGN KEY (`foodCategoryID`) REFERENCES `food_category` (`foodCategoryID`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `faculty`
+--
+ALTER TABLE `faculty`
+  ADD CONSTRAINT `faculty_ibfk_1` FOREIGN KEY (`seID`) REFERENCES `sic_email` (`seID`);
 
 --
 -- Constraints for table `feedback`

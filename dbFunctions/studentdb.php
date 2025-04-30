@@ -77,7 +77,7 @@ function getAllSicEmail() {
     $stmt = null;
     try {
         $conn = dbConnection();
-        $stmt = $conn->prepare("SELECT * FROM sic_email ORDER BY sic");
+        $stmt = $conn->prepare("SELECT * FROM sic_email");
         $stmt->execute();
         $res = $stmt->get_result();
         if($res->num_rows>0){
