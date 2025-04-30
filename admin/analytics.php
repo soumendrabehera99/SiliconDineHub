@@ -19,24 +19,9 @@ include_once "adminNavbar.php";
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-success text-white fw-semibold d-flex justify-content-between">
                     Top Selling Foods
-                    <span class="small text-white-50">(Showing: Last 7 Days)</span>
+                    <span class="small text-white-50" id="topSellingDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between">
-                        Chicken Biryani <span class="badge bg-success">150</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Veg Burger <span class="badge bg-success">138</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Masala Dosa <span class="badge bg-success">125</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Paneer Butter Masala <span class="badge bg-success">119</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Veg Thali <span class="badge bg-success">98</span>
-                    </li>
+                <ul class="list-group list-group-flush" id="topSellingList">
                 </ul>
             </div>
         </div>
@@ -46,24 +31,9 @@ include_once "adminNavbar.php";
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-danger text-white fw-semibold d-flex justify-content-between">
                     Least Selling Foods
-                    <span class="small text-white-50">(Showing: Last 7 Days)</span>
+                    <span class="small text-white-50" id="leastSellingDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item d-flex justify-content-between">
-                        Egg Roll <span class="badge bg-danger">5</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Fruit Salad <span class="badge bg-danger">9</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Sambar Rice <span class="badge bg-danger">11</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Rava Dosa <span class="badge bg-danger">12</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        Noodles <span class="badge bg-danger">14</span>
-                    </li>
+                <ul class="list-group list-group-flush" id="leastSellingList">
                 </ul>
             </div>
         </div>
@@ -133,6 +103,5 @@ include_once "adminNavbar.php";
 
     </div>
 </section>
-
-
 <?php include_once "adminFooter.php";?>
+<script src="../assets/js/analytics.js"></script>

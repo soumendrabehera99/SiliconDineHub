@@ -41,7 +41,9 @@ if ($_POST['operation'] == "placeOrder") {
     $toDate = $_POST['toDate'];
     $result = getStudentBills($fromDate, $toDate);
     echo json_encode($result);
-} else {
+}else if($_POST['operation'] == "fetchLeastSellingFood"){
+    echo json_encode(getLeastSellingFood($_POST["days"]));
+}else {
     echo json_encode(['error' => 'Invalid operation or missing parameters']);
 }
 
