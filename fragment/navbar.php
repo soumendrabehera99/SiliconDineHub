@@ -77,7 +77,20 @@
                                 : ''; 
                             ?>
 
-                            <?php echo isset($_SESSION['sic']) ? '<a href="./studentLogout.php" id="logoutBtn" class="btn btn-outline-warning btn-sm">LogOut</a>' : '<a href="./studentSignIn.php" class="btn btn-outline-warning btn-sm">LogIn</a>'; ?>
+                            <?php if (isset($_SESSION['sic'])): ?>
+                                <a href="./studentLogout.php" id="logoutBtn" class="btn btn-outline-warning btn-sm">LogOut</a>
+                            <?php else: ?>
+                                <div class="dropdown d-inline">
+                                    <button class="btn btn-outline-warning btn-sm dropdown-toggle" type="button" id="loginDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        LogIn As
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="loginDropdown" style="background-color: black;">
+                                        <li><a class="dropdown-item" href="./studentSignIn.php">Student</a></li>
+                                        <li><a class="dropdown-item" href="./faculty/facultyLogin.php">Faculty</a></li>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
+
                         </div>
                     </div>
                 </div>
