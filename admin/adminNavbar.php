@@ -34,30 +34,35 @@ include_once "./check.php";
   <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-        <button class="btn btn-dark" id="sidebarToggler">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-        <a class="navbar-brand ps-3" href="./index.php">
-            <img src="./../assets/images/logo.png" alt="logo" />
-        </a>
-        
-        <div class="d-flex justify-content-center align-items-center ms-auto">
-            <div class="me-3 position-relative">
-            <a href="#" class="text-decoration-none">
-                <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: white"></i>
-                <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
-                id="notification" style="background-color: rgb(11, 218, 11)">5</span>
+            <button class="btn btn-dark" id="sidebarToggler">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <a class="navbar-brand ps-3" href="./index.php">
+                <img src="./../assets/images/logo.png" alt="logo" />
             </a>
-            </div>
+            
+            <div class="d-flex justify-content-center align-items-center ms-auto">
+                <!-- <div class="me-3 position-relative">
+                    <a href="#" class="text-decoration-none">
+                        <i class="fa-solid fa-envelope" style="font-size: 1.5rem; color: white"></i>
+                        <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
+                        id="notification" style="background-color: rgb(11, 218, 11)">5</span>
+                    </a>
+                </div>
 
-            <div class="me-3 position-relative">
-            <a href="#" class="text-decoration-none">
-                <i class="fa-solid fa-bell" style="font-size: 1.5rem; color: white"></i>
-                <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
-                id="notification" style="background-color: rgb(243, 64, 64)">3</span>
-            </a>
+                <div class="me-3 position-relative">
+                    <a href="#" class="text-decoration-none">
+                        <i class="fa-solid fa-bell" style="font-size: 1.5rem; color: white"></i>
+                        <span class="position-absolute me-2 top-0 start-100 translate-middle badge rounded-pill"
+                        id="notification" style="background-color: rgb(243, 64, 64)">3</span>
+                    </a>
+                </div> -->
+                <div class="me-3 position-relative">
+                    <div href="" class="text-decoration-none btn btn-warning" id="changePasswordBtn">
+                        Change Password
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </nav>
 
@@ -131,12 +136,6 @@ include_once "./check.php";
                 </a>
             </div>
 
-            <div>
-                <a href="#dashboard" class="text-white text-decoration-none d-flex align-items-center justify-content-between">
-                    <div><i class="fa-solid fa-gear me-3"></i> Setting</div>
-                </a>
-            </div>
-
         </div>
 
         <!-- Sidebar Footer -->
@@ -148,6 +147,7 @@ include_once "./check.php";
         </div>
     </aside>
 
+<script src="../assets/jquery/jquery-3.7.1.min.js"></script>
 <script>
 document.getElementById("logoutBtn").addEventListener("click", function(event) {
     event.preventDefault(); // Prevent immediate redirection
@@ -163,6 +163,55 @@ document.getElementById("logoutBtn").addEventListener("click", function(event) {
     }).then((result) => {
         if (result.isConfirmed) {
             window.location.href = "./adminLogout.php"; // Redirect if confirmed
+        }
+    });
+});
+$('#changePasswordBtn').on('click', function (e) {
+    e.preventDefault();
+
+    Swal.fire({
+        title: 'Change Password',
+        html:
+            `<input type="password" id="currentPassword" class="swal2-input" placeholder="Current Password">
+             <input type="password" id="newPassword" class="swal2-input" placeholder="New Password">`,
+        focusConfirm: false,
+        confirmButtonText: 'Submit',
+        showCancelButton: true,
+        preConfirm: () => {
+        const currentPassword = Swal.getPopup().querySelector('#currentPassword').value.trim();
+        const newPassword = Swal.getPopup().querySelector('#newPassword').value.trim();
+
+        if (!currentPassword || !newPassword) {
+            Swal.showValidationMessage('All fields are required');
+            return false;
+        }
+
+        return { currentPassword, newPassword };
+        }
+    }).then((result) => {
+        if (result.isConfirmed && result.value) {
+        const {currentPassword, newPassword } = result.value;
+
+        $.ajax({
+            url: '../dbFunctions/changeAdminPassword.php',
+            type: 'POST',
+            data: { currentPassword, newPassword },
+            success: function (response) {
+            try {
+                const res = JSON.parse(response);
+                if (res.status === 'success') {
+                Swal.fire('Success', res.message, 'success');
+                } else {
+                Swal.fire('Error', res.message, 'error');
+                }
+            } catch (e) {
+                Swal.fire('Error', 'Invalid server response.', 'error');
+            }
+            },
+            error: function () {
+            Swal.fire('Error', 'AJAX request failed.', 'error');
+            }
+        });
         }
     });
 });

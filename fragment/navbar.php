@@ -60,7 +60,7 @@
                                 </a>' 
                                 : ''; 
                             ?>
-                            <?php echo isset($_SESSION['sic']) ? 
+                            <!-- <?php echo isset($_SESSION['sic']) ? 
                                 '<a href="#" class="nav-link fs-5 text-center position-relative">
                                     <i class="fa-solid fa-bell"></i>
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill" 
@@ -69,7 +69,7 @@
                                     </span>
                                 </a>' 
                                 : ''; 
-                            ?>
+                            ?> -->
                             <?php echo isset($_SESSION['sic']) ? 
                                 '<a href="./cart.php" class="nav-link fs-5 text-center position-relative" id="cart-icon">
                                     <i class="fa-solid fa-cart-shopping"></i>   

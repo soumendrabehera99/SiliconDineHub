@@ -1,161 +1,78 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-<style>
-@import url(//fonts.googleapis.com/css?family=Montserrat:300,400,700);
-.feedback_card {
-  font-family: "Montserrat", sans-serif;
-  color: #8d97ad;
-  font-weight: 300;
-}
-
-.feedback_card h5 {
-	line-height: 30px;
-	font-size: 18px;
-}
-
-.feedback_card .font-13 {
-	font-size: 13px;
-}
-
-.feedback_card .card.card-shadow {
-    -webkit-box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
-    box-shadow: 0px 0px 30px rgba(115, 128, 157, 0.1);
-}
-
-.feedback_card .card::after {
-  position: absolute;
-  bottom: -15px;
-  left: 35px;
-  content: '';
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solidrgb(219, 218, 218);
-}
-
-.feedback_card .owl-theme .owl-dots {
-  margin-left: 20px;
-}
-
-.feedback_card .owl-theme .owl-dots .owl-dot span {
-  width: 12px;
-  height: 12px;
-  background: #c0c0c0; /* normal dot color */
-  display: block;
-  border-radius: 50%;
-  margin: 5px;
-}
-
-.feedback_card .owl-theme .owl-dots .owl-dot.active span,
-.feedback_card .owl-theme .owl-dots .owl-dot:hover span {
-  background: goldenrod; /* active and hover dot color */
-}
-
-
-.feedback_card .owl-dots {
-  position: absolute;
-  left: -108%;
-  top: 70%;
-}
-
-.feedback_card .devider {
-  height: 2px;
-  width: 40px;
-}
-
-@media (max-width: 767px) {
-  .feedback_card .owl-dots {
-    position: relative;
-    top: 0px;
-    left: 0px;
-  }
-}
-</style>
-
-
-<div class="feedback_card py-5 bg-dark">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 class="mt-4">What Customers Say</h2>
-        <span class="devider bg-warning d-inline-block my-3"></span>
-        <p>We value the voices of our students and staff. Your feedback helps us create a better, tastier, and more comfortable cafeteria experience for everyone.</p>
-      </div>
-      <div class="col-md-6 ml-auto">
-        <div class="owl-carousel owl-theme feedback_items" id="feedback_items">
-          <!-- item 1-->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4 position-relative">
-              <div class="p-4">
-                <h5 class="font-weight-light">WrapKit has given our websites huge national presence. We are #1 on page one in Google search results for every website we’ve built, and rank for more keywords than I ever expected in a very competitive, high-value customer industry. In
-                  addition,
-                </h5>
-              </div>
-            </div>
-            <div class="d-flex align-items-center ml-3 ms-2">
-              <div class="">
-                <h6 class="font-weight-bold mb-0">Name</h6><span class="font-13">Food</span></div>
-            </div>
-          </div>
-          <!-- item -->
-          <!-- item 2-->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4 position-relative">
-              <div class="p-4">
-                <h5 class="font-weight-light">WrapKit has given our websites huge national presence. We are #1 on page one in Google search results for every website we’ve built, and rank for more keywords than I ever expected in a very competitive, high-value customer industry. In
-                  addition,
-                </h5>
-              </div>
-            </div>
-            <div class="d-flex align-items-center ml-3 ms-2">
-              <div class="">
-                <h6 class="font-weight-bold mb-0">Name</h6><span class="font-13">Feedback Type</span></div>
-            </div>
-          </div>
-          <!-- item -->
-          <!-- item 3-->
-          <div class="item">
-            <div class="card card-shadow border-0 mb-4 position-relative">
-              <div class="p-4">
-                <h5 class="font-weight-light">WrapKit has given our websites huge national presence. We are #1 on page one in Google search results for every website we’ve built, and rank for more keywords than I ever expected in a very competitive, high-value customer industry. In
-                  addition,
-                </h5>
-              </div>
-            </div>
-            <div class="d-flex align-items-center ml-3 ms-2">
-              <div class="">
-                <h6 class="font-weight-bold mb-0">Name</h6><span class="font-13">Food</span></div>
-            </div>
-          </div>
-          <!-- item -->
-
+<section class="feedback my-5" id="feedback">
+    <div class="container">
+        <div class="feedback-heading  py-3 mb-3">
+            <h2 class="text-center fs-1">What Says Our Customers</h2>
         </div>
-      </div>
+        <div id="carouselExampleSlidesOnly" class="carousel slide py-3" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row g-2">
+                        <div class="col-md-6 ">
+                            <div class="text-white p-3 bg-dark rounded-4">
+                                <p class="text-truncate-2">
+                                The pre-booking system is a lifesaver! No more long queues, and I get my food on time. The cafeteria is well-organized, and the food is always fresh. Love it!
+                                </p>
+                                <h4>Rohan Verma</h4>
+                                <p>Computer Science Student</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-white p-3 bg-dark rounded-4">
+                                <p class="text-truncate-2">
+                                Great food at pocket-friendly prices! The variety of meals is amazing, and the taste is just like homemade. I appreciate how hygienic everything is!
+                                </p>
+                                <h4>Ananya Sharma</h4>
+                                <p>MBA Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row g-2">
+                        <div class="col-md-6 ">
+                            <div class="text-white p-3 bg-dark rounded-4">
+                                <p class="text-truncate-2">
+                                    I love how fast the service is! The four counters make food collection super easy, even during rush hours. No stress, just good food!
+                                </p>
+                                <h4>Rahul Mehta</h4>
+                                <p>Electrical Engineering Student.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-white p-3 bg-dark rounded-4">
+                                <p class="text-truncate-2">
+                                The cafeteria system helps me track my food expenses effortlessly. At the end of the month, I can see my spending and plan accordingly. Smart and efficient!
+                                </p>
+                                <h4>Priya Das</h4>
+                                <p>Biotechnology Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row g-2">
+                        <div class="col-md-6 ">
+                            <div class="text-white p-3 bg-dark rounded-4">
+                                <p class="text-truncate-2">
+                                Finally, a college cafeteria that offers healthy yet tasty meals! I always find fresh salads, juices, and balanced meals. Highly recommend it!
+                                </p>
+                                <h4>Siddharth Kapoor</h4>
+                                <p>MCA Student</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-white p-3 bg-dark rounded-4">
+                                <p class="text-truncate-2">
+                                    This cafeteria has completely changed my college experience! The food is amazing, the service is super fast, and the pre-booking option is a genius move. I no longer have to skip meals due to long queues!
+                                </p>
+                                <h4>Sneha Rao</h4>
+                                <p>Electronics & Communication Student</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<!-- Your jQuery (important) -->
-<script src="./assets/jquery/jquery-3.7.1.min.js"></script>
-
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-
-<script>
-    $('.feedback_items').owlCarousel({
-        loop: true,
-        margin: 30,
-        nav: false,
-        dots: true,
-        autoplay: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-            items: 1
-
-            },
-            1650: {
-            items: 1
-            }
-        }
-    });
-
-</script>
+</section>

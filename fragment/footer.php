@@ -76,14 +76,14 @@
               <div class="row">
                 <div class="col-md-12">     
                   <ul class="list-unstyled mt-4 ms-5">
-                    <li class="text-start">
-                      <a href="#footer" class="text-decoration-none text-white">Contact Us</a>
-                    </li>
                     <li class="text-start mt-2">
                       <a href="./admin/adminLogin.php" class="text-decoration-none text-white">Admin</a>
                     </li>
                     <li class="text-start mt-2">
                       <a href="./counterLogin.php" class="text-decoration-none text-white">Counter</a>
+                    </li>
+                    <li class="text-start mt-2">
+                      <a href="./faculty/facultyLogin.php" class="text-decoration-none text-white">Faculty</a>
                     </li>
                     <li class="text-start mt-2">
                       <a href="./privacyAndPolicy.php" class="text-decoration-none text-white">Privacy Policy</a>
