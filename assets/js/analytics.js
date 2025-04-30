@@ -9,7 +9,7 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (data) {
-        console.log(data);
+        // console.log(data);
 
         let listHTML = "";
         if (data.length === 0) {
@@ -45,7 +45,7 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (data) {
-        console.log(data);
+        // console.log(data);
 
         let listHTML = "";
         if (data.length === 0) {
