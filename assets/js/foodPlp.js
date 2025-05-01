@@ -127,7 +127,7 @@ function fetchFoods(page = 1, searchQuery = "", categoryID = null, message) {
       const cart = JSON.parse(localStorage.getItem("cart")) || {};
       response.foods.forEach((res) => {
         tbody += `
-          <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+          <div class="food-card col-12 col-sm-6 col-md-3 col-lg-2">
                 <div class="card border-1 shadow-sm">
                 <a href="foodDetails.php?id=${
                   res.foodID
