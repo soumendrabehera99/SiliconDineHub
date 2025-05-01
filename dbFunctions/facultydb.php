@@ -1,12 +1,12 @@
 <?php
 require_once "dbConnect.php";
 
-function getFacultyByIDFromFaculty($facSic){
+function getFacultyByIDFromFaculty($sic){
     try{
         $sic = trim($sic);
         $conn = dbConnection();
         $stmt = $conn->prepare("SELECT * FROM faculty WHERE sic = ?");
-        $stmt->bind_param("s",$facSic);
+        $stmt->bind_param("s",$sic);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
@@ -28,7 +28,7 @@ function getFacultyByIDFromFacultyEmail($facSic) {
 
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("SELECT seID, facSic, email FROM sic_email WHERE sic = ?");
+        $stmt = $conn->prepare("SELECT seID, sic, email FROM sic_email WHERE sic = ?");
         
         $stmt->bind_param("s", $facSic);
         
@@ -61,7 +61,7 @@ function saveFaculty($facSic, $seID, $name, $dob, $password, $isActive = "1") {
     try {
         $conn = dbConnection();
 
-        $stmt = $conn->prepare("INSERT INTO student (sic, seID, name, dob, password, isActive) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO faculty (sic, seID, name, dob, password, isActive) VALUES (?, ?, ?, ?, ?, ?)");
 
         $stmt->bind_param("sissss", $facSic, $seID, $name, $dob, $password, $isActive);
 

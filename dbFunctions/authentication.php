@@ -114,7 +114,7 @@ if(isset($_POST['operation'])){
     }
 
     else if ($_POST['operation'] == "facultySignUp" && isset($_POST['facSic'])) {
-        $fac_id = $_POST['facSic'];
+        $facSic = $_POST['facSic'];
         $response = getFacultyByIDFromFaculty($facSic); // Check if already registered
 
         if ($response == "present") {
@@ -124,7 +124,7 @@ if(isset($_POST['operation'])){
             if ($response == "error") {
                 echo json_encode(["status" => "error1"]);
             } else if (is_array($response)) {
-                $facSic = $response['facSic'];
+                $facSic = $response['sic'];
                 $seID = $response['seID'];
                 $toEmail = $response['email'];
                 $subject = "OTP Verification";
@@ -172,6 +172,7 @@ if(isset($_POST['operation'])){
                     echo json_encode([
                         "status" => "success",
                         "seID" => $seID,
+                        "sic" => $facSic,
                         "email" => $toEmail,
                         "otp" => $otp
                     ]);

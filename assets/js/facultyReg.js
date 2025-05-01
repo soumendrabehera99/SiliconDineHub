@@ -36,7 +36,7 @@ $(document).ready(function () {
       Swal.fire({
         icon: "error",
         title: "Invalid Faculty ID",
-        text: idError,
+        text: sicError,
       });
       $("#fac-next-btn").attr("disabled", false);
       return;
@@ -50,13 +50,15 @@ $(document).ready(function () {
     });
 
     $.ajax({
-      url: "./../dbFunctions/authentication.php",
+      url: "../dbFunctions/authentication.php",
       method: "POST",
       data: {
         facSic: facSic.toUpperCase(),
         operation: "facultySignUp",
       },
       success: function (response) {
+        console.log(response);
+
         response = JSON.parse(response);
         Swal.close();
 
@@ -74,9 +76,12 @@ $(document).ready(function () {
           currentStep = 2;
           otp = response.otp;
           seID = response.seID;
+          facID = response.sic;
           updateProgressBar();
           $("#otp").html(
-            '<span style="color: green;">OTP has been sent to ' + response.email + ".</span>"
+            '<span style="color: green;">OTP has been sent to ' +
+              response.email +
+              ".</span>"
           );
         } else if (response.status === "error1") {
           Swal.fire({
@@ -84,7 +89,10 @@ $(document).ready(function () {
             title: "ID Not Found",
             text: "Please contact admin.",
           });
-        } else if (response.status === "error2" || response.status === "error3") {
+        } else if (
+          response.status === "error2" ||
+          response.status === "error3"
+        ) {
           Swal.fire({
             icon: "error",
             title: "Error Occurred",
@@ -228,7 +236,7 @@ $(document).ready(function () {
           $("#facultyVerification")[0].reset();
 
           setTimeout(function () {
-            window.location.href = "./../faculty/facultySignIn.php";
+            window.location.href = "./facultyLogin.php";
           }, 3000);
         } else {
           Swal.fire({
@@ -253,9 +261,10 @@ $(document).ready(function () {
     if (facSic.length !== 8) return "SIC must be exactly 8 characters long";
 
     let sicPattern = /^([0-9]{2}[a-zA-Z]{4}[0-9]{2}|FCS[0-9]{5})$/i;
-  if (!sicPattern.test(facSic)) return "SIC format is invalid (e.g., 23mmci48 or FCS22210)";
+    if (!sicPattern.test(facSic))
+      return "SIC format is invalid (e.g., 23mmci48 or FCS22210)";
 
-    return null; 
+    return null;
   }
 
   updateProgressBar();
