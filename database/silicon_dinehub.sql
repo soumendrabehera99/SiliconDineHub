@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2025 at 08:05 PM
+-- Generation Time: May 01, 2025 at 12:21 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -83,7 +83,7 @@ CREATE TABLE `cafeteria_status` (
 --
 
 INSERT INTO `cafeteria_status` (`id`, `is_open`) VALUES
-(1, 0);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -162,7 +162,8 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`facultyID`, `sic`, `seID`, `name`, `dob`, `password`, `isActive`) VALUES
-(1, 'FCS22210', 28, 'Surajit Das', '1993-01-01', '1234', '1');
+(1, 'FCS22202', 29, 'Soumendra', '1983-03-20', 'Soum@1234', '1'),
+(2, 'FCS22210', 28, 'Surajit Das', '1996-04-20', 'Surajit@123', '1');
 
 -- --------------------------------------------------------
 
@@ -538,7 +539,9 @@ INSERT INTO `student` (`studentID`, `sic`, `seID`, `name`, `dob`, `password`, `i
 (22, '23mmci18', 22, 'Sreeja', '2000-09-06', 'sreeja01', '1'),
 (23, '23mmci19', 23, 'Tanu', '2003-12-12', 'tanu123', '1'),
 (24, '23mmci20', 24, 'Manoj', '2002-04-07', 'manojpass', '0'),
-(25, '23MMCI44', 26, 'Subhendu Behera', '2008-01-06', 'subha@123', '1');
+(25, '23MMCI44', 26, 'Subhendu Behera', '2008-01-06', 'subha@123', '1'),
+(26, 'FCS22202', 29, 'Soumendra', '1999-03-10', 'Abcd@123', '1'),
+(27, 'FCS22202', 29, 'Soumendra', '1983-03-09', 'Abcd@1234', '1');
 
 --
 -- Indexes for dumped tables
@@ -647,6 +650,12 @@ ALTER TABLE `counter_table`
   MODIFY `counterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `faculty`
+--
+ALTER TABLE `faculty`
+  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
@@ -680,7 +689,7 @@ ALTER TABLE `sic_email`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
