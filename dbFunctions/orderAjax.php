@@ -4,14 +4,15 @@ require_once "../dbFunctions/orderdb.php";
 
 if ($_POST['operation'] == "placeOrder") {
     $orderID = $_POST["orderID"];
-    $studentID = $_POST["studentID"];
+    $studentID = $_POST["orderID"];
     $foodID = $_POST["foodID"];
     $quantity = $_POST["quantity"];
     $orderType = $_POST["orderType"];
     $price = $_POST["price"];
     $status = $_POST["status"];
+    $address = isset($_POST["address"]) ? $_POST["address"]: ' ';
     
-    $result = placeOrder($orderID,$studentID, $foodID, $quantity, $orderType, $price, $status);
+    $result = placeOrder($orderID,$studentID, $foodID, $quantity, $orderType, $price, $status,$address);
     echo json_encode(["result" => $result]);
 } else if ($_POST['operation'] == "fetchActiveOrders") {
     $studentID = $_SESSION["sic"];

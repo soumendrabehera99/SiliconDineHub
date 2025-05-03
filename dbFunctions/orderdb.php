@@ -1,7 +1,7 @@
 <?php
 require_once "dbConnect.php";
 
-function placeOrder($orderID,$studentID, $foodID, $quantity, $orderType, $price, $status){
+function placeOrder($orderID,$sic, $foodID, $quantity, $orderType, $price, $status, $address=null){
     try {
         $conn = dbConnection();
 
@@ -10,9 +10,9 @@ function placeOrder($orderID,$studentID, $foodID, $quantity, $orderType, $price,
         $createdAt = date("Y-m-d H:i:s");
         // $updatedAt = date("Y-m-d H:i:s");
 
-        $stmt = $conn->prepare("INSERT INTO `order_table` (orderID, studentID, foodID, quantity, orderType, price, createdAt, updatedAt, status)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("siissdsss", $orderID, $studentID, $foodID, $quantity, $orderType, $price, $createdAt, $createdAt, $status);
+        $stmt = $conn->prepare("INSERT INTO `order_table` (orderID, sic, foodID, quantity, orderType, price, createdAt, updatedAt, status, address)
+                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssissdssss", $orderID, $sic, $foodID, $quantity, $orderType, $price, $createdAt, $createdAt, $status, $address);
 
         $stmt->execute();
 

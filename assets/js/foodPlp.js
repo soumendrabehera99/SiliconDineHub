@@ -3,14 +3,20 @@ const itemsPerPage = 50;
 //get search parameter
 const urlParams = new URLSearchParams(window.location.search);
 let searchQuery = urlParams.get("search");
+let searchQuery1 = Number(urlParams.get("id"));
+console.log(searchQuery, searchQuery1);
 
 fetchCategories();
 if (searchQuery) {
   const message = "No food items listed with your search.!";
   fetchFoods(1, searchQuery, null, message);
+} else if (searchQuery1) {
+  const message = "No food items listed with your category.!";
+  fetchFoods(1, "", searchQuery1, message);
 } else {
   fetchFoods();
 }
+
 //search query
 function fetchCategories(page = 1, searchQuery = "") {
   $.ajax({

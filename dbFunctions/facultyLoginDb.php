@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sic = $_POST['sic'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    $stmt = $conn->prepare("SELECT * FROM faculty WHERE sic = ?");
+    $stmt = $conn->prepare("SELECT * FROM faculty WHERE sic = upper(?)");
     $stmt->bind_param("s", $sic);
     $stmt->execute();
     $result = $stmt->get_result();

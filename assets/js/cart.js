@@ -70,6 +70,31 @@ document.addEventListener("DOMContentLoaded", function () {
       localStorage.setItem("cart", JSON.stringify(cart));
     }
   });
+
+  document.getElementById("orderType").addEventListener("change", function () {
+    const selectedValue = this.value;
+    const container = document.getElementById("dynamicAddressContainer");
+
+    // Clear any existing content
+    container.innerHTML = "";
+
+    if (selectedValue === "Delivery") {
+      const label = document.createElement("label");
+      label.setAttribute("for", "address");
+      label.className = "form-label fw-bold";
+      label.textContent = "Delivery Address";
+
+      const textarea = document.createElement("textarea");
+      textarea.id = "address";
+      textarea.className = "form-control";
+      textarea.rows = 3;
+      textarea.placeholder =
+        "Enter your delivery address here...(ECE building, 3rd floor, room no- 432)";
+
+      container.appendChild(label);
+      container.appendChild(textarea);
+    }
+  });
 });
 
 function showCart() {
@@ -157,6 +182,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", function (e) {
       e.preventDefault();
       cart = localStorage.getItem("cart");
+      if (!cart) {
+        Swal.fire({
+          icon: "warning",
+          title: "Cart is empty",
+          text: "Please add items to cart before checking out.",
+        });
+        return;
+      }
       showCheckout();
       modal.show();
     });
@@ -193,9 +226,11 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 1500);
             return;
           }
-          const studentId = response.studentID;
+          // const studentId = response.studentID;
           const sic = response.sic;
           const type = document.querySelector("#orderType").value;
+          const addressInput = document.getElementById("address");
+          const address = addressInput ? addressInput.value.trim() : " ";
           const cartData = Object.entries(
             JSON.parse(localStorage.getItem("cart"))
           );
@@ -211,12 +246,12 @@ document.addEventListener("DOMContentLoaded", function () {
               data: {
                 operation: "placeOrder",
                 orderID: sic,
-                studentID: studentId,
                 foodID: foodID,
                 quantity: quantity,
                 orderType: type,
                 price: price * quantity,
                 status: status,
+                address: address,
               },
               success: function (res) {
                 const result = JSON.parse(res);

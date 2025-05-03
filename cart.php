@@ -39,6 +39,7 @@
                     <p class="mb-0">Total Amount</p>
                     <p class="mb-0" id="taxTotalPrice">₹0</p>
                 </div>
+                <div id="dynamicAddressContainer" class="mt-3"></div>
             </div>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="w-25 me-2 mt-4">

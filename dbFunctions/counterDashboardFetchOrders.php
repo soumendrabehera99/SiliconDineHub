@@ -10,17 +10,18 @@ try {
     $conn = dbConnection();
     $stmt = $conn->prepare("
         SELECT 
-            o.*,
-            s.name, 
-            s.sic, 
-            f.name AS foodName     
+            o.*, 
+            COALESCE(s.name, f.name) AS name,
+            COALESCE(s.sic, f.sic) AS sic,
+            food.name AS foodName
         FROM order_table o
-        JOIN student s ON o.studentID = s.studentID
-        JOIN food f ON o.foodID = f.foodID
-        JOIN counter_category cc ON f.foodCategoryID = cc.foodCategoryID
-        WHERE cc.counterID = ? 
+        LEFT JOIN student s ON o.sic = s.sic
+        LEFT JOIN faculty f ON o.sic = f.sic
+        JOIN food ON o.foodID = food.foodID
+        JOIN counter_category cc ON food.foodCategoryID = cc.foodCategoryID
+        WHERE cc.counterID = ?
         AND (o.status = 'pending' OR o.status = 'ready')
-        AND DATE(o.createdAt) = CURDATE()
+        AND DATE(o.createdAt) = CURDATE();
     ");
 
     $stmt->bind_param("i", $counterID);

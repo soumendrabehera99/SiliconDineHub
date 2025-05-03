@@ -7,13 +7,12 @@
 //     echo $desc;
 // }
 document.addEventListener("DOMContentLoaded", function () {
-
   // Initialize tooltips
   toastr.options = {
-    "closeButton": true,
-    "progressBar": true,
-    "positionClass": "toast-top-right",
-    "timeOut": "3000"
+    closeButton: true,
+    progressBar: true,
+    positionClass: "toast-top-right",
+    timeOut: "3000",
   };
 
   document.querySelectorAll(".details").forEach(function (detail) {
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // footer
   document.getElementById("displayYear").innerText = new Date().getFullYear();
-
 });
 
 window.onload = function () {
@@ -65,13 +63,13 @@ function fetchStickyBox() {
 
       box.classList.remove("d-none", "opacity-0");
       box.classList.add("d-block");
-    }
+    },
   });
 }
 
 function closeStickyBox() {
   const box = document.getElementById("stickyBox");
-  box.classList.add("opacity-0");
+  box.classList.add("opacity-0", "z-n1");
   setTimeout(() => {
     box.style.display = "none";
   }, 300);
@@ -79,14 +77,16 @@ function closeStickyBox() {
 
 $(document).ready(function () {
   $.ajax({
-    url: './dbFunctions/announcementDb.php',
-    method: 'POST',
+    url: "./dbFunctions/announcementDb.php",
+    method: "POST",
     data: { operation: "fetchLatestAnnouncement" },
-    dataType: 'json',
+    dataType: "json",
     success: function (response) {
-      console.log(response);
+      // console.log(response);
       if (!response || response.error) {
-        $('#announcementContent').html(`<p class="text-muted">No announcements available.</p>`);
+        $("#announcementContent").html(
+          `<p class="text-muted">No announcements available.</p>`
+        );
         return;
       }
 
@@ -98,7 +98,7 @@ $(document).ready(function () {
                 From: ${response.from_date} To: ${response.to_date}
               </p>
             </div>`;
-      $('#announcementContent').html(announcementContent);
-    }
+      $("#announcementContent").html(announcementContent);
+    },
   });
 });

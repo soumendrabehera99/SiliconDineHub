@@ -62,8 +62,7 @@ if(isset($_POST['operation'])){
             echo json_encode(false);
             exit;
         }
-        $result = getStudentBySic($_SESSION['sic']);
-        echo json_encode($result);
+        echo json_encode(["sic"=>$_SESSION['sic']]);
         exit;
     }
 }
