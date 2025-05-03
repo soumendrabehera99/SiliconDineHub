@@ -49,7 +49,7 @@ function fetchStickyBox() {
   $.ajax({
     url: "./dbFunctions/announcementDb.php",
     type: "POST",
-    data: { operation: "fetchLatestAnnouncement" },
+    data: { operation: "fetchLatestAnnouncement01" },
     dataType: "json",
     success: function (response) {
       if (!response || response.error) {
@@ -82,7 +82,6 @@ $(document).ready(function () {
     data: { operation: "fetchLatestAnnouncement" },
     dataType: "json",
     success: function (response) {
-      // console.log(response);
       if (!response || response.error) {
         $("#announcementContent").html(
           `<p class="text-muted">No announcements available.</p>`
@@ -90,15 +89,15 @@ $(document).ready(function () {
         return;
       }
 
-      let announcementContent = `
-            <div class="mb-3 p-3 shadow-sm bg-light rounded" style="background: linear-gradient(135deg, #ffd700, #ffa500); color: #000;">
-              <h5 class="fw-bold">${response.title}</h5>
-              <p class="mb-1">${response.message}</p>
-              <p class="text-muted small">
-                From: ${response.from_date} To: ${response.to_date}
-              </p>
-            </div>`;
-      $("#announcementContent").html(announcementContent);
+      let content = "";
+      response.forEach(item => {
+        content += `
+          <div class="mb-3 p-3 shadow-sm bg-light rounded announcement-card" style="background: linear-gradient(135deg, #ffd700, #ffa500); color: #000;">
+            <h5 class="fw-bold">${item.title}</h5>
+            <p class="mb-1">${item.message}</p>
+          </div>`;
+      });
+      $("#announcementContent").html(content);
     },
   });
 });
