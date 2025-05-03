@@ -46,23 +46,23 @@ include_once "adminNavbar.php";
                     <span class="small text-white-50">(Showing: Last 7 Days)</span>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Akash</strong> - “Loved the biryani!” 
                         <span class="badge bg-primary ms-2">Food</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Sneha</strong> - “Delivery staff was very polite.” 
                         <span class="badge bg-warning text-dark ms-2">Employee</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Neha</strong> - “Paneer was delicious!” 
                         <span class="badge bg-primary ms-2">Food</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Sneha</strong> - “Delivery staff was very polite.” 
                         <span class="badge bg-warning text-dark ms-2">Employee</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Neha</strong> - “Paneer was delicious!” 
                         <span class="badge bg-primary ms-2">Food</span>
                     </div>
@@ -77,23 +77,23 @@ include_once "adminNavbar.php";
                     <span class="small text-white-50">(Showing: Last 7 Days)</span>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Ravi</strong> - “Dining area needs more cleaning.” 
                         <span class="badge bg-danger ms-2">Cleanliness</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Rahul</strong> - “Hand wash station was not working.” 
                         <span class="badge bg-danger ms-2">Cleanliness</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Ravi</strong> - “Dining area needs more cleaning.” 
                         <span class="badge bg-danger ms-2">Cleanliness</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Rahul</strong> - “Hand wash station was not working.” 
                         <span class="badge bg-danger ms-2">Cleanliness</span>
                     </div>
-                    <div class="mb-3 border-bottom pb-1">
+                    <div class="mb-2 border-bottom pb-1">
                         <strong>Rahul</strong> - “Hand wash station was not working.” 
                         <span class="badge bg-danger ms-2">Cleanliness</span>
                     </div>

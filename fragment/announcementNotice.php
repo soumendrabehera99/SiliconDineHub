@@ -9,7 +9,7 @@
         <!-- Announcement content Ajax call it here -->
         <div id="announcementContent"></div>
         <div class="text-end">
-          <a href="./fragment/allAnnouncement.php" class="text-decoration-none text-dark" >View All</a>
+          <a href="./allAnnouncement.php" class="text-decoration-none text-dark" >View All</a>
         </div>
 
       </div>

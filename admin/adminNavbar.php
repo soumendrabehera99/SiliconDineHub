@@ -157,18 +157,19 @@ include_once "./check.php";
 function updateStatusUI(isOpen) {
     $('#cafeteriaToggle').prop('checked', isOpen == 1);
     $('#cafeteriaStatus').text(isOpen == 1 ? 'Cafeteria Close' : 'Cafeteria Open');
-    showStatusInSweetAlert(isOpen);
-}
 
-function showStatusInSweetAlert(isOpen) {
-    // Show SweetAlert with the current status
-    Swal.fire({
-        icon: isOpen == 1 ? 'success' : 'error',
-        title: isOpen == 1 ? 'Cafeteria Open' : 'Cafeteria Closed',
-        text: isOpen == 1 ? 'Silicon DineHub is now open.' : 'Silicon DineHub is now closed.',
-        showConfirmButton: true,
-        confirmButtonText: 'OK'
-    });
+    // ✅ Show status alert only once per session
+    if (!sessionStorage.getItem('statusAlertShown')) {
+        Swal.fire({
+            icon: isOpen == 1 ? 'success' : 'error',
+            title: isOpen == 1 ? 'Cafeteria Open' : 'Cafeteria Closed',
+            text: isOpen == 1 ? 'Silicon DineHub is now open.' : 'Silicon DineHub is now closed.',
+            showConfirmButton: true,
+            confirmButtonText: 'OK'
+        });
+
+        sessionStorage.setItem('statusAlertShown', 'true');
+    }
 }
 
 $(document).ready(function () {
@@ -202,7 +203,7 @@ $(document).ready(function () {
                         title: 'Status Updated',
                         text: 'The status has been successfully updated.'
                     });
-                } else if (res.success == false) {
+                } else if (res.success === false) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
@@ -211,7 +212,6 @@ $(document).ready(function () {
                 }
             },
             error: function () {
-                // Failure message with SweetAlert
                 Swal.fire({
                     icon: 'error',
                     title: 'Connection Error',
@@ -221,6 +221,7 @@ $(document).ready(function () {
         });
     });
 });
+
 
 document.getElementById("logoutBtn").addEventListener("click", function(event) {
     event.preventDefault(); 
