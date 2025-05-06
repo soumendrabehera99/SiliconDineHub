@@ -85,7 +85,7 @@ function getTopSellingFood($days) {
     $query = "SELECT f.name, f.image, f.price, SUM(o.quantity) as totalSold
               FROM order_table o
               JOIN food f ON o.foodID = f.foodID
-              WHERE o.createdAt >= ? AND o.status = 'delivered'
+              WHERE o.createdAt >= ? AND o.status IN ('delivered', 'ready')
               GROUP BY o.foodID
               ORDER BY totalSold DESC
               LIMIT 5";
@@ -134,22 +134,53 @@ function getLoyalCustomers() {
     $conn = dbConnection();
 
     $sql = "
-    SELECT 
-        s.name, 
-        s.dob,
-        COUNT(o.orderID) AS orderCount,
-        COALESCE(SUM(o.price), 0) AS totalSpent
-    FROM 
-        student s
-    INNER JOIN 
-        order_table o ON s.sic = o.orderID AND o.status IN ('delivered', 'ready')
-    WHERE 
-        s.isActive = 1
-    GROUP BY 
-        o.orderID
-    ORDER BY 
-        totalSpent DESC
-    LIMIT 5
+            SELECT 
+            name,
+            dob,
+            sic,
+            user_type,
+            COUNT(orderID) AS orderCount,
+            COALESCE(SUM(price), 0) AS totalSpent
+        FROM (
+            -- Student Orders
+            SELECT 
+                s.name, 
+                s.dob, 
+                s.sic,
+                'Student' AS user_type,
+                o.orderID,
+                o.price
+            FROM 
+                student s
+            JOIN 
+                order_table o ON s.sic = o.sic
+            WHERE 
+                o.status IN ('ready', 'delivered')
+                AND s.isActive = 1
+
+            UNION ALL
+
+            -- Faculty Orders
+            SELECT 
+                f.name, 
+                f.dob, 
+                f.sic,
+                'Faculty' AS user_type,
+                o.orderID,
+                o.price
+            FROM 
+                faculty f
+            JOIN 
+                order_table o ON f.sic = o.sic
+            WHERE 
+                o.status IN ('ready', 'delivered')
+                AND f.isActive = 1
+        ) AS combined_orders
+        GROUP BY 
+            name, dob, sic, user_type
+        ORDER BY 
+            totalSpent DESC
+        LIMIT 5;
     ";
 
     $result = $conn->query($sql);
