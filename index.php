@@ -8,10 +8,10 @@ require_once "./dbFunctions/landingPagedb.php";
         </div>
     </a>
     <div id="stickyBox" class="right-buttom-box d-flex">
-        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-2" onclick="closeStickyBox()" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-dark position-absolute top-0 end-0 m-2 ms-5" onclick="closeStickyBox()" aria-label="Close"></button>
         <div class="mt-3">
             <h5 id="stickyTitle" class="fw-bold fs-5"></h5>
-            <p id="stickyMessage" class="small"></p>
+            <p id="stickyMessage" class="small" style="text-align:justify;"></p>
         </div>
     </div>
 
@@ -168,6 +168,7 @@ require_once "./dbFunctions/landingPagedb.php";
             </div>
         </div>
     </section>
+    
 <?php
 include_once "fragment/announcementNotice.php";
 include_once "fragment/customerFeedback.php";

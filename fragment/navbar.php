@@ -87,6 +87,8 @@
                                     <ul class="dropdown-menu" aria-labelledby="loginDropdown" style="background-color: black;">
                                         <li><a class="dropdown-item" href="./studentSignIn.php">Student</a></li>
                                         <li><a class="dropdown-item" href="./faculty/facultyLogin.php">Faculty</a></li>
+                                        <li><a class="dropdown-item" href="./admin/adminLogin.php">Admin</a></li>
+                                        <li><a class="dropdown-item" href="./counterLogin.php">Counter</a></li>
                                     </ul>
                                 </div>
                             <?php endif; ?>

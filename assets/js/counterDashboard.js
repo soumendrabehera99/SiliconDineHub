@@ -63,11 +63,11 @@ function fetchOrders() {
                               <td>${order.orderID}</td>
                               <td>${order.name}</td>
                               <td>${order.foodName}</td>
-                              <td style="color:${
+                              <td class="text-center" style="color:${
                                 order.orderType == "Delivery" ? "red" : ""
                               }">${
             order.orderType
-          }</br><span style="color:black">${order.address}</span></td>
+          }</br><span style="color:black">(${order.address})</span></td>
                               <td>
                                   <a href="./dbFunctions/orderStatusUpdate.php?id=${
                                     order.id

@@ -49,7 +49,7 @@ function fetchStickyBox() {
   $.ajax({
     url: "./dbFunctions/announcementDb.php",
     type: "POST",
-    data: { operation: "fetchLatestAnnouncement" },
+    data: { operation: "fetchLatestAnnouncement01" },
     dataType: "json",
     success: function (response) {
       if (!response || response.error) {
@@ -82,7 +82,6 @@ $(document).ready(function () {
     data: { operation: "fetchLatestAnnouncement" },
     dataType: "json",
     success: function (response) {
-      // console.log(response);
       if (!response || response.error) {
         $("#announcementContent").html(
           `<p class="text-muted">No announcements available.</p>`
@@ -90,15 +89,19 @@ $(document).ready(function () {
         return;
       }
 
-      let announcementContent = `
-            <div class="mb-3 p-3 shadow-sm bg-light rounded" style="background: linear-gradient(135deg, #ffd700, #ffa500); color: #000;">
-              <h5 class="fw-bold">${response.title}</h5>
-              <p class="mb-1">${response.message}</p>
-              <p class="text-muted small">
-                From: ${response.from_date} To: ${response.to_date}
-              </p>
-            </div>`;
-      $("#announcementContent").html(announcementContent);
+      let content = "";
+      response.forEach((item) => {
+        content += `
+          <div class="mb-3 p-3 shadow-sm bg-light rounded announcement-card" style="background: linear-gradient(135deg, #ffd700, #ffa500); color: #000;">
+            <h5 class="fw-bold">${item.title}</h5>
+            <p class="mb-1">${item.message}</p>
+            <p class="mb-1">Till: ${new Date(item.to_date).toLocaleDateString(
+              "en-GB",
+              { day: "numeric", month: "long", year: "numeric" }
+            )}</p>
+          </div>`;
+      });
+      $("#announcementContent").html(content);
     },
   });
 
@@ -140,6 +143,54 @@ $(document).ready(function () {
     error: function (xhr, status, error) {
       console.error("AJAX error:", error);
       alert("Something went wrong. Please try again later.");
+    },
+  });
+  $.ajax({
+    url: "./dbFunctions/announcementDb.php",
+    method: "POST",
+    data: { operation: "fetch" },
+    dataType: "json",
+    success: function (response) {
+      if (!response || response.length === 0) {
+        $("#fetchAllAnnouncements").html(
+          `<p class="text-muted">No announcements available.</p>`
+        );
+        return;
+      }
+
+      let content = "";
+      let count = 1;
+      response.forEach((item) => {
+        content += `
+          <div class="mb-3 p-3 shadow-sm bg-light rounded announcement-card" style="background: linear-gradient(135deg, #ffd700, #ffa500); color: #000;">
+            <div class="row w-100">
+              <div class="col-12 col-md-8">
+                <h5 class="fw-bold">${count++ + ". " + item.title}</h5>
+                <p class="mb-1" style="text-align: justify;">${item.message}</p>
+              </div>
+              <div class="col-12 col-md-4 text-md-end mt-2 mt-md-0">
+                <p class="mb-1">From: ${new Date(
+                  item.from_date
+                ).toLocaleDateString("en-GB", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                })}</p>
+                <p class="mb-1">To: ${new Date(item.to_date).toLocaleDateString(
+                  "en-GB",
+                  { day: "numeric", month: "long", year: "numeric" }
+                )}</p>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      $("#fetchAllAnnouncements").html(content);
+    },
+    error: function () {
+      $("#fetchAllAnnouncements").html(
+        `<p class="text-danger">Failed to load announcements. Please try again later.</p>`
+      );
     },
   });
 });

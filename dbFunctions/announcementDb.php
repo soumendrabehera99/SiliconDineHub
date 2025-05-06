@@ -63,6 +63,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['operation'])) {
         }
 
         elseif ($operation == 'fetchLatestAnnouncement') {
+            $stmt = $conn->prepare("SELECT * FROM announcements ORDER BY id DESC LIMIT 3");
+            $stmt->execute();
+            $result = $stmt->get_result();
+        
+            $announcements = [];
+            while ($row = $result->fetch_assoc()) {
+                $announcements[] = $row;
+            }
+        
+            if (count($announcements) > 0) {
+                echo json_encode($announcements);
+            } else {
+                echo json_encode(['error' => 'No announcement found']);
+            }
+        }
+        elseif ($operation == 'fetchLatestAnnouncement01') {
             $stmt = $conn->prepare("SELECT * FROM announcements ORDER BY id DESC LIMIT 1");
             $stmt->execute();
             $result = $stmt->get_result();

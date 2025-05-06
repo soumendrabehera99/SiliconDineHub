@@ -1,4 +1,5 @@
-<section style="margin-bottom: 100px !important;">
+<!-- Announcement -->
+<section style="margin-bottom: 30px !important;">
   <div class="container">
     <div class="py-1 mb-3">
       <h2 class="text-center fs-1">Announcement</h2>
@@ -6,7 +7,11 @@
     <div class="row align-items-center">
       <div class="col-md-6">
         <!-- Announcement content Ajax call it here -->
-        <div id="announcementContent" ></div>
+        <div id="announcementContent"></div>
+        <div class="text-end">
+          <a href="./allAnnouncement.php" class="text-decoration-none text-dark" >View All</a>
+        </div>
+
       </div>
       
       <!-- Announcement Image Section -->

@@ -36,7 +36,7 @@
         }
     </style>
 
-    <body class="text-white d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <body class="text-white d-flex justify-content-center align-items-center bg-dark" style="height: 100vh;">
         <div class="container d-flex align-items-center justify-content-center" style="height: 90vh">
             <div class="row rounded g-0 wrapper">
                 <div class="col-md-6 d-none d-md-block">
@@ -56,7 +56,10 @@
                                 <input type="password" class="form-control" id="password" name="password">
                             </div>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-warning px-5 py-2" value="Login">
+                                <input type="submit" class="btn btn-warning px-5 py-2" value="Login"><br>
+                            </div>
+                            <div class="text-center mt-3">
+                                <a href="./index.php" class="text-dark text-decoration-none">Back</a>
                             </div>
                         </form>
                     </div>
