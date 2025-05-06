@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         },
         success: function (data) {
+          // console.log(data);
+
           Swal.close();
           if (data.error) {
             Swal.fire("Error", data.error, "error");
@@ -43,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${index + 1}</td>
                     <td>${row.sic}</td>
                     <td>${row.name}</td>
+                    <td>${row.userType.toUpperCase()}</td>
                     <td>₹${parseFloat(row.totalAmount).toFixed(2)}</td>
                   </tr>`;
               });
@@ -87,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const heading = [
       [`Student Bills Report (From ${fromDate} To ${toDate})`],
       [],
-      ["#", "SIC", "Name", "Total Amount (₹)"],
+      ["#", "SIC", "Name", "User Type", "Total Amount (₹)"],
     ];
 
     const tableRows = [];
@@ -99,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
           row.cells[1]?.innerText || "",
           row.cells[2]?.innerText || "",
           row.cells[3]?.innerText || "",
+          row.cells[4]?.innerText || "",
         ];
         tableRows.push(rowData);
       });

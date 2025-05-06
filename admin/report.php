@@ -56,6 +56,7 @@ require_once "../dbFunctions/orderHistorydb.php";
                                 <th>#</th>
                                 <th>SIC</th>
                                 <th>Name</th>
+                                <th>User Type</th>
                                 <th>Total Amount (₹)</th>
                             </tr>
                         </thead>

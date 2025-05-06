@@ -37,7 +37,7 @@ if ($_POST['operation'] == "placeOrder") {
 }else if($_POST['operation'] == "fetchLoyalCustomer"){
     $customers = getLoyalCustomers();
     echo json_encode($customers);
-}elseif ($_POST['operation'] == "fetchBills") {
+}else if ($_POST['operation'] == "fetchBills") {
     $fromDate = $_POST['fromDate'];
     $toDate = $_POST['toDate'];
     $result = getStudentBills($fromDate, $toDate);

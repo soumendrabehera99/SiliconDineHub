@@ -216,14 +216,37 @@ function getLoyalCustomers() {
 function getStudentBills($fromDate, $toDate) {
     $conn = dbConnection();
 
-    $query = "SELECT s.sic, s.name, SUM(o.price * o.quantity) AS totalAmount
-              FROM order_table o
-              JOIN student s ON o.orderID = s.sic
-              WHERE o.createdAt BETWEEN ? AND ? AND o.status IN('delivered','ready')
-              GROUP BY s.sic, s.name";
+    $query = "SELECT s.sic, s.name, SUM(o.price * o.quantity) AS totalAmount, 'student' AS userType
+    FROM order_table o
+    JOIN student s ON o.sic = s.sic
+    WHERE o.createdAt BETWEEN ? AND ?
+    AND o.status IN ('delivered', 'ready')
+    GROUP BY s.sic, s.name
+
+    UNION
+
+    SELECT f.sic AS sic, f.name, SUM(o.price * o.quantity) AS totalAmount, 'faculty' AS userType
+    FROM order_table o
+    JOIN faculty f ON o.sic = f.sic
+    WHERE o.createdAt BETWEEN ? AND ?
+    AND o.status IN ('delivered', 'ready')
+    GROUP BY f.sic, f.name
+
+    ORDER BY 
+    CASE userType
+        WHEN 'student' THEN 0
+        WHEN 'faculty' THEN 1
+        ELSE 2
+    END,
+    name";
+
 
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ss", $fromDate, $toDate);
+    if (!$stmt) {
+        return ['error' => $conn->error];
+        exit;
+    }    
+    $stmt->bind_param("ssss", $fromDate, $toDate, $fromDate, $toDate);
     $stmt->execute();
 
     $res = $stmt->get_result();
