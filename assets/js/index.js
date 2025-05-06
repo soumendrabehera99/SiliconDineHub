@@ -59,7 +59,7 @@ function fetchStickyBox() {
       if (!box) return;
 
       document.getElementById("stickyTitle").innerText = response.title;
-      document.getElementById("stickyMessage").innerText = response.message;
+      document.getElementById("stickyMessage").innerHTML = response.message;
 
       box.classList.remove("d-none", "opacity-0");
       box.classList.add("d-block");
