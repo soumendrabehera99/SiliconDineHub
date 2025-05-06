@@ -13,6 +13,7 @@ $(document).ready(function() {
             dataType: "json",
             success: function(response) {
                 let html = '';
+                let count = 1
     
                 if (response.length === 0) {
                     html = `
@@ -24,11 +25,22 @@ $(document).ready(function() {
                     $.each(response, function(index, data) {
                         html += `
                             <tr>
-                                <td>${data.id}</td>
+                                <td>${count++}</td>
                                 <td>${data.title}</td>
-                                <td>${data.message}</td>
-                                <td>${data.from_date}</td>
-                                <td>${data.to_date}</td>
+                                <td class="text-wrap w-50">${data.message}</td>
+                                <td>${new Date(data.from_date).toLocaleDateString('en-GB', {
+                                    day: '2-digit',
+                                    month: 'short',
+                                    year: 'numeric'
+                                    })}
+                                </td>
+
+                                <td>${new Date(data.to_date).toLocaleDateString('en-GB', {
+                                    day: '2-digit',
+                                    month: 'short',
+                                    year: 'numeric'
+                                    })}
+                                </td>
                                 <td>
                                     <button class="btn btn-sm btn-info editBtn" data-id="${data.id}">Edit</button>
                                     <button class="btn btn-sm btn-danger deleteBtn" data-id="${data.id}">Delete</button>

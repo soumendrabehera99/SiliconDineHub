@@ -21,7 +21,7 @@ include_once "adminNavbar.php";
                     Top Selling Foods
                     <span class="small text-white-50" id="topSellingDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <ul class="list-group list-group-flush" id="topSellingList">
+                <ul class="list-group list-group-flush" id="topSellingList" style="height: 210px;">
                 </ul>
             </div>
         </div>
@@ -33,7 +33,7 @@ include_once "adminNavbar.php";
                     Least Selling Foods
                     <span class="small text-white-50" id="leastSellingDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <ul class="list-group list-group-flush" id="leastSellingList">
+                <ul class="list-group list-group-flush" id="leastSellingList" style="height: 210px;">
                 </ul>
             </div>
         </div>
@@ -45,7 +45,7 @@ include_once "adminNavbar.php";
                     Good Feedbacks
                     <span class="small text-white-50" id="goodFeedBackDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <div class="card-body" id="goodFeedbacks">
+                <div class="card-body overflow-auto" id="goodFeedbacks" style="max-height: 250px;">
                     <!-- Good feedbacks will appear here -->
                 </div>
             </div>
@@ -57,7 +57,7 @@ include_once "adminNavbar.php";
                     Bad Feedbacks
                     <span class="small text-white-50" id="badFeedBackDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <div class="card-body" id="badFeedbacks">
+                <div class="card-body" id="badFeedbacks" style="height: 250px;">
                     <!-- Bad feedbacks will appear here -->
                 </div>
             </div>
