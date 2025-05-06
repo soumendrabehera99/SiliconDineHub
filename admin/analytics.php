@@ -43,29 +43,10 @@ include_once "adminNavbar.php";
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-success text-white fw-semibold d-flex justify-content-between">
                     Good Feedbacks
-                    <span class="small text-white-50">(Showing: Last 7 Days)</span>
+                    <span class="small text-white-50" id="goodFeedBackDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <div class="card-body">
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Akash</strong> - “Loved the biryani!” 
-                        <span class="badge bg-primary ms-2">Food</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Sneha</strong> - “Delivery staff was very polite.” 
-                        <span class="badge bg-warning text-dark ms-2">Employee</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Neha</strong> - “Paneer was delicious!” 
-                        <span class="badge bg-primary ms-2">Food</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Sneha</strong> - “Delivery staff was very polite.” 
-                        <span class="badge bg-warning text-dark ms-2">Employee</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Neha</strong> - “Paneer was delicious!” 
-                        <span class="badge bg-primary ms-2">Food</span>
-                    </div>
+                <div class="card-body" id="goodFeedbacks">
+                    <!-- Good feedbacks will appear here -->
                 </div>
             </div>
         </div>
@@ -74,29 +55,10 @@ include_once "adminNavbar.php";
             <div class="card shadow-sm border-0">
                 <div class="card-header bg-danger text-white fw-semibold d-flex justify-content-between">
                     Bad Feedbacks
-                    <span class="small text-white-50">(Showing: Last 7 Days)</span>
+                    <span class="small text-white-50" id="badFeedBackDuration">(Showing: Last 7 Days)</span>
                 </div>
-                <div class="card-body">
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Ravi</strong> - “Dining area needs more cleaning.” 
-                        <span class="badge bg-danger ms-2">Cleanliness</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Rahul</strong> - “Hand wash station was not working.” 
-                        <span class="badge bg-danger ms-2">Cleanliness</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Ravi</strong> - “Dining area needs more cleaning.” 
-                        <span class="badge bg-danger ms-2">Cleanliness</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Rahul</strong> - “Hand wash station was not working.” 
-                        <span class="badge bg-danger ms-2">Cleanliness</span>
-                    </div>
-                    <div class="mb-2 border-bottom pb-1">
-                        <strong>Rahul</strong> - “Hand wash station was not working.” 
-                        <span class="badge bg-danger ms-2">Cleanliness</span>
-                    </div>
+                <div class="card-body" id="badFeedbacks">
+                    <!-- Bad feedbacks will appear here -->
                 </div>
             </div>
         </div>

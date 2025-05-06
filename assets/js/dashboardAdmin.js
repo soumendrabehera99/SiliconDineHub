@@ -62,7 +62,7 @@ $(document).ready(function () {
     method: "GET",
     data: { operation: "fetchOrderData" }, // Send operation type
     dataType: "json",
-    success: function (data) {      
+    success: function (data) {
       if (data.error) {
         console.error(data.error);
         $("#loadingSpinner").html(
@@ -93,6 +93,8 @@ $(document).ready(function () {
       },
       dataType: "json",
       success: function (response) {
+        console.log(response);
+
         const list = $("#loyalCustomerList");
         list.empty();
 
