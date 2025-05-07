@@ -67,7 +67,9 @@ function fetchOrders() {
                                 order.orderType == "Delivery" ? "red" : ""
                               }">${
             order.orderType
-          }</br><span style="color:black">(${order.address})</span></td>
+          }</br><span style="color:black" >${
+            order.orderType == "Delivery" ? `(${order.address})` : ""
+          }</span></td>
                               <td>
                                   <a href="./dbFunctions/orderStatusUpdate.php?id=${
                                     order.id

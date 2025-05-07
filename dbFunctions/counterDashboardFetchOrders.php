@@ -21,7 +21,8 @@ try {
         JOIN counter_category cc ON food.foodCategoryID = cc.foodCategoryID
         WHERE cc.counterID = ?
         AND (o.status = 'pending' OR o.status = 'ready')
-        AND DATE(o.createdAt) = CURDATE();
+        AND DATE(o.createdAt) = CURDATE()
+        ORDER BY o.id ASC;
     ");
 
     $stmt->bind_param("i", $counterID);
