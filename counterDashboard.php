@@ -153,7 +153,8 @@ $username = $_SESSION['userName'];
                                 <th>Name</th>
                                 <!-- <th>SIC</th> -->
                                 <th>Food</th>
-                                <th>Order Type</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Order Type</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
@@ -164,7 +165,7 @@ $username = $_SESSION['userName'];
                 </div>
             </div>
         </div>
-
+        
         <!-- Pending Orders -->
         <div class="col-lg-6 col-md-12 orders">
             <div class="row d-flex align-items-center">
@@ -173,15 +174,15 @@ $username = $_SESSION['userName'];
                     <div class="position-relative w-50 ms-3">
                         <i class="fas fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
                         <input 
-                            type="text" 
-                            class="form-control ps-5" 
-                            id="searchCompleted" 
-                            placeholder="Search by Order ID..."
+                        type="text" 
+                        class="form-control ps-5" 
+                        id="searchCompleted" 
+                        placeholder="Search by Order ID..."
                         >
                     </div>
                 </div>
             </div>
-
+            
             <div class="card">
                 <div class="table-responsive">
                     <table class="table table-hover">
@@ -191,7 +192,8 @@ $username = $_SESSION['userName'];
                                 <th>Name</th>
                                 <!-- <th>SIC</th> -->
                                 <th>Food</th>
-                                <th>Order Type</th>
+                                <th>Quantity</th>
+                                <th class="text-center">Order Type</th>
                                 <th>Status</th>
                             </tr>
                         </thead>

@@ -63,6 +63,7 @@ function fetchOrders() {
                               <td>${order.orderID}</td>
                               <td>${order.name}</td>
                               <td>${order.foodName}</td>
+                              <td>${order.quantity}</td>
                               <td class="text-center" style="color:${
                                 order.orderType == "Delivery" ? "red" : ""
                               }">${
