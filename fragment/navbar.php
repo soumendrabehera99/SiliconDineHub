@@ -1,4 +1,7 @@
-<?php session_start();?>
+<?php 
+session_start();
+require_once "./dbFunctions/studentdb.php";
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -51,6 +54,12 @@
                             </li>
                         </ul>
                     </div>
+                    <?php if (isset($_SESSION['sic'])): ?>
+                        <div class="collapse navbar-collapse mt-1 d-md-flex justify-content-md-end" id="navbarSupportedContent">
+                            <p class="text-white mb-0">Hello, <?php echo htmlspecialchars(getStudentNameBySic($_SESSION['sic'])); ?></p>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="user_option d-flex gap-3 align-items-center ms-auto">
                             <!-- <?php echo isset($_SESSION['sic']) ? '<a href="#" class="nav-link fs-5 text-center"><i class="fa-solid fa-bell"></i></a>' : ''; ?> -->

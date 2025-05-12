@@ -459,6 +459,40 @@ function getStudentNameByStudentID($studentID){
         return $e->getMessage();
     }
 }
+function getStudentNameBySic($sic){
+    try {
+        $sic = trim($sic);
+        $conn = dbConnection();
+
+        // First, check in student table
+        $stmt = $conn->prepare("SELECT name FROM student WHERE sic = ?");
+        $stmt->bind_param("s", $sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['name'];
+        }
+
+        // If not found in student, check in faculty table
+        $stmt = $conn->prepare("SELECT name FROM faculty WHERE sic = ?");
+        $stmt->bind_param("s", $sic);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            return $row['name'];
+        }
+
+        return "error";
+        
+    } catch (Exception $e) {
+        return $e->getMessage();
+    }
+}
+
 
 function getStudentSicByStudentID($studentID){
     try{

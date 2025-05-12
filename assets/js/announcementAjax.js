@@ -27,7 +27,7 @@ $(document).ready(function() {
                             <tr>
                                 <td>${count++}</td>
                                 <td>${data.title}</td>
-                                <td class="text-wrap w-50">${data.message}</td>
+                                <td class="" style="max-width: 400px;">${data.message}</td>
                                 <td>${new Date(data.from_date).toLocaleDateString('en-GB', {
                                     day: '2-digit',
                                     month: 'short',
